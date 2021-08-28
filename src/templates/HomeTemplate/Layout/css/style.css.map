@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACE,aADW,CACX,WAAW,CAAC;EACV,MAAM,EAAE,IAAI;CACb",
+    "sources": [
+        "../HomeCarousel/style.scss"
+    ],
+    "names": [],
+    "file": "style.css"
+}

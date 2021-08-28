@@ -1,5 +1,7 @@
 import { Fragment } from "react";
 import { Route } from "react-router-dom";
+import Header from "./Layout/Header/Header";
+import HomeCarousel from "./Layout/HomeCarousel/HomeCarousel";
 
 export const HomeTemplate = (props) => {
   //props là path, exact, Component
@@ -15,7 +17,9 @@ export const HomeTemplate = (props) => {
 
         return (
           <Fragment>
-            <h1>Đây là homepage</h1>
+            <Header {...propsRoute} />
+
+            <HomeCarousel {...propsRoute} />
 
             <Component {...propsRoute} />
 
