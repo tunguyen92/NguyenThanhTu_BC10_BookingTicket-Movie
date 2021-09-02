@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
+import { getCarouselAction } from "../../../../redux/actions/CarouselActions";
 import "./style.scss";
 
 const settings = {
@@ -12,35 +14,48 @@ const settings = {
   autoplaySpeed: 5000,
 };
 
-const contentStyle = {
-  height: "400px",
-  color: "fff",
-  lineHeight: "400px",
-  textAlign: "center",
-  background: "#364d79",
-  cursor: "pointer",
-};
-
 export default function HomeCarousel() {
+  const { arrImg } = useSelector((state) => state.CarouselReducer);
+  // console.log(arrImg);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    //TH1: action = {type:'',data}
+    //TH2: (phải cài middleware)
+    //callbackFunction (dispatch)
+    dispatch(getCarouselAction());
+  }, []);
+
+  const contentStyle = {
+    height: "600px",
+    cursor: "pointer",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  };
+
+  const renderImg = () => {
+    return arrImg.map((item, index) => {
+      return (
+        <div key={index}>
+          <h3
+            style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})` }}
+          >
+            {/* <img
+              src={item.hinhAnh}
+              className="w-full opacity-0"
+              alt={item.hinhAnh}
+            /> */}
+          </h3>
+        </div>
+      );
+    });
+  };
+
   return (
     <div className="overflow-hidden">
-      <Slider {...settings}>
-        <div>
-          <h3 style={contentStyle}>
-            <img src="https://picsum.photos/999" className="w-full" alt="" />
-          </h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}>
-            <img src="https://picsum.photos/989" className="w-full" alt="" />
-          </h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}>
-            <img src="https://picsum.photos/939" className="w-full" alt="" />
-          </h3>
-        </div>
-      </Slider>
+      <Slider {...settings}>{renderImg()}</Slider>
     </div>
   );
 }

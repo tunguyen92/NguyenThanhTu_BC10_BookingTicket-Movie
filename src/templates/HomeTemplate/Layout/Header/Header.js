@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logo from "./logo.png";
 
 export default function Header(props) {
   return (
@@ -11,7 +10,12 @@ export default function Header(props) {
           aria-label="Back to homepage"
           className="flex items-center p-2"
         >
-          <img src={logo} width="90" height="90" alt="" />
+          <img
+            src={process.env.PUBLIC_URL + "/images/logo.png"}
+            width="90"
+            height="90"
+            alt=""
+          />
         </NavLink>
         <ul className="items-stretch hidden space-x-3 lg:flex">
           <li className="flex">
