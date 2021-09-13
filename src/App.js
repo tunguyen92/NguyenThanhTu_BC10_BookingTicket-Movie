@@ -1,6 +1,7 @@
 import "tailwindcss/tailwind.css";
 import "./App.css";
 import "antd/dist/antd.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import { createBrowserHistory } from "history";
 import { Route, Router, Switch } from "react-router-dom";
 import { HomeTemplate } from "./templates/HomeTemplate/HomeTemplate";

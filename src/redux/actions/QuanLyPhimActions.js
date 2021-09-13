@@ -10,7 +10,7 @@ export const layDanhSachPhimAction = () => {
       //Sau khi lấy dữ liệu từ api về => redux (reducer)
       dispatch({
         type: SET_DANH_SACH_PHIM,
-        arrFilm: result.data.items,
+        arrFilm: result.data,
       });
     } catch (errors) {
       console.log(errors);

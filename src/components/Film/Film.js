@@ -3,6 +3,8 @@ import React from "react";
 export default function Film(props) {
   const { phim } = props;
 
+  // console.log(phim.ngayKhoiChieu)
+
   return (
     <div className="mr-2 mb-2 h-full bg-gray-100 bg-opacity-75 rounded-lg overflow-hidden text-center relative px-5 py-8 flex flex-col items-center">
       <div

@@ -13,9 +13,7 @@ export class QuanLyPhimService extends baseService {
   };
 
   layDanhSachPhim = () => {
-    return this.get(
-      `/api/QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=${GROUPID}&soTrang=1&soPhanTuTrenTrang=12`
-    );
+    return this.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}`);
   };
 }
 
