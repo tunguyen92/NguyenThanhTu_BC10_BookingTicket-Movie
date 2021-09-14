@@ -1,6 +1,21 @@
 import React from "react";
+import {
+  AppleOutlined,
+  FacebookOutlined,
+  AndroidOutlined,
+} from "@ant-design/icons";
+import _ from "lodash";
+import { useSelector } from "react-redux";
 
 export default function Footer(props) {
+  const { heThongRapChieu } = useSelector((state) => state.QuanLyRapReducer);
+
+  const arrHeThongRap = _.map(heThongRapChieu, (heThongRap) =>
+    _.pick(heThongRap, ["maHeThongRap", "tenHeThongRap", "logo"])
+  );
+
+  console.log(arrHeThongRap, "arr");
+
   return (
     <footer className="py-6 bg-gray-600">
       <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
@@ -26,64 +41,31 @@ export default function Footer(props) {
             </a>
           </div>
           <div className="col-span-6 text-center md:text-left md:col-span-3">
-            <p className="pb-1 text-lg font-medium">Category</p>
-            <ul>
-              <li>
-                <a href="#" className="hover:text-violet-600">
-                  Link
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-violet-600">
-                  Link
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-violet-600">
-                  Link
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-violet-600">
-                  Link
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-violet-600">
-                  Link
-                </a>
-              </li>
-            </ul>
+            <p className="pb-1 text-lg font-medium text-white">Partner</p>
+            <div className="text-white grid grid-cols-3 gap-3">
+              {arrHeThongRap.map((heThongRap, index) => {
+                return (
+                  <div key={index}>
+                    <img
+                      width={50}
+                      src={heThongRap.logo}
+                      alt={heThongRap.tenHeThongRap}
+                    />
+                  </div>
+                );
+              })}
+            </div>
           </div>
           <div className="col-span-6 text-center md:text-left md:col-span-3">
-            <p className="pb-1 text-lg font-medium">Category</p>
-            <ul>
-              <li>
-                <a href="#" className="hover:text-violet-600">
-                  Link
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-violet-600">
-                  Link
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-violet-600">
-                  Link
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-violet-600">
-                  Link
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-violet-600">
-                  Link
-                </a>
-              </li>
-            </ul>
+            <p className="pb-1 text-lg font-medium text-white">Mobile App</p>
+            <div className="flex text-white">
+              <div className="mr-5">
+                <AppleOutlined className="text-2xl" />
+              </div>
+              <div>
+                <AndroidOutlined className="text-2xl" />
+              </div>
+            </div>
           </div>
         </div>
         <div className="grid justify-center pt-6 lg:justify-between">
