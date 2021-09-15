@@ -11,19 +11,31 @@ import News from "./pages/News/News";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 
+import AdminTemplate from "./templates/AdminTemplate/AdminTemplate";
+import Dashboard from "./pages/Admin/Dashboard/Dashboard";
+import Films from "./pages/Admin/Films/Films";
+import ShowTime from "./pages/Admin/ShowTime/ShowTime";
+import { UserTemplate } from "./templates/UserTemplate/UserTemplate";
+
 export const history = createBrowserHistory();
 
 function App() {
   return (
     <Router history={history}>
       <Switch>
-        <HomeTemplate path="/" exact Component={Home} />
-
         <HomeTemplate path="/home" exact Component={Home} />
         <HomeTemplate path="/contact" exact Component={Contact} />
         <HomeTemplate path="/news" exact Component={News} />
-        <Route path="/login" exact Component={Login} />
+
         <Route path="/register" exact Component={Register} />
+
+        <AdminTemplate path="/admin" exact Component={Dashboard} />
+        <AdminTemplate path="/admin/films" exact Component={Films} />
+        <AdminTemplate path="/admin/showtimes" exact Component={ShowTime} />
+
+        <UserTemplate path="/login" exact Component={Login} />
+
+        <HomeTemplate path="/" exact Component={Home} />
       </Switch>
     </Router>
   );
