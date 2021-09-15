@@ -16,6 +16,7 @@ import Dashboard from "./pages/Admin/Dashboard/Dashboard";
 import Films from "./pages/Admin/Films/Films";
 import ShowTime from "./pages/Admin/ShowTime/ShowTime";
 import { UserTemplate } from "./templates/UserTemplate/UserTemplate";
+import Profile from "./pages/Profile/Profile";
 
 export const history = createBrowserHistory();
 
@@ -26,14 +27,14 @@ function App() {
         <HomeTemplate path="/home" exact Component={Home} />
         <HomeTemplate path="/contact" exact Component={Contact} />
         <HomeTemplate path="/news" exact Component={News} />
-
-        <Route path="/register" exact Component={Register} />
+        <HomeTemplate path="/profile" exact Component={Profile} />
 
         <AdminTemplate path="/admin" exact Component={Dashboard} />
         <AdminTemplate path="/admin/films" exact Component={Films} />
         <AdminTemplate path="/admin/showtimes" exact Component={ShowTime} />
 
         <UserTemplate path="/login" exact Component={Login} />
+        <UserTemplate path="/register" exact Component={Register} />
 
         <HomeTemplate path="/" exact Component={Home} />
       </Switch>

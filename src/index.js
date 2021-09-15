@@ -10,6 +10,9 @@ import { store } from "./redux/configStore";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+//Import đa ngôn ngữ
+import "./i18n";
+
 ReactDOM.render(
   <Provider store={store}>
     <App />

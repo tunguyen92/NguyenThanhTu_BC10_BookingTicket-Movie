@@ -63,11 +63,11 @@ const AdminTemplate = (props) => {
                 justifyContent: "center",
                 alignItems: "center",
               }}
-              className="text-2xl ml-5 rounded-full bg-red-200"
+              className=" ml-5 rounded-full bg-red-200"
             >
-              {userLogin.taiKhoan.substr(0, 1)}
+              {userLogin.taiKhoan}
             </div>
-            Hello ! {userLogin.taiKhoan}
+            Hello ! {userLogin.hoTen}
           </button>{" "}
           <button
             onClick={() => {
