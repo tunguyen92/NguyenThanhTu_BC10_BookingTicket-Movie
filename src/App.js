@@ -17,6 +17,7 @@ import Films from "./pages/Admin/Films/Films";
 import ShowTime from "./pages/Admin/ShowTime/ShowTime";
 import { UserTemplate } from "./templates/UserTemplate/UserTemplate";
 import Profile from "./pages/Profile/Profile";
+import AddNew from "./pages/Admin/Films/AddNew/AddNew";
 
 export const history = createBrowserHistory();
 
@@ -29,12 +30,14 @@ function App() {
         <HomeTemplate path="/news" exact Component={News} />
         <HomeTemplate path="/profile" exact Component={Profile} />
 
-        <AdminTemplate path="/admin" exact Component={Dashboard} />
-        <AdminTemplate path="/admin/films" exact Component={Films} />
-        <AdminTemplate path="/admin/showtimes" exact Component={ShowTime} />
-
         <UserTemplate path="/login" exact Component={Login} />
         <UserTemplate path="/register" exact Component={Register} />
+
+        <AdminTemplate path="/admin" exact Component={Dashboard} />
+        <AdminTemplate path="/admin/films" exact Component={Films} />
+        <AdminTemplate path="/admin/films/add-new" exact Component={AddNew} />
+        <AdminTemplate path="/admin/users" exact Component={Dashboard} />
+        <AdminTemplate path="/admin/showtimes" exact Component={ShowTime} />
 
         <HomeTemplate path="/" exact Component={Home} />
       </Switch>

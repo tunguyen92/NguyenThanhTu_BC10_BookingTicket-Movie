@@ -1,98 +1,114 @@
-import React from "react";
-import { Button, Table } from "antd";
+import { Button, Input, Table } from "antd";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import React, { Fragment, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { layDanhSachPhimAction } from "../../../redux/actions/QuanLyPhimActions";
+import { NavLink } from "react-router-dom";
+import { history } from "../../../App";
+
+const { Search } = Input;
 
 export default function Films() {
+  const { arrFilmDefault } = useSelector((state) => state.QuanLyPhimReducer);
+
+  const dispatch = useDispatch();
+
+  console.log(arrFilmDefault);
+
+  useEffect(() => {
+    dispatch(layDanhSachPhimAction());
+  }, []);
+
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
-      filters: [
-        {
-          text: "Joe",
-          value: "Joe",
-        },
-        {
-          text: "Jim",
-          value: "Jim",
-        },
-        {
-          text: "Submenu",
-          value: "Submenu",
-          children: [
-            {
-              text: "Green",
-              value: "Green",
-            },
-            {
-              text: "Black",
-              value: "Black",
-            },
-          ],
-        },
-      ],
-      // specify the condition of filtering result
-      // here is that finding the name started with `value`
-      onFilter: (value, record) => record.name.indexOf(value) === 0,
-      sorter: (a, b) => a.name.length - b.name.length,
-      sortDirections: ["descend"],
-    },
-    {
-      title: "Age",
-      dataIndex: "age",
+      title: "Mã phim",
+      dataIndex: "maPhim",
       defaultSortOrder: "descend",
-      sorter: (a, b) => a.age - b.age,
+      sorter: (a, b) => a.maPhim - b.maPhim,
+      width: 100,
+      align: "center",
     },
     {
-      title: "Address",
-      dataIndex: "address",
-      filters: [
-        {
-          text: "London",
-          value: "London",
-        },
-        {
-          text: "New York",
-          value: "New York",
-        },
-      ],
-      onFilter: (value, record) => record.address.indexOf(value) === 0,
+      title: "Hình ảnh",
+      dataIndex: "hinhAnh",
+      render: (text, film) => {
+        return (
+          <Fragment>
+            <img
+              src={film.hinhAnh}
+              alt={film.tenPhim}
+              style={{ width: "50px", height: "50px", objectFit: "cover" }}
+              onError={(e) => (
+                (e.target.onerror = null),
+                (e.target.src = `https://picsum.photos/99`)
+              )}
+            />
+          </Fragment>
+        );
+      },
+      width: 100,
+      align: "center",
+    },
+    {
+      title: "Tên phim",
+      dataIndex: "tenPhim",
+      sorter: (a, b) => a.tenPhim.localeCompare(b.tenPhim),
+    },
+    {
+      title: "Mô tả",
+      dataIndex: "moTa",
+      render: (text, film) => {
+        return (
+          <Fragment>
+            {film.moTa.length > 50 && film.moTa.substr(0, 50) + "..."}
+          </Fragment>
+        );
+      },
+    },
+    {
+      title: "Chỉnh sửa",
+      dataIndex: "moTa",
+      render: (text, film) => {
+        return (
+          <Fragment>
+            <NavLink className="text-green-700 text-2xl mr-5" to="/">
+              <EditOutlined />
+            </NavLink>
+            <NavLink className="text-red-700 text-2xl" to="/">
+              <DeleteOutlined />
+            </NavLink>
+          </Fragment>
+        );
+      },
     },
   ];
 
-  const data = [
-    {
-      key: "1",
-      name: "John Brown",
-      age: 32,
-      address: "New York No. 1 Lake Park",
-    },
-    {
-      key: "2",
-      name: "Jim Green",
-      age: 42,
-      address: "London No. 1 Lake Park",
-    },
-    {
-      key: "3",
-      name: "Joe Black",
-      age: 32,
-      address: "Sidney No. 1 Lake Park",
-    },
-    {
-      key: "4",
-      name: "Jim Red",
-      age: 32,
-      address: "London No. 2 Lake Park",
-    },
-  ];
+  const data = arrFilmDefault;
 
   function onChange(pagination, filters, sorter, extra) {
     console.log("params", pagination, filters, sorter, extra);
   }
 
+  const onSearch = (value) => console.log(value);
+
   return (
     <div className="container">
       <h3 className="text-4xl">Quản lý phim</h3>
+      <Button
+        className="mb-5"
+        onClick={() => {
+          history.push("/admin/films/add-new");
+        }}
+      >
+        Thêm phim
+      </Button>
+      <Search
+        className="mb-5"
+        placeholder="input search text"
+        onSearch={onSearch}
+        enterButton
+      />
+
       <Table columns={columns} dataSource={data} onChange={onChange} />
     </div>
   );
