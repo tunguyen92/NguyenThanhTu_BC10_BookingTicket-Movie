@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import HomeMenu from "./HomeMenu/HomeMenu";
+import React, { useEffect } from "react";
 //Kết nối redux
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MultipleRows from "../../components/ReactSlick/MultipleRowSlick";
 import { layDanhSachPhimAction } from "../../redux/actions/QuanLyPhimActions";
 import { layDanhSachHeThongCumRapAction } from "../../redux/actions/QuanLyRapAction";
+import HomeMenu from "./HomeMenu/HomeMenu";
 
 export default function Home(props) {
   const { arrFilm } = useSelector((state) => state.QuanLyPhimReducer);

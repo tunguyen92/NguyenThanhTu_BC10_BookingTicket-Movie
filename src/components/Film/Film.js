@@ -30,7 +30,7 @@ export default function Film(props) {
           <span>{phim.moTa}</span>
         )}
       </p>
-      <a className="text-indigo-500 inline-flex items-center">
+      <a href="a" className="text-indigo-500 inline-flex items-center">
         ĐẶT VÉ
         <svg
           className="w-4 h-4 ml-2"

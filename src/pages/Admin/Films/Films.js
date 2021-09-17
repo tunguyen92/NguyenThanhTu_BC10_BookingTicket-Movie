@@ -13,7 +13,7 @@ export default function Films() {
 
   const dispatch = useDispatch();
 
-  console.log(arrFilmDefault);
+  // console.log(arrFilmDefault);
 
   useEffect(() => {
     dispatch(layDanhSachPhimAction());
@@ -38,10 +38,10 @@ export default function Films() {
               src={film.hinhAnh}
               alt={film.tenPhim}
               style={{ width: "50px", height: "50px", objectFit: "cover" }}
-              onError={(e) => (
-                (e.target.onerror = null),
-                (e.target.src = `https://picsum.photos/99`)
-              )}
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = `https://picsum.photos/99`;
+              }}
             />
           </Fragment>
         );
@@ -60,7 +60,9 @@ export default function Films() {
       render: (text, film) => {
         return (
           <Fragment>
-            {film.moTa.length > 50 && film.moTa.substr(0, 50) + "..."}
+            {film.moTa.length > 50
+              ? film.moTa.substr(0, 50) + "..."
+              : film.moTa}
           </Fragment>
         );
       },
@@ -71,10 +73,14 @@ export default function Films() {
       render: (text, film) => {
         return (
           <Fragment>
-            <NavLink className="text-green-700 text-2xl mr-5" to="/">
+            <NavLink
+              className="text-green-700 text-2xl mr-5"
+              to={`/admin/films/edit/${film.maPhim}`}
+              key={1}
+            >
               <EditOutlined />
             </NavLink>
-            <NavLink className="text-red-700 text-2xl" to="/">
+            <NavLink className="text-red-700 text-2xl" to="/" key={2}>
               <DeleteOutlined />
             </NavLink>
           </Fragment>
@@ -109,7 +115,12 @@ export default function Films() {
         enterButton
       />
 
-      <Table columns={columns} dataSource={data} onChange={onChange} />
+      <Table
+        columns={columns}
+        dataSource={data}
+        rowKey={(phim) => phim.maPhim}
+        onChange={onChange}
+      />
     </div>
   );
 }

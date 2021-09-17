@@ -2,6 +2,7 @@ import {
   SET_DANH_SACH_PHIM,
   SET_FILM_DANG_CHIEU,
   SET_FILM_SAP_CHIEU,
+  SET_THONG_TIN_FILM,
 } from "../actions/types/QuanLyPhimType";
 
 const stateDefault = {
@@ -22,6 +23,8 @@ const stateDefault = {
   dangChieu: true,
   sapChieu: true,
   arrFilmDefault: [],
+
+  thongTinPhim: {},
 };
 
 export const QuanLyPhimReducer = (state = stateDefault, action) => {
@@ -50,6 +53,10 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
           new Date(film.ngayKhoiChieu) > new Date("2020-07-15") ===
           state.sapChieu
       );
+      return { ...state };
+
+    case SET_THONG_TIN_FILM:
+      state.thongTinPhim = action.thongTinPhim;
       return { ...state };
 
     default:
