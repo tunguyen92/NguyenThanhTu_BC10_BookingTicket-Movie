@@ -70,22 +70,17 @@ const Edit = (props) => {
   const handleChangeFile = async (e) => {
     //Lấy file ra từ e
     let file = e.target.files[0];
-    if (
-      file.type === "image/jpeg" ||
-      file.type === "image/jpg" ||
-      file.type === "image/gif" ||
-      file.type === "image/png"
-    ) {
-      //Đem dữ liệu file lưu vào formik
-      await formik.setFieldValue("hinhAnh", file);
-      //Tạo đối tượng để đọc file
-      let reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = (e) => {
-        // console.log(e.target.result);
-        setImgSrc(e.target.result); //Hình base 64
-      };
-    }
+    console.log(file);
+
+    //Đem dữ liệu file lưu vào formik
+    await formik.setFieldValue("hinhAnh", file);
+    //Tạo đối tượng để đọc file
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (e) => {
+      // console.log(e.target.result);
+      setImgSrc(e.target.result); //Hình base 64
+    };
   };
 
   const onFormLayoutChange = ({ size }) => {
@@ -109,7 +104,7 @@ const Edit = (props) => {
         onValuesChange={onFormLayoutChange}
         size={componentSize}
       >
-        <h3>Thêm mới phim </h3>
+        <h3>Cập nhật phim </h3>
         <Form.Item label="Form Size" name="size">
           <Radio.Group>
             <Radio.Button value="small">Small</Radio.Button>
@@ -150,6 +145,8 @@ const Edit = (props) => {
           <InputNumber
             onChange={handleChangeInputNumber("danhGia")}
             value={formik.values.danhGia}
+            min={1}
+            max={10}
           />
         </Form.Item>
 
@@ -161,13 +158,20 @@ const Edit = (props) => {
           />
           <br />
           <img
-            width={100}
-            height={100}
+            style={{ width: 150, height: 150, objectFit: "contain" }}
             src={imgSrc === "" ? thongTinPhim.hinhAnh : imgSrc}
           />
         </Form.Item>
-        <Form.Item label="Button">
-          <button type="submit" className="bg-blue-300 text-white p-2">
+        <Form.Item
+          wrapperCol={{
+            offset: 4,
+            span: 14,
+          }}
+        >
+          <button
+            type="submit"
+            className="bg-blue-700 text-white p-2 rounded-md"
+          >
             Cập nhật
           </button>
         </Form.Item>

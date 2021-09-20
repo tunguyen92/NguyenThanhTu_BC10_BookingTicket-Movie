@@ -1,8 +1,15 @@
 import { Button, Input, Table } from "antd";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import {
+  EditOutlined,
+  DeleteOutlined,
+  CalendarOutlined,
+} from "@ant-design/icons";
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { layDanhSachPhimAction } from "../../../redux/actions/QuanLyPhimActions";
+import {
+  layDanhSachPhimAction,
+  xoaPhimAction,
+} from "../../../redux/actions/QuanLyPhimActions";
 import { NavLink } from "react-router-dom";
 import { history } from "../../../App";
 
@@ -80,8 +87,28 @@ export default function Films() {
             >
               <EditOutlined />
             </NavLink>
-            <NavLink className="text-red-700 text-2xl" to="/" key={2}>
+            <span
+              className="text-red-700 text-2xl cursor-pointer mr-5"
+              to="/"
+              key={2}
+              onClick={() => {
+                if (window.confirm("Bạn có muốn xóa phim " + film.tenPhim)) {
+                  // Gọi action
+                  dispatch(xoaPhimAction(film.maPhim));
+                }
+              }}
+            >
               <DeleteOutlined />
+            </span>
+            <NavLink
+              className="text-blue-700 text-2xl "
+              to={`/admin/films/showtime/${film.maPhim}/${film.tenPhim}`}
+              key={3}
+              onClick={() => {
+                localStorage.setItem("filmParams", JSON.stringify(film));
+              }}
+            >
+              <CalendarOutlined />
             </NavLink>
           </Fragment>
         );
@@ -95,7 +122,10 @@ export default function Films() {
     console.log("params", pagination, filters, sorter, extra);
   }
 
-  const onSearch = (value) => console.log(value);
+  const onSearch = (value) => {
+    //Gọi api layDanSachPhim
+    dispatch(layDanhSachPhimAction(value));
+  };
 
   return (
     <div className="container">
@@ -109,6 +139,7 @@ export default function Films() {
         Thêm phim
       </Button>
       <Search
+        allowClear
         className="mb-5"
         placeholder="input search text"
         onSearch={onSearch}

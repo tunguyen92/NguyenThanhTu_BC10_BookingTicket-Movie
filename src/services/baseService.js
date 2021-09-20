@@ -8,7 +8,7 @@ export class baseService {
       url: `${DOMAIN}/${url}`,
       method: "PUT",
       data: model,
-      headers: { Authorization: "Beamer " + localStorage.getItem(TOKEN) }, //JWT
+      headers: { Authorization: "Bearer " + localStorage.getItem(TOKEN) }, //JWT
     });
   };
 
@@ -17,7 +17,10 @@ export class baseService {
       url: `${DOMAIN}/${url}`,
       method: "POST",
       data: model,
-      headers: { Authorization: "Beamer " + localStorage.getItem(TOKEN) }, //JWT
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem(TOKEN),
+        "Cache-control": "no-store, max-age=0",
+      }, //JWT
     });
   };
 
@@ -25,7 +28,7 @@ export class baseService {
     return axios({
       url: `${DOMAIN}/${url}`,
       method: "GET",
-      headers: { Authorization: "Beamer " + localStorage.getItem(TOKEN) }, //token yêu cầu từ backend
+      headers: { Authorization: "Bearer " + localStorage.getItem(TOKEN) }, //token yêu cầu từ backend
     });
   };
 
@@ -33,7 +36,10 @@ export class baseService {
     return axios({
       url: `${DOMAIN}/${url}`,
       method: "DELETE",
-      headers: { Authorization: "Beamer " + localStorage.getItem(TOKEN) }, //JWT
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem(TOKEN),
+        "Access-Control-Allow-Origin": "*",
+      }, //JWT
     });
   };
 }

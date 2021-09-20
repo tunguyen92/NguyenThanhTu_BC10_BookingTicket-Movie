@@ -1,7 +1,15 @@
-import { DatePicker, Form, Input, InputNumber, Radio, Switch } from "antd";
+import {
+  Button,
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
+  Radio,
+  Switch,
+} from "antd";
 import { useFormik } from "formik";
 import moment from "moment";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { themPhimUploadHinhAction } from "../../../../redux/actions/QuanLyPhimActions";
 import { GROUPID } from "../../../../util/settings/config";
@@ -10,6 +18,7 @@ export default function AddNew(props) {
   const [componentSize, setComponentSize] = useState("default");
   const [imgSrc, setImgSrc] = useState("");
   const dispatch = useDispatch();
+  const [form] = Form.useForm();
 
   const formik = useFormik({
     initialValues: {
@@ -19,9 +28,9 @@ export default function AddNew(props) {
       ngayKhoiChieu: "",
       danhGia: 0,
       hinhAnh: {},
+      maNhom: GROUPID,
     },
     onSubmit: (values) => {
-      values.maNhom = GROUPID;
       // console.log(values);
       //Tạo đối tượng formData => Đưa values từ formik vào formData
       let formData = new FormData();
@@ -72,9 +81,15 @@ export default function AddNew(props) {
     setComponentSize(size);
   };
 
+  const onReset = () => {
+    form.resetFields();
+    setImgSrc("");
+  };
+
   return (
     <>
       <Form
+        form={form}
         onSubmitCapture={formik.handleSubmit}
         labelCol={{
           span: 4,
@@ -97,19 +112,24 @@ export default function AddNew(props) {
             <Radio.Button value="large">Large</Radio.Button>
           </Radio.Group>
         </Form.Item>
-        <Form.Item label="Tên phim">
+
+        <Form.Item label="Tên phim" name="clearTenPhim">
           <Input name="tenPhim" onChange={formik.handleChange} />
         </Form.Item>
-        <Form.Item label="Trailer">
+
+        <Form.Item label="Trailer" name="clearTrailer">
           <Input name="trailer" onChange={formik.handleChange} />
         </Form.Item>
-        <Form.Item label="Mô tả">
+
+        <Form.Item label="Mô tả" name="clearMoTa">
           <Input name="moTa" onChange={formik.handleChange} />
         </Form.Item>
-        <Form.Item label="Ngày khởi chiếu">
+
+        <Form.Item label="Ngày khởi chiếu" name="clearNgay">
           <DatePicker format={"DD/MM/YYYY"} onChange={handleChangeDatePicker} />
         </Form.Item>
-        <Form.Item label="Số sao">
+
+        <Form.Item label="Số sao" name="clearSo">
           <InputNumber
             onChange={handleChangeInputNumber("danhGia")}
             min={1}
@@ -117,26 +137,43 @@ export default function AddNew(props) {
           />
         </Form.Item>
 
-        <Form.Item label="Hình ảnh">
+        <Form.Item label="Hình ảnh" name="clearAnh">
           <input
             type="file"
             accept="image/png, image/gif, image/jpeg"
             onChange={handleChangeFile}
           ></input>
           <img
-            style={{ width: 150, height: 150, marginTop: 10 }}
+            style={{
+              width: 150,
+              height: 150,
+              marginTop: 10,
+              objectFit: "contain",
+            }}
             src={imgSrc}
             alt="Hình ảnh"
           />
         </Form.Item>
 
-        <Form.Item label="Tác vụ">
+        <Form.Item
+          wrapperCol={{
+            offset: 4,
+            span: 14,
+          }}
+        >
           <button
-            className="bg-blue-500 text-white p-2 rounded-md"
+            className="bg-blue-700 text-white p-2 rounded-md"
             type="submit"
           >
             Thêm phim
           </button>
+          <Button
+            className=" ml-5 h-10 rounded-md"
+            htmlType="button"
+            onClick={onReset}
+          >
+            Reset
+          </Button>
         </Form.Item>
       </Form>
     </>
