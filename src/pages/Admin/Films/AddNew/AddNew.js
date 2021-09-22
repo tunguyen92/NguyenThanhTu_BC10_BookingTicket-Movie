@@ -31,7 +31,7 @@ export default function AddNew(props) {
       maNhom: GROUPID,
     },
     onSubmit: (values) => {
-      // console.log(values);
+      console.log(values);
       //Tạo đối tượng formData => Đưa values từ formik vào formData
       let formData = new FormData();
       for (let key in values) {

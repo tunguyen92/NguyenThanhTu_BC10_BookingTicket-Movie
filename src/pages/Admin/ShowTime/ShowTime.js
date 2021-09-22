@@ -69,6 +69,7 @@ export default function ShowTime(props) {
         danhSachRap: rapChieu.danhSachRap,
       });
     });
+    // formik.setFieldValue("maRap", value);
   };
 
   const handleChangeMaRap = (value) => {

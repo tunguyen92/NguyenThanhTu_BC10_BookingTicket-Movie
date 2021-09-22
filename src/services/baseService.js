@@ -5,7 +5,7 @@ export class baseService {
   //put json về phía backend
   put = (url, model) => {
     return axios({
-      url: `${DOMAIN}/${url}`,
+      url: `${DOMAIN}${url}`,
       method: "PUT",
       data: model,
       headers: { Authorization: "Bearer " + localStorage.getItem(TOKEN) }, //JWT
@@ -14,7 +14,7 @@ export class baseService {
 
   post = (url, model) => {
     return axios({
-      url: `${DOMAIN}/${url}`,
+      url: `${DOMAIN}${url}`,
       method: "POST",
       data: model,
       headers: {
@@ -26,7 +26,7 @@ export class baseService {
 
   get = (url) => {
     return axios({
-      url: `${DOMAIN}/${url}`,
+      url: `${DOMAIN}${url}`,
       method: "GET",
       headers: { Authorization: "Bearer " + localStorage.getItem(TOKEN) }, //token yêu cầu từ backend
     });
@@ -34,7 +34,7 @@ export class baseService {
 
   delete = (url) => {
     return axios({
-      url: `${DOMAIN}/${url}`,
+      url: `${DOMAIN}${url}`,
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + localStorage.getItem(TOKEN),

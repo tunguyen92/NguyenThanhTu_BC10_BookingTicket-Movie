@@ -1,5 +1,6 @@
 import { Fragment, useEffect } from "react";
 import { Route } from "react-router-dom";
+import bg from "../../assets/images/background-login.jpg";
 
 export const UserTemplate = (props) => {
   //props là path, exact, Component
@@ -18,9 +19,19 @@ export const UserTemplate = (props) => {
         //props.match
 
         return (
-          <Fragment>
+          <div
+            className="limiter"
+            style={{
+              margin: "0 auto",
+              background: `url(${bg})`,
+              width: "100%",
+              height: "766px",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }}
+          >
             <Component {...propsRoute} />
-          </Fragment>
+          </div>
         );
       }}
     />
