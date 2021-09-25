@@ -4,7 +4,7 @@ import slider1 from "../../../assets/images/slider1.jpg";
 import slider2 from "../../../assets/images/slider2.jpg";
 import slider3 from "../../../assets/images/slider3.jpg";
 
-export default class SimpleSlider extends Component {
+export default class HomeCarousel extends Component {
   render() {
     const settings = {
       dots: true,

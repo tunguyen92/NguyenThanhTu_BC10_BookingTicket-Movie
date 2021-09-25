@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import MultipleRows from "../../components/ReactSlick/MultipleRowSlick";
 import { layDanhSachPhimAction } from "../../redux/actions/QuanLyPhimActions";
 import { layDanhSachHeThongCumRapAction } from "../../redux/actions/QuanLyRapAction";
-import HomeCarousel from "../../templates/HomeTemplate/Layout/HomeCarousel/HomeCarousel";
+import HomeCarousel from "./Carousel/Carousel";
+import HomeMenu from "./HomeMenu/HomeMenu";
 
 export default function Home(props) {
   const { arrFilm } = useSelector((state) => state.QuanLyPhimReducer);

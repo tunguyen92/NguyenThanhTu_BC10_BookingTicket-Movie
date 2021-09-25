@@ -40,13 +40,13 @@ export default function Detail(props) {
           <div className="col-span-5 col-start-3">
             <div className="grid grid-cols-3">
               <img className="col-span-1" src={filmDetail?.hinhAnh} alt="" />
-              <div className="col-span-2 ml-5" style={{ marginTop: "25%" }}>
-                <p className="text-sm">
-                  Ngày chiếu:{" "}
+              <div className="col-span-2 ml-5  " style={{ marginTop: "25%" }}>
+                <p className="text-sm text-white mb-5">
+                  Ngày chiếu:
                   {moment(filmDetail.ngayKhoiChieu).format("DD-MM-YYYY")}
                 </p>
-                <p className="text-3xl leading-3">Tên phim</p>
-                <p>{filmDetail.moTa}</p>
+                <p className="text-3xl leading-3 text-white">Tên phim</p>
+                <p className="text-white mt-3">{filmDetail.moTa}</p>
               </div>
             </div>
           </div>
@@ -59,6 +59,10 @@ export default function Detail(props) {
               </div>
             </div>
             <div>
+              <StarOutlined />
+              <StarOutlined />
+              <StarOutlined />
+              <StarOutlined />
               <StarOutlined />
             </div>
           </div>
