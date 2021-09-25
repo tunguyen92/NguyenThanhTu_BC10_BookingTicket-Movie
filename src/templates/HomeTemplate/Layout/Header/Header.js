@@ -11,7 +11,7 @@ import "./header.css";
 
 const navigation = [
   { name: "Trang chủ", to: "/", current: true },
-  { name: "Phim", to: "/film", current: false },
+  { name: "Phim", to: "/contact", current: false },
   { name: "Tin tức", to: "/news", current: false },
   { name: "Liên hệ", to: "/contact", current: false },
 ];
@@ -34,6 +34,8 @@ export default function Header(props) {
     setShow(window.pageYOffset > 140);
   };
 
+  console.log(userLogin);
+
   const renderLogin = () => {
     if (_.isEmpty(userLogin)) {
       return (
@@ -50,7 +52,7 @@ export default function Header(props) {
             onClick={() => {
               history.push("/register");
             }}
-            className="self-center sm:text-base text-xs text-white bg-pink-600 px-3 sm:px-8 py-2 sm:py-3 rounded-3xl"
+            className="self-center sm:text-base text-xs text-white bg-pink-600 px-3 sm:px-6 py-2 sm:py-2 rounded-3xl"
           >
             Sign up
           </button>
@@ -64,7 +66,13 @@ export default function Header(props) {
         <Menu as="div" className="ml-3 relative">
           <div>
             <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-              <img className="h-8 w-8 rounded-full" src={userIcon} alt="" />
+              <img
+                className="h-8 w-8 rounded-full"
+                rel="tooltip"
+                title={`Hello ${userLogin.hoTen}!`}
+                src={userIcon}
+                alt=""
+              />
             </Menu.Button>
           </div>
           <Transition
@@ -103,7 +111,7 @@ export default function Header(props) {
                     onClick={() => {
                       localStorage.removeItem(USER_LOGIN);
                       localStorage.removeItem(TOKEN);
-                      history.push("/home");
+                      history.push("/");
                       window.location.reload();
                     }}
                   >
@@ -144,7 +152,17 @@ export default function Header(props) {
               </div>
 
               <div className="flex-1 flex items-center justify-center  sm:justify-start">
-                <NavLink to="/" className="flex-shrink-0 flex items-center">
+                <NavLink
+                  to="/"
+                  className="flex-shrink-0 flex items-center"
+                  onClick={() => {
+                    navigation.map((item, index) => {
+                      index === 0
+                        ? (item.current = true)
+                        : (item.current = false);
+                    });
+                  }}
+                >
                   <img
                     className="w-10 sm:w-14  lg:w-20"
                     src={process.env.PUBLIC_URL + "/images/logo.png"}
