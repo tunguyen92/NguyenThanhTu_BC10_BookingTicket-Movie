@@ -31,10 +31,14 @@ export default function Film(props) {
           <span>{phim.moTa}</span>
         )}
       </p>
+<<<<<<< HEAD
       <NavLink
         to={`/detail/${phim.maPhim}`}
         className="text-indigo-500 inline-flex items-center"
       >
+=======
+      <a href="a" className="text-indigo-500 inline-flex items-center">
+>>>>>>> f324b26afd2704a5d2aa314696d9e9a91b9e4ea8
         ĐẶT VÉ
         <svg
           className="w-4 h-4 ml-2"

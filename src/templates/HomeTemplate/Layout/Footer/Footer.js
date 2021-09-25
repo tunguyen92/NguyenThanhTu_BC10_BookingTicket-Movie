@@ -1,10 +1,6 @@
-import React from "react";
-import {
-  AppleOutlined,
-  FacebookOutlined,
-  AndroidOutlined,
-} from "@ant-design/icons";
+import { AndroidOutlined, AppleOutlined } from "@ant-design/icons";
 import _ from "lodash";
+import React from "react";
 import { useSelector } from "react-redux";
 
 export default function Footer(props) {
@@ -14,7 +10,7 @@ export default function Footer(props) {
     _.pick(heThongRap, ["maHeThongRap", "tenHeThongRap", "logo"])
   );
 
-  console.log(arrHeThongRap, "arr");
+  // console.log(arrHeThongRap, "arr");
 
   return (
     <footer className="py-6 bg-gray-600">
@@ -22,7 +18,7 @@ export default function Footer(props) {
         <div className="grid grid-cols-12">
           <div className="pb-6 col-span-full md:pb-0 md:col-span-6">
             <a
-              href="#"
+              href="a"
               className="flex justify-center space-x-3 md:justify-start"
             >
               <div className="flex items-center justify-center w-12 h-12 rounded-full bg-violet-600">
@@ -71,16 +67,16 @@ export default function Footer(props) {
         <div className="grid justify-center pt-6 lg:justify-between">
           <div className="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6">
             <span>©2021 All rights reserved</span>
-            <a href="#">
+            <a href="a">
               <span>Privacy policy</span>
             </a>
-            <a href="#">
+            <a href="a">
               <span>Terms of service</span>
             </a>
           </div>
           <div className="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
             <a
-              href="#"
+              href="a"
               className="flex items-center justify-center w-10 h-10 rounded-full bg-violet-600 text-coolGray-50"
             >
               <svg
@@ -94,7 +90,7 @@ export default function Footer(props) {
               </svg>
             </a>
             <a
-              href="#"
+              href="a"
               className="flex items-center justify-center w-10 h-10 rounded-full bg-violet-600 text-coolGray-50"
             >
               <svg
@@ -107,7 +103,7 @@ export default function Footer(props) {
               </svg>
             </a>
             <a
-              href="#"
+              href="a"
               className="flex items-center justify-center w-10 h-10 rounded-full bg-violet-600 text-coolGray-50"
             >
               <svg
