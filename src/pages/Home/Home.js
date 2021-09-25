@@ -5,6 +5,7 @@ import MultipleRows from "../../components/ReactSlick/MultipleRowSlick";
 import { layDanhSachPhimAction } from "../../redux/actions/QuanLyPhimActions";
 import { layDanhSachHeThongCumRapAction } from "../../redux/actions/QuanLyRapAction";
 import HomeMenu from "./HomeMenu/HomeMenu";
+import Carousel from "./Carousel/Carousel";
 
 export default function Home(props) {
   const { arrFilm } = useSelector((state) => state.QuanLyPhimReducer);
@@ -22,14 +23,17 @@ export default function Home(props) {
   }, []);
 
   return (
-    <div className="container m-auto">
-      <section className="text-gray-600 body-font">
-        <div className="container px-5 py-24 mx-auto">
-          <MultipleRows arrFilm={arrFilm} />
-        </div>
-      </section>
+    <div className="relative top-0">
+      <Carousel />
+      <div className="container m-auto">
+        <section className="text-gray-600 body-font">
+          <div className="container px-5 py-24 mx-auto">
+            <MultipleRows arrFilm={arrFilm} />
+          </div>
+        </section>
 
-      <HomeMenu heThongRapChieu={heThongRapChieu} />
+        <HomeMenu heThongRapChieu={heThongRapChieu} />
+      </div>
     </div>
   );
 }

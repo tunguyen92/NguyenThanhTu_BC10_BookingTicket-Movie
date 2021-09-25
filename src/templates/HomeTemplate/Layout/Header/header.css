@@ -1,0 +1,30 @@
+.sticky {
+  background-color: #0f2133;
+  position: fixed;
+  opacity: 1;
+  transition: all 0.5s ease-out;
+}
+
+.slick-slider .slick-dots {
+  bottom: 20px;
+}
+
+.slick-slider .slick-dots li button::before {
+  opacity: 0.75;
+  color: #fff;
+  font-size: 12px;
+}
+.slick-slider .slick-dots .slick-active button::before {
+  color: #dcf836;
+  opacity: 1;
+}
+
+.slick-slider .slick-dots li button:hover::before {
+  color: #dcf836;
+}
+
+@media (min-width: 640px) {
+  .sticky .relative.flex {
+    height: 5rem;
+  }
+}

@@ -135,3 +135,18 @@ button:hover {
 iframe {
   border: none !important;
 }
+
+.bg-pink-color {
+  background-color: #dd003f;
+}
+
+.yellow-color {
+  color: #dcf836;
+}
+.yellow-color-hover:hover {
+  color: #dcf836;
+}
+
+.bg-gray-blue-color {
+  background-color: #0f2133;
+}

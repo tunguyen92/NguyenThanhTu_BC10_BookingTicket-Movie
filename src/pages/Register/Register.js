@@ -1,10 +1,10 @@
 import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import logo from "../../assets/images/logo.png";
 import { dangKyAction } from "../../redux/actions/QuanLyNguoiDungAction";
 import "./register.css";
-import logo from "../../assets/images/logo.png";
 
 export default function Login(props) {
   const dispatch = useDispatch();
@@ -46,6 +46,7 @@ export default function Login(props) {
     let maNhom = e.target.value;
     formik.setFieldValue("maNhom", maNhom);
   };
+
   return (
     <div className="container-login100">
       <div className="wrap-login100">
@@ -120,10 +121,12 @@ export default function Login(props) {
           <div className="wrap-input100 ">
             <select
               name="maNhom"
-              className="input100 outline-none"
+              className="input100 form-select outline-none cursor-pointer"
               onChange={handleChangeSelect}
             >
-              <option>Mã nhóm</option>
+              <option selected disabled hidden>
+                Chọn mã nhóm
+              </option>
               <option>GP01</option>
               <option>GP02</option>
               <option>GP03</option>
@@ -135,6 +138,7 @@ export default function Login(props) {
               <option>GP09</option>
               <option>GP10</option>
             </select>
+            <span className="focus-input100" data-placeholder="Mã nhóm" />
           </div>
 
           <div className="container-login100-form-btn">

@@ -10,7 +10,7 @@ export default function Footer(props) {
     _.pick(heThongRap, ["maHeThongRap", "tenHeThongRap", "logo"])
   );
 
-  console.log(arrHeThongRap, "arr");
+  // console.log(arrHeThongRap, "arr");
 
   return (
     <footer className="py-6 bg-gray-600">
