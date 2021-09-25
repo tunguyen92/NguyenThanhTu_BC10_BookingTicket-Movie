@@ -18,7 +18,6 @@ import Register from "./pages/Register/Register";
 import AdminTemplate from "./templates/AdminTemplate/AdminTemplate";
 import { HomeTemplate } from "./templates/HomeTemplate/HomeTemplate";
 import { UserTemplate } from "./templates/UserTemplate/UserTemplate";
-import Profile from "./pages/Profile/Profile";
 import Detail from "./pages/Detail/Detail";
 
 export const history = createBrowserHistory();
