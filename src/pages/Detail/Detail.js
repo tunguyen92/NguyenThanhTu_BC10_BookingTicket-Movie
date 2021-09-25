@@ -2,7 +2,7 @@ import React, { Component, useEffect } from "react";
 import { CustomCard } from "@tsamantanis/react-glassmorphism";
 import "@tsamantanis/react-glassmorphism/dist/index.css";
 import "./../../assets/styles/circle.scss";
-import { Tabs, Radio, Space } from "antd";
+import { Tabs, Rate } from "antd";
 import { SET_CHI_TIET_PHIM } from "../../redux/actions/types/QuanLyRapType";
 import { layThongTinChiTietPhim } from "../../redux/actions/QuanLyRapAction";
 import { useSelector } from "react-redux";
@@ -39,7 +39,12 @@ export default function Detail(props) {
         <div className="grid grid-cols-12">
           <div className="col-span-5 col-start-3">
             <div className="grid grid-cols-3">
-              <img className="col-span-1" src={filmDetail?.hinhAnh} alt="" />
+              <img
+                className="col-span-1"
+                style={{ height: "100%", borderRadius: "30px" }}
+                src={filmDetail?.hinhAnh}
+                alt=""
+              />
               <div className="col-span-2 ml-5  " style={{ marginTop: "25%" }}>
                 <p className="text-sm text-white mb-5">
                   Ngày chiếu:
@@ -51,32 +56,42 @@ export default function Detail(props) {
             </div>
           </div>
           <div className="col-span-4">
-            <div className={`c100 p${filmDetail.danhGia * 10} big`}>
-              <span className=" text-center">{filmDetail.danhGia}</span>
-              <div className="slice">
-                <div className="bar"></div>
-                <div className="fill"></div>
+            <div className="flex flex-col" style={{ alignItems: "center" }}>
+              <div className={`c100 p${filmDetail.danhGia * 10} big`}>
+                <span className=" text-center">{filmDetail.danhGia}</span>
+                <div className="slice">
+                  <div className="bar"></div>
+                  <div className="fill"></div>
+                </div>
               </div>
-            </div>
-            <div>
-              <StarOutlined />
-              <StarOutlined />
-              <StarOutlined />
-              <StarOutlined />
-              <StarOutlined />
+              <div>
+                <Rate
+                  style={{ color: "#fa8c16" }}
+                  disabled
+                  value={filmDetail.danhGia / 2}
+                />
+              </div>
             </div>
           </div>
         </div>
-        <div className="mt-20 container">
-          <Tabs tabPosition={"left"}>
-            <TabPane tab="Tab 1" key="1">
-              Content of Tab 1
+        <div className="mt-20 container px-5 py-5 ml-72 w-2/3">
+          <Tabs defaultActiveKey="1" centered>
+            <TabPane tab="Lịch chiếu" key="1">
+              <Tabs tabPosition={"left"}>
+                {filmDetail.heThongRapChieu?.map((htr, index) => {
+                  return (
+                    <TabPane tab="Tab 1" key={index}>
+                      Cum rap chieu
+                    </TabPane>
+                  );
+                })}
+              </Tabs>
             </TabPane>
-            <TabPane tab="Tab 2" key="2">
-              Content of Tab 2
+            <TabPane tab="Đánh giá" key="2">
+              Content of Tab Pane 2
             </TabPane>
-            <TabPane tab="Tab 3" key="3">
-              Content of Tab 3
+            <TabPane tab="Mô tả" key="3">
+              Content of Tab Pane 3
             </TabPane>
           </Tabs>
         </div>
