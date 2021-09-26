@@ -246,8 +246,8 @@
   -o-border-radius: 50%;
   border-radius: 50%;
   float: left;
-  margin: 0 0.1em 0.1em 0;
-  // background-color: transparent;
+  // margin: 0 0.1em 0.1em 0;
+  // background-color: #000000;
 }
 .c100 *,
 .c100 *:before,
@@ -261,21 +261,21 @@
   margin: 0 auto;
 }
 .c100.big {
-  font-size: 240px;
+  font-size: 150px;
 }
 .c100.small {
   font-size: 80px;
 }
 .c100 > span {
   position: absolute;
-  width: 100%;
   z-index: 1;
-  left: 0;
-  top: 0;
-  width: 5em;
-  line-height: 5em;
-  font-size: 0.2em;
-  color: #cccccc;
+  left: 50%;
+  top: 50%;
+  transform: translate(-55%, -65%);
+  width: 1em;
+  line-height: 0.5em;
+  font-size: 0.5em;
+  color: #ffffff;
   display: block;
   text-align: center;
   white-space: nowrap;
@@ -303,7 +303,7 @@
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
-  // background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 1);
   width: 0.84em;
   height: 0.84em;
   -webkit-transition-property: all;
