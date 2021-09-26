@@ -3,8 +3,13 @@
 }
 .carousel .slick-slider .slick-dots li button::before {
   opacity: 0.75;
-  color: #fff;
+  color: transparent;
   font-size: 12px;
+  line-height: 12px;
+  width: 12px;
+  height: 12px;
+  border: 1px solid white;
+  border-radius: 50%;
 }
 .carousel .slick-slider .slick-dots .slick-active button::before {
   color: #dcf836;

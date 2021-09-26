@@ -19,11 +19,17 @@ export default class HomeCarousel extends Component {
     };
 
     return (
-      <div className="carousel">
+      <div className="carousel cursor-pointer">
         <Slider {...settings}>
-          <img src={slider1} className="lg:h-screen cursor-pointer" />
-          <img src={slider2} className="lg:h-screen cursor-pointer" />
-          <img src={slider3} className="lg:h-screen cursor-pointer" />
+          <div>
+            <img src={slider1} className="lg:h-screen w-full" />
+          </div>
+          <div>
+            <img src={slider2} className="lg:h-screen w-full" />
+          </div>
+          <div>
+            <img src={slider3} className="lg:h-screen w-full" />
+          </div>
         </Slider>
       </div>
     );

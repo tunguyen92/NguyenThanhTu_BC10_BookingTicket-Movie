@@ -56,16 +56,42 @@ const MultipleRowsSlick = (props) => {
     slidesToScroll: 4,
     rows: 2,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          rows: 3,
+        },
+      },
+    ],
   };
 
   return (
-    <div className="bg-dark-color aaaaa">
-      <div className="container mx-auto p-16 grid grid-cols-3 gap-4">
+    <div className="bg-dark-color -mt-2">
+      <div className="container mx-auto py-8 px-5 lg:p-16 grid grid-cols-3 gap-4">
         <div className="col-span-2">
           <div className="title-hd flex items-center justify-between">
-            <h3 className="text-white text-2xl">DANH SÁCH PHIM</h3>
+            <h3 className="text-white text-sm sm:text-lg md:text-2xl">
+              DANH SÁCH PHIM
+            </h3>
             <NavLink to="/danh-sach-phim">
-              <div className="text-gray-300 text-sm flex yellow-color-hover">
+              <div className="text-gray-300 text-xs md:text-sm flex yellow-color-hover">
                 XEM TẤT CẢ
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +114,7 @@ const MultipleRowsSlick = (props) => {
                 <li className="mr-10">
                   <a
                     className={
-                      "text-sm font-bold uppercase leading-normal " +
+                      " text-xs md:text-sm font-bold uppercase leading-normal " +
                       (openTab === 1 ? "yellow-color" : "text-gray-300")
                     }
                     onClick={(e) => {
@@ -107,7 +133,7 @@ const MultipleRowsSlick = (props) => {
                 <li className="">
                   <a
                     className={
-                      "text-sm font-bold uppercase leading-normal " +
+                      "text-xs md:text-sm font-bold uppercase leading-normal " +
                       (openTab === 2 ? "yellow-color" : "text-gray-3")
                     }
                     onClick={(e) => {
@@ -136,32 +162,34 @@ const MultipleRowsSlick = (props) => {
             </div>
           </div>
         </div>
-        <div className="celebrities ml-16 mt-10">
-          <h3 className="sb-title text-white text-lg mb-8 pb-4 border-b-2 border-gray-200">
+        <div className="celebrities ml-2 sm:ml-5 md:ml-16 mt-10">
+          <h3 className="sb-title text-white text-xs md:text-lg mb-8 pb-4 border-b-2 border-gray-200">
             NHÂN VẬT YÊU THÍCH
           </h3>
           {author.map((item) => {
             return (
-              <div className="actor-item flex mb-8 items-center">
+              <div className="actor-item sm:flex  mb-8 items-center text-center">
                 <img
                   src={item.hinhAnh}
                   alt={item.tenDienVien}
-                  className="w-16 h-16 mr-5 rounded"
+                  className="w-12 h-12 md:w-16 md:h-16 mx-auto sm:mx-5 lg:mx-10 rounded"
                 />
                 <div className="actor-info flex flex-col">
                   <a
                     href="javascript:void(0)"
-                    className="text-white mb-1 yellow-color-hover"
+                    className="text-white mb-1 yellow-color-hover text-xs md:text-sm"
                   >
                     {item.tenDienVien}
                   </a>
-                  <span className="text-gray-400">{item.ngheNghiep}</span>
+                  <span className="text-gray-400 text-xs md:text-sm">
+                    {item.ngheNghiep}
+                  </span>
                 </div>
               </div>
             );
           })}
           <NavLink to="/nguon-anh-tu-trang-r18.com">
-            <div className="text-gray-300 text-sm flex yellow-color-hover">
+            <div className="text-gray-300 text-xs sm:text-sm flex yellow-color-hover">
               XEM TẤT CẢ
               <svg
                 xmlns="http://www.w3.org/2000/svg"
