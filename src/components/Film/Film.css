@@ -1,0 +1,28 @@
+.movie-item .mv-img::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  box-shadow: inset -5px -50px 100px -15px #000000;
+  -webkit-box-shadow: inset -5px -50px 100px -15px #000000;
+  -moz-box-shadow: inset -5px -50px 100px -15px #000000;
+  -o-box-shadow: inset -5px -50px 100px -15px #000000;
+  transition: all 0.5s ease-out;
+}
+
+.movie-item:hover .mv-img {
+  opacity: 0.25;
+  transition: all 0.5s ease-out;
+}
+
+.movie-item .mv-img {
+  transition: all 0.5s ease-in;
+}
+
+.movie-item:hover .hvr-inner {
+  opacity: 1;
+  transition: all 0.5s ease-out;
+}

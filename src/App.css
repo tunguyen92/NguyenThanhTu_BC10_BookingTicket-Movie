@@ -11,10 +11,10 @@ a {
   line-height: 1.7;
   color: #666666;
   margin: 0px;
-  transition: all 0.4s;
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
 }
 
 a:focus {
@@ -23,11 +23,8 @@ a:focus {
 
 a:hover {
   text-decoration: none;
-  color: #6a7dfe;
-  color: -webkit-linear-gradient(to right, #21d4fd, #b721ff);
-  color: -o-linear-gradient(to right, #21d4fd, #b721ff);
-  color: -moz-linear-gradient(to right, #21d4fd, #b721ff);
-  color: linear-gradient(to right, #21d4fd, #b721ff);
+  color: #dcf836;
+  transition: all 0.5s ease-out;
 }
 
 /*---------------------------------------------*/
@@ -149,4 +146,8 @@ iframe {
 
 .bg-gray-blue-color {
   background-color: #0f2133;
+}
+
+.bg-dark-color {
+  background-color: #020d18;
 }
