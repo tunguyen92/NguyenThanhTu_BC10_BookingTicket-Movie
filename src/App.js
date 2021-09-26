@@ -30,7 +30,6 @@ const CheckoutTemplateLazy = lazy(() =>
 );
 
 function App() {
-  
   return (
     <Router history={history}>
       <Switch>
@@ -60,6 +59,8 @@ function App() {
         />
         <AdminTemplate path="/admin/users" exact Component={Dashboard} />
         {/* <AdminTemplate path="/admin/showtimes" exact Component={ShowTime} /> */}
+        <HomeTemplate path="/" exact Component={Home} />
+
         <Suspense fallback={<h1>Loading...</h1>}>
           <CheckoutTemplateLazy
             path="/checkout/:id"
@@ -67,7 +68,6 @@ function App() {
             Component={Checkout}
           />
         </Suspense>
-        <HomeTemplate path="/" exact Component={Home} />
       </Switch>
     </Router>
   );
