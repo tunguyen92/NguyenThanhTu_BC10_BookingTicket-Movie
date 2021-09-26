@@ -1,0 +1,25 @@
+.list-movie .slick-slider .slick-dots {
+  bottom: auto;
+  top: -25px;
+  text-align: end;
+  right: 20px;
+}
+.list-movie .slick-slider .slick-dots li {
+  margin-right: 1px;
+}
+
+.list-movie .slick-slider .slick-dots li button::before {
+  opacity: 0.75;
+  color: #fff;
+  font-size: 11px;
+}
+.list-movie .slick-slider .slick-dots .slick-active button::before {
+  color: #dcf836;
+  opacity: 1;
+}
+
+.list-movie .slick-slider .slick-dots li button:hover::before {
+  opacity: 1;
+  color: #dcf836;
+  transition: all 0.5s ease-out;
+}

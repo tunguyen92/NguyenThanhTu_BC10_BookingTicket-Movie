@@ -21,6 +21,7 @@ import { UserTemplate } from "./templates/UserTemplate/UserTemplate";
 import Detail from "./pages/Detail/Detail";
 import Checkout from "./pages/Checkout/Checkout";
 import { Suspense, lazy } from "react";
+import ListFilm from "./pages/ListFilm/ListFilm";
 
 export const history = createBrowserHistory();
 
@@ -37,6 +38,7 @@ function App() {
         <HomeTemplate path="/contact" exact Component={Contact} />
         <HomeTemplate path="/news" exact Component={News} />
         <HomeTemplate path="/profile" exact Component={Profile} />
+        <HomeTemplate path="/danh-sach-phim" exact Component={ListFilm} />
 
         <HomeTemplate path="/detail/:id" exact Component={Detail} />
 

@@ -25,15 +25,10 @@ export default function Home(props) {
   return (
     <div>
       <HomeCarousel />
-      <div className="container m-auto">
-        <section className="text-gray-600 body-font">
-          <div className="container px-5 py-24 mx-auto">
-            <MultipleRows arrFilm={arrFilm} />
-          </div>
-        </section>
 
-        <HomeMenu heThongRapChieu={heThongRapChieu} />
-      </div>
+      <MultipleRows arrFilm={arrFilm} />
+
+      <HomeMenu heThongRapChieu={heThongRapChieu} />
     </div>
   );
 }
