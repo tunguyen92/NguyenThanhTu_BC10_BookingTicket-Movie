@@ -1,0 +1,18 @@
+.carousel .slick-slider .slick-dots {
+  bottom: 20px;
+}
+.carousel .slick-slider .slick-dots li button::before {
+  opacity: 0.75;
+  color: #fff;
+  font-size: 12px;
+}
+.carousel .slick-slider .slick-dots .slick-active button::before {
+  color: #dcf836;
+  opacity: 1;
+}
+
+.carousel .slick-slider .slick-dots li button:hover::before {
+  opacity: 1;
+  color: #dcf836;
+  transition: all 0.5s ease-out;
+}

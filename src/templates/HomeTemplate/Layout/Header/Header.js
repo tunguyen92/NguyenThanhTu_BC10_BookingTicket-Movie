@@ -34,8 +34,6 @@ export default function Header(props) {
     setShow(window.pageYOffset > 140);
   };
 
-  console.log(userLogin);
-
   const renderLogin = () => {
     if (_.isEmpty(userLogin)) {
       return (
@@ -46,7 +44,7 @@ export default function Header(props) {
             }}
             className="self-center px-3 py-2 rounded-2xl sm:text-base text-xs font-medium text-gray-300 hover:bg-pink-600 hover:text-white duration-500  mr-2"
           >
-            Log in
+            Đăng nhập
           </button>
           <button
             onClick={() => {
@@ -54,7 +52,7 @@ export default function Header(props) {
             }}
             className="self-center sm:text-base text-xs text-white bg-pink-600 px-3 sm:px-6 py-2 sm:py-2 rounded-3xl"
           >
-            Sign up
+            Đăng ký
           </button>
         </Fragment>
       );
