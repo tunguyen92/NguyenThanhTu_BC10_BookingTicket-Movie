@@ -8,7 +8,8 @@ import { layThongTinChiTietPhim } from "../../redux/actions/QuanLyRapAction";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import moment from "moment";
-import { StarOutlined } from "@ant-design/icons";
+import { NavLink } from "react-router-dom";
+
 const { TabPane } = Tabs;
 
 export default function Detail(props) {
@@ -33,7 +34,7 @@ export default function Detail(props) {
         style={{ paddingTop: "150px", minHeight: "100vh" }}
         effectColor="#fff" // required
         color="#fff" // default color is white
-        blur={20} // default blur value is 10px
+        blur={30} // default blur value is 10px
         borderRadius={0} // default border radius value is 10px
       >
         <div className="grid grid-cols-12">
@@ -74,14 +75,61 @@ export default function Detail(props) {
             </div>
           </div>
         </div>
-        <div className="mt-20 container px-5 py-5 ml-72 w-2/3">
-          <Tabs defaultActiveKey="1" centered>
+        <div className="mt-20 container px-5 py-5 ml-72 w-2/3 bg-white">
+          <Tabs defaultActiveKey="1" centered tabBarStyle={{ color: "red" }}>
             <TabPane tab="Lịch chiếu" key="1">
               <Tabs tabPosition={"left"}>
                 {filmDetail.heThongRapChieu?.map((htr, index) => {
                   return (
-                    <TabPane tab="Tab 1" key={index}>
-                      Cum rap chieu
+                    <TabPane
+                      tab={
+                        <div className="flex flex-row items-center justify-center">
+                          <img
+                            src={htr.logo}
+                            alt=""
+                            className="rounded-full w-full"
+                            style={{ width: 50 }}
+                          />
+                          <div className="text-center ml-2">
+                            {htr.tenHeThongRap}
+                          </div>
+                        </div>
+                      }
+                      key={index}
+                    >
+                      {htr.cumRapChieu?.map((cumRap, index) => {
+                        return (
+                          <div key={index}>
+                            <div className="flex flex-row mb-3 mt-2">
+                              <img
+                                src={htr.logo}
+                                alt=""
+                                style={{ width: 50, height: 50 }}
+                              />
+                              <div className="ml-2 text-2xl ">
+                                <p className=" ml-2">{cumRap.tenCumRap}</p>
+                              </div>
+                            </div>
+                            <div className="grid grid-cols-4">
+                              {cumRap.lichChieuPhim
+                                ?.slice(0, 12)
+                                .map((lichChieu, index) => {
+                                  return (
+                                    <NavLink
+                                      to="/"
+                                      key={index}
+                                      className="col-span-1 text-green-800 font-bold mb-3"
+                                    >
+                                      {moment(
+                                        lichChieu.ngayChieuGioChieu
+                                      ).format("hh:mm:a")}
+                                    </NavLink>
+                                  );
+                                })}
+                            </div>
+                          </div>
+                        );
+                      })}
                     </TabPane>
                   );
                 })}

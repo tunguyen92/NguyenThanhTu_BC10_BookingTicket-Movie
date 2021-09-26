@@ -19,11 +19,18 @@ import AdminTemplate from "./templates/AdminTemplate/AdminTemplate";
 import { HomeTemplate } from "./templates/HomeTemplate/HomeTemplate";
 import { UserTemplate } from "./templates/UserTemplate/UserTemplate";
 import Detail from "./pages/Detail/Detail";
+import Checkout from "./pages/Checkout/Checkout";
+import { Suspense, lazy } from "react";
 import ListFilm from "./pages/ListFilm/ListFilm";
 
 export const history = createBrowserHistory();
 
+const CheckoutTemplateLazy = lazy(() =>
+  import("./templates/CheckoutTemplate/CheckoutTemplate")
+);
+
 function App() {
+  
   return (
     <Router history={history}>
       <Switch>
@@ -53,7 +60,13 @@ function App() {
         />
         <AdminTemplate path="/admin/users" exact Component={Dashboard} />
         {/* <AdminTemplate path="/admin/showtimes" exact Component={ShowTime} /> */}
-
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <CheckoutTemplateLazy
+            path="/checkout/:id"
+            exact
+            Component={Checkout}
+          />
+        </Suspense>
         <HomeTemplate path="/" exact Component={Home} />
       </Switch>
     </Router>
