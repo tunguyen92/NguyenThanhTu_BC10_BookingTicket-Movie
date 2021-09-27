@@ -20,12 +20,12 @@ export const dangNhapAction = (thongTinDangNhap) => {
         //chuyển hướng về trang trước khi đăng nhập
         history.goBack();
 
-        window.location.href = "/home";
+        // window.location.href = "/home";
       }
 
       console.log("result", result.data);
     } catch (error) {
-      alert("error", error.response?.data);
+      alert(error.response?.data);
     }
   };
 };
