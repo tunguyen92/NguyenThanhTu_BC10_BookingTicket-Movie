@@ -1,13 +1,23 @@
 import React from "react";
 import { useSelector } from "react-redux";
-
+import style from "./Checkout.module.css";
 export default function Checkout(props) {
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDungReducer);
 
   return (
     <div className="h-screen pb-0">
       <div className="grid grid-cols-12">
-        <div className="col-span-9"></div>
+        <div className="col-span-9">
+          <div className="flex flex-col items-center mt-5">
+            <div
+              className="bg-black"
+              style={{ width: "80%", height: 15 }}
+            ></div>
+            <div className={`${style["trapezoid"]} text-center`}>
+              <h3 className="mt-3 text-black text-bold">MÀN HÌNH</h3>
+            </div>
+          </div>
+        </div>
         <div className="col-span-3">
           <h3 className="text-green-400 text-center text-2xl">0đ</h3>
           <hr />
