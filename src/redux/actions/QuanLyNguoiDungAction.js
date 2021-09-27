@@ -1,3 +1,4 @@
+import { history } from "../../App";
 import { quanLyNguoiDungService } from "../../services/QuanLyNguoiDungService";
 import {
   DANG_NHAP_ACTION,
@@ -16,12 +17,15 @@ export const dangNhapAction = (thongTinDangNhap) => {
         });
         alert("Đăng nhập thành công");
 
+        //chuyển hướng về trang trước khi đăng nhập
+        history.goBack();
+
         window.location.href = "/home";
       }
 
       console.log("result", result.data);
     } catch (error) {
-      console.log("error", error.response?.data);
+      alert("error", error.response?.data);
     }
   };
 };
