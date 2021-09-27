@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
 import {
   SET_FILM_DANG_CHIEU,
   SET_FILM_SAP_CHIEU,
 } from "../../../redux/actions/types/QuanLyPhimType";
-import TrailerFilm from "../../Film/TrailerFilm/TrailerFilm";
-import { NavLink } from "react-router-dom";
 import "./Trailers.css";
 
 export default function Trailers(props) {
@@ -19,14 +18,6 @@ export default function Trailers(props) {
   const { dangChieu, sapChieu } = useSelector(
     (state) => state.QuanLyPhimReducer
   );
-
-  const renderFilms = (phim) => {
-    if (phim) {
-      return props.arrFilm.slice(0, 6).map((item, index) => {
-        return <TrailerFilm phim={item} key={index} />;
-      });
-    }
-  };
 
   const firstSlider = {
     infinite: true,
