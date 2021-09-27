@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 //Kết nối redux
 import { useDispatch, useSelector } from "react-redux";
-import MultipleRows from "../../components/ReactSlick/MultipleRowSlick";
+import Trailers from "../../components/ReactSlick/Trailers/Trailers";
 import { layDanhSachPhimAction } from "../../redux/actions/QuanLyPhimActions";
 import { layDanhSachHeThongCumRapAction } from "../../redux/actions/QuanLyRapAction";
+import HomeListFilm from "../../components/ReactSlick/HomeListFilm/HomeListFilm";
 import HomeCarousel from "./Carousel/Carousel";
 import HomeMenu from "./HomeMenu/HomeMenu";
 
@@ -26,7 +27,8 @@ export default function Home(props) {
     <div>
       <HomeCarousel />
 
-      <MultipleRows arrFilm={arrFilm} />
+      <HomeListFilm arrFilm={arrFilm} />
+      <Trailers arrFilm={arrFilm} />
 
       <HomeMenu heThongRapChieu={heThongRapChieu} />
     </div>

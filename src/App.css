@@ -42,6 +42,7 @@ p {
   line-height: 1.7;
   color: #666666;
   margin: 0px;
+  transition: all 0.5s ease-out;
 }
 
 ul,
@@ -150,4 +151,15 @@ iframe {
 
 .bg-dark-color {
   background-color: #020d18;
+}
+
+.bg-dark-blue-color {
+  background-color: #06121e;
+}
+
+.bg-light-blue-color {
+  background-color: #1c3d5d;
+}
+.bg-light-blue-color-hover:hover {
+  background-color: #1c3d5d;
 }

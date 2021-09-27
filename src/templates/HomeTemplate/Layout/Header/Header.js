@@ -175,8 +175,8 @@ export default function Header(props) {
                         to={item.to}
                         className={classNames(
                           item.current
-                            ? "bg-gray-900 yellow-color-hover yellow-color"
-                            : "text-gray-300 hover:bg-gray-900  yellow-color-hover",
+                            ? " yellow-color-hover yellow-color"
+                            : "text-gray-300  yellow-color-hover",
                           "px-3 py-2 rounded-2xl text-base font-medium"
                         )}
                         aria-current={item.current ? "page" : undefined}

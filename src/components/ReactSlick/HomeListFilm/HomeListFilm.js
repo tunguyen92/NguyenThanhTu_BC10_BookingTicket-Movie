@@ -4,10 +4,10 @@ import Slider from "react-slick";
 import {
   SET_FILM_DANG_CHIEU,
   SET_FILM_SAP_CHIEU,
-} from "../../redux/actions/types/QuanLyPhimType";
-import Film from "../Film/Film";
+} from "../../../redux/actions/types/QuanLyPhimType";
+import Film from "../../Film/HomeFilm/Film";
 import { NavLink } from "react-router-dom";
-import "./MultipleRowSlick.css";
+import "./HomeListFilm.css";
 
 const MultipleRowsSlick = (props) => {
   // console.log(props.arrFilm);
@@ -91,7 +91,7 @@ const MultipleRowsSlick = (props) => {
               DANH SÁCH PHIM
             </h3>
             <NavLink to="/danh-sach-phim">
-              <div className="text-gray-300 text-xs md:text-sm flex yellow-color-hover">
+              <div className="text-gray-300 text-xs md:text-sm flex yellow-color-hover duration-500 ease-linear">
                 XEM TẤT CẢ
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -166,21 +166,21 @@ const MultipleRowsSlick = (props) => {
           <h3 className="sb-title text-white text-xs md:text-lg mb-8 pb-4 border-b-2 border-gray-200">
             NHÂN VẬT YÊU THÍCH
           </h3>
-          {author.map((item) => {
+          {author.map((item, index) => {
             return (
-              <div className="actor-item sm:flex  mb-8 items-center text-center">
+              <div
+                key={index}
+                className="actor-item sm:flex  mb-8 items-center text-center md:text-left"
+              >
                 <img
                   src={item.hinhAnh}
                   alt={item.tenDienVien}
                   className="w-12 h-12 md:w-16 md:h-16 mx-auto sm:mx-5 lg:mx-10 rounded"
                 />
                 <div className="actor-info flex flex-col">
-                  <a
-                    href="javascript:void(0)"
-                    className="text-white mb-1 yellow-color-hover text-xs md:text-sm"
-                  >
+                  <p className="text-white mb-1 yellow-color-hover text-xs md:text-sm cursor-pointer">
                     {item.tenDienVien}
-                  </a>
+                  </p>
                   <span className="text-gray-400 text-xs md:text-sm">
                     {item.ngheNghiep}
                   </span>
@@ -189,7 +189,7 @@ const MultipleRowsSlick = (props) => {
             );
           })}
           <NavLink to="/nguon-anh-tu-trang-r18.com">
-            <div className="text-gray-300 text-xs sm:text-sm flex yellow-color-hover">
+            <div className="text-gray-300 text-xs sm:text-sm flex yellow-color-hover duration-500 ease-linear">
               XEM TẤT CẢ
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -7,8 +7,6 @@ export default function Film(props) {
 
   // console.log(phim.ngayKhoiChieu)
 
-  console.log(phim);
-
   return (
     <div className="movie-item relative mr-7 mt-5 rounded-md">
       <div className="mv-img relative">

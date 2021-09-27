@@ -1,0 +1,33 @@
+.trailers .trailer-left .slick-arrow {
+  display: none !important;
+}
+
+.trailers .trailer-right .slick-arrow.slick-prev {
+  top: 1%;
+  left: 48%;
+}
+
+.trailers .trailer-right .slick-arrow.slick-prev::before {
+  content: "⮝";
+  font-size: 30px;
+}
+.trailers .trailer-right .slick-arrow.slick-next {
+  top: unset;
+  bottom: 1%;
+  left: 48%;
+}
+.trailers .trailer-right .slick-arrow.slick-next::before {
+  content: "⮟";
+  font-size: 30px;
+}
+.trailers .trailer-right .slick-arrow:hover::before {
+  color: #dcf836;
+  transition: all 0.5s ease-out;
+}
+.trailers .trailer-right .slick-arrow::before {
+  transition: all 0.5s ease-out;
+}
+.trailers .trailer-right .trailer-film {
+  display: flex !important;
+  align-items: center;
+}
