@@ -83,7 +83,7 @@ const MultipleRowsSlick = (props) => {
   };
 
   return (
-    <div className="bg-dark-color -mt-2">
+    <div className="bg-dark-blue-color -mt-2">
       <div className="container mx-auto py-8 px-5 lg:p-16 grid grid-cols-3 gap-4">
         <div className="col-span-2">
           <div className="title-hd flex items-center justify-between">

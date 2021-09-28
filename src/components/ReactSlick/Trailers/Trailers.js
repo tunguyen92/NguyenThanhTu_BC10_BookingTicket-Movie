@@ -11,7 +11,7 @@ import "./Trailers.css";
 export default function Trailers(props) {
   const [nav1, setNav1] = useState();
   const [nav2, setNav2] = useState();
-  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const dispatch = useDispatch();
   const [openTab, setOpenTab] = useState(3);
@@ -28,14 +28,21 @@ export default function Trailers(props) {
   const secondSlider = {
     infinite: true,
     vertical: true,
-    verticalSwiping: true,
-    swipeToSlide: true,
+    // verticalSwiping: true,
     slidesToShow: 4,
     focusOnSelect: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+    ],
   };
 
   return (
-    <div className="trailers bg-dark-blue-color ">
+    <div className="trailers bg-dark-color ">
       <div className="container mx-auto py-8 px-5 lg:p-16">
         <div className="title-hd flex items-center justify-between">
           <h3 className="text-white text-sm sm:text-lg md:text-2xl">
@@ -103,8 +110,6 @@ export default function Trailers(props) {
                   return (
                     <div key={index}>
                       <iframe
-                        width="100%"
-                        height="435px"
                         src={item.trailer}
                         title="YouTube video player"
                         frameBorder="0"
@@ -126,6 +131,7 @@ export default function Trailers(props) {
                 {props.arrFilm.slice(0, 6).map((phim, index) => {
                   return (
                     <div
+                      key={index}
                       onClick={() => setActiveIndex(index)} // pass the index
                       className={`
                         ${
@@ -133,14 +139,21 @@ export default function Trailers(props) {
                             ? "bg-light-blue-color"
                             : "text-transparent"
                         }
-                         trailer-film bg-light-blue-color-hover p-4 cursor-pointer
+                         trailer-film bg-light-blue-color-hover p-4 cursor-pointer 
                       `}
                     >
                       <img
                         src={phim.hinhAnh}
-                        className="w-40 h-16 mr-5 object-cover"
+                        className="md:w-30  md:h-16 h-12 md:mr-5 md:object-contain object-cover"
                       />
-                      <p className="text-white ">{phim.tenPhim}</p>
+                      <div>
+                        <h3 className="text-white text-base">{phim.tenPhim}</h3>
+                        <p className="md:block hidden ">
+                          {phim.moTa.length > 35
+                            ? phim.moTa.slice(0, 35) + "..."
+                            : phim.moTa}
+                        </p>
+                      </div>
                     </div>
                   );
                 })}

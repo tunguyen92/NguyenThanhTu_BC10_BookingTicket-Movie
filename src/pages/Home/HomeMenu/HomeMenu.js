@@ -90,9 +90,9 @@ function HomeMenu(props) {
   };
 
   return (
-    <>
+    <div className="bg-dark-blue-color">
       <Tabs tabPosition="left">{renderHeThongRap()}</Tabs>
-    </>
+    </div>
   );
 }
 
