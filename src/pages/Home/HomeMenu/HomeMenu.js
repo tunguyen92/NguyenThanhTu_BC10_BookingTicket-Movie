@@ -20,23 +20,25 @@ function HomeMenu(props) {
             />
           }
           key={index}
+          className="h-96 overflow-y-scroll"
         >
           <Tabs tabPosition="left">
             {heThongRap.lstCumRap?.map((cumRap, index) => {
               return (
                 <TabPane
                   tab={
-                    <div className="flex items-center">
+                    <div className="flex items-center ">
                       <img src={heThongRap.logo} alt="" width="50" />
                       <div className="ml-5 mb-0 text-left">
                         {cumRap.tenCumRap}
-                        <p className="text-red-400 mb-0">Chi tiết</p>
+                        <p className="text-red-400 mb-0 ">Chi tiết</p>
                       </div>
                     </div>
                   }
                   key={index}
+                  className="h-96 overflow-y-scroll"
                 >
-                  {cumRap.danhSachPhim?.slice(0, 5).map((phim, index) => {
+                  {cumRap.danhSachPhim?.slice(0, 6).map((phim, index) => {
                     return (
                       <div className="flex" key={index}>
                         <div className="flex mb-2">
@@ -90,8 +92,12 @@ function HomeMenu(props) {
   };
 
   return (
-    <div className="bg-dark-blue-color">
-      <Tabs tabPosition="left">{renderHeThongRap()}</Tabs>
+    <div className="bg-dark-blue-color py-8 px-5 lg:p-16">
+      <div className="bg-white container mx-auto py-2 rounded ">
+        <div>
+          <Tabs tabPosition="left">{renderHeThongRap()}</Tabs>
+        </div>
+      </div>
     </div>
   );
 }
