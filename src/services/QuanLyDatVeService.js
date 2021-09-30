@@ -5,8 +5,10 @@ export class QuanLyDatVeService extends baseService {
     super();
   }
 
-  taoLichChieu = (thongTinLichChieu) => {
-    return this.post("/api/QuanLyDatVe/TaoLichChieu", thongTinLichChieu);
+  layChiTietPhongVe = (maLichChieu) => {
+    return this.get(
+      `/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`
+    );
   };
 }
 
