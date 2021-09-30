@@ -1,0 +1,33 @@
+.he-thong-rap .ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title {
+  height: 200px;
+}
+
+.he-thong-rap .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #dcf836;
+}
+
+.he-thong-rap .ant-tabs-tab:hover,
+.ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-arrow,
+.ant-menu-light .ant-menu-submenu-title:hover,
+.ant-menu-title-content:hover {
+  color: #dcf836;
+}
+
+.ant-menu-title-content,
+.ant-menu-submenu-arrow,
+.ant-tabs {
+  color: #fff;
+}
+
+.ant-menu-sub.ant-menu-inline {
+  background: none;
+}
+.ant-menu-item:active,
+.ant-menu-submenu-title:active {
+  background: none;
+  color: #dcf836;
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: initial;
+  color: #dcf836;
+}

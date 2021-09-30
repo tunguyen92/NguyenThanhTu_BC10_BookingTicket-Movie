@@ -42,7 +42,7 @@ export default function Header(props) {
             onClick={() => {
               history.push("/login");
             }}
-            className="self-center px-3 py-2 rounded-2xl sm:text-base text-xs font-medium text-gray-300 hover:bg-pink-600 hover:text-white duration-500  mr-2"
+            className="self-center  px-3 sm:px-6 py-2 sm:py-2 rounded-3xl sm:text-base text-xs font-medium text-gray-300 hover:bg-pink-600 hover:text-white duration-500  mr-2"
           >
             Đăng nhập
           </button>
