@@ -1,8 +1,42 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { Fragment, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { layChiTietPhongVeAction } from "../../redux/actions/QuanLyDatVeAction";
 import style from "./Checkout.module.css";
+import "./Checkout.css";
+
 export default function Checkout(props) {
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDungReducer);
+
+  const { chiTietPhongVe } = useSelector((state) => state.QuanLyDatVeReducer);
+
+  const dispatch = useDispatch(() => {});
+
+  useEffect(() => {
+    //tạo hàm async
+    const action = layChiTietPhongVeAction(props.match.params.id);
+
+    //đẩy hàm đi
+    dispatch(action);
+  }, []);
+
+  console.log({ chiTietPhongVe });
+
+  const { danhSachGhe, thongTinPhim } = chiTietPhongVe;
+
+  const renderSeats = () => {
+    return danhSachGhe?.map((ghe, index) => {
+      let gheVip = ghe.loaiGhe === "Vip" ? "gheVip" : "";
+      let gheDaDat = ghe.daDat === "true" ? "gheDaDat" : "";
+      return (
+        <Fragment>
+          <button key={index} className={`ghe ${gheVip} ${gheDaDat}`}>
+            {ghe.stt}
+          </button>
+          {(index + 1) % 16 === 0 ? <br /> : ""}
+        </Fragment>
+      );
+    });
+  };
 
   return (
     <div className="h-screen pb-0">
@@ -17,11 +51,12 @@ export default function Checkout(props) {
               <h3 className="mt-3 text-black text-bold">MÀN HÌNH</h3>
             </div>
           </div>
+          {renderSeats()}
         </div>
         <div className="col-span-3">
           <h3 className="text-green-400 text-center text-2xl">0đ</h3>
           <hr />
-          <h3 className="text-xl">Lật mặt 48h</h3>
+          <h3 className="text-xl">{thongTinPhim?.tenPhim}</h3>
           <p>Địa điểm: BHD Star - Vincom 3/2</p>
           <p>Ngày chiếu: 25/04/2021 - 12:05 RẠP 5</p>
           <hr />
