@@ -10,7 +10,7 @@ const { TabPane } = Tabs;
 const { SubMenu } = Menu;
 
 function HomeMenu(props) {
-  // console.log(props);
+  console.log(props);
   const renderHeThongRap = () => {
     return props.heThongRapChieu?.map((heThongRap, index) => {
       return (
@@ -23,9 +23,9 @@ function HomeMenu(props) {
               width="50"
             />
           }
-          key={index}
+          key={index.toString()}
           style={{ height: "500px" }}
-          className="overflow-y-scroll"
+          className="scroll-cum-rap overflow-y-scroll"
         >
           <Tabs tabPosition="left" className="">
             {heThongRap.lstCumRap?.map((cumRap, index) => {
@@ -40,7 +40,7 @@ function HomeMenu(props) {
                       </div>
                     </div>
                   }
-                  key={index}
+                  key={index.toString()}
                 >
                   <Menu
                     mode="inline"
@@ -50,18 +50,19 @@ function HomeMenu(props) {
                       backgroundColor: "#0f2133",
                     }}
                   >
-                    {cumRap.danhSachPhim?.slice(0, 6).map((phim, index) => {
+                    {cumRap.danhSachPhim?.map((phim, index) => {
                       return (
                         <SubMenu
-                          key={index}
+                          key={index.toString()}
                           title={
-                            <div className="flex">
+                            <div className="film flex ">
                               <img
                                 style={{
-                                  width: 150,
-                                  height: 150,
+                                  width: 50,
+                                  height: 60,
                                   objectFit: "cover",
-                                  borderRadius: "5px",
+                                  borderRadius: "3px",
+                                  marginRight: "10px",
                                 }}
                                 src={phim.hinhAnh}
                                 alt={phim.tenPhim}
@@ -71,9 +72,15 @@ function HomeMenu(props) {
                                 }}
                               />
                               <div>
-                                <p>{phim.maPhim}</p>
-                                <p>{phim.tenPhim}</p>
-                                <p>100 phút - TIX 8.1 - IMDb 0</p>
+                                <p className="px-2 py-1 mr-2 bg-pink-600 rounded text-xs text-white inline-block">
+                                  {phim.maPhim}
+                                </p>
+                                <p className="ten-phim text-white text-base inline-block">
+                                  {phim.tenPhim}
+                                </p>
+                                <p className="text-xs">
+                                  120 phút - TIX 8.1 - IMDb 0
+                                </p>
                               </div>
                             </div>
                           }
@@ -81,7 +88,6 @@ function HomeMenu(props) {
                           <Menu
                             mode="inline"
                             style={{
-                              height: "100%",
                               borderRight: 0,
                               backgroundColor: "#0f2133",
                             }}
@@ -91,15 +97,24 @@ function HomeMenu(props) {
                               .map((lichChieu, index) => {
                                 return (
                                   <SubMenu
+                                    className="ngay-chieu rounded-md"
                                     style={{ background: "#06121e" }}
-                                    key={index}
-                                    title={`subsubnav ${index}`}
+                                    key={index.toString()}
+                                    title={`Ngày chiếu: ${moment(
+                                      lichChieu.ngayChieuGioChieu
+                                    ).format(
+                                      "DD/MM/YYYY"
+                                    )} chỗ này chưa làm được`}
                                   >
                                     <Menu.Item
                                       className="bg-dark-color"
-                                      key="1"
+                                      key={index.toString()}
                                     >
-                                      option1
+                                      <NavLink to="/" className="text-white">
+                                        {moment(
+                                          lichChieu.ngayChieuGioChieu
+                                        ).format("hh:mm A")}
+                                      </NavLink>
                                     </Menu.Item>
                                   </SubMenu>
                                 );
@@ -162,7 +177,7 @@ function HomeMenu(props) {
       </h3>
       <div
         style={{ width: "1000px" }}
-        className=" bg-gray-blue-color container mx-auto py-2 rounded"
+        className=" bg-gray-blue-color container mx-auto rounded pt-2"
       >
         <Tabs tabPosition="left">{renderHeThongRap()}</Tabs>
       </div>

@@ -1,4 +1,3 @@
-import { set } from "lodash-es";
 import {
   SET_DANH_SACH_PHIM,
   SET_FILM_DANG_CHIEU,
