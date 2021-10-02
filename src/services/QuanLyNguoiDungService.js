@@ -1,9 +1,9 @@
 import { baseService } from "./baseService";
 
 export class QuanLyNguoiDungService extends baseService {
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
 
   dangNhap = (thongTinDangNhap) => {
     // {taiKhoan:'',matKhau:''}

@@ -2,7 +2,6 @@ import {
   SET_DANH_SACH_PHIM,
   SET_FILM_DANG_CHIEU,
   SET_FILM_SAP_CHIEU,
-  SET_THONG_TIN_FILM,
 } from "../actions/types/QuanLyPhimType";
 import { SET_CHI_TIET_PHIM } from "../actions/types/QuanLyRapType";
 
@@ -32,26 +31,37 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
     case SET_DANH_SACH_PHIM:
       state.arrFilmDefault = action.arrFilm;
       state.arrFilm = state.arrFilmDefault.filter(
-        (film) =>
-          new Date(film.ngayKhoiChieu) <= new Date("2020-07-15") ===
-          state.dangChieu
+        (film) => {
+          let khoiChieu =
+            new Date(film.ngayKhoiChieu) <= new Date("2020-07-15");
+          return khoiChieu === state.dangChieu;
+        }
+        // new Date(film.ngayKhoiChieu) <= new Date("2020-07-15") ===
+        // state.dangChieu
       );
 
       return { ...state };
 
     case SET_FILM_DANG_CHIEU:
       state.arrFilm = state.arrFilmDefault.filter(
-        (film) =>
-          new Date(film.ngayKhoiChieu) <= new Date("2020-07-15") ===
-          state.dangChieu
+        (film) => {
+          let khoiChieu =
+            new Date(film.ngayKhoiChieu) <= new Date("2020-07-15");
+          return khoiChieu === state.dangChieu;
+        }
+        // new Date(film.ngayKhoiChieu) <= new Date("2020-07-15") ===
+        // state.dangChieu
       );
       return { ...state };
 
     case SET_FILM_SAP_CHIEU:
       state.arrFilm = state.arrFilmDefault.filter(
-        (film) =>
-          new Date(film.ngayKhoiChieu) > new Date("2020-07-15") ===
-          state.sapChieu
+        (film) => {
+          let khoiChieu = new Date(film.ngayKhoiChieu) > new Date("2020-07-15");
+          return khoiChieu === state.dangChieu;
+        }
+        // new Date(film.ngayKhoiChieu) > new Date("2020-07-15") ===
+        // state.sapChieu
       );
       return { ...state };
 

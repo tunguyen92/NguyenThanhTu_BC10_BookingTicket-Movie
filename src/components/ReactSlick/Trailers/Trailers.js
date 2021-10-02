@@ -15,7 +15,7 @@ export default function Trailers(props) {
 
   const dispatch = useDispatch();
   const [openTab, setOpenTab] = useState(3);
-  const { dangChieu, sapChieu } = useSelector(
+  /*const { dangChieu, sapChieu } =*/ useSelector(
     (state) => state.QuanLyPhimReducer
   );
 
@@ -81,6 +81,9 @@ export default function Trailers(props) {
                     const action = { type: SET_FILM_DANG_CHIEU };
                     dispatch(action);
                   }}
+                  data-toggle="tab"
+                  href="#link3"
+                  role="tablist"
                 ></a>
               </li>
               <li className="">
@@ -95,6 +98,9 @@ export default function Trailers(props) {
                     const action = { type: SET_FILM_SAP_CHIEU };
                     dispatch(action);
                   }}
+                  data-toggle="tab"
+                  href="#link4"
+                  role="tablist"
                 ></a>
               </li>
             </ul>
@@ -144,6 +150,7 @@ export default function Trailers(props) {
                     >
                       <img
                         src={phim.hinhAnh}
+                        alt={phim.tenPhim}
                         className="md:w-30  md:h-16 h-12 md:mr-5 md:object-contain object-cover"
                       />
                       <div>

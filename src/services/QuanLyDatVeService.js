@@ -1,9 +1,9 @@
 import { baseService } from "./baseService";
 
 export class QuanLyDatVeService extends baseService {
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
 
   layChiTietPhongVe = (maLichChieu) => {
     return this.get(

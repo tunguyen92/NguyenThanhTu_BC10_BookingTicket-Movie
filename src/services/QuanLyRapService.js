@@ -2,9 +2,9 @@ import { GROUPID } from "../util/settings/config";
 import { baseService } from "./baseService";
 
 export class QuanLyRapService extends baseService {
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
 
   layDanhSachHeThongRap = () => {
     return this.get(

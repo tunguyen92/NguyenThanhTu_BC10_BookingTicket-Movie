@@ -155,7 +155,7 @@ export default function Header(props) {
                   className="flex-shrink-0 flex items-center"
                   onClick={() => {
                     navigation.map((item, index) => {
-                      index === 0
+                      return index === 0
                         ? (item.current = true)
                         : (item.current = false);
                     });

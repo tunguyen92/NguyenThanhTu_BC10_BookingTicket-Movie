@@ -55,7 +55,7 @@ export default function Login(props) {
           onSubmit={formik.handleSubmit}
         >
           <span className="login100-form-title p-b-26">Tạo tài khoản mới</span>
-          <img className="login100-form-img" src={logo} />
+          <img className="login100-form-img" src={logo} alt="" />
           <div className="wrap-input100 ">
             <input
               className="input100"
@@ -162,7 +162,7 @@ export default function Login(props) {
 
         <form className={`register-form ${translateFormRegister}`}>
           <span className="login100-form-title p-b-26">Welcome Back</span>
-          <img className="login100-form-img" src={logo} />
+          <img className="login100-form-img" src={logo} alt="" />
           <div className="wrap-input100 ">
             <input className="input100" type="text" name="taiKhoan" required />
             <span className="focus-input100" data-placeholder="Tài khoản" />

@@ -22,13 +22,13 @@ export default class HomeCarousel extends Component {
       <div className="carousel cursor-pointer">
         <Slider {...settings}>
           <div>
-            <img src={slider1} className="lg:h-screen w-full" />
+            <img src={slider1} className="lg:h-screen w-full" alt="" />
           </div>
           <div>
-            <img src={slider2} className="lg:h-screen w-full" />
+            <img src={slider2} className="lg:h-screen w-full" alt="" />
           </div>
           <div>
-            <img src={slider3} className="lg:h-screen w-full" />
+            <img src={slider3} className="lg:h-screen w-full" alt="" />
           </div>
         </Slider>
       </div>

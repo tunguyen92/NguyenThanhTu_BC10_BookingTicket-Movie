@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { useEffect } from "react";
 import { Route } from "react-router-dom";
 import bg from "../../assets/images/bg.jpg";
 
