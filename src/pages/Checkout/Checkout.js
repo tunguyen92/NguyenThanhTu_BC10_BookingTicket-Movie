@@ -7,7 +7,9 @@ import "./Checkout.css";
 export default function Checkout(props) {
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDungReducer);
 
-  const { chiTietPhongVe } = useSelector((state) => state.QuanLyDatVeReducer);
+  const { chiTietPhongVe, danhSachDangDat } = useSelector(
+    (state) => state.QuanLyDatVeReducer
+  );
 
   const dispatch = useDispatch(() => {});
 
@@ -29,7 +31,9 @@ export default function Checkout(props) {
       let gheDaDat = ghe.daDat === "true" ? "gheDaDat" : "";
       return (
         <Fragment key={index}>
-          <button className={`ghe ${gheVip} ${gheDaDat}`}>{ghe.stt}</button>
+          <button disabled={ghe.daDat} className={`ghe ${gheVip} ${gheDaDat}`}>
+            {ghe.stt}
+          </button>
           {(index + 1) % 16 === 0 ? <br /> : ""}
         </Fragment>
       );
