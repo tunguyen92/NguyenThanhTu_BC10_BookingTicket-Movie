@@ -7,7 +7,9 @@ import "./Checkout.css";
 export default function Checkout(props) {
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDungReducer);
 
-  const { chiTietPhongVe } = useSelector((state) => state.QuanLyDatVeReducer);
+  const { chiTietPhongVe, danhSachDangDat } = useSelector(
+    (state) => state.QuanLyDatVeReducer
+  );
 
   const dispatch = useDispatch(() => {});
 
@@ -28,8 +30,8 @@ export default function Checkout(props) {
       let gheVip = ghe.loaiGhe === "Vip" ? "gheVip" : "";
       let gheDaDat = ghe.daDat === "true" ? "gheDaDat" : "";
       return (
-        <Fragment>
-          <button key={index} className={`ghe ${gheVip} ${gheDaDat}`}>
+        <Fragment key={index}>
+          <button disabled={ghe.daDat} className={`ghe ${gheVip} ${gheDaDat}`}>
             {ghe.stt}
           </button>
           {(index + 1) % 16 === 0 ? <br /> : ""}
@@ -50,15 +52,17 @@ export default function Checkout(props) {
             <div className={`${style["trapezoid"]} text-center`}>
               <h3 className="mt-3 text-black text-bold">MÀN HÌNH</h3>
             </div>
+            <div>{renderSeats()}</div>
           </div>
-          {renderSeats()}
         </div>
         <div className="col-span-3">
           <h3 className="text-green-400 text-center text-2xl">0đ</h3>
           <hr />
-          <h3 className="text-xl">{thongTinPhim?.tenPhim}</h3>
-          <p>Địa điểm: BHD Star - Vincom 3/2</p>
-          <p>Ngày chiếu: 25/04/2021 - 12:05 RẠP 5</p>
+          <h3 className="text-xl">{thongTinPhim.tenPhim}</h3>
+          <p>
+            Địa điểm: {thongTinPhim.tenCumRap} - {thongTinPhim.tenRap}
+          </p>
+          <p>Ngày chiếu: {thongTinPhim.ngayChieu}</p>
           <hr />
 
           <div className="flex flex-row my-5">
@@ -81,8 +85,8 @@ export default function Checkout(props) {
             {userLogin.soDT}
           </div>
           <hr />
-          <div className=" h-full flex flex-col justify-end items-center">
-            <div className="bg-green-500 text-white w-full text-center py-3 font-bold text-2xl">
+          <div className=" flex flex-col justify-end items-center">
+            <div className="bg-green-500 text-white w-full text-center py-3 font-bold text-2xl cursor-pointer">
               ĐẶT VÉ
             </div>
           </div>

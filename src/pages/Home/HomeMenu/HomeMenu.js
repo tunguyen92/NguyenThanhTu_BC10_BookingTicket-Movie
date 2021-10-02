@@ -1,13 +1,32 @@
 import { Menu, Tabs } from "antd";
+import { random } from "lodash-es";
 import moment from "moment";
 import React, { memo } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./HomeMenu.css";
 
 const { TabPane } = Tabs;
 const { SubMenu } = Menu;
 
 function HomeMenu(props) {
+  // console.log(props);
+
+  const getListNgayChieu = (listLichChieu) => {
+    var listNgayChieu = [];
+    listLichChieu.forEach((lichChieu) => {
+      if (
+        listNgayChieu.indexOf(
+          moment(lichChieu.ngayChieuGioChieu).format("DD/MM/YYYY")
+        ) === -1
+      ) {
+        listNgayChieu.push(
+          moment(lichChieu.ngayChieuGioChieu).format("DD/MM/YYYY")
+        );
+      }
+    });
+    return listNgayChieu;
+  };
+
   const renderHeThongRap = () => {
     return props.heThongRapChieu?.map((heThongRap, index) => {
       return (
@@ -20,7 +39,7 @@ function HomeMenu(props) {
               width="50"
             />
           }
-          key={index}
+          key={heThongRap.maHeThongRap}
           style={{ height: "500px" }}
           className="scroll-cum-rap overflow-y-scroll"
         >
@@ -37,7 +56,7 @@ function HomeMenu(props) {
                       </div>
                     </div>
                   }
-                  key={index}
+                  key={cumRap.maCumRap}
                 >
                   <Menu
                     mode="inline"
@@ -50,7 +69,7 @@ function HomeMenu(props) {
                     {cumRap.danhSachPhim?.map((phim, index) => {
                       return (
                         <SubMenu
-                          key={index}
+                          key={phim.maPhim}
                           title={
                             <div className="film flex ">
                               <img
@@ -76,48 +95,60 @@ function HomeMenu(props) {
                                   {phim.tenPhim}
                                 </p>
                                 <p className="text-xs">
-                                  120 phút - CNM 8.1 - IMDb 0
+                                  120 phút - TIX 8.1 - IMDb 0
                                 </p>
                               </div>
                             </div>
                           }
                         >
-                          <Menu
+                          <Menu.ItemGroup
                             mode="inline"
                             style={{
                               borderRight: 0,
                               backgroundColor: "#0f2133",
                             }}
                           >
-                            {phim.lstLichChieuTheoPhim
-                              ?.slice(0, 10)
-                              .map((lichChieu, index) => {
+                            {getListNgayChieu(phim.lstLichChieuTheoPhim)?.map(
+                              (ngayChieu) => {
                                 return (
                                   <SubMenu
                                     className="ngay-chieu rounded-md"
                                     style={{ background: "#06121e" }}
-                                    key={index}
-                                    title={`Ngày chiếu: ${moment(
-                                      lichChieu.ngayChieuGioChieu
-                                    ).format("DD/MM/YYYY")} `}
+                                    title={`Ngày chiếu:  ${ngayChieu}`}
+                                    key={ngayChieu}
                                   >
-                                    <Menu.Item
-                                      className="bg-dark-color"
-                                      key={index}
-                                    >
-                                      <NavLink
-                                        to={`/checkout/${lichChieu.maLichChieu}`}
-                                        className="text-white"
-                                      >
-                                        {moment(
-                                          lichChieu.ngayChieuGioChieu
-                                        ).format("hh:mm A")}
-                                      </NavLink>
-                                    </Menu.Item>
+                                    <div className="grid grid-cols-3">
+                                      {phim.lstLichChieuTheoPhim
+                                        .filter((lichChieu) => {
+                                          return (
+                                            moment(
+                                              lichChieu.ngayChieuGioChieu
+                                            ).format("DD/MM/YYYY") === ngayChieu
+                                          );
+                                        })
+                                        .map((lichChieu) => {
+                                          return (
+                                            <Menu.Item
+                                              className="bg-dark-color text-center"
+                                              key={`${lichChieu.maLichChieu}${lichChieu.ngayChieuGioChieu}`}
+                                            >
+                                              <NavLink
+                                                to={`/checkout/${lichChieu.maLichChieu}`}
+                                                className="text-white"
+                                              >
+                                                {moment(
+                                                  lichChieu.ngayChieuGioChieu
+                                                ).format("hh:mm A")}
+                                              </NavLink>
+                                            </Menu.Item>
+                                          );
+                                        })}
+                                    </div>
                                   </SubMenu>
                                 );
-                              })}
-                          </Menu>
+                              }
+                            )}
+                          </Menu.ItemGroup>
                         </SubMenu>
                       );
                     })}
