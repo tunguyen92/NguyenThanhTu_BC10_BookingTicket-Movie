@@ -1,7 +1,8 @@
 import { Menu, Tabs } from "antd";
+import { random } from "lodash-es";
 import moment from "moment";
 import React, { memo } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./HomeMenu.css";
 
 const { TabPane } = Tabs;
@@ -146,7 +147,7 @@ function HomeMenu(props) {
               width="50"
             />
           }
-          key={index}
+          key={heThongRap.maHeThongRap}
           style={{ height: "500px" }}
           className="scroll-cum-rap overflow-y-scroll"
         >
@@ -163,7 +164,7 @@ function HomeMenu(props) {
                       </div>
                     </div>
                   }
-                  key={index}
+                  key={cumRap.maCumRap}
                 >
                   <Menu
                     mode="inline"
@@ -176,7 +177,7 @@ function HomeMenu(props) {
                     {cumRap.danhSachPhim?.map((phim, index) => {
                       return (
                         <SubMenu
-                          key={index}
+                          key={phim.maPhim}
                           title={
                             <div className="film flex ">
                               <img
@@ -208,7 +209,7 @@ function HomeMenu(props) {
                             </div>
                           }
                         >
-                          <Menu
+                          <Menu.ItemGroup
                             mode="inline"
                             style={{
                               borderRight: 0,
@@ -217,20 +218,17 @@ function HomeMenu(props) {
                           >
                             {phim.lstLichChieuTheoPhim
                               ?.slice(0, 10)
-                              .map((lichChieu, index) => {
+                              .map((lichChieu) => {
                                 return (
                                   <SubMenu
                                     className="ngay-chieu rounded-md"
                                     style={{ background: "#06121e" }}
-                                    key={index}
+                                    key={lichChieu.maLichChieu}
                                     title={`Ngày chiếu: ${moment(
                                       lichChieu.ngayChieuGioChieu
                                     ).format("DD/MM/YYYY")} `}
                                   >
-                                    <Menu.Item
-                                      className="bg-dark-color"
-                                      key={index}
-                                    >
+                                    <Menu.Item className="bg-dark-color">
                                       <NavLink
                                         to={`/checkout/${lichChieu.maLichChieu}`}
                                         className="text-white"
@@ -243,7 +241,7 @@ function HomeMenu(props) {
                                   </SubMenu>
                                 );
                               })}
-                          </Menu>
+                          </Menu.ItemGroup>
                         </SubMenu>
                       );
                     })}
