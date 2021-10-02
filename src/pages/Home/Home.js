@@ -7,6 +7,7 @@ import { layDanhSachPhimAction } from "../../redux/actions/QuanLyPhimActions";
 import { layDanhSachHeThongCumRapAction } from "../../redux/actions/QuanLyRapAction";
 import HomeCarousel from "./Carousel/Carousel";
 import HomeMenu from "./HomeMenu/HomeMenu";
+import HomeNews from "./HomeNews/HomeNews";
 
 export default function Home(props) {
   const { arrFilm } = useSelector((state) => state.QuanLyPhimReducer);
@@ -32,6 +33,8 @@ export default function Home(props) {
       <Trailers arrFilm={arrFilm} />
 
       <HomeMenu heThongRapChieu={heThongRapChieu} />
+
+      <HomeNews />
     </div>
   );
 }
