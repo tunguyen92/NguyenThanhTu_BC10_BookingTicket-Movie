@@ -228,7 +228,10 @@ function HomeMenu(props) {
                                       lichChieu.ngayChieuGioChieu
                                     ).format("DD/MM/YYYY")} `}
                                   >
-                                    <Menu.Item className="bg-dark-color">
+                                    <Menu.Item
+                                      className="bg-dark-color"
+                                      key={`${lichChieu.maLichChieu}${lichChieu.ngayChieuGioChieu}`}
+                                    >
                                       <NavLink
                                         to={`/checkout/${lichChieu.maLichChieu}`}
                                         className="text-white"
