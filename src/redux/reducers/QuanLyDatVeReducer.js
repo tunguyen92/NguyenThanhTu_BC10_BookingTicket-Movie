@@ -1,6 +1,9 @@
 import { SET_CHI_TIET_PHONG_VE } from "../actions/types/QuanLyDatVeType";
+import { ThongTinLichChieu } from "../../_core//models/ThongTinPhongVe";
+
 const stateDefault = {
-  chiTietPhongVe: {},
+  chiTietPhongVe: new ThongTinLichChieu(),
+  danhSachDangDat: [],
 };
 
 export const QuanLyDatVeReducer = (state = stateDefault, action) => {

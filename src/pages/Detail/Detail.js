@@ -51,7 +51,9 @@ export default function Detail(props) {
                   Ngày chiếu:
                   {moment(filmDetail.ngayKhoiChieu).format("DD-MM-YYYY")}
                 </p>
-                <p className="text-3xl leading-3 text-white">Tên phim</p>
+                <p className="text-3xl leading-3 text-white">
+                  {filmDetail.tenPhim}
+                </p>
                 <p className="text-white mt-3">{filmDetail.moTa}</p>
               </div>
             </div>
