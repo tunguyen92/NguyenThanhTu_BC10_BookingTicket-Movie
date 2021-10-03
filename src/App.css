@@ -35,17 +35,6 @@ h4,
 h5,
 h6 {
   margin: 0px;
-  transition: all 0.5s ease-out;
-}
-
-h2:hover,
-h1:hover,
-h3:hover,
-h4:hover,
-h5:hover,
-h6:hover {
-  color: #dcf836;
-  transition: all 0.5s ease-out;
 }
 
 p {
@@ -145,7 +134,13 @@ iframe {
   border: none !important;
 }
 
+.pink-color {
+  color: #dd003f;
+}
 .bg-pink-color {
+  background-color: #dd003f;
+}
+.bg-pink-color-hover:hover {
   background-color: #dd003f;
 }
 

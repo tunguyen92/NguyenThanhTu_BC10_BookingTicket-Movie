@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import "./HomeApp.css";
 import mobile from "../../../assets/images/Mobile/mobile.png";
 import slider2 from "../../../assets/images/Mobile/slide2.jpg";
@@ -11,7 +11,7 @@ import slider10 from "../../../assets/images/Mobile/slide10.jpg";
 import slider11 from "../../../assets/images/Mobile/slide11.jpg";
 import Slider from "react-slick";
 
-export default function HomeApp() {
+function HomeApp() {
   const settings = {
     infinite: true,
     speed: 500,
@@ -32,7 +32,7 @@ export default function HomeApp() {
               đổi quà hấp dẫn.
             </span>
             <button
-              class="bg-pink-600 py-2 lg:py-3 px-4 lg:px-6 rounded-md text-white md: lg:text-base"
+              class="bg-pink-color py-2 lg:py-3 px-4 lg:px-6 rounded-md text-white md: lg:text-base"
               onclick="window.open('https://itunes.apple.com/us/app/123phim-mua-ve-lien-tay-chon/id615186197?mt=8','_blank');"
             >
               App miễn phí - Tải về ngay!
@@ -75,3 +75,5 @@ export default function HomeApp() {
     </div>
   );
 }
+
+export default memo(HomeApp);

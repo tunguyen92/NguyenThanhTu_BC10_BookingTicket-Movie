@@ -87,7 +87,7 @@ function HomeMenu(props) {
                                 }}
                               />
                               <div>
-                                <p className="px-2 py-1 mr-2 bg-pink-600 rounded text-xs text-white hidden sm:inline-block">
+                                <p className="px-2 py-1 mr-2 bg-pink-color rounded text-xs text-white hidden sm:inline-block">
                                   {phim.maPhim}
                                 </p>
                                 <p className="ten-phim text-white text-xs sm:text-sm lg:text-base sm:inline-block">
