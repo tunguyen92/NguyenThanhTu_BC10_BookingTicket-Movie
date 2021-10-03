@@ -1,0 +1,23 @@
+.app {
+  width: 100%;
+  background-image: url("../../../assets/images/bg.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.app .mobile .slick-slider {
+  position: absolute;
+  padding: 1.5% 29.3% 0 29.3%;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.app .mobile .slick-list {
+  border-radius: 20px;
+}
+.app .mobile .slick-arrow {
+  display: none !important;
+}
