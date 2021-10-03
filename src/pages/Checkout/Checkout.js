@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { layChiTietPhongVeAction } from "../../redux/actions/QuanLyDatVeAction";
 import style from "./Checkout.module.css";
 import "./Checkout.css";
+import { DAT_VE } from "../../redux/actions/types/QuanLyDatVeType";
 
 export default function Checkout(props) {
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDungReducer);
@@ -27,11 +28,28 @@ export default function Checkout(props) {
 
   const renderSeats = () => {
     return danhSachGhe?.map((ghe, index) => {
-      let gheVip = ghe.loaiGhe === "Vip" ? "gheVip" : "";
-      let gheDaDat = ghe.daDat === "true" ? "gheDaDat" : "";
+      let classGheVip = ghe.loaiGhe === "Vip" ? "gheVip" : "";
+      let classGheDaDat = ghe.daDat === "true" ? "gheDaDat" : "";
+      let classGheDangDat = "";
+
+      let checkGheDangDat = danhSachDangDat.findIndex((gheDangDat) => {
+        return gheDangDat.maGhe === ghe.maGhe;
+      });
+      if (checkGheDangDat !== -1) {
+        classGheDangDat = "gheDangDat";
+      }
       return (
         <Fragment key={index}>
-          <button disabled={ghe.daDat} className={`ghe ${gheVip} ${gheDaDat}`}>
+          <button
+            onClick={() => {
+              dispatch({
+                type: DAT_VE,
+                gheDuocChon: ghe,
+              });
+            }}
+            disabled={ghe.daDat}
+            className={`ghe ${classGheVip} ${classGheDaDat}`}
+          >
             {ghe.stt}
           </button>
           {(index + 1) % 16 === 0 ? <br /> : ""}

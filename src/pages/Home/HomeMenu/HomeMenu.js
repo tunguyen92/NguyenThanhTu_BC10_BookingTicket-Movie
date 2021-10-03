@@ -1,7 +1,7 @@
 import { Menu, Tabs } from "antd";
 import { random } from "lodash-es";
 import moment from "moment";
-import React, { memo } from "react";
+import React, { Fragment, memo } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./HomeMenu.css";
 
@@ -73,7 +73,7 @@ function HomeMenu(props) {
                   >
                     {cumRap.danhSachPhim?.map((phim, index) => {
                       return (
-                        <SubMenu
+                        <Menu.ItemGroup
                           key={phim.maPhim}
                           title={
                             <div className="film sm:flex">
@@ -100,55 +100,43 @@ function HomeMenu(props) {
                             </div>
                           }
                         >
-                          <Menu.ItemGroup
-                            mode="inline"
-                            style={{
-                              borderRight: 0,
-                              backgroundColor: "#0f2133",
-                            }}
-                          >
-                            {getListNgayChieu(phim.lstLichChieuTheoPhim)?.map(
-                              (ngayChieu) => {
-                                return (
-                                  <SubMenu
-                                    className="ngay-chieu rounded-md text-xs md:text-sm p-0"
-                                    style={{ background: "#06121e" }}
-                                    title={`Ngày chiếu:  ${ngayChieu}`}
-                                    key={ngayChieu}
-                                  >
-                                    <div className="grid grid-cols-2 md:grid-cols-3">
-                                      {phim.lstLichChieuTheoPhim
-                                        .filter((lichChieu) => {
-                                          return (
-                                            moment(
+                          {getListNgayChieu(phim.lstLichChieuTheoPhim)
+                            ?.slice(0, 1)
+                            .map((ngayChieu, index) => {
+                              return (
+                                <div className="grid grid-cols-3">
+                                  {phim.lstLichChieuTheoPhim
+                                    .filter((lichChieu) => {
+                                      return (
+                                        moment(
+                                          lichChieu.ngayChieuGioChieu
+                                        ).format("DD/MM/YYYY") === ngayChieu
+                                      );
+                                    })
+                                    .map((lichChieu) => {
+                                      return (
+                                        <Menu.Item
+                                          className="bg-dark-color text-center"
+                                          key={lichChieu.maLichChieu}
+                                        >
+                                          <NavLink
+                                            to={`/checkout/${lichChieu.maLichChieu}`}
+                                            className="text-white"
+                                          >
+                                            {moment(
                                               lichChieu.ngayChieuGioChieu
-                                            ).format("DD/MM/YYYY") === ngayChieu
-                                          );
-                                        })
-                                        .map((lichChieu) => {
-                                          return (
-                                            <Menu.Item
-                                              className="bg-dark-color text-center"
-                                              key={`${lichChieu.maLichChieu}${lichChieu.ngayChieuGioChieu}`}
-                                            >
-                                              <NavLink
-                                                to={`/checkout/${lichChieu.maLichChieu}`}
-                                                className="text-white text-xs lg:text-sm"
-                                              >
-                                                {moment(
-                                                  lichChieu.ngayChieuGioChieu
-                                                ).format("hh:mm A")}
-                                              </NavLink>
-                                            </Menu.Item>
-                                          );
-                                        })}
-                                    </div>
-                                  </SubMenu>
-                                );
-                              }
-                            )}
-                          </Menu.ItemGroup>
-                        </SubMenu>
+                                            ).format("DD/MM ")}
+                                            {moment(
+                                              lichChieu.ngayChieuGioChieu
+                                            ).format("hh:mm A")}
+                                          </NavLink>
+                                        </Menu.Item>
+                                      );
+                                    })}
+                                </div>
+                              );
+                            })}
+                        </Menu.ItemGroup>
                       );
                     })}
                   </Menu>
