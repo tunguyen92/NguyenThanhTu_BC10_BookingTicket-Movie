@@ -6,6 +6,7 @@ import Trailers from "../../components/ReactSlick/Trailers/Trailers";
 import { layDanhSachPhimAction } from "../../redux/actions/QuanLyPhimActions";
 import { layDanhSachHeThongCumRapAction } from "../../redux/actions/QuanLyRapAction";
 import HomeCarousel from "./Carousel/Carousel";
+import HomeApp from "./HomeApp/HomeApp";
 import HomeMenu from "./HomeMenu/HomeMenu";
 import HomeNews from "./HomeNews/HomeNews";
 
@@ -35,6 +36,8 @@ export default function Home(props) {
       <HomeMenu heThongRapChieu={heThongRapChieu} />
 
       <HomeNews />
+
+      <HomeApp />
     </div>
   );
 }

@@ -36,7 +36,7 @@ export default function Footer(props) {
               </span>
             </a>
           </div>
-          <div className="col-span-6 text-center md:text-left md:col-span-3">
+          <div className="col-span-6 text-center md:text-left md:col-span-3 h-screen">
             <p className="pb-1 text-lg font-medium text-white">Partner</p>
             <div className="text-white grid grid-cols-3 gap-3">
               {arrHeThongRap.map((heThongRap, index) => {
