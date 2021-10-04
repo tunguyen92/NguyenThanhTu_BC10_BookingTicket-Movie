@@ -14,9 +14,11 @@ import Slider from "react-slick";
 function HomeApp() {
   const settings = {
     infinite: true,
-    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    speed: 1000,
+    autoplaySpeed: 3000,
   };
 
   return (
@@ -32,24 +34,31 @@ function HomeApp() {
               đổi quà hấp dẫn.
             </span>
             <button
-              class="bg-pink-color py-2 lg:py-3 px-4 lg:px-6 rounded-md text-white md: lg:text-base"
-              onclick="window.open('https://itunes.apple.com/us/app/123phim-mua-ve-lien-tay-chon/id615186197?mt=8','_blank');"
+              className="bg-pink-color py-2 lg:py-3 px-4 lg:px-6 rounded-md text-white md: lg:text-base"
+              onClick={() => {
+                window.open(
+                  "https://itunes.apple.com/us/app/123phim-mua-ve-lien-tay-chon/id615186197?mt=8",
+                  "_blank"
+                );
+              }}
             >
               App miễn phí - Tải về ngay!
             </button>
-            <p class="mt-2">
+            <p className="mt-2">
               TIX có hai phiên bản
               <a
-                class="tagA"
+                className="tagA"
                 target="_blank"
+                rel="noreferrer"
                 href="https://itunes.apple.com/us/app/123phim-mua-ve-lien-tay-chon/id615186197?mt=8"
               >
                 &nbsp; iOS
               </a>
               &nbsp;&amp;&nbsp;
               <a
-                class="tagA"
+                className="tagA"
                 target="_blank"
+                rel="noreferrer"
                 href="https://play.google.com/store/apps/details?id=vn.com.vng.phim123"
               >
                 Android
@@ -60,14 +69,14 @@ function HomeApp() {
             <img src={mobile} alt="" style={{ padding: "0 28%" }} />
 
             <Slider {...settings}>
-              <img src={slider2} />
-              <img src={slider3} />
-              <img src={slider4} />
-              <img src={slider5} />
-              <img src={slider7} />
-              <img src={slider9} />
-              <img src={slider10} />
-              <img src={slider11} />
+              <img src={slider2} alt="" />
+              <img src={slider3} alt="" />
+              <img src={slider4} alt="" />
+              <img src={slider5} alt="" />
+              <img src={slider7} alt="" />
+              <img src={slider9} alt="" />
+              <img src={slider10} alt="" />
+              <img src={slider11} alt="" />
             </Slider>
           </div>
         </div>

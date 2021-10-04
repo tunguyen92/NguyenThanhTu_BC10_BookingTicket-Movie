@@ -1,8 +1,7 @@
 import { Menu, Tabs } from "antd";
-import { random } from "lodash-es";
 import moment from "moment";
-import React, { Fragment, memo } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { memo } from "react";
+import { NavLink } from "react-router-dom";
 import "./HomeMenu.css";
 
 const { TabPane } = Tabs;
@@ -25,6 +24,149 @@ function HomeMenu(props) {
       }
     });
     return listNgayChieu;
+  };
+
+  const GioChieu = (lichChieu) => {
+    return (
+      <Menu.Item
+        className="bg-dark-color text-center"
+        key={lichChieu.maLichChieu}
+      >
+        <NavLink
+          to={`/checkout/${lichChieu.maLichChieu}`}
+          className="text-white text-xs lg:text-sm"
+        >
+          {moment(lichChieu.ngayChieuGioChieu).format("hh:mm A")}
+        </NavLink>
+      </Menu.Item>
+    );
+  };
+
+  const MenuNgayChieu = (props) => {
+    const { phim, ngayChieu } = props;
+
+    return (
+      <div>
+        <div
+          className="ngay-chieu text-white rounded-md text-xs md:text-sm py-2 px-3 mt-2"
+          style={{ background: "#06121e" }}
+        >
+          Ngày chiếu: {ngayChieu}
+        </div>
+        <div className="bg-dark-color grid grid-cols-2 md:grid-cols-3">
+          {phim.lstLichChieuTheoPhim
+            .filter((lichChieu) => {
+              return (
+                moment(lichChieu.ngayChieuGioChieu).format("DD/MM/YYYY") ===
+                ngayChieu
+              );
+            })
+            .map((lichChieu) => {
+              return (
+                <div
+                  className="bg-dark-color text-center py-2 px-3 "
+                  key={lichChieu.maLichChieu}
+                >
+                  <NavLink
+                    to={`/checkout/${lichChieu.maLichChieu}`}
+                    className="text-gray-300 text-xs lg:text-sm"
+                  >
+                    {moment(lichChieu.ngayChieuGioChieu).format("hh:mm A")}
+                  </NavLink>
+                </div>
+              );
+            })}
+        </div>
+      </div>
+    );
+    // <SubMenu
+    //   {...other}
+    //   className="ngay-chieu rounded-md text-xs md:text-sm p-0"
+    //   style={{ background: "#06121e" }}
+    //   title={`Ngày chiếu:  ${ngayChieu}`}
+    //   key={ngayChieu}
+    // >
+    // <div className="grid grid-cols-2 md:grid-cols-3">
+    //   {phim.lstLichChieuTheoPhim
+    //     .filter((lichChieu) => {
+    //       return (
+    //         moment(lichChieu.ngayChieuGioChieu).format("DD/MM/YYYY") ===
+    //         ngayChieu
+    //       );
+    //     })
+    //     .map((lichChieu) => {
+    //       return (
+    // <Menu.Item
+    //   {...other}
+    //   className="bg-dark-color text-center"
+    //   key={phim.lstLichChieuTheoPhim.maLichChieu}
+    // >
+    //   <NavLink
+    //     to={`/checkout/${phim.lstLichChieuTheoPhim.maLichChieu}`}
+    //     className="text-white text-xs lg:text-sm"
+    //   >
+    //     {moment(phim.lstLichChieuTheoPhim.ngayChieuGioChieu).format(
+    //       "hh:mm A"
+    //     )}
+    //   </NavLink>
+    // </Menu.Item>
+    //   );
+    // })}
+    // </div>
+    // </SubMenu>
+  };
+
+  const MenuPhim = (props) => {
+    const { phim, ...other } = props;
+
+    return (
+      <SubMenu
+        {...other}
+        eventKey={phim.maPhim}
+        title={
+          <div className="film sm:flex">
+            <img
+              className="w-8 sm:w-12 h-10 sm:h-16 object-cover rounded-sm sm:rounded mr-2 mb-3 sm:mb-0"
+              src={phim.hinhAnh}
+              alt={phim.tenPhim}
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "https://picsum.photos/99";
+              }}
+            />
+            <div>
+              <p className="px-2 py-1 mr-2 bg-pink-600 rounded text-xs text-white hidden sm:inline-block">
+                {phim.maPhim}
+              </p>
+              <p className="ten-phim text-white text-xs sm:text-sm lg:text-base sm:inline-block">
+                {phim.tenPhim}
+              </p>
+              <p className="text-xs">120 phút - TIX 8.1 - IMDb 0</p>
+            </div>
+          </div>
+        }
+      >
+        <Menu.ItemGroup
+          mode="inline"
+          style={{
+            borderRight: 0,
+            backgroundColor: "#0f2133",
+          }}
+        >
+          {getListNgayChieu(phim.lstLichChieuTheoPhim)?.map(
+            (ngayChieu, index) => {
+              return (
+                <MenuNgayChieu
+                  ngayChieu={ngayChieu}
+                  phim={phim}
+                  key={ngayChieu}
+                />
+              );
+            }
+          )}
+        </Menu.ItemGroup>
+      </SubMenu>
+    );
   };
 
   const renderHeThongRap = () => {
@@ -72,72 +214,7 @@ function HomeMenu(props) {
                     }}
                   >
                     {cumRap.danhSachPhim?.map((phim, index) => {
-                      return (
-                        <Menu.ItemGroup
-                          key={phim.maPhim}
-                          title={
-                            <div className="film sm:flex">
-                              <img
-                                className="w-8 sm:w-12 h-10 sm:h-16 object-cover rounded-sm sm:rounded mr-2 mb-3 sm:mb-0"
-                                src={phim.hinhAnh}
-                                alt={phim.tenPhim}
-                                onError={(e) => {
-                                  e.target.onerror = null;
-                                  e.target.src = "https://picsum.photos/99";
-                                }}
-                              />
-                              <div>
-                                <p className="px-2 py-1 mr-2 bg-pink-color rounded text-xs text-white hidden sm:inline-block">
-                                  {phim.maPhim}
-                                </p>
-                                <p className="ten-phim text-white text-xs sm:text-sm lg:text-base sm:inline-block">
-                                  {phim.tenPhim}
-                                </p>
-                                <p className="text-xs">
-                                  120 phút - TIX 8.1 - IMDb 0
-                                </p>
-                              </div>
-                            </div>
-                          }
-                        >
-                          {getListNgayChieu(phim.lstLichChieuTheoPhim)
-                            ?.slice(0, 1)
-                            .map((ngayChieu, index) => {
-                              return (
-                                <div className="grid grid-cols-3">
-                                  {phim.lstLichChieuTheoPhim
-                                    .filter((lichChieu) => {
-                                      return (
-                                        moment(
-                                          lichChieu.ngayChieuGioChieu
-                                        ).format("DD/MM/YYYY") === ngayChieu
-                                      );
-                                    })
-                                    .map((lichChieu) => {
-                                      return (
-                                        <Menu.Item
-                                          className="bg-dark-color text-center"
-                                          key={lichChieu.maLichChieu}
-                                        >
-                                          <NavLink
-                                            to={`/checkout/${lichChieu.maLichChieu}`}
-                                            className="text-white"
-                                          >
-                                            {moment(
-                                              lichChieu.ngayChieuGioChieu
-                                            ).format("DD/MM ")}
-                                            {moment(
-                                              lichChieu.ngayChieuGioChieu
-                                            ).format("hh:mm A")}
-                                          </NavLink>
-                                        </Menu.Item>
-                                      );
-                                    })}
-                                </div>
-                              );
-                            })}
-                        </Menu.ItemGroup>
-                      );
+                      return <MenuPhim key={phim.maPhim} phim={phim} />;
                     })}
                   </Menu>
                 </TabPane>
@@ -160,5 +237,4 @@ function HomeMenu(props) {
     </div>
   );
 }
-
 export default memo(HomeMenu);

@@ -123,13 +123,14 @@ export default function Header(props) {
       </Fragment>
     );
   };
+
   return (
     <Disclosure
       as="nav"
       className={
         `${show && "sticky"} ` +
         (!navigation[0].current
-          ? "bg-gray-blue-color"
+          ? "bg-gray-blue-color w-full"
           : "bg-transparent absolute top-0 z-10 w-full")
       }
     >

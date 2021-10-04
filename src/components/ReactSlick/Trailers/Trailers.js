@@ -84,7 +84,9 @@ export default function Trailers(props) {
                   data-toggle="tab"
                   href="#link3"
                   role="tablist"
-                ></a>
+                >
+                  {""}
+                </a>
               </li>
               <li className="">
                 <a
@@ -101,7 +103,9 @@ export default function Trailers(props) {
                   data-toggle="tab"
                   href="#link4"
                   role="tablist"
-                ></a>
+                >
+                  {""}
+                </a>
               </li>
             </ul>
 

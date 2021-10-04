@@ -25,17 +25,20 @@ export default function Footer(props) {
     >
       <div className="container container mx-auto px-5 lg:px-16 space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
         <div className="grid grid-cols-12 pt-20 pb-10">
-          <div className="pb-6 col-span-full md:pb-0 md:col-span-3">
+          <div className="col-span-6 md:col-span-3 pb-6 md:pb-0 ">
             <Link
               to="/"
-              className="flex justify-center space-x-3 md:justify-start "
+              className="flex justify-center space-x-3 sm:justify-start "
             >
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-violet-600">
-                <img src={process.env.PUBLIC_URL + "/images/logo.png"} alt="" />
-              </div>
+              <img
+                className="w-16 h-16"
+                src={process.env.PUBLIC_URL + "/images/logo.png"}
+                alt=""
+              />
+
               <span className="self-center text-xl font-semibold">CINEMA</span>
             </Link>
-            <p className="pt-10 text-gray-400">
+            <p className="pt-10 text-gray-400 text-center sm:text-left">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6 pb-1 mr-3 inline-block"
@@ -56,9 +59,9 @@ export default function Footer(props) {
                   d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                 />
               </svg>
-              Ho Chi Minh City
+              Thành phố Hồ Chí Minh
             </p>
-            <p className="pt-5 text-gray-400">
+            <p className="pt-5 text-gray-400 text-center sm:text-left">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6 pb-1 mr-3  inline-block"
@@ -77,51 +80,52 @@ export default function Footer(props) {
             </p>
           </div>
 
-          <div className=" md:col-span-2">
-            <h4 className="text-lg text-white font-semibold mb-7">Resources</h4>
+          <div className="col-span-3 md:col-span-2">
+            <h4 className="text-lg text-white font-semibold mb-7">Thông tin</h4>
             <ul>
               <li className="mb-2">
-                <Link to="/">About</Link>
+                <Link to="/">Về chúng tôi</Link>
               </li>
               <li className="mb-2">
-                <Link to="/">Contact</Link>
+                <Link to="/">Liên hệ</Link>
               </li>
 
               <li className="mb-2">
-                <Link to="/">Forums</Link>
+                <Link to="/">Diễn đàn</Link>
               </li>
               <li className="mb-2">
                 <Link to="/">Blog</Link>
               </li>
               <li className="mb-2">
-                <Link to="/">Help Center</Link>
+                <Link to="/">Trung tâm hỗ trợ</Link>
               </li>
             </ul>
           </div>
 
-          <div className=" md:col-span-2">
-            <h4 className="text-lg text-white font-semibold mb-7">Legal</h4>
+          <div className="col-span-3 md:col-span-2">
+            <h4 className="text-lg text-white font-semibold mb-7">Pháp lý</h4>
             <ul>
               <li className="mb-2">
-                <Link to="/">Terms of Use</Link>
+                <Link to="/">Điều khoản sử dụng</Link>
               </li>
               <li className="mb-2">
-                <Link to="/">Privacy Policy</Link>
+                <Link to="/">Chính sách bảo mật</Link>
               </li>
 
               <li className="mb-2">
-                <Link to="/">Security</Link>
+                <Link to="/">Bảo vệ</Link>
               </li>
             </ul>
           </div>
 
-          <div className="col-span-6 text-center md:text-left md:col-span-2 ">
-            <h4 className="text-lg text-white font-semibold mb-7">Partner</h4>
+          <div className="col-span-6 md:col-span-2 text-center md:text-left ">
+            <h4 className="text-lg text-white font-semibold mb-7">Đối tác</h4>
             <div className="text-white grid grid-cols-2 gap-y-5">
               {arrHeThongRap.map((heThongRap, index) => {
                 return (
-                  <div key={index}>
+                  <div key={index} className="text-center">
                     <img
+                      className="text-center"
                       width={40}
                       src={heThongRap.logo}
                       alt={heThongRap.tenHeThongRap}
@@ -132,24 +136,23 @@ export default function Footer(props) {
             </div>
           </div>
 
-          <div className="col-span-6 text-center md:text-left md:col-span-3 pl-5">
-            <h4 className="text-lg text-white font-semibold mb-7">
-              Newsletter
-            </h4>
+          <div className="col-span-6 md:col-span-3 text-center md:text-left  pl-5">
+            <h4 className="text-lg text-white font-semibold mb-7">Bản tin</h4>
             <p className="mb-5">
-              Subscribe to our newsletter system now to get latest news from us.
+              Đăng ký hệ thống bản tin ngay bây giờ để nhận những tin tức mới
+              nhất từ chúng tôi.
             </p>
 
             <input
               className="bg-transparent w-full  py-1 px-2 mb-5 ring-1 ring-gray-400 text-white "
               type="text"
-              placeholder="Enter your email..."
+              placeholder="Nhập email của bạn..."
             />
             <button
               className="pink-color text-sm inline-block font-semibold"
               type="submit"
             >
-              SUBSCRIBE NOW{" "}
+              ĐĂNG KÝ NGAY{" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 pb-1 inline-block font-semibold"
