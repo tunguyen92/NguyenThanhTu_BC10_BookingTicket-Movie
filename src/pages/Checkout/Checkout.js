@@ -4,6 +4,8 @@ import { layChiTietPhongVeAction } from "../../redux/actions/QuanLyDatVeAction";
 import style from "./Checkout.module.css";
 import "./Checkout.css";
 import { DAT_VE } from "../../redux/actions/types/QuanLyDatVeType";
+import DatVe from "./DatVe.module";
+import _ from "lodash";
 
 export default function Checkout(props) {
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDungReducer);
@@ -29,7 +31,7 @@ export default function Checkout(props) {
   const renderSeats = () => {
     return danhSachGhe?.map((ghe, index) => {
       let classGheVip = ghe.loaiGhe === "Vip" ? "gheVip" : "";
-      let classGheDaDat = ghe.daDat === "true" ? "gheDaDat" : "";
+      let classGheDaDat = ghe.daDat === true ? "gheDaDat" : "";
       let classGheDangDat = "";
 
       let checkGheDangDat = danhSachDangDat.findIndex((gheDangDat) => {
@@ -48,7 +50,7 @@ export default function Checkout(props) {
               });
             }}
             disabled={ghe.daDat}
-            className={`ghe ${classGheVip} ${classGheDaDat}`}
+            className={`ghe ${classGheDangDat} ${classGheVip} ${classGheDaDat} `}
           >
             {ghe.stt}
           </button>
@@ -59,9 +61,9 @@ export default function Checkout(props) {
   };
 
   return (
-    <div className="h-screen pb-0">
-      <div className="grid grid-cols-12">
-        <div className="col-span-9">
+    <div className="pb-0 pr-2 max-h-screen">
+      <div className="grid grid-cols-12 ">
+        <div className="col-span-9 ">
           <div className="flex flex-col items-center mt-5">
             <div
               className="bg-black"
@@ -73,8 +75,14 @@ export default function Checkout(props) {
             <div>{renderSeats()}</div>
           </div>
         </div>
-        <div className="col-span-3">
-          <h3 className="text-green-400 text-center text-2xl">0đ</h3>
+        <div className="col-span-3 ">
+          <h3 className="text-green-400 text-center text-2xl">
+            {danhSachDangDat
+              .reduce((total, ghe) => {
+                return (total += ghe.giaVe);
+              }, 0)
+              .toLocaleString()}
+          </h3>
           <hr />
           <h3 className="text-xl">{thongTinPhim.tenPhim}</h3>
           <p>
@@ -83,14 +91,7 @@ export default function Checkout(props) {
           <p>Ngày chiếu: {thongTinPhim.ngayChieu}</p>
           <hr />
 
-          <div className="flex flex-row my-5">
-            <div className="w-4/5">
-              <span className="text-red-400 text-lg">Ghế</span>
-            </div>
-            <div className="text-right col-span-1">
-              <span className="text-green-400 text-lg">0đ</span>
-            </div>
-          </div>
+          <DatVe danhSachDangDat={_.sortBy(danhSachDangDat, ["maGhe"])} />
           <hr />
           <div className="my-5">
             <i className="">Email</i> <br />
@@ -103,8 +104,11 @@ export default function Checkout(props) {
             {userLogin.soDT}
           </div>
           <hr />
-          <div className=" flex flex-col justify-end items-center">
-            <div className="bg-green-500 text-white w-full text-center py-3 font-bold text-2xl cursor-pointer">
+          <div className="max-h-screen flex flex-col justify-end items-center">
+            <div
+              className=" bg-green-500 text-white text-center py-3 font-bold text-2xl cursor-pointer w-full"
+              // style={{ position: "absolute", bottom: "20px", width: "25%" }}
+            >
               ĐẶT VÉ
             </div>
           </div>
