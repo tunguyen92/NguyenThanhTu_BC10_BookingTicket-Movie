@@ -26,22 +26,6 @@ function HomeMenu(props) {
     return listNgayChieu;
   };
 
-  const GioChieu = (lichChieu) => {
-    return (
-      <Menu.Item
-        className="bg-dark-color text-center"
-        key={lichChieu.maLichChieu}
-      >
-        <NavLink
-          to={`/checkout/${lichChieu.maLichChieu}`}
-          className="text-white text-xs lg:text-sm"
-        >
-          {moment(lichChieu.ngayChieuGioChieu).format("hh:mm A")}
-        </NavLink>
-      </Menu.Item>
-    );
-  };
-
   const MenuNgayChieu = (props) => {
     const { phim, ngayChieu } = props;
 
@@ -79,41 +63,6 @@ function HomeMenu(props) {
         </div>
       </div>
     );
-    // <SubMenu
-    //   {...other}
-    //   className="ngay-chieu rounded-md text-xs md:text-sm p-0"
-    //   style={{ background: "#06121e" }}
-    //   title={`Ngày chiếu:  ${ngayChieu}`}
-    //   key={ngayChieu}
-    // >
-    // <div className="grid grid-cols-2 md:grid-cols-3">
-    //   {phim.lstLichChieuTheoPhim
-    //     .filter((lichChieu) => {
-    //       return (
-    //         moment(lichChieu.ngayChieuGioChieu).format("DD/MM/YYYY") ===
-    //         ngayChieu
-    //       );
-    //     })
-    //     .map((lichChieu) => {
-    //       return (
-    // <Menu.Item
-    //   {...other}
-    //   className="bg-dark-color text-center"
-    //   key={phim.lstLichChieuTheoPhim.maLichChieu}
-    // >
-    //   <NavLink
-    //     to={`/checkout/${phim.lstLichChieuTheoPhim.maLichChieu}`}
-    //     className="text-white text-xs lg:text-sm"
-    //   >
-    //     {moment(phim.lstLichChieuTheoPhim.ngayChieuGioChieu).format(
-    //       "hh:mm A"
-    //     )}
-    //   </NavLink>
-    // </Menu.Item>
-    //   );
-    // })}
-    // </div>
-    // </SubMenu>
   };
 
   const MenuPhim = (props) => {
