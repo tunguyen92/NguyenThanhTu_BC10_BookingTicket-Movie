@@ -109,9 +109,6 @@ const AdminTemplate = (props) => {
                       <NavLink to="/admin/films/add-new">Add new</NavLink>
                     </Menu.Item>
                   </SubMenu>
-                  <Menu.Item key="3" icon={<DesktopOutlined />}>
-                    <NavLink to="/admin/showtimes">Showtime</NavLink>
-                  </Menu.Item>
                 </Menu>
               </Sider>
               <Layout className="site-layout">

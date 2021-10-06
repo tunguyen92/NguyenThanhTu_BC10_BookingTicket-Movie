@@ -1,0 +1,27 @@
+.profile {
+  background-image: url("../../assets/images/bg.jpg");
+}
+
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
+  background-color: #0f2133;
+}
+.ant-tabs-card.ant-tabs-left > .ant-tabs-nav .ant-tabs-tab {
+  border-radius: 5px;
+}
+.ant-tabs-left > .ant-tabs-content-holder {
+  margin-left: 50px;
+  border-radius: 5px;
+  border: solid white 1px;
+}
+
+.profile label {
+  color: #fff;
+}
+
+.profile .fullname .anticon svg {
+  color: #fff;
+}
+
+.profile .phone span {
+  color: #000;
+}

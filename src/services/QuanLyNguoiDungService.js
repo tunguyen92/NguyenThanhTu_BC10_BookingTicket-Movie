@@ -14,8 +14,15 @@ export class QuanLyNguoiDungService extends baseService {
     return this.post(`/api/QuanLyNguoiDung/DangKy`, formData);
   };
 
-  layThongTinNguoiDung = () => {
-    return this.post("/api/QuanLyNguoiDung/ThongTinTaiKhoan");
+  layThongTinNguoiDung = (thongTinNguoiDung) => {
+    return this.post(
+      `/api/QuanLyNguoiDung/ThongTinTaiKhoan`,
+      thongTinNguoiDung
+    );
+  };
+
+  capNhatThongTinNguoiDung = () => {
+    return this.put(`/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`);
   };
 }
 

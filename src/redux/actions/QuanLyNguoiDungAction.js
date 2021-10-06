@@ -44,21 +44,37 @@ export const dangKyAction = (formData) => {
   };
 };
 
-export const layThongTinNguoiDungAction = (thongTinDangNhap) => {
+export const layThongTinNguoiDungAction = (taiKhoan) => {
+  console.log(taiKhoan);
   return async (dispatch) => {
     try {
-      const result = await quanLyNguoiDungService.layThongTinNguoiDung();
+      const result = await quanLyNguoiDungService.layThongTinNguoiDung(
+        taiKhoan
+      );
 
       if (result.data.statusCode === 200) {
         dispatch({
           type: SET_THONG_TIN_NGUOI_DUNG,
-          thongTinNguoiDung: result.data.content,
+          thongTinNguoiDung: result.data,
         });
       }
-
       console.log("result", result);
     } catch (error) {
       console.log("error", error.response.data);
+    }
+  };
+};
+
+export const capNhatThongTinNguoiDungAction = () => {
+  return async (dispatch) => {
+    try {
+      let result = await quanLyNguoiDungService.capNhatThongTinNguoiDung();
+
+      alert("Đăng ký thành công");
+
+      console.log(result);
+    } catch (errors) {
+      console.log(errors.response?.data);
     }
   };
 };

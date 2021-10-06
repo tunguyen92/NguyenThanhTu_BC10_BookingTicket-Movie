@@ -53,7 +53,7 @@ export const layThongTinPhimAction = (maPhim) => {
     try {
       let result = await quanLyPhimService.layThongTinPhim(maPhim);
 
-      // console.log(result.data);
+      console.log(result.data);
       dispatch({
         type: SET_THONG_TIN_FILM,
         thongTinPhim: result.data,
