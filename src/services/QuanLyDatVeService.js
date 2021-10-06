@@ -10,6 +10,10 @@ export class QuanLyDatVeService extends baseService {
       `/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`
     );
   };
+
+  datVe = (thongTinDatVe) => {
+    return this.post(`/api/QuanLyDatVe/DatVe`, thongTinDatVe);
+  };
 }
 
 export const quanLyDatVeService = new QuanLyDatVeService();
