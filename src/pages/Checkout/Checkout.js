@@ -1,11 +1,15 @@
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { layChiTietPhongVeAction } from "../../redux/actions/QuanLyDatVeAction";
+import {
+  datVeAction,
+  layChiTietPhongVeAction,
+} from "../../redux/actions/QuanLyDatVeAction";
 import style from "./Checkout.module.css";
 import "./Checkout.css";
 import { DAT_VE } from "../../redux/actions/types/QuanLyDatVeType";
 import DatVe from "./DatVe.module";
 import _ from "lodash";
+import { ThongTinDatVe } from "./../../_core/models/ThongTinDatVe";
 
 export default function Checkout(props) {
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDungReducer);
@@ -23,8 +27,6 @@ export default function Checkout(props) {
     //đẩy hàm đi
     dispatch(action);
   }, []);
-
-  console.log({ chiTietPhongVe });
 
   const { danhSachGhe, thongTinPhim } = chiTietPhongVe;
 
@@ -106,8 +108,19 @@ export default function Checkout(props) {
           <hr />
           <div className="max-h-screen flex flex-col justify-end items-center">
             <div
+              onClick={() => {
+                const thongTinDatVe = new ThongTinDatVe();
+                thongTinDatVe.maLichChieu = +props.match.params.id;
+                thongTinDatVe.danhSachVe = [
+                  {
+                    maGhe: 47724,
+                    giaVe: 75000,
+                  },
+                ];
+                thongTinDatVe.taiKhoanNguoiDung = userLogin.taiKhoan;
+                dispatch(datVeAction(thongTinDatVe));
+              }}
               className=" bg-green-500 text-white text-center py-3 font-bold text-2xl cursor-pointer w-full"
-              // style={{ position: "absolute", bottom: "20px", width: "25%" }}
             >
               ĐẶT VÉ
             </div>

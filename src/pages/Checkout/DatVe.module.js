@@ -29,7 +29,6 @@ class DatVe extends React.Component {
       title: undefined,
       showHeader,
       yScroll: true,
-
       hasData: true,
       tableLayout: undefined,
       top: "none",
