@@ -22,6 +22,7 @@ import Detail from "./pages/Detail/Detail";
 import Checkout from "./pages/Checkout/Checkout";
 import { Suspense, lazy } from "react";
 import ListFilm from "./pages/ListFilm/ListFilm";
+import User from "./pages/Admin/User/User";
 
 export const history = createBrowserHistory();
 
@@ -57,7 +58,9 @@ function App() {
           exact
           Component={ShowTime}
         />
-        <AdminTemplate path="/admin/users" exact Component={Dashboard} />
+        <AdminTemplate path="/admin/" exact Component={Dashboard} />
+        <AdminTemplate path="/admin/user" exact Component={User} />
+
         {/* <AdminTemplate path="/admin/showtimes" exact Component={ShowTime} /> */}
         <HomeTemplate path="/" exact Component={Home} />
 

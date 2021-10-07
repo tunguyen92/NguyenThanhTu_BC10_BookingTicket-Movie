@@ -110,13 +110,8 @@ export default function Checkout(props) {
             <div
               onClick={() => {
                 const thongTinDatVe = new ThongTinDatVe();
-                thongTinDatVe.maLichChieu = +props.match.params.id;
-                thongTinDatVe.danhSachVe = [
-                  {
-                    maGhe: 47724,
-                    giaVe: 75000,
-                  },
-                ];
+                thongTinDatVe.maLichChieu = props.match.params.id;
+                thongTinDatVe.danhSachVe = danhSachDangDat;
                 thongTinDatVe.taiKhoanNguoiDung = userLogin.taiKhoan;
                 dispatch(datVeAction(thongTinDatVe));
               }}
