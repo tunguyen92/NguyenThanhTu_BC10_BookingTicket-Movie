@@ -1,4 +1,10 @@
-import { DesktopOutlined, FileOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  DesktopOutlined,
+  FileOutlined,
+  UserOutlined,
+  UserAddOutlined,
+  UnorderedListOutlined,
+} from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu } from "antd";
 import _ from "lodash";
 import { Fragment, useEffect, useState } from "react";
@@ -89,7 +95,7 @@ const AdminTemplate = (props) => {
 
         return (
           <Fragment>
-            <Layout style={{ minHeight: "100vh" }}>
+            <Layout style={{ maxHeight: "100vh" }}>
               <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
                 <div className="logo p-5">
                   <img
@@ -98,10 +104,16 @@ const AdminTemplate = (props) => {
                   />
                 </div>
                 <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-                  <Menu.Item key="1" icon={<UserOutlined />}>
-                    <NavLink to="/admin">Users</NavLink>
-                  </Menu.Item>
-                  <SubMenu key="sub1" icon={<FileOutlined />} title="Films">
+                  <SubMenu key="sub1" icon={<UserOutlined />} title="User">
+                    <Menu.Item key="12" icon={<UnorderedListOutlined />}>
+                      <NavLink to="/admin/user">User List</NavLink>
+                    </Menu.Item>
+                    <Menu.Item key="13" icon={<UserAddOutlined />}>
+                      <NavLink to="/admin/user/add">Add User</NavLink>
+                    </Menu.Item>
+                  </SubMenu>
+
+                  <SubMenu key="sub2" icon={<FileOutlined />} title="Films">
                     <Menu.Item key="10" icon={<FileOutlined />}>
                       <NavLink to="/admin/films">Films</NavLink>
                     </Menu.Item>

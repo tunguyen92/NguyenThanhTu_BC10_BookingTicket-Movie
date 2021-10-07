@@ -123,7 +123,7 @@ export default function Films() {
   }
 
   const onSearch = (value) => {
-    //Gọi api layDanSachPhim
+    //Gọi api layDanhSachPhim
     dispatch(layDanhSachPhimAction(value));
   };
 
@@ -151,6 +151,7 @@ export default function Films() {
         dataSource={data}
         rowKey={(phim) => phim.maPhim}
         onChange={onChange}
+        scroll={{ y: "50vh" }}
       />
     </div>
   );
