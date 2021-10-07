@@ -1,4 +1,4 @@
-import { history } from "../../App";
+// import { history } from "../../App";
 import { quanLyNguoiDungService } from "../../services/QuanLyNguoiDungService";
 import {
   DANG_NHAP_ACTION,
@@ -18,9 +18,9 @@ export const dangNhapAction = (thongTinDangNhap) => {
         alert("Đăng nhập thành công");
 
         //chuyển hướng về trang trước khi đăng nhập
-        history.goBack();
+        // history.goBack();
 
-        // window.location.href = "/home";
+        window.location.href = "/";
       }
 
       console.log("result", result.data);
@@ -36,9 +36,13 @@ export const dangKyAction = (formData) => {
       let result = await quanLyNguoiDungService.dangKy(formData);
 
       alert("Đăng ký thành công");
+      window.location.href = "/login";
 
       console.log(result);
     } catch (errors) {
+      if (errors.response.status === 500) {
+        alert("Tài khoản đã tồn tại!");
+      }
       console.log(errors.response?.data);
     }
   };
