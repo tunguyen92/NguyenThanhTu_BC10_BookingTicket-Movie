@@ -177,3 +177,6 @@ iframe {
 .title-color {
   color: #4280bf;
 }
+.title-color-hover:hover {
+  color: #4280bf;
+}

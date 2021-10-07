@@ -68,7 +68,8 @@
   color: #dcf836;
 }
 
-.ant-tabs-left
+.he-thong-rap
+  .ant-tabs-left
   > .ant-tabs-content-holder
   > .ant-tabs-content
   > .ant-tabs-tabpane {

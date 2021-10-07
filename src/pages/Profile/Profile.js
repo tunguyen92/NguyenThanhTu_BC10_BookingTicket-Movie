@@ -103,33 +103,44 @@ export default function Profile(props) {
     </Form.Item>
   );
 
+  const operations = (
+    <button
+      className="log-out"
+      onClick={() => {
+        localStorage.removeItem(USER_LOGIN);
+        localStorage.removeItem(TOKEN);
+        history.push("/");
+        window.location.reload();
+      }}
+    >
+      Đăng xuất
+    </button>
+  );
+
   return (
     <div className="profile h-full pt-40 pb-10 space-y-2 ">
-      <div className="divide-y divide-coolGray-300  m-auto w-3/4 relative">
+      <div className="divide-y divide-coolGray-300  m-auto w-3/4 ">
         <Tabs
           tabPosition="left"
           className="pt-2 pb-4 space-y-1 text-sm "
           type="card"
+          tabBarExtraContent={operations}
         >
           <TabPane
             tab={
               <div className="flex items-center p-2 space-x-4 ">
-                <img
-                  src="https://source.unsplash.com/100x100/?portrait"
-                  alt=""
-                  className="w-12 h-12 rounded-full bg-coolGray-500"
-                />
-                <div className="w-40">
+                <div>
+                  <img
+                    src="https://source.unsplash.com/100x100/?portrait"
+                    alt=""
+                    className="w-12 h-12 rounded-full "
+                  />
+                  <p className="mt-2 title-color-hover">Hồ sơ</p>
+                </div>
+                <div className="w-40 whitespace-pre-wrap">
                   <div className="yellow-color-hover">
                     <h2 className="text-lg font-semibold text-white ">
-                      {userLogin.hoTen.length > 15
-                        ? userLogin.hoTen.slice(0, 15)
-                        : userLogin.hoTen}
-                    </h2>
-                    <h2 className="text-lg font-semibold text-white ">
-                      {userLogin.hoTen.length > 15
-                        ? userLogin.hoTen.slice(15, userLogin.hoTen.length)
-                        : ""}
+                      {userLogin.hoTen}
                     </h2>
                   </div>
 
@@ -137,7 +148,7 @@ export default function Profile(props) {
                     <Link
                       to="/profile"
                       aria-label="GitHub"
-                      className="p-2 rounded-md text-coolGray-800 hover:text-violet-600"
+                      className="p-2 rounded-md"
                     >
                       <svg
                         viewBox="0 0 496 512"
@@ -153,7 +164,7 @@ export default function Profile(props) {
                     <Link
                       to="/profile"
                       aria-label="Dribble"
-                      className="p-2 rounded-md text-coolGray-800 hover:text-violet-600"
+                      className="p-2 rounded-md"
                     >
                       <svg
                         viewBox="0 0 512 512"
@@ -169,7 +180,7 @@ export default function Profile(props) {
                     <Link
                       to="/profile"
                       aria-label="Twitter"
-                      className="p-2 rounded-md text-coolGray-800 hover:text-violet-600"
+                      className="p-2 rounded-md"
                     >
                       <svg
                         viewBox="0 0 512 512"
@@ -185,7 +196,7 @@ export default function Profile(props) {
                     <Link
                       to="/profile"
                       aria-label="Email"
-                      className="p-2 rounded-md text-coolGray-800 hover:text-violet-600"
+                      className="p-2 rounded-md"
                     >
                       <svg
                         viewBox="0 0 512 512"
@@ -206,7 +217,7 @@ export default function Profile(props) {
           >
             <div className="bg-gray-blue-color w-full rounded-lg shadow-xl">
               <div className="p-4 border-b">
-                <h2 className="text-2xl text-white">{userLogin.hoTen}</h2>
+                <h2 className="text-2xl text-white">Hồ sơ cá nhân</h2>
                 <p className="text-sm text-gray-300 ">
                   {userLogin.maLoaiNguoiDung === "QuanTri"
                     ? "Admin"
@@ -371,21 +382,7 @@ export default function Profile(props) {
               </div>
             </div>
           </TabPane>
-
-          <TabPane tab="Đăng xuất" key="4"></TabPane>
         </Tabs>
-        <button
-          className="absolute cursor-pointer"
-          style={{ top: "229px", left: "16px" }}
-          onClick={() => {
-            localStorage.removeItem(USER_LOGIN);
-            localStorage.removeItem(TOKEN);
-            history.push("/");
-            window.location.reload();
-          }}
-        >
-          Đăng xuất
-        </button>
       </div>
     </div>
   );
