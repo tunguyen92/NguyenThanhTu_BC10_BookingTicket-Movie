@@ -2,6 +2,7 @@
 import { quanLyNguoiDungService } from "../../services/QuanLyNguoiDungService";
 import {
   DANG_NHAP_ACTION,
+  GET_LIST_NGUOI_DUNG,
   SET_THONG_TIN_NGUOI_DUNG,
 } from "./types/QuanLyNguoiDungType";
 
@@ -79,6 +80,23 @@ export const capNhatThongTinNguoiDungAction = () => {
       console.log(result);
     } catch (errors) {
       console.log(errors.response?.data);
+    }
+  };
+};
+
+export const layDanhSachNguoiDungAction = () => {
+  return async (dispatch) => {
+    try {
+      //get list user from API
+      const result = await quanLyNguoiDungService.layDanhSachNguoiDung();
+
+      //send result to redux
+      dispatch({
+        type: GET_LIST_NGUOI_DUNG,
+        listUser: result.data,
+      });
+    } catch (error) {
+      console.log("error", error);
     }
   };
 };
