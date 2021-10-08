@@ -5,6 +5,7 @@ import { QuanLyNguoiDungReducer } from "./../../../redux/reducers/QuanLyNguoiDun
 import {
   layDanhSachNguoiDungAction,
   layThongTinNguoiDungAction,
+  timKiemNguoiDungAction,
 } from "./../../../redux/actions/QuanLyNguoiDungAction";
 import { NavLink } from "react-router-dom";
 import {
@@ -13,8 +14,10 @@ import {
   ContactsOutlined,
 } from "@ant-design/icons";
 export default function User() {
-  const { listUser } = useSelector((state) => state.QuanLyNguoiDungReducer);
-  // console.log(listUser);
+  const { listUser, listUserTimKiem, keyword } = useSelector(
+    (state) => state.QuanLyNguoiDungReducer
+  );
+  // console.log(listUserTimKiem);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -64,50 +67,92 @@ export default function User() {
     },
   ];
   const data = [];
-  for (let i = 0; i < listUser.length; i++) {
-    data.push({
-      key: i,
-      stt: i + 1,
-      userName: listUser[i].taiKhoan,
-      name: listUser[i].hoTen,
-      email: listUser[i].email,
-      phoneNumber: listUser[i].soDt,
-      password: listUser[i].matKhau,
-      loaiND: listUser[i].maLoaiNguoiDung,
-      action: (
-        <Fragment>
-          <NavLink to="" className="text-green-700 text-2xl mr-5" key={1}>
-            <ContactsOutlined />
-          </NavLink>
-          <NavLink to="" className="text-green-700 text-2xl mr-5" key={1}>
-            <EditOutlined />
-          </NavLink>
-          <span
-            className="text-red-700 text-2xl cursor-pointer mr-5"
-            to="/"
-            key={2}
-            // onClick={() => {
-            //   if (window.confirm("Bạn có muốn xóa phim " + film.tenPhim)) {
-            //     // Gọi action
-            //     dispatch(xoaPhimAction(film.maPhim));
-            //   }
-            // }}
-          >
-            <DeleteOutlined />
-          </span>
-        </Fragment>
-      ),
-    });
+  if (keyword === "") {
+    for (let i = 0; i < listUser.length; i++) {
+      data.push({
+        key: i,
+        stt: i + 1,
+        userName: listUser[i].taiKhoan,
+        name: listUser[i].hoTen,
+        email: listUser[i].email,
+        phoneNumber: listUser[i].soDt,
+        password: listUser[i].matKhau,
+        loaiND: listUser[i].maLoaiNguoiDung,
+        action: (
+          <Fragment>
+            <NavLink to="" className="text-green-700 text-2xl mr-5">
+              <ContactsOutlined />
+            </NavLink>
+            <NavLink to="" className="text-green-700 text-2xl mr-5">
+              <EditOutlined />
+            </NavLink>
+            <span
+              className="text-red-700 text-2xl cursor-pointer mr-5"
+              to="/"
+              key={2}
+              // onClick={() => {
+              //   if (window.confirm("Bạn có muốn xóa phim " + film.tenPhim)) {
+              //     // Gọi action
+              //     dispatch(xoaPhimAction(film.maPhim));
+              //   }
+              // }}
+            >
+              <DeleteOutlined />
+            </span>
+          </Fragment>
+        ),
+      });
+    }
+  } else {
+    for (let i = 0; i < listUserTimKiem.length; i++) {
+      data.push({
+        key: i,
+        stt: i + 1,
+        userName: listUserTimKiem[i].taiKhoan,
+        name: listUserTimKiem[i].hoTen,
+        email: listUserTimKiem[i].email,
+        phoneNumber: listUserTimKiem[i].soDt,
+        password: listUserTimKiem[i].matKhau,
+        loaiND: listUserTimKiem[i].maLoaiNguoiDung,
+        action: (
+          <Fragment>
+            <NavLink to="" className="text-green-700 text-2xl mr-5">
+              <ContactsOutlined />
+            </NavLink>
+            <NavLink to="" className="text-green-700 text-2xl mr-5">
+              <EditOutlined />
+            </NavLink>
+            <span
+              className="text-red-700 text-2xl cursor-pointer mr-5"
+              to="/"
+              key={2}
+              // onClick={() => {
+              //   if (window.confirm("Bạn có muốn xóa phim " + film.tenPhim)) {
+              //     // Gọi action
+              //     dispatch(xoaPhimAction(film.maPhim));
+              //   }
+              // }}
+            >
+              <DeleteOutlined />
+            </span>
+          </Fragment>
+        ),
+      });
+    }
   }
 
   const { Search } = Input;
-  const onSearch = (value) => console.log(value);
+  const onSearch = (value) => {
+    dispatch(timKiemNguoiDungAction(value));
+  };
   return (
     <Fragment>
       <Search
-        placeholder="Nhập thông tin cần tìm"
-        onSearch={onSearch}
+        placeholder="Nhập tên tài khoản cần tìm"
+        // onSearch={onSearch}
+        onChange={(e) => onSearch(e.target.value)}
         enterButton
+        className="mb-5"
       />
       <Table
         columns={columns}
