@@ -12,8 +12,8 @@ export default function News() {
           <div className="flex flex-col space-y-8 md:space-y-12">
             <div className="flex flex-col space-y-2">
               <h3 className="flex items-center space-x-2 ">
-                <span className="flex-shrink-0 w-2 h-2 uppercase rounded-full bg-violet-600"></span>
-                <span className="text-xs  font-bold tracking-wider uppercase">
+                <span className="flex-shrink-0 w-2 h-2 uppercase rounded-full "></span>
+                <span className="text-xs  title-color font-bold tracking-wider uppercase">
                   Nổi bật
                 </span>
               </h3>
@@ -24,8 +24,8 @@ export default function News() {
             </div>
             <div className="flex flex-col space-y-2">
               <h3 className="flex items-center space-x-2 ">
-                <span className="flex-shrink-0 w-2 h-2 uppercase rounded-full bg-violet-600"></span>
-                <span className="text-xs font-bold tracking-wider uppercase">
+                <span className="flex-shrink-0 w-2 h-2 uppercase rounded-full "></span>
+                <span className="text-xs title-color font-bold tracking-wider uppercase">
                   Nổi bật
                 </span>
               </h3>
@@ -36,8 +36,8 @@ export default function News() {
             </div>
             <div className="flex flex-col space-y-2">
               <h3 className="flex items-center space-x-2 ">
-                <span className="flex-shrink-0 w-2 h-2 uppercase rounded-full bg-violet-600"></span>
-                <span className="text-xs font-bold tracking-wider uppercase">
+                <span className="flex-shrink-0 w-2 h-2 uppercase rounded-full "></span>
+                <span className="text-xs title-color font-bold tracking-wider uppercase">
                   Nổi bật
                 </span>
               </h3>
@@ -48,11 +48,11 @@ export default function News() {
             </div>
           </div>
           <div className="flex flex-col w-full space-y-2">
-            <div className="flex w-full h-1 bg-opacity-10 bg-violet-600">
-              <div className="w-1/2 h-full bg-violet-600"></div>
+            <div className="flex w-full h-1 bg-opacity-10 ">
+              <div className="w-1/2 h-full "></div>
             </div>
             <a to="/news" className="flex items-center justify-between w-full">
-              <span className="text-xs font-bold tracking-wider uppercase">
+              <span className="text-xs font-bold tracking-wider uppercase yellow-color-hover">
                 Xem thêm tin nổi bật
               </span>
               <svg
@@ -79,16 +79,16 @@ export default function News() {
           <span className="absolute px-1 pb-2 text-xs font-bold uppercase border-b-2 left-6 top-6 ">
             paris, france
           </span>
-          <a className="flex flex-col items-center justify-end p-6 text-center sm:p-8 group via-transparent flex-grow-1 bg-gradient-to-b from-coolGray-900 to-coolGray-900">
+          <a className="flex flex-col items-center justify-end  text-center  group via-transparent flex-grow-1 bg-gradient-to-b from-coolGray-900 to-coolGray-900">
             <span className="flex items-center mb-4 space-x-2 text-violet-600">
-              <span className="relative flex-shrink-0 w-2 h-2 rounded-full bg-violet-600">
-                <span className="absolute flex-shrink-0 w-3 h-3 rounded-full -left-1 -top-1 animate-ping bg-violet-600"></span>
+              <span className="relative flex-shrink-0 w-2 h-2 rounded-full ">
+                <span className="absolute flex-shrink-0 w-3 h-3 rounded-full -left-1 -top-1 animate-ping "></span>
               </span>
               <span className="text-sm font-bold">Live</span>
             </span>
             <h1
               to="/news"
-              className="text-2xl text-white font-semibold group-hover:underline "
+              className="text-2xl text-white font-semibold group-hover:underline bg-black bg-opacity-50 p-3 sm:p-4 yellow-color-hover"
             >
               Dwayne “The Rock” Johnson nói về phim được đầu tư 130 triệu USD
             </h1>

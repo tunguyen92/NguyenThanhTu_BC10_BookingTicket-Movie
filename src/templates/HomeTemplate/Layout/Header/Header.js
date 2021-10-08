@@ -11,7 +11,7 @@ import "./header.css";
 
 const navigation = [
   { name: "Trang chủ", to: "/", current: true },
-  { name: "Phim", to: "/contact", current: false },
+  { name: "Phim", to: "/danh-sach-phim", current: false },
   { name: "Tin tức", to: "/news", current: false },
   { name: "Liên hệ", to: "/contact", current: false },
 ];
@@ -128,7 +128,7 @@ export default function Header(props) {
     <Disclosure
       as="nav"
       className={
-        `${show && "sticky"} ` +
+        `${show && "sticky "} ` +
         (!navigation[0].current
           ? "bg-gray-blue-color w-full"
           : "bg-transparent absolute top-0 z-50 w-full")
@@ -137,7 +137,7 @@ export default function Header(props) {
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-            <div className="relative flex items-center justify-between h-16 sm:h-28">
+            <div className="relative flex items-center justify-between h-16 sm:h-20">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -163,7 +163,7 @@ export default function Header(props) {
                   }}
                 >
                   <img
-                    className="w-10 sm:w-14  lg:w-20"
+                    className="w-10 sm:w-14  lg:w-16"
                     src={process.env.PUBLIC_URL + "/images/logo.png"}
                     alt="logo"
                   />

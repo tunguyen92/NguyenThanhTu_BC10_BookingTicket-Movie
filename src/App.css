@@ -35,6 +35,7 @@ h4,
 h5,
 h6 {
   margin: 0px;
+  transition: all 0.5s ease-out;
 }
 
 p {
@@ -151,8 +152,10 @@ iframe {
 
 .yellow-color {
   color: #dcf836;
+  transition: all 0.5s ease-out;
 }
 .yellow-color-hover:hover {
+  transition: all 0.5s ease-out;
   color: #dcf836;
 }
 
@@ -175,8 +178,10 @@ iframe {
   background-color: #1c3d5d;
 }
 .title-color {
+  transition: all 0.5s ease-out;
   color: #4280bf;
 }
 .title-color-hover:hover {
+  transition: all 0.5s ease-out;
   color: #4280bf;
 }
