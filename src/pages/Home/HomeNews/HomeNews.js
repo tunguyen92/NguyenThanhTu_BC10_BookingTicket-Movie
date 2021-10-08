@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import ads from "../../../assets/images/ads.png";
 import actress from "../../../assets/images/park-bo-young.jpg";
+import { NavLink } from "react-router-dom";
 
 function HomeNews() {
   return (
@@ -41,11 +42,9 @@ function HomeNews() {
                 <h3 className="text-white text-xs sm:text-sm md:text-lg">
                   Xem thêm
                 </h3>
-                <a
+                <NavLink
                   className="text-xs sm:text-sm text-gray-300"
-                  href="https://zingnews.vn/phim-anh.html"
-                  target="_blank"
-                  rel="noreferrer"
+                  to="/danh-sach-phim"
                 >
                   XEM TẤT CẢ TIN TỨC
                   <svg
@@ -60,7 +59,7 @@ function HomeNews() {
                       clipRule="evenodd"
                     />
                   </svg>
-                </a>
+                </NavLink>
               </div>
               <div className="flex">
                 <div>

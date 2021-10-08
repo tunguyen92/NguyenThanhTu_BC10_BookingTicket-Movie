@@ -129,7 +129,7 @@ export default function Header(props) {
       as="nav"
       className={
         `${show && "sticky "} ` +
-        (!navigation[0].current
+        (navigation.current
           ? "bg-gray-blue-color w-full"
           : "bg-transparent absolute top-0 z-50 w-full")
       }
@@ -174,12 +174,13 @@ export default function Header(props) {
                       <NavLink
                         key={item.name}
                         to={item.to}
-                        className={classNames(
-                          item.current
-                            ? " yellow-color-hover yellow-color"
-                            : "text-gray-300  yellow-color-hover",
-                          "px-3 py-2 rounded-2xl text-base font-medium"
-                        )}
+                        className="text-gray-300  yellow-color-hover px-3 py-2 rounded-2xl text-base font-medium"
+                        // className={classNames(
+                        //   item.current
+                        //     ? " yellow-color-hover yellow-color"
+                        //     : "text-gray-300  yellow-color-hover",
+                        //   "px-3 py-2 rounded-2xl text-base font-medium"
+                        // )}
                         aria-current={item.current ? "page" : undefined}
                         onClick={() => {
                           navigation.forEach((navlink) => {
