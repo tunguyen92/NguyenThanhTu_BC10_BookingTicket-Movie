@@ -1,6 +1,7 @@
 // import { history } from "../../App";
 import { quanLyNguoiDungService } from "../../services/QuanLyNguoiDungService";
 import {
+  GET_TIM_KIEM_NGUOI_DUNG,
   DANG_NHAP_ACTION,
   GET_LIST_NGUOI_DUNG,
   SET_THONG_TIN_NGUOI_DUNG,
@@ -98,5 +99,14 @@ export const layDanhSachNguoiDungAction = () => {
     } catch (error) {
       console.log("error", error);
     }
+  };
+};
+
+export const timKiemNguoiDungAction = (keyword) => {
+  return (dispatch) => {
+    dispatch({
+      type: GET_TIM_KIEM_NGUOI_DUNG,
+      keyword: keyword,
+    });
   };
 };
