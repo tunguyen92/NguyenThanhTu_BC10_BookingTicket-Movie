@@ -3,6 +3,7 @@
   position: fixed;
   opacity: 1;
   transition: all 0.5s ease-out;
+  z-index: 99;
 }
 
 @media (min-width: 640px) {

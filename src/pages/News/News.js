@@ -1,70 +1,59 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { Tabs } from "antd";
+
+const { TabPane } = Tabs;
 
 export default function News() {
   return (
-    <section className="px-5 pt-20 pb-10 bg-dark-color text-coolGray-800">
+    <section className="px-5 pt-32 pb-10 bg-dark-blue-color ">
       <div className="container grid grid-cols-12 mx-auto gap-y-6 md:gap-10">
         <div className="flex flex-col justify-between col-span-12 py-2 space-y-8 md:space-y-16 md:col-span-3">
           <div className="flex flex-col space-y-8 md:space-y-12">
             <div className="flex flex-col space-y-2">
-              <h3 className="flex items-center space-x-2 text-coolGray-600">
+              <h3 className="flex items-center space-x-2 ">
                 <span className="flex-shrink-0 w-2 h-2 uppercase rounded-full bg-violet-600"></span>
                 <span className="text-xs  font-bold tracking-wider uppercase">
-                  Exclusive
+                  Nổi bật
                 </span>
               </h3>
-              <a href="#" className="font-serif hover:underline">
-                Donec sed elit quis odio mollis dignissim eget et nulla.
-              </a>
-              <p className="text-xs text-coolGray-600">
-                47 minutes ago by
-                <a href="#" className="hover:underline text-violet-600">
-                  Leroy Jenkins
-                </a>
-              </p>
+              <Link to="/news" className="hover:underline">
+                George Clooney cấm vợ con xem phim siêu anh hùng mình đóng.
+              </Link>
+              <p className="text-xs ">47 phút trước</p>
             </div>
             <div className="flex flex-col space-y-2">
-              <h3 className="flex items-center space-x-2 text-coolGray-600">
+              <h3 className="flex items-center space-x-2 ">
                 <span className="flex-shrink-0 w-2 h-2 uppercase rounded-full bg-violet-600"></span>
                 <span className="text-xs font-bold tracking-wider uppercase">
-                  Exclusive
+                  Nổi bật
                 </span>
               </h3>
-              <a href="#" className="font-serif hover:underline">
-                Ut fermentum nunc quis ipsum laoreet condimentum.
-              </a>
-              <p className="text-xs text-coolGray-600">
-                2 hours ago by
-                <a href="#" className="hover:underline text-violet-600">
-                  Leroy Jenkins
-                </a>
-              </p>
+              <Link to="/news" className="hover:underline">
+                Hãng sản xuất phim ‘Bombshell’ bị kiện 14,3 triệu USD.
+              </Link>
+              <p className="text-xs ">2 giờ trước</p>
             </div>
             <div className="flex flex-col space-y-2">
-              <h3 className="flex items-center space-x-2 text-coolGray-600">
+              <h3 className="flex items-center space-x-2 ">
                 <span className="flex-shrink-0 w-2 h-2 uppercase rounded-full bg-violet-600"></span>
                 <span className="text-xs font-bold tracking-wider uppercase">
-                  Exclusive
+                  Nổi bật
                 </span>
               </h3>
-              <a href="#" className="font-serif hover:underline">
-                Nunc nec ipsum lobortis, pulvinar neque sed.
-              </a>
-              <p className="text-xs text-coolGray-600">
-                4 hours ago by
-                <a href="#" className="hover:underline text-violet-600">
-                  Leroy Jenkins
-                </a>
-              </p>
+              <Link to="/news" className="hover:underline">
+                ‘No One Gets Out Alive’ và cơn ác mộng của người nhập cư.
+              </Link>
+              <p className="text-xs ">4 giờ trước</p>
             </div>
           </div>
           <div className="flex flex-col w-full space-y-2">
             <div className="flex w-full h-1 bg-opacity-10 bg-violet-600">
               <div className="w-1/2 h-full bg-violet-600"></div>
             </div>
-            <a href="#" className="flex items-center justify-between w-full">
+            <a to="/news" className="flex items-center justify-between w-full">
               <span className="text-xs font-bold tracking-wider uppercase">
-                See more exclusives
+                Xem thêm tin nổi bật
               </span>
               <svg
                 viewBox="0 0 24 24"
@@ -81,13 +70,13 @@ export default function News() {
           </div>
         </div>
         <div
-          className="relative flex col-span-12 bg-center bg-no-repeat bg-cover bg-coolGray-500 xl:col-span-6 lg:col-span-5 md:col-span-9 min-h-96"
+          className="relative flex col-span-12 bg-center bg-no-repeat bg-cover  xl:col-span-6 lg:col-span-5 md:col-span-9 min-h-96"
           style={{
             backgroundImage:
-              "url('https://source.unsplash.com/random/239x319')",
+              "url('https://source.unsplash.com/random/620x610')",
           }}
         >
-          <span className="absolute px-1 pb-2 text-xs font-bold uppercase border-b-2 left-6 top-6 border-violet-600 text-coolGray-100">
+          <span className="absolute px-1 pb-2 text-xs font-bold uppercase border-b-2 left-6 top-6 ">
             paris, france
           </span>
           <a className="flex flex-col items-center justify-end p-6 text-center sm:p-8 group via-transparent flex-grow-1 bg-gradient-to-b from-coolGray-900 to-coolGray-900">
@@ -98,114 +87,205 @@ export default function News() {
               <span className="text-sm font-bold">Live</span>
             </span>
             <h1
-              href="#"
-              className="font-serif text-2xl font-semibold group-hover:underline text-coolGray-100"
+              to="/news"
+              className="text-2xl text-white font-semibold group-hover:underline "
             >
-              Morbi mattis justo est, ac consectetur dui eleifend vitae. Donec
-              venenatis?
+              Dwayne “The Rock” Johnson nói về phim được đầu tư 130 triệu USD
             </h1>
           </a>
         </div>
         <div className="hidden py-2 xl:col-span-3 lg:col-span-4 md:hidden lg:block">
-          <div className="mb-8 space-x-5 border-b-2 border-opacity-10 border-violet-600">
-            <button
-              type="button"
-              className="pb-5 text-xs font-bold uppercase border-b-2 border-violet-600"
-            >
-              Latest
-            </button>
-            <button
-              type="button"
-              className="pb-5 text-xs font-bold uppercase border-b-2 border-transparent text-coolGray-600"
-            >
-              Popular
-            </button>
-          </div>
-          <div className="flex flex-col divide-y divide-coolGray-300">
-            <div className="flex px-1 py-4">
-              <img
-                alt=""
-                className="flex-shrink-0 object-cover w-20 h-20 mr-4 bg-coolGray-500"
-                src="https://source.unsplash.com/random/244x324"
-              />
-              <div className="flex flex-col flex-grow">
-                <a href="#" className="font-serif hover:underline">
-                  Aenean ac tristique lorem, ut mollis dui.
-                </a>
-                <p className="mt-auto text-xs text-coolGray-600">
-                  5 minutes ago
-                  <a
-                    href="#"
-                    className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
-                  >
-                    Politics
-                  </a>
-                </p>
-              </div>
-            </div>
-            <div className="flex px-1 py-4">
-              <img
-                alt=""
-                className="flex-shrink-0 object-cover w-20 h-20 mr-4 bg-coolGray-500"
-                src="https://source.unsplash.com/random/245x325"
-              />
-              <div className="flex flex-col flex-grow">
-                <a href="#" className="font-serif hover:underline">
-                  Nulla consectetur efficitur.
-                </a>
-                <p className="mt-auto text-xs text-coolGray-600">
-                  14 minutes ago
-                  <a
-                    href="#"
-                    className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
-                  >
-                    Sports
-                  </a>
-                </p>
-              </div>
-            </div>
-            <div className="flex px-1 py-4">
-              <img
-                alt=""
-                className="flex-shrink-0 object-cover w-20 h-20 mr-4 bg-coolGray-500"
-                src="https://source.unsplash.com/random/246x326"
-              />
-              <div className="flex flex-col flex-grow">
-                <a href="#" className="font-serif hover:underline">
-                  Vitae semper augue purus tincidunt libero.
-                </a>
-                <p className="mt-auto text-xs text-coolGray-600">
-                  22 minutes ago
-                  <a
-                    href="#"
-                    className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
-                  >
-                    World
-                  </a>
-                </p>
-              </div>
-            </div>
-            <div className="flex px-1 py-4">
-              <img
-                alt=""
-                className="flex-shrink-0 object-cover w-20 h-20 mr-4 bg-coolGray-500"
-                src="https://source.unsplash.com/random/247x327"
-              />
-              <div className="flex flex-col flex-grow">
-                <a href="#" className="font-serif hover:underline">
-                  Suspendisse potenti.
-                </a>
-                <p className="mt-auto text-xs text-coolGray-600">
-                  37 minutes ago
-                  <a
-                    href="#"
-                    className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
-                  >
-                    Business
-                  </a>
-                </p>
-              </div>
-            </div>
+          <div className="mb-8 space-x-5 border-b-2 border-opacity-10">
+            <Tabs defaultActiveKey="1">
+              <TabPane
+                tab="Mới nhất"
+                key="1"
+                className="pb-5 text-xs border-b-2"
+              >
+                <div className="flex flex-col divide-y divide-coolGray-300">
+                  <div className="flex px-1 py-4">
+                    <img
+                      alt=""
+                      className="flex-shrink-0 object-cover w-20 h-20 mr-4 "
+                      src="https://source.unsplash.com/random/244x324"
+                    />
+                    <div className="flex flex-col flex-grow">
+                      <Link to="/news" className="hover:underline">
+                        Cặp nhân vật gây khó chịu ở “Hương vị tình thân”.
+                      </Link>
+                      <p className="mt-auto text-xs ">
+                        5 phút trước
+                        <Link
+                          to="/news"
+                          className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
+                        >
+                          Phim truyền hình
+                        </Link>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex px-1 py-4">
+                    <img
+                      alt=""
+                      className="flex-shrink-0 object-cover w-20 h-20 mr-4 "
+                      src="https://source.unsplash.com/random/245x325"
+                    />
+                    <div className="flex flex-col flex-grow">
+                      <Link to="/news" className="hover:underline">
+                        ‘Tổng đài truy vết’ - khi tội lỗi định hình con người.
+                      </Link>
+                      <p className="mt-auto text-xs ">
+                        14 phút trước
+                        <Link
+                          to="/news"
+                          className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
+                        >
+                          Phim chiếu rạp
+                        </Link>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex px-1 py-4">
+                    <img
+                      alt=""
+                      className="flex-shrink-0 object-cover w-20 h-20 mr-4 "
+                      src="https://source.unsplash.com/random/246x326"
+                    />
+                    <div className="flex flex-col flex-grow">
+                      <Link to="/news" className="hover:underline">
+                        Loay hoay trong việc quản lý hàng nghìn phim điện ảnh
+                        trên mạng.
+                      </Link>
+                      <p className="mt-auto text-xs ">
+                        22 phút trước
+                        <Link
+                          to="/news"
+                          className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
+                        >
+                          Trong nước
+                        </Link>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex px-1 py-4">
+                    <img
+                      alt=""
+                      className="flex-shrink-0 object-cover w-20 h-20 mr-4 "
+                      src="https://source.unsplash.com/random/247x327"
+                    />
+                    <div className="flex flex-col flex-grow">
+                      <Link to="/news" className="hover:underline">
+                        Cuộc sống của một phụ nữ bị đảo lộn vì phim “Squid
+                        Game”.
+                      </Link>
+                      <p className="mt-auto text-xs ">
+                        37 phút trước
+                        <Link
+                          to="/news"
+                          className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
+                        >
+                          Thế giới
+                        </Link>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </TabPane>
+
+              <TabPane
+                tab="Phổ biến"
+                key="2"
+                className="pb-5 text-xs border-b-2"
+              >
+                <div className="flex flex-col divide-y divide-coolGray-300">
+                  <div className="flex px-1 py-4">
+                    <img
+                      alt=""
+                      className="flex-shrink-0 object-cover w-20 h-20 mr-4 "
+                      src="https://picsum.photos/246/326?random=1"
+                    />
+                    <div className="flex flex-col flex-grow">
+                      <Link to="/news" className="hover:underline">
+                        Phim truyền hình Việt ngày càng hút khán giả.
+                      </Link>
+                      <p className="mt-auto text-xs ">
+                        9 giờ trước
+                        <Link
+                          to="/news"
+                          className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
+                        >
+                          Phim truyền hình
+                        </Link>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex px-1 py-4">
+                    <img
+                      alt=""
+                      className="flex-shrink-0 object-cover w-20 h-20 mr-4 "
+                      src="https://picsum.photos/246/326?random=2"
+                    />
+                    <div className="flex flex-col flex-grow">
+                      <Link to="/news" className="hover:underline">
+                        Diễn biến vụ kiện của Scarlett Johansson với Disney.
+                      </Link>
+                      <p className="mt-auto text-xs ">
+                        1 ngày trước
+                        <Link
+                          to="/news"
+                          className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
+                        >
+                          Phim chiếu rạp
+                        </Link>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex px-1 py-4">
+                    <img
+                      alt=""
+                      className="flex-shrink-0 object-cover w-20 h-20 mr-4 "
+                      src="https://picsum.photos/246/326?random=3"
+                    />
+                    <div className="flex flex-col flex-grow">
+                      <Link to="/news" className="hover:underline">
+                        Các nhà làm phim nói gì về 'kiểm duyệt' và 'lạm quyền'?
+                      </Link>
+                      <p className="mt-auto text-xs ">
+                        2 ngày trước
+                        <Link
+                          to="/news"
+                          className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
+                        >
+                          Trong nước
+                        </Link>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex px-1 py-4">
+                    <img
+                      alt=""
+                      className="flex-shrink-0 object-cover w-20 h-20 mr-4 "
+                      src="https://picsum.photos/246/326?random=4"
+                    />
+                    <div className="flex flex-col flex-grow">
+                      <Link to="/news" className="hover:underline">
+                        Cái chết của Lý Tiểu Long và sự sụp đổ dòng phim võ
+                        thuật.
+                      </Link>
+                      <p className="mt-auto text-xs ">
+                        3 ngày trước
+                        <Link
+                          to="/news"
+                          className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
+                        >
+                          Thế giới
+                        </Link>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </TabPane>
+            </Tabs>
           </div>
         </div>
       </div>

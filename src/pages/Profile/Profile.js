@@ -8,6 +8,11 @@ import "./Profile.css";
 import { capNhatThongTinNguoiDungAction } from "../../redux/actions/QuanLyNguoiDungAction";
 import { layThongTinNguoiDungAction } from "../../redux/actions/QuanLyNguoiDungAction";
 import { useFormik } from "formik";
+import {
+  EditOutlined,
+  HistoryOutlined,
+  LogoutOutlined,
+} from "@ant-design/icons";
 
 const { Option } = Select;
 
@@ -113,6 +118,7 @@ export default function Profile(props) {
         window.location.reload();
       }}
     >
+      <LogoutOutlined className="align-middle mr-3 pb-1" />
       Đăng xuất
     </button>
   );
@@ -135,7 +141,7 @@ export default function Profile(props) {
                     alt=""
                     className="w-12 h-12 rounded-full "
                   />
-                  <p className="mt-2 title-color-hover">Hồ sơ</p>
+                  <p className="mt-2 yellow-color-hover">Hồ sơ</p>
                 </div>
                 <div className="w-40 whitespace-pre-wrap">
                   <div className="yellow-color-hover">
@@ -249,11 +255,27 @@ export default function Profile(props) {
             </div>
           </TabPane>
 
-          <TabPane tab="Lịch sử đặt vé" key="2">
+          <TabPane
+            tab={
+              <p className="yellow-color-hover">
+                <HistoryOutlined className="align-middle pb-1" />
+                Lịch sử đặt vé
+              </p>
+            }
+            key="2"
+          >
             Lịch sử đặt vé
           </TabPane>
 
-          <TabPane tab="Chỉnh sửa tài khoản" key="3">
+          <TabPane
+            tab={
+              <p className="yellow-color-hover">
+                <EditOutlined className="align-middle pb-1" />
+                Chỉnh sửa hồ sơ
+              </p>
+            }
+            key="3"
+          >
             <div className="bg-gray-blue-color w-full rounded-lg shadow-xl">
               <div className="p-4 border-b">
                 <h2 className="text-2xl text-white">Chỉnh sửa hồ sơ</h2>
