@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Nhom12_BC10_BookingTicket-Movie/static/css/main.c1ff1afb.chunk.css",
-    "main.js": "/Nhom12_BC10_BookingTicket-Movie/static/js/main.d16600d2.chunk.js",
-    "main.js.map": "/Nhom12_BC10_BookingTicket-Movie/static/js/main.d16600d2.chunk.js.map",
+    "main.js": "/Nhom12_BC10_BookingTicket-Movie/static/js/main.bcca9b94.chunk.js",
+    "main.js.map": "/Nhom12_BC10_BookingTicket-Movie/static/js/main.bcca9b94.chunk.js.map",
     "runtime-main.js": "/Nhom12_BC10_BookingTicket-Movie/static/js/runtime-main.7907ae8f.js",
     "runtime-main.js.map": "/Nhom12_BC10_BookingTicket-Movie/static/js/runtime-main.7907ae8f.js.map",
     "static/css/2.dd82c734.chunk.css": "/Nhom12_BC10_BookingTicket-Movie/static/css/2.dd82c734.chunk.css",
@@ -40,6 +40,6 @@
     "static/css/2.dd82c734.chunk.css",
     "static/js/2.30234061.chunk.js",
     "static/css/main.c1ff1afb.chunk.css",
-    "static/js/main.d16600d2.chunk.js"
+    "static/js/main.bcca9b94.chunk.js"
   ]
 }
