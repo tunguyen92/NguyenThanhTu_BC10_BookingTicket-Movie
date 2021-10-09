@@ -36,6 +36,7 @@
     "redux-thunk": "^2.3.0",
     "sass-loader": "^12.1.0",
     "slick-carousel": "^1.8.1",
+    "sweetalert": "^2.1.2",
     "web-vitals": "^1.1.2",
     "webpack": "^4.44.0",
     "yup": "^0.32.9"

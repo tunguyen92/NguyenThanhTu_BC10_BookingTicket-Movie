@@ -61,8 +61,8 @@ export default function Register(props) {
         soDt: Yup.string()
           .required("Nhập vào số điện thoại")
           .matches(/[0-9]/, "Số điện thoại sao có chữ được bạn êiii.")
-          .min(11, "Chưa đủ 11 số.")
-          .max(11, "Quá 11 số rồi."),
+          .min(10, "Chưa đủ 10 số.")
+          .max(10, "Quá 10 số rồi."),
 
         maNhom: Yup.string().ensure().required("Chọn mã nhóm!"),
       })}
@@ -80,7 +80,9 @@ export default function Register(props) {
                 <span className="login100-form-title p-b-26">
                   Tạo tài khoản mới
                 </span>
-                <img className="login100-form-img" src={logo} alt="" />
+                <NavLink to="/" className="cursor-pointer">
+                  <img className="login100-form-img" src={logo} alt="logo" />
+                </NavLink>
 
                 <div className="wrap-input100 ">
                   <input

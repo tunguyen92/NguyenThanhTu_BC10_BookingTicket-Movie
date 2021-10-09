@@ -22,7 +22,7 @@ export const dangNhapAction = (thongTinDangNhap) => {
         //chuyển hướng về trang trước khi đăng nhập
         // history.goBack();
 
-        window.location.href = "/";
+        window.location.replace("/");
       }
 
       console.log("result", result.data);
