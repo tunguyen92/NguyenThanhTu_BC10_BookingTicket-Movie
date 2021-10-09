@@ -39,8 +39,16 @@ function App() {
           exact
           Component={Home}
         />
-        <HomeTemplate path="/contact" exact Component={Contact} />
-        <HomeTemplate path="/news" exact Component={News} />
+        <HomeTemplate
+          path="/Nhom12_BC10_BookingTicket-Movie/contact"
+          exact
+          Component={Contact}
+        />
+        <HomeTemplate
+          path="/Nhom12_BC10_BookingTicket-Movie/news"
+          exact
+          Component={News}
+        />
         <HomeTemplate path="/profile" exact Component={Profile} />
         <HomeTemplate path="/danh-sach-phim" exact Component={ListFilm} />
 
