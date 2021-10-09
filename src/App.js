@@ -34,7 +34,11 @@ function App() {
   return (
     <Router history={history}>
       <Switch>
-        <HomeTemplate path="/home" exact Component={Home} />
+        <HomeTemplate
+          path="/Nhom12_BC10_BookingTicket-Movie"
+          exact
+          Component={Home}
+        />
         <HomeTemplate path="/contact" exact Component={Contact} />
         <HomeTemplate path="/news" exact Component={News} />
         <HomeTemplate path="/profile" exact Component={Profile} />
