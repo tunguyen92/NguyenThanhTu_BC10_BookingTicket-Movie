@@ -31,6 +31,12 @@ export class QuanLyNguoiDungService extends baseService {
   capNhatThongTinNguoiDung = () => {
     return this.put(`/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`);
   };
+
+  xoaThongTinNguoiDung = (taiKhoan) => {
+    return this.delete(
+      `/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`
+    );
+  };
 }
 
 export const quanLyNguoiDungService = new QuanLyNguoiDungService();

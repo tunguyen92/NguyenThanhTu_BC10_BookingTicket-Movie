@@ -73,7 +73,7 @@ export const xoaPhimAction = (maPhim) => {
       //Load lại danh sách phim mới
       dispatch(layDanhSachPhimAction());
     } catch (errors) {
-      console.log(errors.response?.data);
+      alert(errors.response);
     }
   };
 };
