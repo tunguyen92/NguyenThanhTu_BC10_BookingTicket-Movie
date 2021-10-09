@@ -13,6 +13,7 @@ import { Redirect, Route } from "react-router";
 import { NavLink } from "react-router-dom";
 import { history } from "../../App";
 import { TOKEN, USER_LOGIN } from "../../util/settings/config";
+import swal from "sweetalert";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -35,12 +36,18 @@ const AdminTemplate = (props) => {
   });
 
   if (!localStorage.getItem(USER_LOGIN)) {
-    alert("Bạn không có quyền truy cập vào trang này !");
+    swal({
+      title: "Bạn không có quyền truy cập vào trang này!",
+      icon: "warning",
+    });
     return <Redirect to="/" />;
   }
 
   if (userLogin.maLoaiNguoiDung !== "QuanTri") {
-    alert("Bạn không có quyền truy cập vào trang này !");
+    swal({
+      title: "Bạn không có quyền truy cập vào trang này!",
+      icon: "warning",
+    });
     return <Redirect to="/" />;
   }
 
@@ -73,7 +80,7 @@ const AdminTemplate = (props) => {
             onClick={() => {
               localStorage.removeItem(USER_LOGIN);
               localStorage.removeItem(TOKEN);
-              history.push("/home");
+              history.push("/");
               window.location.reload();
             }}
             className="text-blue-800"

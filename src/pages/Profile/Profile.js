@@ -42,17 +42,19 @@ const tailFormItemLayout = {
 const { TabPane } = Tabs;
 
 export default function Profile(props) {
-  const { thongTinNguoiDung } = useSelector(
+  const { userLogin, thongTinNguoiDung } = useSelector(
     (state) => state.QuanLyNguoiDungReducer
   );
+
+  console.log(userLogin);
   console.log(thongTinNguoiDung);
 
-  const { userLogin } = useSelector((state) => state.QuanLyNguoiDungReducer);
+  const user = { taiKhoan: userLogin.taiKhoan };
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(layThongTinNguoiDungAction(userLogin.taiKhoan));
+    dispatch(layThongTinNguoiDungAction(user));
   }, []);
 
   const formik = useFormik({

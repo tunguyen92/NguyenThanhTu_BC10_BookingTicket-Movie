@@ -23,7 +23,7 @@ export default function User() {
   const { listUser, listUserTimKiem, keyword } = useSelector(
     (state) => state.QuanLyNguoiDungReducer
   );
-  // console.log(listUserTimKiem);
+  console.log(listUser);
   const dispatch = useDispatch();
 
   //Tạo modal update hiển thị thông tin User

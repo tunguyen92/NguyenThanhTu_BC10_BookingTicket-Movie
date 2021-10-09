@@ -1,12 +1,13 @@
-// import { history } from "../../App";
+import { history } from "../../App";
 import { quanLyNguoiDungService } from "../../services/QuanLyNguoiDungService";
 import {
   GET_TIM_KIEM_NGUOI_DUNG,
   DANG_NHAP_ACTION,
   GET_LIST_NGUOI_DUNG,
-  SET_THONG_TIN_NGUOI_DUNG,
+  GET_THONG_TIN_NGUOI_DUNG,
   DELETE_NGUOI_DUNG,
 } from "./types/QuanLyNguoiDungType";
+import swal from "sweetalert";
 
 export const dangNhapAction = (thongTinDangNhap) => {
   return async (dispatch) => {
@@ -18,17 +19,24 @@ export const dangNhapAction = (thongTinDangNhap) => {
           type: DANG_NHAP_ACTION,
           thongTinDangNhap: result.data,
         });
-        alert("Đăng nhập thành công");
+
+        swal({
+          title: "Đăng nhập thành công!",
+          icon: "success",
+        }).then((value) => {
+          history.push("/");
+        });
 
         //chuyển hướng về trang trước khi đăng nhập
         // history.goBack();
-
-        window.location.replace("/");
       }
 
       console.log("result", result.data);
-    } catch (error) {
-      alert(error.response?.data);
+    } catch (errors) {
+      swal({
+        title: `${errors.response?.data}`,
+        icon: "error",
+      });
     }
   };
 };
@@ -38,13 +46,20 @@ export const dangKyAction = (formData) => {
     try {
       let result = await quanLyNguoiDungService.dangKy(formData);
 
-      alert("Đăng ký thành công");
-      window.location.href = "/login";
+      swal({
+        title: "Đăng ký thành công!",
+        icon: "success",
+      }).then((value) => {
+        history.push("/login");
+      });
 
       console.log(result);
     } catch (errors) {
       if (errors.response.status === 500) {
-        alert("Tài khoản đã tồn tại!");
+        swal({
+          title: `${errors.response?.data}`,
+          icon: "error",
+        });
       }
       console.log(errors.response?.data);
     }
@@ -61,11 +76,11 @@ export const layThongTinNguoiDungAction = (taiKhoan) => {
 
       if (result.data.statusCode === 200) {
         dispatch({
-          type: SET_THONG_TIN_NGUOI_DUNG,
+          type: GET_THONG_TIN_NGUOI_DUNG,
           thongTinNguoiDung: result.data,
         });
       }
-      console.log("result", result);
+      console.log("thongTinNguoiDung", result.data);
     } catch (error) {
       console.log("error", error.response.data);
     }
@@ -118,6 +133,7 @@ export const xoaNguoiDungAction = (taiKhoan) => {
       const result = await quanLyNguoiDungService.xoaThongTinNguoiDung(
         taiKhoan
       );
+      console.log(result);
       alert("Xóa tài khoản thành công");
 
       dispatch(layDanhSachNguoiDungAction());
