@@ -45,7 +45,7 @@ export const QuanLyNguoiDungReducer = (state = stateDefault, action) => {
         return user.taiKhoan.includes(action.keyword);
       });
       if (listTimKiem.length === 0) {
-        alert("Không tồn tại tài khoản này");
+        alert("Không tồn tại tên tài khoản này");
       }
       state.listUserTimKiem = listTimKiem;
       return { ...state };
