@@ -5,6 +5,7 @@ import {
   DANG_NHAP_ACTION,
   GET_LIST_NGUOI_DUNG,
   SET_THONG_TIN_NGUOI_DUNG,
+  DELETE_NGUOI_DUNG,
 } from "./types/QuanLyNguoiDungType";
 
 export const dangNhapAction = (thongTinDangNhap) => {
@@ -108,5 +109,20 @@ export const timKiemNguoiDungAction = (keyword) => {
       type: GET_TIM_KIEM_NGUOI_DUNG,
       keyword: keyword,
     });
+  };
+};
+
+export const xoaNguoiDungAction = (taiKhoan) => {
+  return async (dispatch) => {
+    try {
+      const result = await quanLyNguoiDungService.xoaThongTinNguoiDung(
+        taiKhoan
+      );
+      alert("Xóa tài khoản thành công");
+
+      dispatch(layDanhSachNguoiDungAction());
+    } catch (errors) {
+      alert(errors.response?.data);
+    }
   };
 };

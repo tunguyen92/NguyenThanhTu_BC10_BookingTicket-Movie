@@ -1,18 +1,24 @@
-import React, { Fragment, useEffect } from "react";
-import { Table, Input } from "antd";
+import React, { Fragment, useEffect, useState } from "react";
+import { Table, Input, Modal, Button, Space } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { QuanLyNguoiDungReducer } from "./../../../redux/reducers/QuanLyNguoiDungReducer";
 import {
   layDanhSachNguoiDungAction,
   layThongTinNguoiDungAction,
   timKiemNguoiDungAction,
+  xoaNguoiDungAction,
 } from "./../../../redux/actions/QuanLyNguoiDungAction";
 import { NavLink } from "react-router-dom";
 import {
   EditOutlined,
   DeleteOutlined,
   ContactsOutlined,
+  UserOutlined,
+  EyeInvisibleOutlined,
+  EyeTwoTone,
 } from "@ant-design/icons";
+import "./User.scss";
+
 export default function User() {
   const { listUser, listUserTimKiem, keyword } = useSelector(
     (state) => state.QuanLyNguoiDungReducer
@@ -20,9 +26,28 @@ export default function User() {
   // console.log(listUserTimKiem);
   const dispatch = useDispatch();
 
+  //Tạo modal update hiển thị thông tin User
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    alert("OK");
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   useEffect(() => {
     dispatch(layDanhSachNguoiDungAction());
   }, []);
+
+  //  tạo user được chọn khi edit
+  const [selectUser, setSelectUser] = useState("");
 
   const columns = [
     {
@@ -67,6 +92,7 @@ export default function User() {
     },
   ];
   const data = [];
+
   if (keyword === "") {
     for (let i = 0; i < listUser.length; i++) {
       data.push({
@@ -83,19 +109,67 @@ export default function User() {
             <NavLink to="" className="text-green-700 text-2xl mr-5">
               <ContactsOutlined />
             </NavLink>
-            <NavLink to="" className="text-green-700 text-2xl mr-5">
-              <EditOutlined />
-            </NavLink>
+            <EditOutlined
+              onClick={() => {
+                showModal();
+                setSelectUser(listUser[i]);
+              }}
+              className="text-blue-700 text-2xl mr-5"
+            />
+            <Modal
+              title="Cập nhật thông tin người dùng"
+              visible={isModalVisible}
+              onOk={handleOk}
+              onCancel={handleCancel}
+            >
+              <Input
+                placeholder="Tên tài khoản"
+                value={selectUser.taiKhoan}
+                className="mb-5"
+              />
+              <Input
+                placeholder="Họ và tên"
+                value={selectUser.hoTen}
+                className="mb-5"
+              />
+              <Input
+                placeholder="Email"
+                value={selectUser.email}
+                className="mb-5"
+              />
+              <Input
+                placeholder="Số điện thoại"
+                value={selectUser.soDt}
+                className="mb-5"
+              />
+              <Input.Password
+                placeholder="Mật khẩu"
+                iconRender={(visible) =>
+                  visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                }
+                value={selectUser.matKhau}
+                className="mb-5"
+              />
+              <Input
+                placeholder="Mã loại người dùng"
+                value={selectUser.maLoaiNguoiDung}
+                className="mb-5"
+              />
+            </Modal>
+            ;
             <span
               className="text-red-700 text-2xl cursor-pointer mr-5"
               to="/"
-              key={2}
-              // onClick={() => {
-              //   if (window.confirm("Bạn có muốn xóa phim " + film.tenPhim)) {
-              //     // Gọi action
-              //     dispatch(xoaPhimAction(film.maPhim));
-              //   }
-              // }}
+              onClick={() => {
+                if (
+                  window.confirm(
+                    "Bạn có muốn xóa người dùng " + listUser[i].taiKhoan
+                  )
+                ) {
+                  // Gọi action
+                  dispatch(xoaNguoiDungAction(listUser[i].taiKhoan));
+                }
+              }}
             >
               <DeleteOutlined />
             </span>
@@ -119,19 +193,36 @@ export default function User() {
             <NavLink to="" className="text-green-700 text-2xl mr-5">
               <ContactsOutlined />
             </NavLink>
-            <NavLink to="" className="text-green-700 text-2xl mr-5">
+            <button
+              className="text-green-700 text-2xl mr-5"
+              onClick={showModal}
+            >
               <EditOutlined />
-            </NavLink>
+              <Modal
+                title="Basic Modal"
+                visible={isModalVisible}
+                onOk={handleOk}
+                onCancel={handleCancel}
+              >
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+              </Modal>
+            </button>
             <span
               className="text-red-700 text-2xl cursor-pointer mr-5"
               to="/"
               key={2}
-              // onClick={() => {
-              //   if (window.confirm("Bạn có muốn xóa phim " + film.tenPhim)) {
-              //     // Gọi action
-              //     dispatch(xoaPhimAction(film.maPhim));
-              //   }
-              // }}
+              onClick={() => {
+                if (
+                  window.confirm(
+                    "Bạn có muốn xóa người dùng " + listUserTimKiem[i].taiKhoan
+                  )
+                ) {
+                  // Gọi action
+                  dispatch(xoaNguoiDungAction(listUserTimKiem[i].taiKhoan));
+                }
+              }}
             >
               <DeleteOutlined />
             </span>
@@ -145,6 +236,7 @@ export default function User() {
   const onSearch = (value) => {
     dispatch(timKiemNguoiDungAction(value));
   };
+
   return (
     <Fragment>
       <Search
