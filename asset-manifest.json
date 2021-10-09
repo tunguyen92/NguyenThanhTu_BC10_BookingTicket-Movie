@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/css/main.3a94e463.chunk.css",
-    "main.js": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/main.24b708e6.chunk.js",
-    "main.js.map": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/main.24b708e6.chunk.js.map",
-    "runtime-main.js": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/runtime-main.390eaf64.js",
-    "runtime-main.js.map": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/runtime-main.390eaf64.js.map",
+    "main.js": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/main.a6d03943.chunk.js",
+    "main.js.map": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/main.a6d03943.chunk.js.map",
+    "runtime-main.js": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/runtime-main.669375c6.js",
+    "runtime-main.js.map": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/runtime-main.669375c6.js.map",
     "static/css/2.c4e3d9bf.chunk.css": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/css/2.c4e3d9bf.chunk.css",
-    "static/js/2.8f737e5b.chunk.js": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/2.8f737e5b.chunk.js",
-    "static/js/2.8f737e5b.chunk.js.map": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/2.8f737e5b.chunk.js.map",
-    "static/js/3.b1506ec7.chunk.js": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/3.b1506ec7.chunk.js",
-    "static/js/3.b1506ec7.chunk.js.map": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/3.b1506ec7.chunk.js.map",
+    "static/js/2.a0bf9100.chunk.js": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/2.a0bf9100.chunk.js",
+    "static/js/2.a0bf9100.chunk.js.map": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/2.a0bf9100.chunk.js.map",
+    "static/js/3.7fde3d27.chunk.js": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/3.7fde3d27.chunk.js",
+    "static/js/3.7fde3d27.chunk.js.map": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/3.7fde3d27.chunk.js.map",
     "static/js/4.a60eb88b.chunk.js": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/4.a60eb88b.chunk.js",
     "static/js/4.a60eb88b.chunk.js.map": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/4.a60eb88b.chunk.js.map",
     "index.html": "/NguyenThanhTu_BC10_BookingTicket-Movie/index.html",
     "static/css/2.c4e3d9bf.chunk.css.map": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/css/2.c4e3d9bf.chunk.css.map",
     "static/css/main.3a94e463.chunk.css.map": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/css/main.3a94e463.chunk.css.map",
-    "static/js/2.8f737e5b.chunk.js.LICENSE.txt": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/2.8f737e5b.chunk.js.LICENSE.txt",
+    "static/js/2.a0bf9100.chunk.js.LICENSE.txt": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/js/2.a0bf9100.chunk.js.LICENSE.txt",
     "static/media/ads.ef7c8278.png": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/media/ads.ef7c8278.png",
     "static/media/Profile.css": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/media/bg.6b529071.jpg",
     "static/media/footer_bg.547823c3.png": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/media/footer_bg.547823c3.png",
@@ -36,10 +36,10 @@
     "static/media/user-icon.31ffab24.jpg": "/NguyenThanhTu_BC10_BookingTicket-Movie/static/media/user-icon.31ffab24.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.390eaf64.js",
+    "static/js/runtime-main.669375c6.js",
     "static/css/2.c4e3d9bf.chunk.css",
-    "static/js/2.8f737e5b.chunk.js",
+    "static/js/2.a0bf9100.chunk.js",
     "static/css/main.3a94e463.chunk.css",
-    "static/js/main.24b708e6.chunk.js"
+    "static/js/main.a6d03943.chunk.js"
   ]
 }
