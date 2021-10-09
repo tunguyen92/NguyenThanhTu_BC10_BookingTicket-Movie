@@ -13,6 +13,7 @@ import {
   HistoryOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
+import { Redirect } from "react-router-dom";
 
 const { Option } = Select;
 
@@ -45,14 +46,11 @@ export default function Profile(props) {
   const { userLogin, thongTinNguoiDung } = useSelector(
     (state) => state.QuanLyNguoiDungReducer
   );
-
-  console.log(userLogin);
   console.log(thongTinNguoiDung);
+  const [state, setstate] = useState(false);
 
   const user = { taiKhoan: userLogin.taiKhoan };
-
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(layThongTinNguoiDungAction(user));
   }, []);
@@ -271,10 +269,15 @@ export default function Profile(props) {
 
           <TabPane
             tab={
-              <p className="yellow-color-hover">
+              <button
+                className="yellow-color-hover text-gray-300"
+                onClick={() => {
+                  dispatch(layThongTinNguoiDungAction(user));
+                }}
+              >
                 <EditOutlined className="align-middle pb-1" />
                 Chỉnh sửa hồ sơ
-              </p>
+              </button>
             }
             key="3"
           >
@@ -292,11 +295,12 @@ export default function Profile(props) {
                   onFinish={onFinish}
                   initialValues={{
                     prefix: "84",
-                    hoTen: "g",
-                    email: "gkbfmklg",
-                    matKhau: "fsdhfgh4",
-                    xacNhanMatKhau: "gdfgd",
-                    soDT: "232232323",
+                    hoTen: thongTinNguoiDung.hoTen,
+                    email: thongTinNguoiDung.email,
+                    matKhau: thongTinNguoiDung.matKhau,
+                    xacNhanMatKhau: thongTinNguoiDung.matKhau,
+                    soDT: thongTinNguoiDung.soDT,
+                    state: state,
                   }}
                   scrollToFirstError
                   className=" mt-5 pt-10 "

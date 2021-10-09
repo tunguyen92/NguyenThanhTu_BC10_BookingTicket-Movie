@@ -44,7 +44,7 @@ function HomeNews() {
                 </h3>
                 <NavLink
                   className="text-xs sm:text-sm text-gray-300"
-                  to="/danh-sach-phim"
+                  to="/news"
                 >
                   XEM TẤT CẢ TIN TỨC
                   <svg

@@ -74,13 +74,11 @@ export const layThongTinNguoiDungAction = (taiKhoan) => {
         taiKhoan
       );
 
-      if (result.data.statusCode === 200) {
-        dispatch({
-          type: GET_THONG_TIN_NGUOI_DUNG,
-          thongTinNguoiDung: result.data,
-        });
-      }
-      console.log("thongTinNguoiDung", result.data);
+      dispatch({
+        type: GET_THONG_TIN_NGUOI_DUNG,
+        thongTinNguoiDung: result.data,
+      });
+      console.log("result", result);
     } catch (error) {
       console.log("error", error.response.data);
     }
