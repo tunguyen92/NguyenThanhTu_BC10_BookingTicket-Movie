@@ -98,7 +98,7 @@ export const capNhatThongTinNguoiDungAction = (thongTinTaiKhoan) => {
         window.location.replace("/profile");
       });
 
-      console.log(result);
+      dispatch(layDanhSachNguoiDungAction());
     } catch (errors) {
       console.log(errors.response?.data);
     }
