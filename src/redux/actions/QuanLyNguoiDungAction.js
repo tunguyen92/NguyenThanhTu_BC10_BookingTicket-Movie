@@ -87,14 +87,16 @@ export const layThongTinNguoiDungAction = (taiKhoan) => {
   };
 };
 
-export const capNhatThongTinNguoiDungAction = () => {
+export const capNhatThongTinNguoiDungAction = (thongTinCapNhat) => {
   return async (dispatch) => {
     try {
-      let result = await quanLyNguoiDungService.capNhatThongTinNguoiDung();
+      let result = await quanLyNguoiDungService.capNhatThongTinNguoiDung(
+        thongTinCapNhat
+      );
 
-      alert("Đăng ký thành công");
+      alert("Cập nhật thành công");
 
-      console.log(result);
+      dispatch(layDanhSachNguoiDungAction());
     } catch (errors) {
       console.log(errors.response?.data);
     }

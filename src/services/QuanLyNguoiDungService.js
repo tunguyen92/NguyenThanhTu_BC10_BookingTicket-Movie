@@ -28,8 +28,11 @@ export class QuanLyNguoiDungService extends baseService {
     );
   };
 
-  capNhatThongTinNguoiDung = () => {
-    return this.put(`/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`);
+  capNhatThongTinNguoiDung = (thongTinCapNhat) => {
+    return this.put(
+      `/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+      thongTinCapNhat
+    );
   };
 
   xoaThongTinNguoiDung = (taiKhoan) => {
