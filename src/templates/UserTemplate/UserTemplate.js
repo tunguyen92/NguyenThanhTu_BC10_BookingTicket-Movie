@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { useEffect } from "react";
 import { Route } from "react-router-dom";
 import bg from "../../assets/images/bg.jpg";
 
@@ -25,8 +25,7 @@ export const UserTemplate = (props) => {
               margin: "0 auto",
               background: `url(${bg})`,
               width: "100%",
-              height: "780px",
-              backgroundPosition: "center",
+              height: "950px",
               backgroundSize: "cover",
             }}
           >

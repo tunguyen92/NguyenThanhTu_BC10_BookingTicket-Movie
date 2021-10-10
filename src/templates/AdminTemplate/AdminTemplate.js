@@ -1,18 +1,18 @@
+import {
+  DesktopOutlined,
+  FileOutlined,
+  UserOutlined,
+  UserAddOutlined,
+  UnorderedListOutlined,
+} from "@ant-design/icons";
+import { Breadcrumb, Layout, Menu } from "antd";
+import _ from "lodash";
 import { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Redirect, Route } from "react-router";
-import { TOKEN, USER_LOGIN } from "../../util/settings/config";
-import { Layout, Menu, Breadcrumb } from "antd";
-import {
-  DesktopOutlined,
-  PieChartOutlined,
-  FileOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
-import _ from "lodash";
 import { history } from "../../App";
+import { TOKEN, USER_LOGIN } from "../../util/settings/config";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -95,7 +95,7 @@ const AdminTemplate = (props) => {
 
         return (
           <Fragment>
-            <Layout style={{ minHeight: "100vh" }}>
+            <Layout style={{ maxHeight: "100vh" }}>
               <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
                 <div className="logo p-5">
                   <img
@@ -104,10 +104,16 @@ const AdminTemplate = (props) => {
                   />
                 </div>
                 <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-                  <Menu.Item key="1" icon={<UserOutlined />}>
-                    <NavLink to="/admin">Users</NavLink>
-                  </Menu.Item>
-                  <SubMenu key="sub1" icon={<FileOutlined />} title="Films">
+                  <SubMenu key="sub1" icon={<UserOutlined />} title="User">
+                    <Menu.Item key="12" icon={<UnorderedListOutlined />}>
+                      <NavLink to="/admin/user">User List</NavLink>
+                    </Menu.Item>
+                    <Menu.Item key="13" icon={<UserAddOutlined />}>
+                      <NavLink to="/admin/user/add">Add User</NavLink>
+                    </Menu.Item>
+                  </SubMenu>
+
+                  <SubMenu key="sub2" icon={<FileOutlined />} title="Films">
                     <Menu.Item key="10" icon={<FileOutlined />}>
                       <NavLink to="/admin/films">Films</NavLink>
                     </Menu.Item>
@@ -115,9 +121,6 @@ const AdminTemplate = (props) => {
                       <NavLink to="/admin/films/add-new">Add new</NavLink>
                     </Menu.Item>
                   </SubMenu>
-                  <Menu.Item key="3" icon={<DesktopOutlined />}>
-                    <NavLink to="/admin/showtimes">Showtime</NavLink>
-                  </Menu.Item>
                 </Menu>
               </Sider>
               <Layout className="site-layout">

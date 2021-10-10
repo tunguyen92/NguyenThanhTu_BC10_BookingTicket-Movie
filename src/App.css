@@ -9,12 +9,12 @@
 a {
   font-size: 14px;
   line-height: 1.7;
-  color: #666666;
+  color: #d1d5d0;
   margin: 0px;
-  transition: all 0.4s;
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
 }
 
 a:focus {
@@ -23,11 +23,8 @@ a:focus {
 
 a:hover {
   text-decoration: none;
-  color: #6a7dfe;
-  color: -webkit-linear-gradient(to right, #21d4fd, #b721ff);
-  color: -o-linear-gradient(to right, #21d4fd, #b721ff);
-  color: -moz-linear-gradient(to right, #21d4fd, #b721ff);
-  color: linear-gradient(to right, #21d4fd, #b721ff);
+  color: #dcf836;
+  transition: all 0.5s ease-out;
 }
 
 /*---------------------------------------------*/
@@ -38,19 +35,25 @@ h4,
 h5,
 h6 {
   margin: 0px;
+  transition: all 0.5s ease-out;
 }
 
 p {
   font-size: 14px;
   line-height: 1.7;
-  color: #666666;
+  color: #d1d5d0;
   margin: 0px;
+  transition: all 0.5s ease-out;
 }
 
 ul,
 li {
   margin: 0px;
   list-style-type: none;
+}
+
+span {
+  color: #fff;
 }
 
 /*---------------------------------------------*/
@@ -126,6 +129,7 @@ button {
   outline: none !important;
   border: none;
   background: transparent;
+  color: #fff;
 }
 
 button:hover {
@@ -136,17 +140,48 @@ iframe {
   border: none !important;
 }
 
+.pink-color {
+  color: #dd003f;
+}
 .bg-pink-color {
+  background-color: #dd003f;
+}
+.bg-pink-color-hover:hover {
   background-color: #dd003f;
 }
 
 .yellow-color {
   color: #dcf836;
+  transition: all 0.5s ease-out;
 }
 .yellow-color-hover:hover {
+  transition: all 0.5s ease-out;
   color: #dcf836;
 }
 
 .bg-gray-blue-color {
   background-color: #0f2133;
+}
+
+.bg-dark-color {
+  background-color: #020d18;
+}
+
+.bg-dark-blue-color {
+  background-color: #06121e;
+}
+
+.bg-light-blue-color {
+  background-color: #1c3d5d;
+}
+.bg-light-blue-color-hover:hover {
+  background-color: #1c3d5d;
+}
+.title-color {
+  transition: all 0.5s ease-out;
+  color: #4280bf;
+}
+.title-color-hover:hover {
+  transition: all 0.5s ease-out;
+  color: #4280bf;
 }

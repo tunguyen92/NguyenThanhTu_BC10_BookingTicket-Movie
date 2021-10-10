@@ -1,9 +1,10 @@
 import { baseService } from "./baseService";
+import { GROUPID } from "./../util/settings/config";
 
 export class QuanLyNguoiDungService extends baseService {
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
 
   dangNhap = (thongTinDangNhap) => {
     // {taiKhoan:'',matKhau:''}
@@ -14,8 +15,30 @@ export class QuanLyNguoiDungService extends baseService {
     return this.post(`/api/QuanLyNguoiDung/DangKy`, formData);
   };
 
-  layThongTinNguoiDung = () => {
-    return this.post("/api/QuanLyNguoiDung/ThongTinTaiKhoan");
+  layDanhSachNguoiDung = () => {
+    return this.get(
+      `/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUPID}`
+    );
+  };
+
+  layThongTinNguoiDung = (thongTinNguoiDung) => {
+    return this.post(
+      `/api/QuanLyNguoiDung/ThongTinTaiKhoan`,
+      thongTinNguoiDung
+    );
+  };
+
+  capNhatThongTinNguoiDung = (thongTinCapNhat) => {
+    return this.put(
+      `/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+      thongTinCapNhat
+    );
+  };
+
+  xoaThongTinNguoiDung = (taiKhoan) => {
+    return this.delete(
+      `/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`
+    );
   };
 }
 

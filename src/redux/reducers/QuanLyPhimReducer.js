@@ -1,4 +1,3 @@
-import { set } from "lodash-es";
 import {
   SET_DANH_SACH_PHIM,
   SET_FILM_DANG_CHIEU,
@@ -25,49 +24,41 @@ const stateDefault = {
   dangChieu: true,
   sapChieu: true,
   arrFilmDefault: [],
-<<<<<<< HEAD
   filmDetail: {},
-=======
-
   thongTinPhim: {},
->>>>>>> f324b26afd2704a5d2aa314696d9e9a91b9e4ea8
 };
 
 export const QuanLyPhimReducer = (state = stateDefault, action) => {
   switch (action.type) {
     case SET_DANH_SACH_PHIM:
       state.arrFilmDefault = action.arrFilm;
-      state.arrFilm = state.arrFilmDefault.filter(
-        (film) =>
-          new Date(film.ngayKhoiChieu) <= new Date("2020-07-15") ===
-          state.dangChieu
-      );
+      state.arrFilm = state.arrFilmDefault.filter((film) => {
+        let khoiChieu = new Date(film.ngayKhoiChieu) <= new Date("2020-07-15");
+        return khoiChieu === state.dangChieu;
+      });
 
       return { ...state };
 
     case SET_FILM_DANG_CHIEU:
-      state.arrFilm = state.arrFilmDefault.filter(
-        (film) =>
-          new Date(film.ngayKhoiChieu) <= new Date("2020-07-15") ===
-          state.dangChieu
-      );
+      state.arrFilm = state.arrFilmDefault.filter((film) => {
+        let khoiChieu = new Date(film.ngayKhoiChieu) <= new Date("2020-07-15");
+        return khoiChieu === state.dangChieu;
+      });
       return { ...state };
 
     case SET_FILM_SAP_CHIEU:
-      state.arrFilm = state.arrFilmDefault.filter(
-        (film) =>
-          new Date(film.ngayKhoiChieu) > new Date("2020-07-15") ===
-          state.sapChieu
-      );
+      state.arrFilm = state.arrFilmDefault.filter((film) => {
+        let khoiChieu = new Date(film.ngayKhoiChieu) > new Date("2020-07-15");
+        return khoiChieu === state.dangChieu;
+      });
       return { ...state };
 
-<<<<<<< HEAD
     case SET_CHI_TIET_PHIM:
       state.filmDetail = action.filmDetail;
-=======
+      return { ...state };
+
     case SET_THONG_TIN_FILM:
       state.thongTinPhim = action.thongTinPhim;
->>>>>>> f324b26afd2704a5d2aa314696d9e9a91b9e4ea8
       return { ...state };
 
     default:
