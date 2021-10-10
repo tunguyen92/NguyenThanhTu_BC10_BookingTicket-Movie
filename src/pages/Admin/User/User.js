@@ -1,8 +1,9 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Table, Input, Modal, Button, Space } from "antd";
+import { Table, Input, Modal, Button, Form } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { QuanLyNguoiDungReducer } from "./../../../redux/reducers/QuanLyNguoiDungReducer";
 import {
+  capNhatThongTinNguoiDungAction,
   layDanhSachNguoiDungAction,
   layThongTinNguoiDungAction,
   timKiemNguoiDungAction,
@@ -47,7 +48,13 @@ export default function User() {
   }, []);
 
   //  tạo user được chọn khi edit
-  const [selectUser, setSelectUser] = useState("");
+  const [selectUser, setSelectUser] = useState({});
+  const setUser = (user) => setSelectUser(user);
+
+  // cập nhật user được chọn sau khi setState
+  useEffect(() => {
+    form.setFieldsValue(selectUser);
+  }, [selectUser]);
 
   const columns = [
     {
@@ -91,7 +98,10 @@ export default function User() {
       width: 150,
     },
   ];
+
   const data = [];
+
+  const [form] = Form.useForm();
 
   if (keyword === "") {
     for (let i = 0; i < listUser.length; i++) {
@@ -111,52 +121,52 @@ export default function User() {
             </NavLink>
             <EditOutlined
               onClick={() => {
+                setUser(listUser[i]);
                 showModal();
-                setSelectUser(listUser[i]);
               }}
               className="text-blue-700 text-2xl mr-5"
             />
             <Modal
               title="Cập nhật thông tin người dùng"
               visible={isModalVisible}
-              onOk={handleOk}
+              onOk={() => {
+                handleOk();
+                const user = [];
+                user.taiKhoan = dispatch(capNhatThongTinNguoiDungAction(user));
+              }}
               onCancel={handleCancel}
             >
-              <Input
-                placeholder="Tên tài khoản"
-                value={selectUser.taiKhoan}
-                className="mb-5"
-              />
-              <Input
-                placeholder="Họ và tên"
-                value={selectUser.hoTen}
-                className="mb-5"
-              />
-              <Input
-                placeholder="Email"
-                value={selectUser.email}
-                className="mb-5"
-              />
-              <Input
-                placeholder="Số điện thoại"
-                value={selectUser.soDt}
-                className="mb-5"
-              />
-              <Input.Password
-                placeholder="Mật khẩu"
-                iconRender={(visible) =>
-                  visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                }
-                value={selectUser.matKhau}
-                className="mb-5"
-              />
-              <Input
-                placeholder="Mã loại người dùng"
-                value={selectUser.maLoaiNguoiDung}
-                className="mb-5"
-              />
+              <Form
+                form={form}
+                labelCol={{ span: 6 }}
+                wrapperCol={{ span: 14 }}
+                layout="horizontal"
+              >
+                <Form.Item name="taiKhoan" label="Tên tài khoản">
+                  <Input />
+                </Form.Item>
+                <Form.Item name="hoTen" label="Họ và tên">
+                  <Input />
+                </Form.Item>
+                <Form.Item label="Email" name="email">
+                  <Input />
+                </Form.Item>
+                <Form.Item label="Số điện thoại" name="soDt">
+                  <Input />
+                </Form.Item>
+                <Form.Item label="Mật khẩu" name="matKhau">
+                  <Input.Password
+                    iconRender={(visible) =>
+                      visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                    }
+                  />
+                </Form.Item>
+                <Form.Item label="Loại tài khoản" name="maLoaiNguoiDung">
+                  <Input />
+                </Form.Item>
+              </Form>
             </Modal>
-            ;
+
             <span
               className="text-red-700 text-2xl cursor-pointer mr-5"
               to="/"
@@ -231,6 +241,7 @@ export default function User() {
       });
     }
   }
+
 
   const { Search } = Input;
   const onSearch = (value) => {
