@@ -1,112 +1,33 @@
-import { Button, Form, Input, Select, Tabs } from "antd";
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { history } from "../../App";
-import { TOKEN, USER_LOGIN } from "../../util/settings/config";
-import "./Profile.css";
-import { capNhatThongTinNguoiDungAction } from "../../redux/actions/QuanLyNguoiDungAction";
-import { layThongTinNguoiDungAction } from "../../redux/actions/QuanLyNguoiDungAction";
-import { useFormik } from "formik";
 import {
   EditOutlined,
   HistoryOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
-import { Redirect } from "react-router-dom";
+import { Tabs } from "antd";
+import React, { useEffect, useState } from "react";
 
-const { Option } = Select;
-
-const formItemLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 8 },
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 16 },
-  },
-};
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
-  },
-};
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { history } from "../../App";
+import BookingHistory from "../../components/Profile/BookingHistory";
+import EditUser from "../../components/Profile/EditUser";
+import { TOKEN, USER_LOGIN } from "../../util/settings/config";
+import "./Profile.css";
+import { layThongTinNguoiDungAction } from "../../redux/actions/QuanLyNguoiDungAction";
 
 const { TabPane } = Tabs;
 
 export default function Profile(props) {
-  const { userLogin, thongTinNguoiDung } = useSelector(
+  const { thongTinNguoiDung, userLogin } = useSelector(
     (state) => state.QuanLyNguoiDungReducer
   );
   console.log(thongTinNguoiDung);
-  const [state, setstate] = useState(false);
-
   const user = { taiKhoan: userLogin.taiKhoan };
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(layThongTinNguoiDungAction(user));
   }, []);
-
-  const formik = useFormik({
-    enableReinitialize: true,
-    initialValues: {
-      taiKhoan: "",
-      matKhau: "",
-      email: "",
-      soDt: "",
-      maNhom: "",
-      maLoaiNguoiDung: "",
-      hoTen: "",
-    },
-
-    // onSubmit: (values) => {
-    //   console.log("values", values);
-    //   values.maNhom = GROUPID;
-    //   //Tạo đối tượng formdata => Đưa giá trị values từ formik vào formdata
-    //   let formData = new FormData();
-    //   for (let key in values) {
-    //     if (key !== "hinhAnh") {
-    //       formData.append(key, values[key]);
-    //     } else {
-    //       if (values.hinhAnh !== null) {
-    //         formData.append("File", values.hinhAnh, values.hinhAnh.name);
-    //       }
-    //     }
-    //   }
-    //   //Cập nhật phim upload hình
-    //   dispatch(capNhatPhimUploadAction(formData));
-    // },
-  });
-
-  console.log(formik.values);
-
-  const [form] = Form.useForm();
-
-  const onFinish = (values) => {
-    console.log("Thông tin người dùng: ", values);
-  };
-
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <Select
-        style={{
-          width: 70,
-        }}
-      >
-        <Option value="84">+84</Option>
-        <Option value="85">+85</Option>
-        <Option value="86">+86</Option>
-      </Select>
-    </Form.Item>
-  );
 
   const operations = (
     <button
@@ -146,7 +67,7 @@ export default function Profile(props) {
                 <div className="w-40 whitespace-pre-wrap">
                   <div className="yellow-color-hover">
                     <h2 className="text-lg font-semibold text-white ">
-                      {userLogin.hoTen}
+                      {thongTinNguoiDung.hoTen}
                     </h2>
                   </div>
 
@@ -233,23 +154,23 @@ export default function Profile(props) {
               <div>
                 <div className="md:grid md:grid-cols-2 bg-light-blue-color-hover  md:space-y-0 space-y-1 p-4 border-b">
                   <p className="text-white ">Tài khoản</p>
-                  <p className="">{userLogin.taiKhoan}</p>
+                  <p className="">{thongTinNguoiDung.taiKhoan}</p>
                 </div>
                 <div className="md:grid md:grid-cols-2 bg-light-blue-color-hover  md:space-y-0 space-y-1 p-4 border-b">
                   <p className="text-white ">Họ tên</p>
-                  <p className="">{userLogin.hoTen}</p>
+                  <p className="">{thongTinNguoiDung.hoTen}</p>
                 </div>
                 <div className="md:grid md:grid-cols-2 bg-light-blue-color-hover  md:space-y-0 space-y-1 p-4 border-b">
                   <p className="text-white ">Địa chỉ Email</p>
-                  <p className="">{userLogin.email}</p>
+                  <p className="">{thongTinNguoiDung.email}</p>
                 </div>
                 <div className="md:grid md:grid-cols-2 bg-light-blue-color-hover  md:space-y-0 space-y-1 p-4 border-b">
                   <p className="text-white ">Số diện thoại</p>
-                  <p className="">{userLogin.soDT}</p>
+                  <p className="">{thongTinNguoiDung.soDT}</p>
                 </div>
                 <div className="md:grid md:grid-cols-2 bg-light-blue-color-hover  md:space-y-0 space-y-1 p-4 border-b">
                   <p className="text-white ">Mã nhóm</p>
-                  <p className="">{userLogin.maNhom}</p>
+                  <p className="">{thongTinNguoiDung.maNhom}</p>
                 </div>
               </div>
             </div>
@@ -264,16 +185,14 @@ export default function Profile(props) {
             }
             key="2"
           >
-            Lịch sử đặt vé
+            <BookingHistory thongTinDatVe={thongTinNguoiDung.thongTinDatVe} />
           </TabPane>
 
           <TabPane
             tab={
               <button
                 className="yellow-color-hover text-gray-300"
-                onClick={() => {
-                  dispatch(layThongTinNguoiDungAction(user));
-                }}
+                // onClick={} làm sao để re-render???
               >
                 <EditOutlined className="align-middle pb-1" />
                 Chỉnh sửa hồ sơ
@@ -281,134 +200,10 @@ export default function Profile(props) {
             }
             key="3"
           >
-            <div className="bg-gray-blue-color w-full rounded-lg shadow-xl">
-              <div className="p-4 border-b">
-                <h2 className="text-2xl text-white">Chỉnh sửa hồ sơ</h2>
-                <p className="text-sm text-gray-300 ">
-                  Quản lý thông tin hồ sơ để bảo mật tài khoản
-                </p>
-
-                <Form
-                  {...formItemLayout}
-                  form={form}
-                  name="register"
-                  onFinish={onFinish}
-                  initialValues={{
-                    prefix: "84",
-                    hoTen: thongTinNguoiDung.hoTen,
-                    email: thongTinNguoiDung.email,
-                    matKhau: thongTinNguoiDung.matKhau,
-                    xacNhanMatKhau: thongTinNguoiDung.matKhau,
-                    soDT: thongTinNguoiDung.soDT,
-                    state: state,
-                  }}
-                  scrollToFirstError
-                  className=" mt-5 pt-10 "
-                  style={{
-                    paddingRight: "10%",
-                    borderTop: "solid 1px white",
-                  }}
-                >
-                  <Form.Item
-                    name="hoTen"
-                    label="Họ tên"
-                    tooltip="Muốn mọi người gọi bằng gì thì điền vô :))"
-                    rules={[
-                      {
-                        required: true,
-                        message: "Nhập vào họ tên!",
-                        whitespace: true,
-                      },
-                    ]}
-                    className="fullname"
-                  >
-                    <Input />
-                  </Form.Item>
-
-                  <Form.Item
-                    name="email"
-                    label="E-mail"
-                    rules={[
-                      {
-                        type: "email",
-                        message: "E-mail không hợp lệ!",
-                      },
-                      {
-                        required: true,
-                        message: "Nhập vào E-mail!",
-                      },
-                    ]}
-                  >
-                    <Input />
-                  </Form.Item>
-
-                  <Form.Item
-                    name="matKhau"
-                    label="Mật Khẩu"
-                    rules={[
-                      {
-                        required: true,
-                        message: "Nhập vào mật khẩu!",
-                      },
-                    ]}
-                    hasFeedback
-                  >
-                    <Input.Password />
-                  </Form.Item>
-
-                  <Form.Item
-                    name="xacNhanMatKhau"
-                    label="Xác nhận mật khẩu"
-                    dependencies={["matKhau"]}
-                    hasFeedback
-                    rules={[
-                      {
-                        required: true,
-                        message: "Xác nhận mật khẩu đi bạn!",
-                      },
-                      ({ getFieldValue }) => ({
-                        validator(_, value) {
-                          if (!value || getFieldValue("matKhau") === value) {
-                            return Promise.resolve();
-                          }
-
-                          return Promise.reject(
-                            new Error("Mật khẩu không khớp bạn eii!")
-                          );
-                        },
-                      }),
-                    ]}
-                  >
-                    <Input.Password />
-                  </Form.Item>
-
-                  <Form.Item
-                    name="soDT"
-                    label="Số điện thoại"
-                    rules={[
-                      {
-                        required: true,
-                        message: "Nhập vào số điện thoại!",
-                      },
-                    ]}
-                    className="phone"
-                  >
-                    <Input
-                      addonBefore={prefixSelector}
-                      style={{
-                        width: "100%",
-                      }}
-                    />
-                  </Form.Item>
-
-                  <Form.Item {...tailFormItemLayout}>
-                    <Button type="primary" htmlType="submit">
-                      Cập nhật
-                    </Button>
-                  </Form.Item>
-                </Form>
-              </div>
-            </div>
+            <EditUser
+              thongTinNguoiDung={thongTinNguoiDung}
+              userLogin={userLogin}
+            />
           </TabPane>
         </Tabs>
       </div>

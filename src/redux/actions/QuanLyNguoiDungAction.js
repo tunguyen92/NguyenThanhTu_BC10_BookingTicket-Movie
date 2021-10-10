@@ -67,7 +67,6 @@ export const dangKyAction = (formData) => {
 };
 
 export const layThongTinNguoiDungAction = (taiKhoan) => {
-  console.log(taiKhoan);
   return async (dispatch) => {
     try {
       const result = await quanLyNguoiDungService.layThongTinNguoiDung(
@@ -78,19 +77,26 @@ export const layThongTinNguoiDungAction = (taiKhoan) => {
         type: GET_THONG_TIN_NGUOI_DUNG,
         thongTinNguoiDung: result.data,
       });
-      console.log("result", result);
+      // console.log("result", result);
     } catch (error) {
       console.log("error", error.response.data);
     }
   };
 };
 
-export const capNhatThongTinNguoiDungAction = () => {
+export const capNhatThongTinNguoiDungAction = (thongTinTaiKhoan) => {
   return async (dispatch) => {
     try {
-      let result = await quanLyNguoiDungService.capNhatThongTinNguoiDung();
+      let result = await quanLyNguoiDungService.capNhatThongTinNguoiDung(
+        thongTinTaiKhoan
+      );
 
-      alert("Đăng ký thành công");
+      swal({
+        title: "Cập nhật thành công!",
+        icon: "success",
+      }).then((value) => {
+        window.location.replace("/profile");
+      });
 
       console.log(result);
     } catch (errors) {
