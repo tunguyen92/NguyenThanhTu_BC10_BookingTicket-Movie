@@ -28,10 +28,10 @@ export class QuanLyNguoiDungService extends baseService {
     );
   };
 
-  capNhatThongTinNguoiDung = (thongTinCapNhat) => {
+  capNhatThongTinNguoiDung = (thongTinTaiKhoan) => {
     return this.put(
       `/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
-      thongTinCapNhat
+      thongTinTaiKhoan
     );
   };
 

@@ -3,7 +3,7 @@ import {
   GET_TIM_KIEM_NGUOI_DUNG,
   DANG_NHAP_ACTION,
   GET_LIST_NGUOI_DUNG,
-  SET_THONG_TIN_NGUOI_DUNG,
+  GET_THONG_TIN_NGUOI_DUNG,
 } from "../actions/types/QuanLyNguoiDungType";
 
 let user = {};
@@ -28,7 +28,7 @@ export const QuanLyNguoiDungReducer = (state = stateDefault, action) => {
       return { ...state, userLogin: thongTinDangNhap };
     }
 
-    case SET_THONG_TIN_NGUOI_DUNG: {
+    case GET_THONG_TIN_NGUOI_DUNG: {
       state.thongTinNguoiDung = action.thongTinNguoiDung;
       return { ...state };
     }

@@ -2,13 +2,14 @@
   "name": "movie",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://tunguyen92.github.io/NguyenThanhTu_BC10_BookingTicket-Movie/",
+  "homepage": "https://tunguyen92.github.io/Nhom12_BC10_BookingTicket-Movie",
   "dependencies": {
     "@agney/react-loading": "^0.1.2",
     "@ant-design/icons": "^4.7.0",
     "@craco/craco": "^6.2.0",
     "@headlessui/react": "^1.4.1",
     "@heroicons/react": "^1.0.4",
+    "@sweetalert/with-react": "^0.1.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -36,6 +37,7 @@
     "redux-thunk": "^2.3.0",
     "sass-loader": "^12.1.0",
     "slick-carousel": "^1.8.1",
+    "sweetalert": "^2.1.2",
     "web-vitals": "^1.1.2",
     "webpack": "^4.44.0",
     "yup": "^0.32.9"

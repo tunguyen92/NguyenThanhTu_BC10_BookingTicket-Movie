@@ -57,7 +57,9 @@ export default function Login(props) {
                 onSubmit={handleSubmit}
               >
                 <span className="login100-form-title p-b-26">Welcome Back</span>
-                <img className="login100-form-img" src={logo} alt="" />
+                <NavLink to="/" className="cursor-pointer">
+                  <img className="login100-form-img" src={logo} alt="logo" />
+                </NavLink>
 
                 <div className="wrap-input100 ">
                   <input
