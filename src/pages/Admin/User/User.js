@@ -26,7 +26,6 @@ export default function User() {
   const { listUser, listUserTimKiem, keyword } = useSelector(
     (state) => state.QuanLyNguoiDungReducer
   );
-  // console.log(listUser);
   const dispatch = useDispatch();
 
   //Tạo modal update hiển thị thông tin User
@@ -37,7 +36,6 @@ export default function User() {
   };
 
   const handleOk = () => {
-    alert("OK");
     setIsModalVisible(false);
   };
 
@@ -50,10 +48,10 @@ export default function User() {
   }, []);
 
   //  tạo user được chọn khi edit
-  const [selectUser, setSelectUser] = useState({});
+  let [selectUser, setSelectUser] = useState({});
   const setUser = (user) => setSelectUser(user);
 
-  // cập nhật user được chọn sau khi setState
+  // cập nhật user được chọn để render ra modal
   useEffect(() => {
     form.setFieldsValue(selectUser);
   }, [selectUser]);
@@ -133,17 +131,30 @@ export default function User() {
               title="Cập nhật thông tin người dùng"
               visible={isModalVisible}
               onOk={() => {
+                console.log(selectUser);
+
+                //check validation
+
+                //Gọi API update
+                // user.taiKhoan = dispatch(capNhatThongTinNguoiDungAction(user));
+
+                //tắt Modal
                 handleOk();
-                const user = [];
-                user.taiKhoan = dispatch(capNhatThongTinNguoiDungAction(user));
               }}
               onCancel={handleCancel}
             >
-              {/* <Form
+              <Form
+                // name={`updateForm${i}`}
                 form={form}
                 labelCol={{ span: 6 }}
                 wrapperCol={{ span: 14 }}
                 layout="horizontal"
+                onChange={(e) => {
+                  const id = e.target.id;
+                  const value = e.target.value;
+                  selectUser = { ...selectUser, [id]: value };
+                  // setUser(selectUser);
+                }}
               >
                 <Form.Item name="taiKhoan" label="Tên tài khoản">
                   <Input />
@@ -167,7 +178,7 @@ export default function User() {
                 <Form.Item label="Loại tài khoản" name="maLoaiNguoiDung">
                   <Input />
                 </Form.Item>
-              </Form> */}
+              </Form>
               <Formik
                 enableReinitialize={true}
                 initialValues={{
