@@ -32,8 +32,41 @@ const tailFormItemLayout = {
 export default function EditUser(props) {
   const dispatch = useDispatch();
 
+  const validate = (values) => {
+    const errors = {};
+
+    if (!values.matKhau) {
+      errors.matKhau = "Chưa nhập mật khẩu.";
+    } else if (values.matKhau.length < 6) {
+      errors.matKhau = "Mật khẩu quá ngắn - ít nhất phải 6 ký tự.";
+    } else if (!/(?=.*[0-9])/i.test(values.matKhau)) {
+      errors.matKhau = "Mật khẩu phải chứa nhất một số.!";
+    }
+
+    if (!values.hoTen) {
+      errors.hoTen = "Họ tên không được trống!";
+    }
+
+    if (!values.email) {
+      errors.email = "Email không được trống!";
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+    ) {
+      errors.email = "Email chưa đúng định dạng!";
+    }
+
+    if (!values.soDT) {
+      errors.soDT = "Điền số điện thoại vào!";
+    } else if (values.soDT.length !== 10) {
+      errors.soDT = "Đúng 10 số mới chịu nha!";
+    }
+
+    return errors;
+  };
+
   const formik = useFormik({
     enableReinitialize: true,
+    validate,
     initialValues: {
       taiKhoan: props.thongTinNguoiDung.taiKhoan,
       matKhau: props.thongTinNguoiDung.matKhau,
@@ -71,6 +104,7 @@ export default function EditUser(props) {
       </Select>
     </Form.Item>
   );
+
   return (
     <div className="bg-gray-blue-color w-full rounded-lg shadow-xl">
       <div className="p-4 border-b">
@@ -103,13 +137,13 @@ export default function EditUser(props) {
 
           <Form.Item
             label="Mật Khẩu"
-            rules={[
-              {
-                required: true,
-                message: "Nhập vào mật khẩu!",
-              },
-            ]}
-            hasFeedback
+            // rules={[
+            //   {
+            //     required: true,
+            //     message: "Nhập vào mật khẩu!",
+            //   },
+            // ]}
+            // hasFeedback
           >
             <Input.Password
               name="matKhau"
@@ -117,51 +151,12 @@ export default function EditUser(props) {
               value={formik.values.matKhau}
               allowClear
             />
+            {formik.errors.matKhau ? (
+              <div className="pink-color">{formik.errors.matKhau}</div>
+            ) : null}
           </Form.Item>
 
-          <Form.Item
-            label="Họ tên"
-            tooltip="Muốn mọi người gọi bằng gì thì điền vô :))"
-            rules={[
-              {
-                required: true,
-                message: "Nhập vào họ tên!",
-                whitespace: true,
-              },
-            ]}
-            className="fullname"
-          >
-            <Input
-              name="hoTen"
-              onChange={formik.handleChange}
-              value={formik.values.hoTen}
-              allowClear
-            />
-          </Form.Item>
-
-          <Form.Item
-            label="E-mail"
-            rules={[
-              {
-                type: "email",
-                message: "E-mail không hợp lệ!",
-              },
-              {
-                required: true,
-                message: "Nhập vào E-mail!",
-              },
-            ]}
-          >
-            <Input
-              name="email"
-              onChange={formik.handleChange}
-              value={formik.values.email}
-              allowClear
-            />
-          </Form.Item>
-
-          {/* 
-          <Form.Item
+          {/* <Form.Item
             name="XACNHANMATKHAU"
             label="Xác nhận mật khẩu"
             dependencies={["matKhau"]}
@@ -192,13 +187,60 @@ export default function EditUser(props) {
           </Form.Item> */}
 
           <Form.Item
+            label="Họ tên"
+            tooltip="Muốn mọi người gọi bằng gì thì điền vô :))"
+            // rules={[
+            //   {
+            //     required: true,
+            //     message: "Nhập vào họ tên!",
+            //     whitespace: true,
+            //   },
+            // ]}
+            className="fullname"
+          >
+            <Input
+              name="hoTen"
+              onChange={formik.handleChange}
+              value={formik.values.hoTen}
+              allowClear
+            />
+            {formik.errors.hoTen ? (
+              <div className="pink-color">{formik.errors.hoTen}</div>
+            ) : null}
+          </Form.Item>
+
+          <Form.Item
+            label="E-mail"
+            // rules={[
+            //   {
+            //     type: "email",
+            //     message: "E-mail không hợp lệ!",
+            //   },
+            //   {
+            //     required: true,
+            //     message: "Nhập vào E-mail!",
+            //   },
+            // ]}
+          >
+            <Input
+              name="email"
+              onChange={formik.handleChange}
+              value={formik.values.email}
+              allowClear
+            />
+            {formik.errors.email ? (
+              <div className="pink-color">{formik.errors.email}</div>
+            ) : null}
+          </Form.Item>
+
+          <Form.Item
             label="Số điện thoại"
-            rules={[
-              {
-                required: true,
-                message: "Nhập vào số điện thoại!",
-              },
-            ]}
+            // rules={[
+            //   {
+            //     required: true,
+            //     message: "Nhập vào số điện thoại!",
+            //   },
+            // ]}
             className="phone"
           >
             <Input
@@ -211,6 +253,9 @@ export default function EditUser(props) {
                 width: "100%",
               }}
             />
+            {formik.errors.soDT ? (
+              <div className="pink-color">{formik.errors.soDT}</div>
+            ) : null}
           </Form.Item>
 
           <Form.Item {...tailFormItemLayout}>

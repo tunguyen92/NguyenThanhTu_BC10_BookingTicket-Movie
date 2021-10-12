@@ -19,12 +19,14 @@ import {
   EyeTwoTone,
 } from "@ant-design/icons";
 import "./User.scss";
+import { Formik } from "formik";
+import * as Yup from "yup";
 
 export default function User() {
   const { listUser, listUserTimKiem, keyword } = useSelector(
     (state) => state.QuanLyNguoiDungReducer
   );
-  console.log(listUser);
+  // console.log(listUser);
   const dispatch = useDispatch();
 
   //Tạo modal update hiển thị thông tin User
@@ -123,6 +125,7 @@ export default function User() {
               onClick={() => {
                 setUser(listUser[i]);
                 showModal();
+                console.log(listUser[i]);
               }}
               className="text-blue-700 text-2xl mr-5"
             />
@@ -136,7 +139,7 @@ export default function User() {
               }}
               onCancel={handleCancel}
             >
-              <Form
+              {/* <Form
                 form={form}
                 labelCol={{ span: 6 }}
                 wrapperCol={{ span: 14 }}
@@ -164,7 +167,98 @@ export default function User() {
                 <Form.Item label="Loại tài khoản" name="maLoaiNguoiDung">
                   <Input />
                 </Form.Item>
-              </Form>
+              </Form> */}
+              <Formik
+                enableReinitialize={true}
+                initialValues={{
+                  userName: "",
+                  name: "",
+                  email: "",
+                  phoneNumber: "12",
+                  password: "",
+                  loaiND: "",
+                }}
+                onSubmit={(values) => {
+                  let formData = new FormData();
+                  for (let key in values) {
+                    formData.append(key, values[key]);
+                  }
+                  console.log("values", values);
+
+                  // dispatch(dangKyAction(values));
+                }}
+                validationSchema={Yup.object().shape({
+                  soDt: Yup.string()
+                    .required("Tài khoản không được trống")
+                    .min(5, "Tên tài khoản từ 5 kí tự trở lên."),
+                })}
+              >
+                {(props) => {
+                  const {
+                    touched,
+                    errors,
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                  } = props;
+                  return (
+                    <Form
+                      form={form}
+                      labelCol={{ span: 6 }}
+                      wrapperCol={{ span: 14 }}
+                      layout="horizontal"
+                      onSubmitCapture={handleSubmit}
+                      enableReinitialize={true}
+                    >
+                      <Form.Item name="taiKhoan" label="Tên tài khoản">
+                        <Input />
+                      </Form.Item>
+                      <Form.Item name="hoTen" label="Họ và tên">
+                        <Input />
+                      </Form.Item>
+                      <Form.Item label="Email" name="email">
+                        <Input />
+                      </Form.Item>
+                      <Form.Item label="Số điện thoại">
+                        <Input
+                          name="soDt"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={listUser[i].soDt}
+                        />
+                        {errors.soDt && touched.soDt && (
+                          <div className="pink-color input-feedback">
+                            {errors.soDt}
+                          </div>
+                        )}
+                      </Form.Item>
+                      <Form.Item label="Mật khẩu" name="matKhau">
+                        <Input.Password
+                          iconRender={(visible) =>
+                            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                          }
+                        />
+                      </Form.Item>
+                      <Form.Item label="Loại tài khoản" name="maLoaiNguoiDung">
+                        <Input />
+                      </Form.Item>
+                      <Form.Item
+                        wrapperCol={{
+                          offset: 4,
+                          span: 14,
+                        }}
+                      >
+                        <button
+                          type="submit"
+                          className="bg-blue-700 text-white p-2 rounded-md"
+                        >
+                          Cập nhật
+                        </button>
+                      </Form.Item>
+                    </Form>
+                  );
+                }}
+              </Formik>
             </Modal>
 
             <span
@@ -241,7 +335,6 @@ export default function User() {
       });
     }
   }
-
 
   const { Search } = Input;
   const onSearch = (value) => {
