@@ -3,6 +3,7 @@ import { Table, Button } from "antd";
 import moment from "moment";
 
 export default function BookingHistory(props) {
+  console.log(props);
   const columns = [
     {
       title: "Mã vé",
