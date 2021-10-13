@@ -8,6 +8,7 @@ import {
   layThongTinNguoiDungAction,
   timKiemNguoiDungAction,
   xoaNguoiDungAction,
+  themNguoiDungAction,
 } from "./../../../redux/actions/QuanLyNguoiDungAction";
 import { NavLink } from "react-router-dom";
 import {
@@ -31,7 +32,11 @@ export default function User() {
 
   //Tạo modal update hiển thị thông tin User
   const [isModalVisible, setIsModalVisible] = useState(false);
-
+  const [modalInfo, setModalInfo] = useState({
+    title: "",
+    okText: "",
+    cancelText: "",
+  });
   const showModal = () => {
     form.resetFields();
     setIsModalVisible(true);
@@ -51,11 +56,13 @@ export default function User() {
 
   //  tạo user được chọn khi edit
   let [selectUser, setSelectUser] = useState({});
-  const setUser = (user) => setSelectUser(user);
+  const setUser = (user) => {
+    user = { ...user, isUpdate: true };
+    return setSelectUser(user);
+  };
 
   // cập nhật user được chọn để render ra modal
   useEffect(() => {
-    console.log(selectUser);
     form.setFieldsValue(selectUser);
   }, [selectUser]);
 
@@ -125,6 +132,11 @@ export default function User() {
             <EditOutlined
               onClick={() => {
                 setUser(listUser[i]);
+                setModalInfo({
+                  title: "Cập nhật thông tin người dùng",
+                  okText: "Cập nhật",
+                  cancelText: "Hủy",
+                });
                 showModal();
               }}
               className="text-blue-700 text-2xl mr-5"
@@ -166,26 +178,22 @@ export default function User() {
             <NavLink to="" className="text-green-700 text-2xl mr-5">
               <ContactsOutlined />
             </NavLink>
-            <button
-              className="text-green-700 text-2xl mr-5"
-              onClick={showModal}
-            >
-              <EditOutlined />
-              <Modal
-                title="Basic Modal"
-                visible={isModalVisible}
-                onOk={handleOk}
-                onCancel={handleCancel}
-              >
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-              </Modal>
-            </button>
+            <EditOutlined
+              onClick={() => {
+                setUser(listUserTimKiem[i]);
+                setModalInfo({
+                  title: "Cập nhật thông tin người dùng",
+                  okText: "Cập nhật",
+                  cancelText: "Hủy",
+                });
+                showModal();
+              }}
+              className="text-blue-700 text-2xl mr-5"
+            />
+
             <span
               className="text-red-700 text-2xl cursor-pointer mr-5"
               to="/"
-              key={2}
               onClick={() => {
                 if (
                   window.confirm(
@@ -209,12 +217,22 @@ export default function User() {
   const onSearch = (value) => {
     dispatch(timKiemNguoiDungAction(value));
   };
-  function handleChange(value) {
-    console.log(value); // { value: "lucy", key: "lucy", label: "Lucy (101)" }
-  }
+
   return (
     <Fragment>
-      <Button type="primary" className="mb-5" onClick={showModal}>
+      <Button
+        type="primary"
+        className="mb-5"
+        onClick={() => {
+          setModalInfo({
+            title: "Thêm người dùng mới",
+            okText: "Thêm",
+            cancelText: "Hủy",
+          });
+          delete selectUser.isUpdate;
+          showModal();
+        }}
+      >
         Thêm người dùng
       </Button>
       <Search
@@ -231,19 +249,26 @@ export default function User() {
         scroll={{ y: "50vh" }}
       />
       <Modal
-        title="Cập nhật thông tin người dùng"
+        title={modalInfo.title}
         visible={isModalVisible}
+        forceRender
+        okText={modalInfo.okText}
+        cancelText={modalInfo.cancelText}
         onOk={() => {
-          // console.log(selectUser);
-
           //check validation
           form
             .validateFields()
             .then((values) => {
               //Update tên nhóm vào thông tin user
-              selectUser = { ...selectUser, maNhom: GROUPID };
-              // Gọi API update
-              dispatch(capNhatThongTinNguoiDungAction(selectUser, true));
+              const updateUser = { ...selectUser, maNhom: GROUPID };
+              if (updateUser.isUpdate) {
+                delete updateUser.isUpdate;
+                // Gọi API update
+                dispatch(capNhatThongTinNguoiDungAction(updateUser, true));
+              } else {
+                //Gọi API add user
+                dispatch(themNguoiDungAction(updateUser));
+              }
 
               // tắt Modal
               handleOk();
@@ -259,10 +284,9 @@ export default function User() {
           labelCol={{ span: 6 }}
           wrapperCol={{ span: 14 }}
           layout="horizontal"
-          onChange={(e) => {
-            const id = e.target.id;
-            const value = e.target.value;
-            selectUser = { ...selectUser, [id]: value };
+          initialValues={{ maLoaiNguoiDung: "KhachHang" }}
+          onFieldsChange={(a, b) => {
+            selectUser = { ...selectUser, [a[0].name]: a[0].value };
           }}
         >
           <Form.Item
@@ -279,7 +303,7 @@ export default function User() {
               },
             ]}
           >
-            <Input />
+            <Input disabled={selectUser.isUpdate} />
           </Form.Item>
           <Form.Item
             name="hoTen"
@@ -360,13 +384,18 @@ export default function User() {
               }
             />
           </Form.Item>
-          <Form.Item label="Loại tài khoản">
-            <Select
-              name="maLoaiNguoiDung"
-              defaultValue="KhachHang"
-              onChange={handleChange}
-              className="text-black"
-            >
+
+          <Form.Item
+            name="maLoaiNguoiDung"
+            label="Loại tài khoản"
+            rules={[
+              {
+                required: true,
+                message: "Vui lòng chọn loại người dùng",
+              },
+            ]}
+          >
+            <Select placeholder="Select a person" className="text-black">
               <Option value="KhachHang">Khách hàng</Option>
               <Option value="QuanTri">Quản Trị</Option>
             </Select>

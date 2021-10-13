@@ -144,12 +144,36 @@ export const xoaNguoiDungAction = (taiKhoan) => {
       const result = await quanLyNguoiDungService.xoaThongTinNguoiDung(
         taiKhoan
       );
-      console.log(result);
-      alert("Xóa tài khoản thành công");
-
+      swal({
+        title: "Xóa tài khoản thành công!",
+        icon: "success",
+      });
       dispatch(layDanhSachNguoiDungAction());
     } catch (errors) {
-      alert(errors.response?.data);
+      swal({
+        title: `${errors.response?.data}`,
+        icon: "error",
+      });
+    }
+  };
+};
+
+export const themNguoiDungAction = (thongTinNguoiDung) => {
+  return async (dispatch) => {
+    try {
+      const result = await quanLyNguoiDungService.themNguoiDung(
+        thongTinNguoiDung
+      );
+      swal({
+        title: "Thêm người dùng thành công!",
+        icon: "success",
+      });
+      dispatch(layDanhSachNguoiDungAction());
+    } catch (error) {
+      swal({
+        title: `${error.response?.data}`,
+        icon: "error",
+      });
     }
   };
 };
