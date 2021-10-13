@@ -126,9 +126,9 @@ export default function User() {
         loaiND: listUser[i].maLoaiNguoiDung,
         action: (
           <Fragment>
-            <NavLink to="" className="text-green-700 text-2xl mr-5">
+            {/* <NavLink to="" className="text-green-700 text-2xl mr-5">
               <ContactsOutlined />
-            </NavLink>
+            </NavLink> */}
             <EditOutlined
               onClick={() => {
                 setUser(listUser[i]);

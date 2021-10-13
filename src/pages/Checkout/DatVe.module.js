@@ -65,7 +65,7 @@ class DatVe extends React.Component {
           key: i,
           soGhe: `Ghế ${danhSachDangDat[i].tenGhe}`,
 
-          giaVe: `${danhSachDangDat[i].giaVe.toLocaleString()}`,
+          giaVe: `${danhSachDangDat[i].giaVe.toLocaleString()} đ`,
         });
       }
     }
