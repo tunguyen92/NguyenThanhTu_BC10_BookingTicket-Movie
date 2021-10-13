@@ -40,6 +40,10 @@ export class QuanLyNguoiDungService extends baseService {
       `/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`
     );
   };
+
+  themNguoiDung = (thongTinNguoiDung) => {
+    return this.post(`/api/QuanLyNguoiDung/ThemNguoiDung`, thongTinNguoiDung);
+  };
 }
 
 export const quanLyNguoiDungService = new QuanLyNguoiDungService();
