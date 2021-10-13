@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Table, Input, Modal, Button, Form } from "antd";
+import { Table, Input, Modal, Button, Form, Select } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { QuanLyNguoiDungReducer } from "./../../../redux/reducers/QuanLyNguoiDungReducer";
 import {
@@ -19,8 +19,9 @@ import {
   EyeTwoTone,
 } from "@ant-design/icons";
 import "./User.scss";
-import { Formik } from "formik";
-import * as Yup from "yup";
+import { GROUPID } from "./../../../util/settings/config";
+
+const { Option } = Select;
 
 export default function User() {
   const { listUser, listUserTimKiem, keyword } = useSelector(
@@ -32,6 +33,7 @@ export default function User() {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
+    form.resetFields();
     setIsModalVisible(true);
   };
 
@@ -53,6 +55,7 @@ export default function User() {
 
   // cập nhật user được chọn để render ra modal
   useEffect(() => {
+    console.log(selectUser);
     form.setFieldsValue(selectUser);
   }, [selectUser]);
 
@@ -123,154 +126,9 @@ export default function User() {
               onClick={() => {
                 setUser(listUser[i]);
                 showModal();
-                console.log(listUser[i]);
               }}
               className="text-blue-700 text-2xl mr-5"
             />
-            <Modal
-              title="Cập nhật thông tin người dùng"
-              visible={isModalVisible}
-              onOk={() => {
-                console.log(selectUser);
-
-                //check validation
-
-                //Gọi API update
-                // user.taiKhoan = dispatch(capNhatThongTinNguoiDungAction(user));
-
-                //tắt Modal
-                handleOk();
-              }}
-              onCancel={handleCancel}
-            >
-              <Form
-                // name={`updateForm${i}`}
-                form={form}
-                labelCol={{ span: 6 }}
-                wrapperCol={{ span: 14 }}
-                layout="horizontal"
-                onChange={(e) => {
-                  const id = e.target.id;
-                  const value = e.target.value;
-                  selectUser = { ...selectUser, [id]: value };
-                  // setUser(selectUser);
-                }}
-              >
-                <Form.Item name="taiKhoan" label="Tên tài khoản">
-                  <Input />
-                </Form.Item>
-                <Form.Item name="hoTen" label="Họ và tên">
-                  <Input />
-                </Form.Item>
-                <Form.Item label="Email" name="email">
-                  <Input />
-                </Form.Item>
-                <Form.Item label="Số điện thoại" name="soDt">
-                  <Input />
-                </Form.Item>
-                <Form.Item label="Mật khẩu" name="matKhau">
-                  <Input.Password
-                    iconRender={(visible) =>
-                      visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                    }
-                  />
-                </Form.Item>
-                <Form.Item label="Loại tài khoản" name="maLoaiNguoiDung">
-                  <Input />
-                </Form.Item>
-              </Form>
-              <Formik
-                enableReinitialize={true}
-                initialValues={{
-                  userName: "",
-                  name: "",
-                  email: "",
-                  phoneNumber: "12",
-                  password: "",
-                  loaiND: "",
-                }}
-                onSubmit={(values) => {
-                  let formData = new FormData();
-                  for (let key in values) {
-                    formData.append(key, values[key]);
-                  }
-                  console.log("values", values);
-
-                  // dispatch(dangKyAction(values));
-                }}
-                validationSchema={Yup.object().shape({
-                  soDt: Yup.string()
-                    .required("Tài khoản không được trống")
-                    .min(5, "Tên tài khoản từ 5 kí tự trở lên."),
-                })}
-              >
-                {(props) => {
-                  const {
-                    touched,
-                    errors,
-                    handleChange,
-                    handleBlur,
-                    handleSubmit,
-                  } = props;
-                  return (
-                    <Form
-                      form={form}
-                      labelCol={{ span: 6 }}
-                      wrapperCol={{ span: 14 }}
-                      layout="horizontal"
-                      onSubmitCapture={handleSubmit}
-                      enableReinitialize={true}
-                    >
-                      <Form.Item name="taiKhoan" label="Tên tài khoản">
-                        <Input />
-                      </Form.Item>
-                      <Form.Item name="hoTen" label="Họ và tên">
-                        <Input />
-                      </Form.Item>
-                      <Form.Item label="Email" name="email">
-                        <Input />
-                      </Form.Item>
-                      <Form.Item label="Số điện thoại">
-                        <Input
-                          name="soDt"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={listUser[i].soDt}
-                        />
-                        {errors.soDt && touched.soDt && (
-                          <div className="pink-color input-feedback">
-                            {errors.soDt}
-                          </div>
-                        )}
-                      </Form.Item>
-                      <Form.Item label="Mật khẩu" name="matKhau">
-                        <Input.Password
-                          iconRender={(visible) =>
-                            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                          }
-                        />
-                      </Form.Item>
-                      <Form.Item label="Loại tài khoản" name="maLoaiNguoiDung">
-                        <Input />
-                      </Form.Item>
-                      <Form.Item
-                        wrapperCol={{
-                          offset: 4,
-                          span: 14,
-                        }}
-                      >
-                        <button
-                          type="submit"
-                          className="bg-blue-700 text-white p-2 rounded-md"
-                        >
-                          Cập nhật
-                        </button>
-                      </Form.Item>
-                    </Form>
-                  );
-                }}
-              </Formik>
-            </Modal>
 
             <span
               className="text-red-700 text-2xl cursor-pointer mr-5"
@@ -351,9 +209,14 @@ export default function User() {
   const onSearch = (value) => {
     dispatch(timKiemNguoiDungAction(value));
   };
-
+  function handleChange(value) {
+    console.log(value); // { value: "lucy", key: "lucy", label: "Lucy (101)" }
+  }
   return (
     <Fragment>
+      <Button type="primary" className="mb-5" onClick={showModal}>
+        Thêm người dùng
+      </Button>
       <Search
         placeholder="Nhập tên tài khoản cần tìm"
         // onSearch={onSearch}
@@ -367,6 +230,149 @@ export default function User() {
         pagination={{ pageSize: 10 }}
         scroll={{ y: "50vh" }}
       />
+      <Modal
+        title="Cập nhật thông tin người dùng"
+        visible={isModalVisible}
+        onOk={() => {
+          // console.log(selectUser);
+
+          //check validation
+          form
+            .validateFields()
+            .then((values) => {
+              //Update tên nhóm vào thông tin user
+              selectUser = { ...selectUser, maNhom: GROUPID };
+              // Gọi API update
+              dispatch(capNhatThongTinNguoiDungAction(selectUser, true));
+
+              // tắt Modal
+              handleOk();
+            })
+            .catch((info) => {
+              console.log("Validate Failed:", info);
+            });
+        }}
+        onCancel={handleCancel}
+      >
+        <Form
+          form={form}
+          labelCol={{ span: 6 }}
+          wrapperCol={{ span: 14 }}
+          layout="horizontal"
+          onChange={(e) => {
+            const id = e.target.id;
+            const value = e.target.value;
+            selectUser = { ...selectUser, [id]: value };
+          }}
+        >
+          <Form.Item
+            name="taiKhoan"
+            label="Tên tài khoản"
+            rules={[
+              {
+                required: true,
+                message: "Vui lòng nhập vào tên tài khoản!",
+              },
+              {
+                min: 5,
+                message: "Tên tài khoản tối thiểu 5 ký tự trở lên.",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name="hoTen"
+            label="Họ và tên"
+            rules={[
+              {
+                required: true,
+                message: "Vui lòng nhập vào họ và tên!",
+                whitespace: true,
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[
+              {
+                type: "email",
+                message: "E-mail không hợp lệ!",
+              },
+              {
+                required: true,
+                message: "Vui lòng nhập vào E-mail!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Số điện thoại"
+            name="soDt"
+            rules={[
+              {
+                required: true,
+                message: "Nhập vào số điện thoại!",
+              },
+              {
+                pattern: "^([+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})$",
+                message: "Số điện thoại không đúng định dạng",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Mật khẩu"
+            name="matKhau"
+            rules={[
+              {
+                required: true,
+                message: "Vui lòng nhập vào mật khẩu!",
+              },
+
+              { min: 8, message: "Mật khẩu tối thiểu 8 ký tự trở lên." },
+              {
+                pattern: ".*[A-Z].*$",
+                message: "Mật khẩu chứa ít nhất 1 chữ cái in hoa",
+              },
+              {
+                pattern: ".*[0-9].*$",
+                message: "Mật khẩu chứa ít nhất 1 chữ số",
+              },
+              {
+                pattern: ".*[!@#$%^&+=].*$",
+                message: "Mật khẩu chứa ít nhất 1 ký tự đặc biệt",
+              },
+              {
+                pattern: "^(?:[\u0000-\u007F]+|[\u0370-\u03FF]+)$",
+                message: "Mật khẩu không đúng định dạng",
+              },
+            ]}
+          >
+            <Input.Password
+              iconRender={(visible) =>
+                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+              }
+            />
+          </Form.Item>
+          <Form.Item label="Loại tài khoản">
+            <Select
+              name="maLoaiNguoiDung"
+              defaultValue="KhachHang"
+              onChange={handleChange}
+              className="text-black"
+            >
+              <Option value="KhachHang">Khách hàng</Option>
+              <Option value="QuanTri">Quản Trị</Option>
+            </Select>
+          </Form.Item>
+        </Form>
+      </Modal>
     </Fragment>
   );
 }

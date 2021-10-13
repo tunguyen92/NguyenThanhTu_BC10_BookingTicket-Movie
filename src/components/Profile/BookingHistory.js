@@ -4,23 +4,7 @@ import moment from "moment";
 import "./BookingHistory.css";
 
 export default function BookingHistory(props) {
-  const data = props.thongTinDatVe;
-  data.map((item, index) => {
-    data[index] = { ...data[index], stt: index + 1 };
-  });
-  console.log(data);
-
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
+  console.log(props);
   const columns = [
     {
       title: "STT",

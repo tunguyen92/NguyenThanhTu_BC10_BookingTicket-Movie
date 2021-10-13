@@ -84,7 +84,7 @@ export const layThongTinNguoiDungAction = (taiKhoan) => {
   };
 };
 
-export const capNhatThongTinNguoiDungAction = (thongTinTaiKhoan) => {
+export const capNhatThongTinNguoiDungAction = (thongTinTaiKhoan, isUpdate) => {
   return async (dispatch) => {
     try {
       let result = await quanLyNguoiDungService.capNhatThongTinNguoiDung(
@@ -95,7 +95,9 @@ export const capNhatThongTinNguoiDungAction = (thongTinTaiKhoan) => {
         title: "Cập nhật thành công!",
         icon: "success",
       }).then((value) => {
-        window.location.replace("/profile");
+        if (!isUpdate) {
+          window.location.replace("/profile");
+        }
       });
 
       dispatch(layDanhSachNguoiDungAction());
