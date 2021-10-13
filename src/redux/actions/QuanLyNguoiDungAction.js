@@ -100,6 +100,11 @@ export const capNhatThongTinNguoiDungAction = (thongTinTaiKhoan) => {
 
       dispatch(layDanhSachNguoiDungAction());
     } catch (errors) {
+      swal({
+        title: `${errors.response?.data}`,
+        icon: "error",
+      });
+
       console.log(errors.response?.data);
     }
   };

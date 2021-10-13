@@ -126,6 +126,7 @@ export default function User() {
               onClick={() => {
                 setUser(listUser[i]);
                 showModal();
+                console.log(listUser[i]);
               }}
               className="text-blue-700 text-2xl mr-5"
             />

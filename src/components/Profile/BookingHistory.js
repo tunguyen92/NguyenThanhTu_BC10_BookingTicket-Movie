@@ -1,20 +1,37 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { Table, Button } from "antd";
+import { Table, Button, Modal } from "antd";
 import moment from "moment";
+import "./BookingHistory.css";
 
 export default function BookingHistory(props) {
+  const data = props.thongTinDatVe;
+  data.map((item, index) => {
+    data[index] = { ...data[index], stt: index + 1 };
+  });
+  console.log(data);
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
   const columns = [
     {
-      title: "Mã vé",
-      dataIndex: "maVe",
+      title: "STT",
+      dataIndex: "stt",
       //   width: 100,
       align: "center",
     },
     {
       title: "Tên phim",
       dataIndex: "tenPhim",
-      defaultSortOrder: "descend",
-      sorter: (a, b) => a.tenPhim - b.tenPhim,
+      align: "center",
     },
     {
       title: "Thời lượng",
@@ -42,25 +59,63 @@ export default function BookingHistory(props) {
     },
     {
       title: "Số ghế",
-      dataIndex: "giaVe",
-      render: (giaVe, dataCurrent) => {
-        return giaVe + " VNĐ";
+      dataIndex: "danhSachGhe",
+
+      render: (danhSachGhe, dataCurrent) => {
+        console.log(danhSachGhe);
+        const soGhe = [
+          {
+            title: "Tên hệ thống rạp",
+            dataIndex: "tenHeThongRap",
+            //   width: 100,
+            align: "center",
+          },
+          {
+            title: "Tên rạp",
+            dataIndex: "tenCumRap",
+            align: "center",
+          },
+          {
+            title: "Tên ghế",
+            dataIndex: "tenGhe",
+            align: "center",
+          },
+        ];
+        return (
+          <>
+            <button className="p-1 bg-pink-600 rounded" onClick={showModal}>
+              Chi tiết
+            </button>
+            <Modal
+              title="Thông tin ghế đã đặt"
+              visible={isModalVisible}
+              onOk={handleOk}
+              onCancel={handleCancel}
+            >
+              <Table
+                columns={soGhe}
+                dataSource={danhSachGhe}
+                rowKey={(ghe) => ghe.maGhe}
+                onChange={onChange}
+                pagination={{ pageSize: 3 }}
+              />
+            </Modal>
+          </>
+        );
       },
     },
   ];
-
-  const data = props.thongTinDatVe;
 
   function onChange(pagination, filters, sorter, extra) {
     // console.log("params", pagination, filters, sorter, extra);
   }
 
   return (
-    <div className="bg-gray-blue-color w-full rounded-lg shadow-xl">
+    <div className="booking-history bg-gray-blue-color w-full rounded-lg shadow-xl">
       <div className="p-4 border-b">
-        <h2 className="text-2xl text-white">Chỉnh sửa hồ sơ</h2>
+        <h2 className="text-2xl text-white">Lịch sử đặt vé</h2>
         <p className="text-sm text-gray-300 ">
-          Quản lý thông tin hồ sơ để bảo mật tài khoản
+          Bấm vào chi tiết để xem số ghế!
         </p>
       </div>
       <Table
@@ -68,7 +123,8 @@ export default function BookingHistory(props) {
         dataSource={data}
         rowKey={(ve) => ve.maVe}
         onChange={onChange}
-        scroll={{ y: "50vh" }}
+        // scroll={{ y: "50vh" }}
+        pagination={{ pageSize: 3 }}
       />
     </div>
   );
