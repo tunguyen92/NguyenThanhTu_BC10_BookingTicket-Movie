@@ -1,24 +1,47 @@
+.screen {
+  width: 90%;
+  height: 80px;
+  border: 5px solid transparent;
+  border-top-color: #ff6565;
+  border-radius: 70%/100px 100px 0 0;
+  filter: drop-shadow(3px 3px 10px #ff6565);
+}
 .ghe {
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 5px;
+  position: relative;
+  /* width: 40px; */
+  /* height: 40px; */
+  /* border: none; */
+  /* border-radius: 5px; */
   cursor: pointer;
-  margin: 12px;
+  /* margin: 12px; */
+  padding: 12px;
   /* background-color: rgb(123, 122, 122); */
   color: rgb(2, 2, 2);
 }
-.gheVip {
-  color: rgb(228, 78, 8);
+.gheVip img {
+  filter: invert(48%) sepia(100%) saturate(595%) hue-rotate(318deg)
+    brightness(101%) contrast(112%) drop-shadow(0 0 8px #ff6565ad);
+  /* color: rgb(228, 78, 8); */
 }
 
-.gheDaDat {
-  color: grey;
+.gheDaDat img {
+  filter: invert(63%) sepia(91%) saturate(30%) hue-rotate(105deg)
+    brightness(80%) contrast(90%) drop-shadow(0 0 0px grey);
+  /* color: grey; */
   cursor: no-drop !important;
 }
 
-.gheDangDat {
+.gheDangDat img {
   /* color: rgb(18, 176, 18); */
   filter: invert(63%) sepia(91%) saturate(555%) hue-rotate(105deg)
     brightness(200%) contrast(120%) drop-shadow(0 0 8px #00ffadad);
+}
+
+.ghe .sttGhe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black !important;
+  padding-bottom: 6px;
 }
