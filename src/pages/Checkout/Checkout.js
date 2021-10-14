@@ -10,6 +10,7 @@ import { DAT_VE } from "../../redux/actions/types/QuanLyDatVeType";
 import DatVe from "./DatVe.module";
 import _ from "lodash";
 import { ThongTinDatVe } from "./../../_core/models/ThongTinDatVe";
+import seat from "../../assets/images/seat.svg";
 
 export default function Checkout(props) {
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDungReducer);
@@ -54,22 +55,7 @@ export default function Checkout(props) {
             disabled={ghe.daDat}
             className={`ghe ${classGheDangDat} ${classGheVip} ${classGheDaDat} `}
           >
-            <svg
-              class="svg-inline--fa fa-couch fa-w-20"
-              aria-hidden="true"
-              focusable="false"
-              data-prefix="fas"
-              data-icon="couch"
-              role="img"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 640 512"
-              data-fa-i2svg=""
-            >
-              <path
-                fill="currentColor"
-                d="M160 224v64h320v-64c0-35.3 28.7-64 64-64h32c0-53-43-96-96-96H160c-53 0-96 43-96 96h32c35.3 0 64 28.7 64 64zm416-32h-32c-17.7 0-32 14.3-32 32v96H128v-96c0-17.7-14.3-32-32-32H64c-35.3 0-64 28.7-64 64 0 23.6 13 44 32 55.1V432c0 8.8 7.2 16 16 16h64c8.8 0 16-7.2 16-16v-16h384v16c0 8.8 7.2 16 16 16h64c8.8 0 16-7.2 16-16V311.1c19-11.1 32-31.5 32-55.1 0-35.3-28.7-64-64-64z"
-              ></path>
-            </svg>
+            <img src={seat} alt="" class="img-ghe" width="30" height="30" />
             <span>{ghe.stt}</span>
           </button>
           {(index + 1) % 16 === 0 ? <br /> : ""}
@@ -79,7 +65,10 @@ export default function Checkout(props) {
   };
 
   return (
-    <div className="pb-0 pr-2 min-h-screen pt-20">
+    <div
+      className="pb-0 pr-2 min-h-screen pt-20"
+      style={{ backgroundColor: "#0f2133" }}
+    >
       <div className="grid grid-cols-12 ">
         <div className="col-span-9 min-h-screen">
           <div className="flex flex-col items-center mt-5">
