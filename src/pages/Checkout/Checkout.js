@@ -4,7 +4,6 @@ import {
   datVeAction,
   layChiTietPhongVeAction,
 } from "../../redux/actions/QuanLyDatVeAction";
-import style from "./Checkout.module.css";
 import "./Checkout.css";
 import { DAT_VE } from "../../redux/actions/types/QuanLyDatVeType";
 import DatVe from "./DatVe.module";
@@ -55,8 +54,8 @@ export default function Checkout(props) {
             disabled={ghe.daDat}
             className={`ghe ${classGheDangDat} ${classGheVip} ${classGheDaDat} `}
           >
-            <img src={seat} alt="" class="img-ghe" width="30" height="30" />
-            <span>{ghe.stt}</span>
+            <img src={seat} alt="" class="img-ghe" width="40" height="40" />
+            <span className="sttGhe">{ghe.stt}</span>
           </button>
           {(index + 1) % 16 === 0 ? <br /> : ""}
         </Fragment>
@@ -72,13 +71,12 @@ export default function Checkout(props) {
       <div className="grid grid-cols-12 ">
         <div className="col-span-9 min-h-screen">
           <div className="flex flex-col items-center mt-5">
-            <div
-              className="bg-black"
-              style={{ width: "80%", height: 15 }}
-            ></div>
-            <div className={`${style["trapezoid"]} text-center`}>
-              <h3 className="mt-3 text-black text-bold">MÀN HÌNH</h3>
+            <div className="screen">
+              <h3 className="mt-5 text-2xl text-white text-bold text-center">
+                MÀN HÌNH
+              </h3>
             </div>
+
             <div>{renderSeats()}</div>
           </div>
 
@@ -87,91 +85,31 @@ export default function Checkout(props) {
 
             <div className="flex" style={{ alignItems: "center" }}>
               <div className="ghe">
-                <svg
-                  class="svg-inline--fa fa-couch fa-w-20"
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="couch"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 640 512"
-                  data-fa-i2svg=""
-                >
-                  <path
-                    fill="currentColor"
-                    d="M160 224v64h320v-64c0-35.3 28.7-64 64-64h32c0-53-43-96-96-96H160c-53 0-96 43-96 96h32c35.3 0 64 28.7 64 64zm416-32h-32c-17.7 0-32 14.3-32 32v96H128v-96c0-17.7-14.3-32-32-32H64c-35.3 0-64 28.7-64 64 0 23.6 13 44 32 55.1V432c0 8.8 7.2 16 16 16h64c8.8 0 16-7.2 16-16v-16h384v16c0 8.8 7.2 16 16 16h64c8.8 0 16-7.2 16-16V311.1c19-11.1 32-31.5 32-55.1 0-35.3-28.7-64-64-64z"
-                  ></path>
-                </svg>
+                <img src={seat} alt="" class="img-ghe" width="30" height="30" />
               </div>
-              <div>Ghế thường</div>
+              <div className="text-white">Ghế thường</div>
             </div>
             <div className="flex" style={{ alignItems: "center" }}>
               <div className="ghe gheVip">
-                <svg
-                  className="svg-inline--fa fa-couch fa-w-20"
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="couch"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 640 512"
-                  data-fa-i2svg=""
-                >
-                  <path
-                    fill="currentColor"
-                    d="M160 224v64h320v-64c0-35.3 28.7-64 64-64h32c0-53-43-96-96-96H160c-53 0-96 43-96 96h32c35.3 0 64 28.7 64 64zm416-32h-32c-17.7 0-32 14.3-32 32v96H128v-96c0-17.7-14.3-32-32-32H64c-35.3 0-64 28.7-64 64 0 23.6 13 44 32 55.1V432c0 8.8 7.2 16 16 16h64c8.8 0 16-7.2 16-16v-16h384v16c0 8.8 7.2 16 16 16h64c8.8 0 16-7.2 16-16V311.1c19-11.1 32-31.5 32-55.1 0-35.3-28.7-64-64-64z"
-                  ></path>
-                </svg>
+                <img src={seat} alt="" class="img-ghe" width="30" height="30" />
               </div>
-              <div>Ghế vip</div>
+              <div className="text-white">Ghế vip</div>
             </div>
             <div className="flex" style={{ alignItems: "center" }}>
               <div className="ghe gheDaDat">
-                <svg
-                  class="svg-inline--fa fa-couch fa-w-20"
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="couch"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 640 512"
-                  data-fa-i2svg=""
-                >
-                  <path
-                    fill="currentColor"
-                    d="M160 224v64h320v-64c0-35.3 28.7-64 64-64h32c0-53-43-96-96-96H160c-53 0-96 43-96 96h32c35.3 0 64 28.7 64 64zm416-32h-32c-17.7 0-32 14.3-32 32v96H128v-96c0-17.7-14.3-32-32-32H64c-35.3 0-64 28.7-64 64 0 23.6 13 44 32 55.1V432c0 8.8 7.2 16 16 16h64c8.8 0 16-7.2 16-16v-16h384v16c0 8.8 7.2 16 16 16h64c8.8 0 16-7.2 16-16V311.1c19-11.1 32-31.5 32-55.1 0-35.3-28.7-64-64-64z"
-                  ></path>
-                </svg>
+                <img src={seat} alt="" class="img-ghe" width="30" height="30" />
               </div>
-              <div>Ghế đã đặt</div>
+              <div className="text-white">Ghế đã đặt</div>
             </div>
             <div className="flex" style={{ alignItems: "center" }}>
               <div className="ghe gheDangDat">
-                <svg
-                  class="svg-inline--fa fa-couch fa-w-20"
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="couch"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 640 512"
-                  data-fa-i2svg=""
-                >
-                  <path
-                    fill="currentColor"
-                    d="M160 224v64h320v-64c0-35.3 28.7-64 64-64h32c0-53-43-96-96-96H160c-53 0-96 43-96 96h32c35.3 0 64 28.7 64 64zm416-32h-32c-17.7 0-32 14.3-32 32v96H128v-96c0-17.7-14.3-32-32-32H64c-35.3 0-64 28.7-64 64 0 23.6 13 44 32 55.1V432c0 8.8 7.2 16 16 16h64c8.8 0 16-7.2 16-16v-16h384v16c0 8.8 7.2 16 16 16h64c8.8 0 16-7.2 16-16V311.1c19-11.1 32-31.5 32-55.1 0-35.3-28.7-64-64-64z"
-                  ></path>
-                </svg>
+                <img src={seat} alt="" class="img-ghe" width="30" height="30" />
               </div>
-              <div>Ghế đang đặt</div>
+              <div className="text-white">Ghế đang đặt</div>
             </div>
           </div>
         </div>
-        <div className="col-span-3 mt-5">
+        <div className="col-span-3">
           <h3 className="text-green-400 text-center text-4xl mb-2">
             {danhSachDangDat
               .reduce((total, ghe) => {
@@ -181,25 +119,24 @@ export default function Checkout(props) {
             đ
           </h3>
           <hr />
-          <h3 className="text-xl mt-3">{thongTinPhim.tenPhim}</h3>
-          <p className="text-black mt-1 ">
+          <h3 className="text-xl mt-3 text-white">{thongTinPhim.tenPhim}</h3>
+          <p className="text-white mt-1 ">
             Địa điểm: {thongTinPhim.tenCumRap} - {thongTinPhim.tenRap}
           </p>
-          <p className="text-black mt-1 mb-3 ">
+          <p className="text-white mt-1 mb-3 ">
             Ngày chiếu: {thongTinPhim.ngayChieu}
           </p>
           <hr />
 
           <DatVe danhSachDangDat={_.sortBy(danhSachDangDat, ["maGhe"])} />
           <hr />
-          <div className="my-5">
-            <i className="">Email</i> <br />
+          <div className="my-5 text-white">
+            <span>Email: </span>
             {userLogin.email}
           </div>
           <hr />
-          <div className="my-5">
-            <i>Phone</i>
-            <br />
+          <div className="my-5 text-white">
+            <span>Phone: </span>
             {userLogin.soDT}
           </div>
           <hr />
