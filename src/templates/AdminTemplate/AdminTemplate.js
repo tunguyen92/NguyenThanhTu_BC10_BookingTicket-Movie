@@ -58,21 +58,10 @@ const AdminTemplate = (props) => {
             onClick={() => {
               window.location.replace("/profile");
             }}
+            className="mr-10 yellow-color-hover"
           >
-            <div
-              style={{
-                width: 50,
-                height: 50,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-              className=" ml-5 rounded-full bg-red-200"
-            >
-              {userLogin.taiKhoan}
-            </div>
-            Hello ! {userLogin.hoTen}
-          </button>{" "}
+            Hello {userLogin.hoTen}
+          </button>
           <button
             onClick={() => {
               localStorage.removeItem(USER_LOGIN);
@@ -80,10 +69,10 @@ const AdminTemplate = (props) => {
               history.push("/");
               window.location.reload();
             }}
-            className="text-blue-800"
+            className="bg-pink-color rounded-3xl text-sm px-5 py-2"
           >
             Đăng xuất
-          </button>{" "}
+          </button>
         </Fragment>
       ) : (
         ""
@@ -100,13 +89,24 @@ const AdminTemplate = (props) => {
         return (
           <Fragment>
             <Layout style={{ maxHeight: "100vh" }}>
-              <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
-                <div className="logo p-5">
+              <Sider
+                className="text-center"
+                collapsible
+                collapsed={collapsed}
+                onCollapse={onCollapse}
+              >
+                <button
+                  className="pt-5"
+                  onClick={() => {
+                    window.location.replace("/");
+                  }}
+                >
                   <img
-                    src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png"
-                    alt="..."
+                    src={process.env.PUBLIC_URL + "/images/logo.png"}
+                    alt="logo"
+                    className="w-20 h-20"
                   />
-                </div>
+                </button>
                 <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
                   <SubMenu key="sub1" icon={<UserOutlined />} title="User">
                     <Menu.Item key="12" icon={<UnorderedListOutlined />}>
@@ -138,20 +138,17 @@ const AdminTemplate = (props) => {
                     title="Films"
                   >
                     <Menu.Item key="10" icon={<UnorderedListOutlined />}>
-                      <NavLink to="/admin/films">Films</NavLink>
+                      <NavLink to="/admin/films">Film List</NavLink>
                     </Menu.Item>
                     <Menu.Item key="11" icon={<FileAddOutlined />}>
-                      <NavLink to="/admin/films/add-new">Add new</NavLink>
+                      <NavLink to="/admin/films/add-new">Add Film</NavLink>
                     </Menu.Item>
                   </SubMenu>
                 </Menu>
               </Sider>
               <Layout className="site-layout">
-                <Header
-                  className="site-layout-background"
-                  style={{ padding: 0 }}
-                >
-                  <div className="text-right pr-10 pt-1">{operations}</div>
+                <Header className="site-layout-background">
+                  <div className="text-right">{operations}</div>
                 </Header>
                 <Content style={{ margin: "0 16px" }}>
                   <Breadcrumb style={{ margin: "16px 0" }}></Breadcrumb>

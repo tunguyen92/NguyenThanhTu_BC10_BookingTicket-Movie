@@ -105,7 +105,7 @@ export default function Films() {
                   dangerMode: true,
                 }).then((willDelete) => {
                   if (willDelete) {
-                    return dispatch(xoaPhimAction(film.maPhim));
+                    dispatch(xoaPhimAction(film.maPhim));
                   } else {
                     swal("Ok, phim vẫn còn đó!");
                   }

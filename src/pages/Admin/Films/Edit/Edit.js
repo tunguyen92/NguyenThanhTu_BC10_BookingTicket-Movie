@@ -105,13 +105,7 @@ const Edit = (props) => {
         size={componentSize}
       >
         <h3>Cập nhật phim </h3>
-        <Form.Item label="Form Size" name="size">
-          <Radio.Group>
-            <Radio.Button value="small">Small</Radio.Button>
-            <Radio.Button value="default">Default</Radio.Button>
-            <Radio.Button value="large">Large</Radio.Button>
-          </Radio.Group>
-        </Form.Item>
+
         <Form.Item label="Tên phim">
           <Input
             name="tenPhim"
@@ -158,7 +152,7 @@ const Edit = (props) => {
           />
           <br />
           <img
-            style={{ width: 150, height: 150, objectFit: "contain" }}
+            style={{ width: 100, height: 100, objectFit: "contain" }}
             src={imgSrc === "" ? thongTinPhim.hinhAnh : imgSrc}
           />
         </Form.Item>
