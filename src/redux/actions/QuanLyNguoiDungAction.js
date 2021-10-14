@@ -84,7 +84,7 @@ export const layThongTinNguoiDungAction = (taiKhoan) => {
   };
 };
 
-export const capNhatThongTinNguoiDungAction = (thongTinTaiKhoan) => {
+export const capNhatThongTinNguoiDungAction = (thongTinTaiKhoan, isUpdate) => {
   return async (dispatch) => {
     try {
       let result = await quanLyNguoiDungService.capNhatThongTinNguoiDung(
@@ -95,7 +95,9 @@ export const capNhatThongTinNguoiDungAction = (thongTinTaiKhoan) => {
         title: "Cập nhật thành công!",
         icon: "success",
       }).then((value) => {
-        history.push("/profile");
+        if (!isUpdate) {
+          window.location.replace("/profile");
+        }
       });
 
       dispatch(layDanhSachNguoiDungAction());
@@ -142,12 +144,36 @@ export const xoaNguoiDungAction = (taiKhoan) => {
       const result = await quanLyNguoiDungService.xoaThongTinNguoiDung(
         taiKhoan
       );
-      console.log(result);
-      alert("Xóa tài khoản thành công");
-
+      swal({
+        title: "Xóa tài khoản thành công!",
+        icon: "success",
+      });
       dispatch(layDanhSachNguoiDungAction());
     } catch (errors) {
-      alert(errors.response?.data);
+      swal({
+        title: `${errors.response?.data}`,
+        icon: "error",
+      });
+    }
+  };
+};
+
+export const themNguoiDungAction = (thongTinNguoiDung) => {
+  return async (dispatch) => {
+    try {
+      const result = await quanLyNguoiDungService.themNguoiDung(
+        thongTinNguoiDung
+      );
+      swal({
+        title: "Thêm người dùng thành công!",
+        icon: "success",
+      });
+      dispatch(layDanhSachNguoiDungAction());
+    } catch (error) {
+      swal({
+        title: `${error.response?.data}`,
+        icon: "error",
+      });
     }
   };
 };

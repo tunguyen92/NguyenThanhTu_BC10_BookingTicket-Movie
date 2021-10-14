@@ -52,6 +52,7 @@ export default function Profile(props) {
           className="pt-2 pb-4 space-y-1 text-sm "
           type="card"
           tabBarExtraContent={operations}
+         
         >
           <TabPane
             tab={
@@ -186,6 +187,7 @@ export default function Profile(props) {
             key="2"
           >
             <BookingHistory thongTinDatVe={thongTinNguoiDung.thongTinDatVe} />
+            
           </TabPane>
 
           <TabPane
@@ -199,6 +201,7 @@ export default function Profile(props) {
               </button>
             }
             key="3"
+            
           >
             <EditUser />
           </TabPane>

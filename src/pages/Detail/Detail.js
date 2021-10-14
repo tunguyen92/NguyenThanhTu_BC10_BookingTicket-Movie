@@ -140,9 +140,6 @@ export default function Detail(props) {
             <TabPane tab="Đánh giá" key="2">
               Content of Tab Pane 2
             </TabPane>
-            <TabPane tab="Mô tả" key="3">
-              Content of Tab Pane 3
-            </TabPane>
           </Tabs>
         </div>
       </CustomCard>

@@ -69,11 +69,7 @@ function App() {
         <HomeTemplate path="/" exact Component={Home} />
 
         <Suspense fallback={<h1>Loading...</h1>}>
-          <CheckoutTemplateLazy
-            path="/checkout/:id"
-            exact
-            Component={Checkout}
-          />
+          <HomeTemplate path="/checkout/:id" exact Component={Checkout} />
         </Suspense>
       </Switch>
     </Router>

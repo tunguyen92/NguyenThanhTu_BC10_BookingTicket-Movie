@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Table, Input, Modal, Button, Form } from "antd";
+import { Table, Input, Modal, Button, Form, Select } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { QuanLyNguoiDungReducer } from "./../../../redux/reducers/QuanLyNguoiDungReducer";
 import {
@@ -8,6 +8,7 @@ import {
   layThongTinNguoiDungAction,
   timKiemNguoiDungAction,
   xoaNguoiDungAction,
+  themNguoiDungAction,
 } from "./../../../redux/actions/QuanLyNguoiDungAction";
 import { NavLink } from "react-router-dom";
 import {
@@ -19,8 +20,9 @@ import {
   EyeTwoTone,
 } from "@ant-design/icons";
 import "./User.scss";
-import { Formik } from "formik";
-import * as Yup from "yup";
+import { GROUPID } from "./../../../util/settings/config";
+
+const { Option } = Select;
 
 export default function User() {
   const { listUser, listUserTimKiem, keyword } = useSelector(
@@ -30,8 +32,13 @@ export default function User() {
 
   //Tạo modal update hiển thị thông tin User
   const [isModalVisible, setIsModalVisible] = useState(false);
-
+  const [modalInfo, setModalInfo] = useState({
+    title: "",
+    okText: "",
+    cancelText: "",
+  });
   const showModal = () => {
+    form.resetFields();
     setIsModalVisible(true);
   };
 
@@ -49,7 +56,10 @@ export default function User() {
 
   //  tạo user được chọn khi edit
   let [selectUser, setSelectUser] = useState({});
-  const setUser = (user) => setSelectUser(user);
+  const setUser = (user) => {
+    user = { ...user, isUpdate: true };
+    return setSelectUser(user);
+  };
 
   // cập nhật user được chọn để render ra modal
   useEffect(() => {
@@ -116,161 +126,21 @@ export default function User() {
         loaiND: listUser[i].maLoaiNguoiDung,
         action: (
           <Fragment>
-            <NavLink to="" className="text-green-700 text-2xl mr-5">
+            {/* <NavLink to="" className="text-green-700 text-2xl mr-5">
               <ContactsOutlined />
-            </NavLink>
+            </NavLink> */}
             <EditOutlined
               onClick={() => {
                 setUser(listUser[i]);
+                setModalInfo({
+                  title: "Cập nhật thông tin người dùng",
+                  okText: "Cập nhật",
+                  cancelText: "Hủy",
+                });
                 showModal();
-                console.log(listUser[i]);
               }}
               className="text-blue-700 text-2xl mr-5"
             />
-            <Modal
-              title="Cập nhật thông tin người dùng"
-              visible={isModalVisible}
-              onOk={() => {
-                console.log(selectUser);
-
-                //check validation
-
-                //Gọi API update
-                // user.taiKhoan = dispatch(capNhatThongTinNguoiDungAction(user));
-
-                //tắt Modal
-                handleOk();
-              }}
-              onCancel={handleCancel}
-            >
-              <Form
-                // name={`updateForm${i}`}
-                form={form}
-                labelCol={{ span: 6 }}
-                wrapperCol={{ span: 14 }}
-                layout="horizontal"
-                onChange={(e) => {
-                  const id = e.target.id;
-                  const value = e.target.value;
-                  selectUser = { ...selectUser, [id]: value };
-                  // setUser(selectUser);
-                }}
-              >
-                <Form.Item name="taiKhoan" label="Tên tài khoản">
-                  <Input />
-                </Form.Item>
-                <Form.Item name="hoTen" label="Họ và tên">
-                  <Input />
-                </Form.Item>
-                <Form.Item label="Email" name="email">
-                  <Input />
-                </Form.Item>
-                <Form.Item label="Số điện thoại" name="soDt">
-                  <Input />
-                </Form.Item>
-                <Form.Item label="Mật khẩu" name="matKhau">
-                  <Input.Password
-                    iconRender={(visible) =>
-                      visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                    }
-                  />
-                </Form.Item>
-                <Form.Item label="Loại tài khoản" name="maLoaiNguoiDung">
-                  <Input />
-                </Form.Item>
-              </Form>
-              <Formik
-                enableReinitialize={true}
-                initialValues={{
-                  userName: "",
-                  name: "",
-                  email: "",
-                  phoneNumber: "12",
-                  password: "",
-                  loaiND: "",
-                }}
-                onSubmit={(values) => {
-                  let formData = new FormData();
-                  for (let key in values) {
-                    formData.append(key, values[key]);
-                  }
-                  console.log("values", values);
-
-                  // dispatch(dangKyAction(values));
-                }}
-                validationSchema={Yup.object().shape({
-                  soDt: Yup.string()
-                    .required("Tài khoản không được trống")
-                    .min(5, "Tên tài khoản từ 5 kí tự trở lên."),
-                })}
-              >
-                {(props) => {
-                  const {
-                    touched,
-                    errors,
-                    handleChange,
-                    handleBlur,
-                    handleSubmit,
-                  } = props;
-                  return (
-                    <Form
-                      form={form}
-                      labelCol={{ span: 6 }}
-                      wrapperCol={{ span: 14 }}
-                      layout="horizontal"
-                      onSubmitCapture={handleSubmit}
-                      enableReinitialize={true}
-                    >
-                      <Form.Item name="taiKhoan" label="Tên tài khoản">
-                        <Input />
-                      </Form.Item>
-                      <Form.Item name="hoTen" label="Họ và tên">
-                        <Input />
-                      </Form.Item>
-                      <Form.Item label="Email" name="email">
-                        <Input />
-                      </Form.Item>
-                      <Form.Item label="Số điện thoại">
-                        <Input
-                          name="soDt"
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          value={listUser[i].soDt}
-                        />
-                        {errors.soDt && touched.soDt && (
-                          <div className="pink-color input-feedback">
-                            {errors.soDt}
-                          </div>
-                        )}
-                      </Form.Item>
-                      <Form.Item label="Mật khẩu" name="matKhau">
-                        <Input.Password
-                          iconRender={(visible) =>
-                            visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                          }
-                        />
-                      </Form.Item>
-                      <Form.Item label="Loại tài khoản" name="maLoaiNguoiDung">
-                        <Input />
-                      </Form.Item>
-                      <Form.Item
-                        wrapperCol={{
-                          offset: 4,
-                          span: 14,
-                        }}
-                      >
-                        <button
-                          type="submit"
-                          className="bg-blue-700 text-white p-2 rounded-md"
-                        >
-                          Cập nhật
-                        </button>
-                      </Form.Item>
-                    </Form>
-                  );
-                }}
-              </Formik>
-            </Modal>
 
             <span
               className="text-red-700 text-2xl cursor-pointer mr-5"
@@ -308,26 +178,22 @@ export default function User() {
             <NavLink to="" className="text-green-700 text-2xl mr-5">
               <ContactsOutlined />
             </NavLink>
-            <button
-              className="text-green-700 text-2xl mr-5"
-              onClick={showModal}
-            >
-              <EditOutlined />
-              <Modal
-                title="Basic Modal"
-                visible={isModalVisible}
-                onOk={handleOk}
-                onCancel={handleCancel}
-              >
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-              </Modal>
-            </button>
+            <EditOutlined
+              onClick={() => {
+                setUser(listUserTimKiem[i]);
+                setModalInfo({
+                  title: "Cập nhật thông tin người dùng",
+                  okText: "Cập nhật",
+                  cancelText: "Hủy",
+                });
+                showModal();
+              }}
+              className="text-blue-700 text-2xl mr-5"
+            />
+
             <span
               className="text-red-700 text-2xl cursor-pointer mr-5"
               to="/"
-              key={2}
               onClick={() => {
                 if (
                   window.confirm(
@@ -354,6 +220,21 @@ export default function User() {
 
   return (
     <Fragment>
+      <Button
+        type="primary"
+        className="mb-5"
+        onClick={() => {
+          setModalInfo({
+            title: "Thêm người dùng mới",
+            okText: "Thêm",
+            cancelText: "Hủy",
+          });
+          delete selectUser.isUpdate;
+          showModal();
+        }}
+      >
+        Thêm người dùng
+      </Button>
       <Search
         placeholder="Nhập tên tài khoản cần tìm"
         // onSearch={onSearch}
@@ -367,6 +248,160 @@ export default function User() {
         pagination={{ pageSize: 10 }}
         scroll={{ y: "50vh" }}
       />
+      <Modal
+        title={modalInfo.title}
+        visible={isModalVisible}
+        forceRender
+        okText={modalInfo.okText}
+        cancelText={modalInfo.cancelText}
+        onOk={() => {
+          //check validation
+          form
+            .validateFields()
+            .then((values) => {
+              //Update tên nhóm vào thông tin user
+              const updateUser = { ...selectUser, maNhom: GROUPID };
+              if (updateUser.isUpdate) {
+                delete updateUser.isUpdate;
+                // Gọi API update
+                dispatch(capNhatThongTinNguoiDungAction(updateUser, true));
+              } else {
+                //Gọi API add user
+                dispatch(themNguoiDungAction(updateUser));
+              }
+
+              // tắt Modal
+              handleOk();
+            })
+            .catch((info) => {
+              console.log("Validate Failed:", info);
+            });
+        }}
+        onCancel={handleCancel}
+      >
+        <Form
+          form={form}
+          labelCol={{ span: 6 }}
+          wrapperCol={{ span: 14 }}
+          layout="horizontal"
+          initialValues={{ maLoaiNguoiDung: "KhachHang" }}
+          onFieldsChange={(a, b) => {
+            selectUser = { ...selectUser, [a[0].name]: a[0].value };
+          }}
+        >
+          <Form.Item
+            name="taiKhoan"
+            label="Tên tài khoản"
+            rules={[
+              {
+                required: true,
+                message: "Vui lòng nhập vào tên tài khoản!",
+              },
+              {
+                min: 5,
+                message: "Tên tài khoản tối thiểu 5 ký tự trở lên.",
+              },
+            ]}
+          >
+            <Input disabled={selectUser.isUpdate} />
+          </Form.Item>
+          <Form.Item
+            name="hoTen"
+            label="Họ và tên"
+            rules={[
+              {
+                required: true,
+                message: "Vui lòng nhập vào họ và tên!",
+                whitespace: true,
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[
+              {
+                type: "email",
+                message: "E-mail không hợp lệ!",
+              },
+              {
+                required: true,
+                message: "Vui lòng nhập vào E-mail!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Số điện thoại"
+            name="soDt"
+            rules={[
+              {
+                required: true,
+                message: "Nhập vào số điện thoại!",
+              },
+              {
+                pattern: "^([+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})$",
+                message: "Số điện thoại không đúng định dạng",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Mật khẩu"
+            name="matKhau"
+            rules={[
+              {
+                required: true,
+                message: "Vui lòng nhập vào mật khẩu!",
+              },
+
+              { min: 8, message: "Mật khẩu tối thiểu 8 ký tự trở lên." },
+              {
+                pattern: ".*[A-Z].*$",
+                message: "Mật khẩu chứa ít nhất 1 chữ cái in hoa",
+              },
+              {
+                pattern: ".*[0-9].*$",
+                message: "Mật khẩu chứa ít nhất 1 chữ số",
+              },
+              {
+                pattern: ".*[!@#$%^&+=].*$",
+                message: "Mật khẩu chứa ít nhất 1 ký tự đặc biệt",
+              },
+              {
+                pattern: "^(?:[\u0000-\u007F]+|[\u0370-\u03FF]+)$",
+                message: "Mật khẩu không đúng định dạng",
+              },
+            ]}
+          >
+            <Input.Password
+              iconRender={(visible) =>
+                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+              }
+            />
+          </Form.Item>
+
+          <Form.Item
+            name="maLoaiNguoiDung"
+            label="Loại tài khoản"
+            rules={[
+              {
+                required: true,
+                message: "Vui lòng chọn loại người dùng",
+              },
+            ]}
+          >
+            <Select placeholder="Select a person" className="text-black">
+              <Option value="KhachHang">Khách hàng</Option>
+              <Option value="QuanTri">Quản Trị</Option>
+            </Select>
+          </Form.Item>
+        </Form>
+      </Modal>
     </Fragment>
   );
 }

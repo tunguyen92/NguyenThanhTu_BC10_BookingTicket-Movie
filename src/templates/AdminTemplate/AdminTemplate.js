@@ -112,9 +112,9 @@ const AdminTemplate = (props) => {
                     <Menu.Item key="12" icon={<UnorderedListOutlined />}>
                       <NavLink to="/admin/user">User List</NavLink>
                     </Menu.Item>
-                    <Menu.Item key="13" icon={<UserAddOutlined />}>
+                    {/* <Menu.Item key="13" icon={<UserAddOutlined />}>
                       <NavLink to="/admin/user/add">Add User</NavLink>
-                    </Menu.Item>
+                    </Menu.Item> */}
                   </SubMenu>
 
                   <SubMenu
