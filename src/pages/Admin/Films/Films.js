@@ -12,6 +12,8 @@ import {
 } from "../../../redux/actions/QuanLyPhimActions";
 import { NavLink } from "react-router-dom";
 import { history } from "../../../App";
+import swal from "sweetalert";
+import "./Film.css";
 
 const { Search } = Input;
 
@@ -60,6 +62,7 @@ export default function Films() {
       title: "Tên phim",
       dataIndex: "tenPhim",
       sorter: (a, b) => a.tenPhim.localeCompare(b.tenPhim),
+      width: 250,
     },
     {
       title: "Mô tả",
@@ -67,8 +70,8 @@ export default function Films() {
       render: (text, film) => {
         return (
           <Fragment>
-            {film.moTa.length > 50
-              ? film.moTa.substr(0, 50) + "..."
+            {film.moTa.length > 60
+              ? film.moTa.substr(0, 60) + "..."
               : film.moTa}
           </Fragment>
         );
@@ -77,6 +80,8 @@ export default function Films() {
     {
       title: "Chỉnh sửa",
       dataIndex: "moTa",
+      width: 150,
+      align: "center",
       render: (text, film) => {
         return (
           <Fragment>
@@ -92,10 +97,19 @@ export default function Films() {
               to="/"
               key={2}
               onClick={() => {
-                if (window.confirm("Bạn có muốn xóa phim " + film.tenPhim)) {
-                  // Gọi action
-                  dispatch(xoaPhimAction(film.maPhim));
-                }
+                swal({
+                  title: "Bạn có muốn xóa phim " + film.tenPhim + " không?",
+                  text: "Xóa rồi là mất luôn nha!",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+                }).then((willDelete) => {
+                  if (willDelete) {
+                    return dispatch(xoaPhimAction(film.maPhim));
+                  } else {
+                    swal("Ok, phim vẫn còn đó!");
+                  }
+                });
               }}
             >
               <DeleteOutlined />
@@ -128,20 +142,13 @@ export default function Films() {
   };
 
   return (
-    <div className="container">
-      <h3 className="text-4xl">Quản lý phim</h3>
-      <Button
-        className="mb-5"
-        onClick={() => {
-          history.push("/admin/films/add-new");
-        }}
-      >
-        Thêm phim
-      </Button>
+    <div className="admin-film container">
+      <h3 className="text-2xl">Quản lý phim</h3>
+
       <Search
         allowClear
-        className="mb-5"
-        placeholder="input search text"
+        className="my-3"
+        placeholder="Nhập tên phim cần tìm"
         onSearch={onSearch}
         enterButton
       />
@@ -151,7 +158,7 @@ export default function Films() {
         dataSource={data}
         rowKey={(phim) => phim.maPhim}
         onChange={onChange}
-        scroll={{ y: "50vh" }}
+        scroll={{ y: "45vh" }}
       />
     </div>
   );

@@ -21,7 +21,7 @@ export default function Profile(props) {
   const { thongTinNguoiDung, userLogin } = useSelector(
     (state) => state.QuanLyNguoiDungReducer
   );
-  console.log(thongTinNguoiDung);
+  // console.log(thongTinNguoiDung);
   const user = { taiKhoan: userLogin.taiKhoan };
   const dispatch = useDispatch();
 
@@ -36,7 +36,7 @@ export default function Profile(props) {
         localStorage.removeItem(USER_LOGIN);
         localStorage.removeItem(TOKEN);
         history.push("/");
-        window.location.reload();
+        // window.location.reload();
       }}
     >
       <LogoutOutlined className="align-middle mr-3 pb-1" />
@@ -178,7 +178,7 @@ export default function Profile(props) {
 
           <TabPane
             tab={
-              <p className="yellow-color-hover">
+              <p className="yellow-color-hover ">
                 <HistoryOutlined className="align-middle pb-1" />
                 Lịch sử đặt vé
               </p>
@@ -200,10 +200,7 @@ export default function Profile(props) {
             }
             key="3"
           >
-            <EditUser
-              thongTinNguoiDung={thongTinNguoiDung}
-              userLogin={userLogin}
-            />
+            <EditUser />
           </TabPane>
         </Tabs>
       </div>

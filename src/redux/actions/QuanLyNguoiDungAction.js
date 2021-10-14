@@ -95,7 +95,7 @@ export const capNhatThongTinNguoiDungAction = (thongTinTaiKhoan) => {
         title: "Cập nhật thành công!",
         icon: "success",
       }).then((value) => {
-        window.location.replace("/profile");
+        history.push("/profile");
       });
 
       dispatch(layDanhSachNguoiDungAction());
