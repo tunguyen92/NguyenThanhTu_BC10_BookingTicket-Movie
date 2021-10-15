@@ -9,17 +9,20 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import moment from "moment";
 import { NavLink } from "react-router-dom";
+import RenderTable from "./RenderTable";
+
 const { TabPane } = Tabs;
 
 export default function Detail(props) {
   const filmDetail = useSelector((state) => state.QuanLyPhimReducer.filmDetail);
   const dispatch = useDispatch();
-
+  const { heThongRapChieu } = useSelector((state) => state.QuanLyRapReducer);
   useEffect(() => {
     let { id } = props.match.params;
     dispatch(layThongTinChiTietPhim(id));
   }, []);
   console.log({ filmDetail });
+
   return (
     <div
       style={{
@@ -47,7 +50,7 @@ export default function Detail(props) {
             />
             <div className="col-span-2 ml-5  " style={{ marginTop: "25%" }}>
               <p className="text-sm text-white mb-5">
-                Ngày chiếu:
+                Ngày khởi chiếu:{" "}
                 {moment(filmDetail.ngayKhoiChieu).format("DD-MM-YYYY")}
               </p>
               <p className="text-3xl leading-3 text-white">
@@ -76,8 +79,11 @@ export default function Detail(props) {
           </div>
         </div>
       </div>
-      <div className="mt-20 container px-5 py-5 ml-72 w-2/3 bg-white">
-        <Tabs defaultActiveKey="1" centered tabBarStyle={{ color: "red" }}>
+      <div
+        className=""
+        // mt-20 container px-5 py-5 ml-72 w-2/3 bg-white
+      >
+        {/* <Tabs defaultActiveKey="1" centered tabBarStyle={{ color: "red" }}>
           <TabPane tab="Lịch chiếu" key="1">
             <Tabs tabPosition={"left"}>
               {filmDetail.heThongRapChieu?.map((htr, index) => {
@@ -139,7 +145,8 @@ export default function Detail(props) {
           <TabPane tab="Đánh giá" key="2">
             Content of Tab Pane 2
           </TabPane>
-        </Tabs>
+        </Tabs> */}
+        <RenderTable heThongRapChieu={filmDetail.heThongRapChieu} />
       </div>
       {/* </CustomCard> */}
     </div>

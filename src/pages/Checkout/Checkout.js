@@ -18,7 +18,7 @@ export default function Checkout(props) {
   const { chiTietPhongVe, danhSachDangDat } = useSelector(
     (state) => state.QuanLyDatVeReducer
   );
-
+  console.log(chiTietPhongVe);
   const dispatch = useDispatch(() => {});
 
   useEffect(() => {
@@ -66,11 +66,27 @@ export default function Checkout(props) {
 
   return (
     <div
-      className="pb-0 pr-2 min-h-screen pt-20"
+      className="pb-0 pr-2 min-h-screen pt-5"
       style={{ backgroundColor: "#0f2133" }}
     >
       <div className="grid grid-cols-12 ">
         <div className="col-span-9 max-h-full">
+          <div className="flex justify-around">
+            <h3 className="text-white">
+              Rạp chiếu: {thongTinPhim.tenCumRap} - {thongTinPhim.tenRap}
+            </h3>
+
+            <div>
+              <h3 className="text-white">
+                Ngày chiếu: {thongTinPhim.ngayChieu}
+              </h3>
+            </div>
+            <div>
+              <h3 className="text-white">
+                Suất chiếu: {thongTinPhim.gioChieu}
+              </h3>
+            </div>
+          </div>
           <div className="flex flex-col items-center mt-5">
             <div className="screen">
               <h3 className="mt-5 text-2xl text-white text-bold text-center">
@@ -123,13 +139,10 @@ export default function Checkout(props) {
             đ
           </h3>
           <hr />
-          <h3 className="text-xl mt-3 text-white">{thongTinPhim.tenPhim}</h3>
-          <p className="text-white mt-1 ">
-            Địa điểm: {thongTinPhim.tenCumRap} - {thongTinPhim.tenRap}
-          </p>
-          <p className="text-white mt-1 mb-3 ">
-            Ngày chiếu: {thongTinPhim.ngayChieu}
-          </p>
+          <h3 className="text-2xl mt-3 text-white text-center mb-3">
+            {thongTinPhim.tenPhim}
+          </h3>
+
           <hr />
 
           <DatVe danhSachDangDat={_.sortBy(danhSachDangDat, ["maGhe"])} />
