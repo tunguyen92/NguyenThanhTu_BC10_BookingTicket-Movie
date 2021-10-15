@@ -63,6 +63,7 @@ export default function User() {
 
   // cập nhật user được chọn để render ra modal
   useEffect(() => {
+    console.log(selectUser);
     form.setFieldsValue(selectUser);
   }, [selectUser]);
 
@@ -217,7 +218,9 @@ export default function User() {
   const onSearch = (value) => {
     dispatch(timKiemNguoiDungAction(value));
   };
-
+  function handleChange(value) {
+    console.log(value); // { value: "lucy", key: "lucy", label: "Lucy (101)" }
+  }
   return (
     <Fragment>
       <Button
@@ -385,17 +388,8 @@ export default function User() {
             />
           </Form.Item>
 
-          <Form.Item
-            name="maLoaiNguoiDung"
-            label="Loại tài khoản"
-            rules={[
-              {
-                required: true,
-                message: "Vui lòng chọn loại người dùng",
-              },
-            ]}
-          >
-            <Select placeholder="Select a person" className="text-black">
+          <Form.Item name="maLoaiNguoiDung" label="Loại tài khoản">
+            <Select className="text-black">
               <Option value="KhachHang">Khách hàng</Option>
               <Option value="QuanTri">Quản Trị</Option>
             </Select>
