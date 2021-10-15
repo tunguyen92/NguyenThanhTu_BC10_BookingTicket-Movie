@@ -1,4 +1,5 @@
 import { TOKEN, USER_LOGIN } from "../../util/settings/config";
+import { swal } from "sweetalert";
 import {
   GET_TIM_KIEM_NGUOI_DUNG,
   DANG_NHAP_ACTION,
@@ -45,7 +46,11 @@ export const QuanLyNguoiDungReducer = (state = stateDefault, action) => {
         return user.taiKhoan.includes(action.keyword);
       });
       if (listTimKiem.length === 0) {
-        alert("Không tồn tại tên tài khoản này");
+        swal({
+          title: "Không tồn tại tên tài khoản này!",
+          icon: "alert",
+        });
+        // alert("Không tồn tại tên tài khoản này");
       }
       state.listUserTimKiem = listTimKiem;
       return { ...state };

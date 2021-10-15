@@ -10,6 +10,7 @@ import DatVe from "./DatVe.module";
 import _ from "lodash";
 import { ThongTinDatVe } from "./../../_core/models/ThongTinDatVe";
 import seat from "../../assets/images/seat.svg";
+import { swal } from "sweetalert";
 
 export default function Checkout(props) {
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDungReducer);
@@ -69,7 +70,7 @@ export default function Checkout(props) {
       style={{ backgroundColor: "#0f2133" }}
     >
       <div className="grid grid-cols-12 ">
-        <div className="col-span-9 min-h-screen">
+        <div className="col-span-9 max-h-full">
           <div className="flex flex-col items-center mt-5">
             <div className="screen">
               <h3 className="mt-5 text-2xl text-white text-bold text-center">
@@ -109,7 +110,10 @@ export default function Checkout(props) {
             </div>
           </div>
         </div>
-        <div className="col-span-3">
+        <div
+          className="col-span-3 "
+          // style={{ width: "25%", right: "5px" }}
+        >
           <h3 className="text-green-400 text-center text-4xl mb-2">
             {danhSachDangDat
               .reduce((total, ghe) => {
@@ -147,11 +151,13 @@ export default function Checkout(props) {
                 thongTinDatVe.maLichChieu = props.match.params.id;
                 thongTinDatVe.danhSachVe = danhSachDangDat;
                 thongTinDatVe.taiKhoanNguoiDung = userLogin.taiKhoan;
-                dispatch(datVeAction(thongTinDatVe));
+                if (danhSachDangDat.length === 0) {
+                  alert("Vui lòng chọn chỗ ngồi");
+                } else dispatch(datVeAction(thongTinDatVe));
               }}
-              className=" bg-green-500 text-white text-center py-3 font-bold text-2xl cursor-pointer w-full"
+              className="border-2  text-white text-center  mt-5 font-bold text-2xl cursor-pointer w-50 rounded-full py-3 px-6"
             >
-              ĐẶT VÉ
+              THANH TOÁN
             </div>
           </div>
         </div>

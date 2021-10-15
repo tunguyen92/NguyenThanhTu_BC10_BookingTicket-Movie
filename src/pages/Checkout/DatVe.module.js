@@ -57,7 +57,6 @@ class DatVe extends React.Component {
     }
 
     const { danhSachDangDat } = this.props;
-    console.log(danhSachDangDat);
     const data = [];
     if (danhSachDangDat.length > 0) {
       for (let i = 0; i < danhSachDangDat?.length; i++) {
