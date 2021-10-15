@@ -1,8 +1,6 @@
 import {
-  DesktopOutlined,
   FileOutlined,
   UserOutlined,
-  UserAddOutlined,
   UnorderedListOutlined,
 } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu } from "antd";

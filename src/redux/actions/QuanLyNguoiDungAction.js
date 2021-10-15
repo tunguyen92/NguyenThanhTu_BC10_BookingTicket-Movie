@@ -5,7 +5,6 @@ import {
   DANG_NHAP_ACTION,
   GET_LIST_NGUOI_DUNG,
   GET_THONG_TIN_NGUOI_DUNG,
-  DELETE_NGUOI_DUNG,
 } from "./types/QuanLyNguoiDungType";
 import swal from "sweetalert";
 
@@ -87,9 +86,7 @@ export const layThongTinNguoiDungAction = (taiKhoan) => {
 export const capNhatThongTinNguoiDungAction = (thongTinTaiKhoan, isUpdate) => {
   return async (dispatch) => {
     try {
-      let result = await quanLyNguoiDungService.capNhatThongTinNguoiDung(
-        thongTinTaiKhoan
-      );
+      await quanLyNguoiDungService.capNhatThongTinNguoiDung(thongTinTaiKhoan);
 
       swal({
         title: "Cập nhật thành công!",
@@ -141,9 +138,7 @@ export const timKiemNguoiDungAction = (keyword) => {
 export const xoaNguoiDungAction = (taiKhoan) => {
   return async (dispatch) => {
     try {
-      const result = await quanLyNguoiDungService.xoaThongTinNguoiDung(
-        taiKhoan
-      );
+      await quanLyNguoiDungService.xoaThongTinNguoiDung(taiKhoan);
       swal({
         title: "Xóa tài khoản thành công!",
         icon: "success",
@@ -161,9 +156,7 @@ export const xoaNguoiDungAction = (taiKhoan) => {
 export const themNguoiDungAction = (thongTinNguoiDung) => {
   return async (dispatch) => {
     try {
-      const result = await quanLyNguoiDungService.themNguoiDung(
-        thongTinNguoiDung
-      );
+      await quanLyNguoiDungService.themNguoiDung(thongTinNguoiDung);
       swal({
         title: "Thêm người dùng thành công!",
         icon: "success",
