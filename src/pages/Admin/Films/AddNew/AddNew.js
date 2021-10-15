@@ -81,11 +81,6 @@ export default function AddNew(props) {
     setComponentSize(size);
   };
 
-  const onReset = () => {
-    form.resetFields();
-    setImgSrc("");
-  };
-
   return (
     <>
       <Form
@@ -105,31 +100,24 @@ export default function AddNew(props) {
         size={componentSize}
       >
         <h3>Thêm phim</h3>
-        <Form.Item label="Form Size" name="size">
-          <Radio.Group>
-            <Radio.Button value="small">Small</Radio.Button>
-            <Radio.Button value="default">Default</Radio.Button>
-            <Radio.Button value="large">Large</Radio.Button>
-          </Radio.Group>
-        </Form.Item>
 
-        <Form.Item label="Tên phim" name="clearTenPhim">
+        <Form.Item label="Tên phim">
           <Input name="tenPhim" onChange={formik.handleChange} />
         </Form.Item>
 
-        <Form.Item label="Trailer" name="clearTrailer">
+        <Form.Item label="Trailer">
           <Input name="trailer" onChange={formik.handleChange} />
         </Form.Item>
 
-        <Form.Item label="Mô tả" name="clearMoTa">
+        <Form.Item label="Mô tả">
           <Input name="moTa" onChange={formik.handleChange} />
         </Form.Item>
 
-        <Form.Item label="Ngày khởi chiếu" name="clearNgay">
+        <Form.Item label="Ngày khởi chiếu">
           <DatePicker format={"DD/MM/YYYY"} onChange={handleChangeDatePicker} />
         </Form.Item>
 
-        <Form.Item label="Số sao" name="clearSo">
+        <Form.Item label="Số sao">
           <InputNumber
             onChange={handleChangeInputNumber("danhGia")}
             min={1}
@@ -137,7 +125,7 @@ export default function AddNew(props) {
           />
         </Form.Item>
 
-        <Form.Item label="Hình ảnh" name="clearAnh">
+        <Form.Item label="Hình ảnh">
           <input
             type="file"
             accept="image/png, image/gif, image/jpeg"
@@ -145,8 +133,8 @@ export default function AddNew(props) {
           ></input>
           <img
             style={{
-              width: 150,
-              height: 150,
+              width: 100,
+              height: 100,
               marginTop: 10,
               objectFit: "contain",
             }}
@@ -167,13 +155,6 @@ export default function AddNew(props) {
           >
             Thêm phim
           </button>
-          <Button
-            className=" ml-5 h-10 rounded-md"
-            htmlType="button"
-            onClick={onReset}
-          >
-            Reset
-          </Button>
         </Form.Item>
       </Form>
     </>

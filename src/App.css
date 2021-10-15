@@ -24,7 +24,7 @@ a:focus {
 a:hover {
   text-decoration: none;
   color: #dcf836;
-  transition: all 0.5s ease-out;
+  transition: all 0.5s linear;
 }
 
 /*---------------------------------------------*/
@@ -149,6 +149,9 @@ iframe {
 .bg-pink-color-hover:hover {
   background-color: #dd003f;
 }
+.bg-pink-color-focus:focus {
+  background-color: #dd003f;
+}
 
 .yellow-color {
   color: #dcf836;
@@ -175,6 +178,9 @@ iframe {
   background-color: #1c3d5d;
 }
 .bg-light-blue-color-hover:hover {
+  background-color: #1c3d5d;
+}
+.bg-light-blue-color-focus:focus {
   background-color: #1c3d5d;
 }
 .title-color {

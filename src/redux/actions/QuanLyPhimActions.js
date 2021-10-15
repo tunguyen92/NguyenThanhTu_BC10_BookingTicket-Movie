@@ -1,6 +1,7 @@
 import { quanLyPhimService } from "../../services/QuanLyPhimService";
 import { SET_DANH_SACH_PHIM, SET_THONG_TIN_FILM } from "./types/QuanLyPhimType";
 import { history } from "../../App";
+import swal from "sweetalert";
 
 export const layDanhSachPhimAction = (tenPhim = "") => {
   return async (dispatch) => {
@@ -23,10 +24,18 @@ export const themPhimUploadHinhAction = (formData) => {
   return async (dispatch) => {
     try {
       /*let result =*/ await quanLyPhimService.themPhimUploadHinh(formData);
-      alert("Thêm thành công");
-
+      swal({
+        title: "Thêm phim thành công!",
+        icon: "success",
+      }).then((value) => {
+        history.push("/admin/films");
+      });
       // console.log(result);
     } catch (errors) {
+      swal({
+        title: `${errors.response?.data}`,
+        icon: "error",
+      });
       console.log(errors.response?.data);
     }
   };
@@ -36,13 +45,20 @@ export const capNhatPhimUploadAction = (formData) => {
   return async (dispatch) => {
     try {
       /*let result =*/ await quanLyPhimService.capNhatPhimUpload(formData);
-      alert("Cập nhật phim thành công!");
+      swal({
+        title: "Cập nhật phim thành công!",
+        icon: "success",
+      }).then((value) => {
+        history.push("/admin/films");
+      });
       // console.log("Cập nhật", result.data);
 
       dispatch(layDanhSachPhimAction());
-
-      history.push("/admin/films");
     } catch (errors) {
+      swal({
+        title: `${errors.response?.data}`,
+        icon: "error",
+      });
       console.log(errors.response?.data);
     }
   };
@@ -68,12 +84,18 @@ export const xoaPhimAction = (maPhim) => {
   return async (dispatch) => {
     try {
       let result = await quanLyPhimService.xoaPhim(maPhim);
-      alert("Xóa phim thành công");
+      swal({
+        title: "Xóa phim thành công!",
+        icon: "success",
+      });
       console.log("Xóa phim", result.data);
       //Load lại danh sách phim mới
       dispatch(layDanhSachPhimAction());
     } catch (errors) {
-      alert(errors.response);
+      swal({
+        title: `${errors.response?.data}`,
+        icon: "error",
+      });
     }
   };
 };

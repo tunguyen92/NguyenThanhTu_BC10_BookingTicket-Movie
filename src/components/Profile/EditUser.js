@@ -30,6 +30,10 @@ const tailFormItemLayout = {
 };
 
 export default function EditUser(props) {
+  const { thongTinNguoiDung, userLogin } = useSelector(
+    (state) => state.QuanLyNguoiDungReducer
+  );
+  // console.log(thongTinNguoiDung);
   const dispatch = useDispatch();
 
   const validate = (values) => {
@@ -68,13 +72,13 @@ export default function EditUser(props) {
     enableReinitialize: true,
     validate,
     initialValues: {
-      taiKhoan: props.thongTinNguoiDung.taiKhoan,
-      matKhau: props.thongTinNguoiDung.matKhau,
-      email: props.thongTinNguoiDung.email,
-      soDT: props.thongTinNguoiDung.soDT,
-      maNhom: props.thongTinNguoiDung.maNhom,
-      maLoaiNguoiDung: props.userLogin.maLoaiNguoiDung,
-      hoTen: props.thongTinNguoiDung.hoTen,
+      taiKhoan: thongTinNguoiDung.taiKhoan,
+      matKhau: thongTinNguoiDung.matKhau,
+      email: thongTinNguoiDung.email,
+      soDT: thongTinNguoiDung.soDT,
+      maNhom: thongTinNguoiDung.maNhom,
+      maLoaiNguoiDung: userLogin.maLoaiNguoiDung,
+      hoTen: thongTinNguoiDung.hoTen,
     },
 
     onSubmit: (values) => {
@@ -119,6 +123,13 @@ export default function EditUser(props) {
           onSubmitCapture={formik.handleSubmit}
           initialValues={{
             prefix: "84",
+            taiKhoan: thongTinNguoiDung.taiKhoan,
+            matKhau: thongTinNguoiDung.matKhau,
+            email: thongTinNguoiDung.email,
+            soDT: thongTinNguoiDung.soDT,
+            maNhom: thongTinNguoiDung.maNhom,
+            maLoaiNguoiDung: userLogin.maLoaiNguoiDung,
+            hoTen: thongTinNguoiDung.hoTen,
           }}
           className=" mt-5 pt-10 "
           style={{
@@ -259,7 +270,10 @@ export default function EditUser(props) {
           </Form.Item>
 
           <Form.Item {...tailFormItemLayout}>
-            <Button type="primary" htmlType="submit">
+            <Button
+              className="bg-light-blue-color  border-none bg-pink-color-hover  bg-pink-color-focus rounded"
+              htmlType="submit"
+            >
               Cập nhật
             </Button>
           </Form.Item>

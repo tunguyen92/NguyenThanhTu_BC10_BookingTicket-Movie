@@ -6,6 +6,6 @@
   background-color: #0f2133;
   color: #fff;
 }
-.ant-table-tbody > tr.ant-table-row:hover > td {
+.booking-history .ant-table-tbody > tr.ant-table-row:hover > td {
   background-color: #1c3d5d;
 }

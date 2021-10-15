@@ -5,6 +5,7 @@ import { quanLyRapService } from "../../../services/QuanLyRapService";
 import { quanLyDatVeService } from "../../../services/QuanLyDatVeService";
 import { useFormik } from "formik";
 import moment from "moment";
+import swal from "sweetalert";
 
 export default function ShowTime(props) {
   const [form] = Form.useForm();
@@ -20,9 +21,17 @@ export default function ShowTime(props) {
       console.log("submit", values);
       try {
         const result = await quanLyDatVeService.taoLichChieu(values);
-        alert(result.data);
+        swal({
+          title: "Thêm lịch chiếu thành công!",
+          icon: "success",
+        });
+        console.log(result.data);
       } catch (error) {
-        console.log(error.response?.data);
+        swal({
+          title: `${error.response?.data}`,
+          icon: "error",
+        });
+        // console.log(error.response?.data);
       }
     },
   });
@@ -33,11 +42,11 @@ export default function ShowTime(props) {
     danhSachRap: [],
   });
 
-  // console.log(state.heThongRapChieu);
+  console.log(state.heThongRapChieu);
 
   useEffect(async () => {
     try {
-      let result = await quanLyRapService.layThongTinHeThongRap();
+      let result = await quanLyRapService.layDanhSachHeThongRap();
 
       setState({ ...state, heThongRapChieu: result.data });
     } catch (error) {
@@ -124,8 +133,8 @@ export default function ShowTime(props) {
         src={film.hinhAnh}
         alt={film.tenPhim}
         style={{
-          width: 200,
-          height: 150,
+          width: 180,
+          height: 120,
           objectFit: "contain",
           margin: "20px 0",
         }}
@@ -184,15 +193,15 @@ export default function ShowTime(props) {
           span: 14,
         }}
       >
-        <Button
+        <button
           onClick={() => {
             form.resetFields();
           }}
-          type="primary"
-          htmlType="submit"
+          className="bg-blue-700 text-white p-2 rounded-md"
+          type="submit"
         >
           Tạo lịch chiếu
-        </Button>
+        </button>
       </Form.Item>
     </Form>
   );

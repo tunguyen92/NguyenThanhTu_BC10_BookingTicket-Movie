@@ -13,7 +13,6 @@ const navigation = [
   { name: "Trang chủ", to: "/", current: true },
   { name: "Phim", to: "/danh-sach-phim", current: false },
   { name: "Tin tức", to: "/news", current: false },
-  { name: "Liên hệ", to: "/contact", current: false },
 ];
 
 function classNames(...classes) {
@@ -27,6 +26,9 @@ export default function Header(props) {
   // Sticky navbar on scroll
   const [show, setShow] = useState(false);
   useEffect(() => {
+    userLogin.maLoaiNguoiDung === "QuanTri" &&
+      navigation.push({ name: "Quản lý", to: "/admin", current: false });
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);

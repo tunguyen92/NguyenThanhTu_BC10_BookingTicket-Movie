@@ -9,11 +9,11 @@ export default function Film(props) {
 
   return (
     <div className="movie-item relative mr-7 mt-5 rounded-md">
-      <div className="mv-img relative">
+      <div className="mv-img relative rounded">
         <img
           src={phim.hinhAnh}
           alt={phim.tenPhim}
-          className="relative w-full h-44 md:h-60 object-cover"
+          className="relative w-full h-44 md:h-60 object-cover rounded"
         />
       </div>
       <div className="hvr-inner m-auto absolute top-0 left-0 bottom-0 right-0 bg-pink-color sm:py-2 py-1 sm:px-3 px-1 sm:w-28 w-24 sm:h-10 h-8 text-center rounded-3xl cursor-pointer opacity-0 ">
