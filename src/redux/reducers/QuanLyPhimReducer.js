@@ -33,7 +33,7 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
     case SET_DANH_SACH_PHIM:
       state.arrFilmDefault = action.arrFilm;
       state.arrFilm = state.arrFilmDefault.filter((film) => {
-        let khoiChieu = new Date(film.ngayKhoiChieu) <= new Date("2020-07-15");
+        let khoiChieu = new Date(film.ngayKhoiChieu) <= new Date("2021-07-15");
         return khoiChieu === state.dangChieu;
       });
 
@@ -41,15 +41,15 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
 
     case SET_FILM_DANG_CHIEU:
       state.arrFilm = state.arrFilmDefault.filter((film) => {
-        let khoiChieu = new Date(film.ngayKhoiChieu) <= new Date("2020-07-15");
+        let khoiChieu = new Date(film.ngayKhoiChieu) <= new Date("2021-07-15");
         return khoiChieu === state.dangChieu;
       });
       return { ...state };
 
     case SET_FILM_SAP_CHIEU:
       state.arrFilm = state.arrFilmDefault.filter((film) => {
-        let khoiChieu = new Date(film.ngayKhoiChieu) > new Date("2020-07-15");
-        return khoiChieu === state.dangChieu;
+        let khoiChieu = new Date(film.ngayKhoiChieu) > new Date("2021-07-15");
+        return khoiChieu === state.sapChieu;
       });
       return { ...state };
 

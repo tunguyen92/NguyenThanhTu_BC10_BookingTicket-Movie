@@ -11,7 +11,9 @@ import HomeMenu from "./HomeMenu/HomeMenu";
 import HomeNews from "./HomeNews/HomeNews";
 
 export default function Home(props) {
-  const { arrFilm } = useSelector((state) => state.QuanLyPhimReducer);
+  const { arrFilm, arrFilmDefault } = useSelector(
+    (state) => state.QuanLyPhimReducer
+  );
   const { heThongRapChieu } = useSelector((state) => state.QuanLyRapReducer);
 
   // console.log(props);
@@ -28,7 +30,7 @@ export default function Home(props) {
 
   return (
     <div>
-      <HomeCarousel />
+      <HomeCarousel arrFilmDefault={arrFilmDefault} />
 
       <HomeListFilm arrFilm={arrFilm} />
       <Trailers arrFilm={arrFilm} />

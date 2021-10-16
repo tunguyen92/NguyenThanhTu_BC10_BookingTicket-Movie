@@ -26,7 +26,7 @@ function HomeApp() {
       <div className="w-3/4 m-auto">
         <div className="md:grid md:grid-cols-2 md:gap-3">
           <div className="py-10 lg:pt-16">
-            <p className="text-white md:text-2xl lg:text-4xl leading-normal mb-8">
+            <p className="text-white text-xl md:text-2xl lg:text-4xl leading-normal mb-8">
               Ứng dụng tiện lợi dành cho người yêu điện ảnh
             </p>
             <span className="text-white lg:text-base block mb-8">

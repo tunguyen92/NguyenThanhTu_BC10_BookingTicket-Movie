@@ -20,7 +20,26 @@ export default function AddNew(props) {
   const dispatch = useDispatch();
   const [form] = Form.useForm();
 
+  const validate = (values) => {
+    const errors = {};
+
+    if (!values.tenPhim) {
+      errors.tenPhim = "Chưa nhập tên phim.";
+    }
+
+    if (!values.trailer) {
+      errors.trailer = "Trailer không được trống!";
+    }
+
+    if (!values.moTa) {
+      errors.moTa = "Mô tả không được trống!";
+    }
+
+    return errors;
+  };
+
   const formik = useFormik({
+    validate,
     initialValues: {
       tenPhim: "",
       trailer: "",
@@ -103,21 +122,44 @@ export default function AddNew(props) {
 
         <Form.Item label="Tên phim">
           <Input name="tenPhim" onChange={formik.handleChange} />
+          {formik.errors.tenPhim ? (
+            <div className="pink-color">{formik.errors.tenPhim}</div>
+          ) : null}
         </Form.Item>
 
         <Form.Item label="Trailer">
           <Input name="trailer" onChange={formik.handleChange} />
+          {formik.errors.trailer ? (
+            <div className="pink-color">{formik.errors.trailer}</div>
+          ) : null}
         </Form.Item>
 
         <Form.Item label="Mô tả">
           <Input name="moTa" onChange={formik.handleChange} />
+          {formik.errors.moTa ? (
+            <div className="pink-color">{formik.errors.moTa}</div>
+          ) : null}
         </Form.Item>
 
-        <Form.Item label="Ngày khởi chiếu">
+        <Form.Item
+          label="Ngày khởi chiếu"
+          name="ngayKhoiChieu"
+          rules={[
+            {
+              type: "object",
+              required: true,
+              message: "Chưa nhập ngày khởi chiếu!",
+            },
+          ]}
+        >
           <DatePicker format={"DD/MM/YYYY"} onChange={handleChangeDatePicker} />
         </Form.Item>
 
-        <Form.Item label="Số sao">
+        <Form.Item
+          label="Số sao"
+          name="soSao"
+          rules={[{ required: true, message: "Chưa nhập số sao!" }]}
+        >
           <InputNumber
             onChange={handleChangeInputNumber("danhGia")}
             min={1}

@@ -14,6 +14,11 @@ const navigation = [
   { name: "Phim", to: "/danh-sach-phim", current: false },
   { name: "Tin tức", to: "/news", current: false },
 ];
+const quanLy = {
+  name: "Quản lý",
+  to: "/admin",
+  current: false,
+};
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -26,12 +31,15 @@ export default function Header(props) {
   // Sticky navbar on scroll
   const [show, setShow] = useState(false);
   useEffect(() => {
-    userLogin.maLoaiNguoiDung === "QuanTri" &&
-      navigation.push({ name: "Quản lý", to: "/admin", current: false });
+    //Nếu là quản trị thì hiện tab Quản Lý ở header
+    let idx = navigation.indexOf(quanLy);
+    if (userLogin.maLoaiNguoiDung === "QuanTri" && idx === -1) {
+      navigation.push(quanLy);
+    }
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [null]);
   const handleScroll = () => {
     setShow(window.pageYOffset > 140);
   };

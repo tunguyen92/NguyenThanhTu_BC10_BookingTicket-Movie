@@ -25,7 +25,7 @@ export default function Footer(props) {
     >
       <div className="container container mx-auto px-5 lg:px-16 space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
         <div className="grid grid-cols-12 pt-20 pb-10">
-          <div className="col-span-6 md:col-span-3 pb-6 md:pb-0 ">
+          <div className="col-span-full sm:col-span-6 md:col-span-3 pb-6 md:pb-0 ">
             <Link
               to="/"
               className="flex justify-center space-x-3 sm:justify-start "
@@ -80,7 +80,7 @@ export default function Footer(props) {
             </p>
           </div>
 
-          <div className="col-span-3 md:col-span-2">
+          <div className="col-span-6 sm:col-span-3 md:col-span-2 py-5 sm:p-0">
             <h4 className="text-lg text-white font-semibold mb-7">Thông tin</h4>
             <ul>
               <li className="mb-2">
@@ -102,7 +102,7 @@ export default function Footer(props) {
             </ul>
           </div>
 
-          <div className="col-span-3 md:col-span-2">
+          <div className="col-span-6 sm:col-span-3 md:col-span-2 py-5 sm:p-0">
             <h4 className="text-lg text-white font-semibold mb-7">Pháp lý</h4>
             <ul>
               <li className="mb-2">

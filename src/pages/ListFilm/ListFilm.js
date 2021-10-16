@@ -82,12 +82,12 @@ export default function ListFilm(props) {
 
             <div className="tab-content tab-space">
               <div className={openTab === 1 ? "block" : "hidden"} id="link1">
-                <div className=" grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 ">
+                <div className=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 ">
                   {renderFilms(dangChieu)}
                 </div>
               </div>
               <div className={openTab === 2 ? "block" : "hidden"} id="link2">
-                <div className=" grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 ">
+                <div className=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 ;g:grid-cols-5 xl:grid-cols-6 ">
                   {renderFilms(sapChieu)}
                 </div>
               </div>

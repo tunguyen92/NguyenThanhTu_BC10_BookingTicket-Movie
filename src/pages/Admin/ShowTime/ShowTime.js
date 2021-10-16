@@ -139,7 +139,11 @@ export default function ShowTime(props) {
           margin: "20px 0",
         }}
       />
-      <Form.Item label="Hệ thống rạp" name="heThongRap">
+      <Form.Item
+        label="Hệ thống rạp"
+        name="heThongRap"
+        rules={[{ required: true, message: "Chưa chọn hệ thống rạp!" }]}
+      >
         <Select
           options={options}
           onChange={handleChangeHeThongRap}
@@ -147,7 +151,11 @@ export default function ShowTime(props) {
         />
       </Form.Item>
 
-      <Form.Item label="Cụm rạp" name="cumRap">
+      <Form.Item
+        label="Cụm rạp"
+        name="cumRap"
+        rules={[{ required: true, message: "Chưa chọn cụm rạp!" }]}
+      >
         <Select
           options={state.cumRapChieu?.map((cumRap, index) => ({
             label: cumRap.tenCumRap,
@@ -158,7 +166,11 @@ export default function ShowTime(props) {
         />
       </Form.Item>
 
-      <Form.Item label="Mã rạp" name="maRap">
+      <Form.Item
+        label="Mã rạp"
+        name="maRap"
+        rules={[{ required: true, message: "Chưa chọn mã rạp!" }]}
+      >
         <Select
           options={state.danhSachRap?.map((rap, index) => ({
             label: rap.maRap,
@@ -169,7 +181,17 @@ export default function ShowTime(props) {
         />
       </Form.Item>
 
-      <Form.Item label="Lịch chiếu" name="lichChieu">
+      <Form.Item
+        label="Lịch chiếu"
+        name="lichChieu"
+        rules={[
+          {
+            type: "object",
+            required: true,
+            message: "Chưa nhập lịch chiếu!",
+          },
+        ]}
+      >
         <DatePicker
           format="DD/MM/YYYY hh:mm:ss"
           showTime
@@ -178,7 +200,11 @@ export default function ShowTime(props) {
         />
       </Form.Item>
 
-      <Form.Item label="Giá vé" name="giaVe">
+      <Form.Item
+        label="Giá vé"
+        name="giaVe"
+        rules={[{ required: true, message: "Chưa nhập giá vé!" }]}
+      >
         <InputNumber
           step={1000}
           min={75000}
@@ -193,15 +219,22 @@ export default function ShowTime(props) {
           span: 14,
         }}
       >
-        <button
+        <Button
+          className="bg-blue-700 text-white p-2 mr-2 rounded-md bg-pink-color-hover focus:bg-blue-700"
+          htmlType="submit"
+        >
+          Tạo lịch chiếu
+        </Button>
+
+        <Button
           onClick={() => {
             form.resetFields();
           }}
-          className="bg-blue-700 text-white p-2 rounded-md"
-          type="submit"
+          className="bg-blue-700 text-white p-2 rounded-md bg-pink-color-hover focus:bg-blue-700"
+          type="button"
         >
-          Tạo lịch chiếu
-        </button>
+          Xóa form
+        </Button>
       </Form.Item>
     </Form>
   );

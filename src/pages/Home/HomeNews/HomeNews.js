@@ -8,12 +8,12 @@ function HomeNews() {
     <div className="news bg-dark-color">
       <div className="container mx-auto py-8 px-5 lg:p-16 ">
         <img src={ads} alt="" className="w-7/12 mb-10" />
-        <div className="grid grid-cols-3 gap-4 m-10">
+        <div className="grid col-span-2 sm:grid-cols-3 gap-4 m-10">
           <div className="col-span-2">
             <h3 className="text-white text-sm sm:text-lg md:text-2xl mb-10">
               TIN TỨC
             </h3>
-            <div className="content sm:flex pr-9 w-full mb-14">
+            <div className="content sm:flex w-full mb-14">
               <img src={actress} alt="" className="rounded mr-7 w-1/3 h-full" />
               <div>
                 <h3 className="mb-4 text-justify">
@@ -123,7 +123,7 @@ function HomeNews() {
               </div>
             </div>
           </div>
-          <div className=" ml-2 sm:ml-5 md:ml-16 mt-10">
+          <div className=" hidden sm:block sm:ml-5 md:ml-16 mt-10">
             <h3 className="text-white text-xs md:text-xs mb-10">QUẢNG CÁO</h3>
             <p>Chỗ này là quảng cáo, thích thì đặt không thích thì đặt...</p>
           </div>

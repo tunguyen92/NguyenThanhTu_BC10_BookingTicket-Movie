@@ -22,8 +22,27 @@ const Edit = (props) => {
     dispatch(layThongTinPhimAction(id));
   }, []);
 
+  const validate = (values) => {
+    const errors = {};
+
+    if (!values.tenPhim) {
+      errors.tenPhim = "Chưa nhập tên phim.";
+    }
+
+    if (!values.trailer) {
+      errors.trailer = "Trailer không được trống!";
+    }
+
+    if (!values.moTa) {
+      errors.moTa = "Mô tả không được trống!";
+    }
+
+    return errors;
+  };
+
   const formik = useFormik({
     enableReinitialize: true,
+    validate,
     initialValues: {
       maPhim: thongTinPhim.maPhim,
       danhGia: thongTinPhim.danhGia,
@@ -112,6 +131,9 @@ const Edit = (props) => {
             onChange={formik.handleChange}
             value={formik.values.tenPhim}
           />
+          {formik.errors.tenPhim ? (
+            <div className="pink-color">{formik.errors.tenPhim}</div>
+          ) : null}
         </Form.Item>
         <Form.Item label="Trailer">
           <Input
@@ -119,6 +141,9 @@ const Edit = (props) => {
             onChange={formik.handleChange}
             value={formik.values.trailer}
           />
+          {formik.errors.trailer ? (
+            <div className="pink-color">{formik.errors.trailer}</div>
+          ) : null}
         </Form.Item>
         <Form.Item label="Mô tả">
           <Input
@@ -126,6 +151,9 @@ const Edit = (props) => {
             onChange={formik.handleChange}
             value={formik.values.moTa}
           />
+          {formik.errors.moTa ? (
+            <div className="pink-color">{formik.errors.moTa}</div>
+          ) : null}
         </Form.Item>
         <Form.Item label="Ngày khởi chiếu">
           <DatePicker

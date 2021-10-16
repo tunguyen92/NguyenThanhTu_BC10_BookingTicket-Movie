@@ -1,5 +1,5 @@
 import {
-  FileOutlined,
+  FileAddOutlined,
   UserOutlined,
   UnorderedListOutlined,
 } from "@ant-design/icons";
@@ -55,7 +55,7 @@ const AdminTemplate = (props) => {
         <Fragment>
           <button
             onClick={() => {
-              window.location.replace("/profile");
+              history.push("/profile");
             }}
             className="mr-10 yellow-color-hover"
           >
@@ -66,7 +66,6 @@ const AdminTemplate = (props) => {
               localStorage.removeItem(USER_LOGIN);
               localStorage.removeItem(TOKEN);
               history.push("/");
-              window.location.reload();
             }}
             className="bg-pink-color rounded-3xl text-sm px-5 py-2"
           >
@@ -97,7 +96,7 @@ const AdminTemplate = (props) => {
                 <button
                   className="pt-5"
                   onClick={() => {
-                    window.location.replace("/");
+                    history.push("/");
                   }}
                 >
                   <img
@@ -113,7 +112,8 @@ const AdminTemplate = (props) => {
                     </Menu.Item>
                     {/* <Menu.Item key="13" icon={<UserAddOutlined />}>
                       <NavLink to="/admin/user/add">Add User</NavLink>
-                    </Menu.Item> */}                  </SubMenu>
+                    </Menu.Item> */}{" "}
+                  </SubMenu>
 
                   <SubMenu
                     key="sub2"
