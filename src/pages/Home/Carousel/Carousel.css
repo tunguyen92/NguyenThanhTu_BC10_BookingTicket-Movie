@@ -21,3 +21,58 @@
   color: #dcf836;
   transition: all 0.5s ease-out;
 }
+
+.carousel .subtitle {
+  display: flex;
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.carousel .subtitle li + li {
+  border-left: 2px solid #fff;
+}
+.carousel .subtitle li {
+  padding: 0 10px;
+}
+
+.carousel .title {
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  font-size: 70px;
+  color: #fff;
+  letter-spacing: 20px;
+  animation-delay: 0.3s;
+}
+
+.carousel .slide_right {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  animation-delay: 0.4s;
+}
+.carousel .slide_right .ant-modal-content .ant-modal-header {
+  display: none;
+}
+
+.carousel .slide_right ul li + li {
+  margin-left: 20px;
+}
+
+.carousel .chart-cirle {
+  display: flex;
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+}
+
+.carousel .chart-cirle .chart-circle-l {
+  animation-delay: 0.7s;
+}
+.carousel .chart-cirle .chart-circle-r {
+  animation-delay: 0.75s;
+}
