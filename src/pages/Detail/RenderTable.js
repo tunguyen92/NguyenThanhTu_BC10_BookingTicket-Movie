@@ -36,7 +36,7 @@ function RenderTable(props) {
           tab={`Ngày chiếu:  ${ngayChieu}`}
           key={ngayChieu}
         >
-          <div className="text-center grid grid-cols-3 mr-5">
+          <div className="text-center grid lg:grid-cols-3 md:grid-rows-2 sm:grid-cols-1 mr-5">
             {props
               .filter((lichChieu) => {
                 return (
@@ -48,7 +48,7 @@ function RenderTable(props) {
                 return (
                   <NavLink
                     to={`/checkout/${lichChieu.maLichChieu}`}
-                    className="text-gray-300 text-xs lg:text-sm border-2 rounded-full py-1 px-0 ml-2 mb-2"
+                    className="text-gray-300 text-xs lg:text-sm border-2 rounded-full py-2 ml-2 px-2 mb-2"
                     key={lichChieu.maLichChieu}
                   >
                     {moment(lichChieu.ngayChieuGioChieu).format("hh:mm A")}
@@ -62,12 +62,12 @@ function RenderTable(props) {
   };
 
   return (
-    <div className=" bg-gray-blue-color container rounded pt-2 ml-72 w-2/3 pb-10 relative">
+    <div className=" bg-gray-blue-color container rounded pt-2 mx-auto w-2/3 pb-10 relative">
       <Tabs tabPosition="top" centered>
         <TabPane
           tab=""
           key="-1"
-          style={{ height: "300px" }}
+          style={{ maxHeight: "500px" }}
           className="scroll-cum-rap overflow-y-auto"
         >
           <Tabs tabPosition="left">

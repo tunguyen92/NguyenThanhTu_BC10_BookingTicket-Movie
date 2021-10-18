@@ -16,7 +16,7 @@ export default function Detail(props) {
     let { id } = props.match.params;
     dispatch(layThongTinChiTietPhim(id));
   }, []);
-  console.log({ filmDetail });
+  // console.log({ filmDetail });
 
   return (
     <div
@@ -36,15 +36,26 @@ export default function Detail(props) {
               src={filmDetail?.hinhAnh}
               alt=""
             />
-            <div className="col-span-2 ml-5  " style={{ marginTop: "25%" }}>
+            <div className="col-span-2 ml-5 pt-5 ">
+              <p className="text-3xl leading-3 text-white mb-5">
+                {filmDetail.tenPhim}
+              </p>
               <p className="text-sm text-white mb-5">
                 Ngày khởi chiếu:{" "}
                 {moment(filmDetail.ngayKhoiChieu).format("DD-MM-YYYY")}
               </p>
-              <p className="text-3xl leading-3 text-white">
-                {filmDetail.tenPhim}
+              <p className="text-sm text-white mb-5">
+                Thời lượng:{" "}
+                {filmDetail.heThongRapChieu
+                  ? filmDetail.heThongRapChieu[0].cumRapChieu[0]
+                      .lichChieuPhim[0].thoiLuong
+                  : ""}{" "}
+                phút
               </p>
-              <p className="text-white mt-3">{filmDetail.moTa}</p>
+              <div>
+                <h2 className="text-white mt-20">Tóm tắt nội dung phim</h2>
+                <p className="text-white mt-3">{filmDetail.moTa}</p>
+              </div>
             </div>
           </div>
         </div>
