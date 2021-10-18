@@ -132,11 +132,11 @@ export default function HomeCarousel() {
             <div className="hidden md:block">
               <ul class="subtitle  animate__animated animate__bounceInRight">
                 <li>Hành động</li>
-                <li>Khoa học viễn tưởng</li>
-                <li>Phiêu lưu</li>
+                <li>Giật gân</li>
+                <li>Tội phạm</li>
               </ul>
               <p className="title animate__animated animate__bounceInRight ">
-                AQUAMAN
+                TAKEN 2
               </p>
               <div class="slide_right animate__animated animate__bounceInRight">
                 <NavLink
@@ -148,7 +148,7 @@ export default function HomeCarousel() {
                   XEM TRAILER
                 </NavLink>
                 <NavLink
-                  to="/detail/9389"
+                  to="/detail/8906"
                   class="btn-ticket text-white text-xl"
                 >
                   <ShoppingCartOutlined className="yellow-color mr-3 text-2xl align-middle pb-4" />
@@ -172,8 +172,8 @@ export default function HomeCarousel() {
               <div class="chart-cirle">
                 <div class="chart-circle-l animate__animated animate__bounceInUp mr-16">
                   <div class="circle-chart">
-                    <div class="c100 carousel p69">
-                      <span className="text-center">6.9</span>
+                    <div class="c100 carousel p68">
+                      <span className="text-center">6.8</span>
                       <div className="slice">
                         <div className="bar"></div>
                         <div className="fill"></div>
@@ -184,8 +184,8 @@ export default function HomeCarousel() {
                 </div>
                 <div class="chart-circle-r  animate__animated animate__bounceInUp">
                   <div class="circle-chart">
-                    <div class="c100 carousel p64">
-                      <span className="text-center">6.4</span>
+                    <div class="c100 carousel p63">
+                      <span className="text-center">6.3</span>
                       <div className="slice">
                         <div className="bar"></div>
                         <div className="fill"></div>
@@ -205,7 +205,7 @@ export default function HomeCarousel() {
               >
                 <iframe
                   style={{ width: "100%", height: "500px" }}
-                  src="https://www.youtube.com/embed/2wcj6SrX4zw"
+                  src="https://www.youtube.com/embed/XK9zL0ze9O4"
                   title="YouTube video player"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -220,12 +220,12 @@ export default function HomeCarousel() {
           {state.activeSlide2 === 2 && (
             <div className="hidden md:block">
               <ul class="subtitle  animate__animated animate__bounceInRight">
-                <li>Phiêu lưu</li>
-                <li>Sử thi</li>
-                <li>Khoa học viễn tưởng</li>
+                <li>Siêu anh hùng</li>
+                <li>Hành động</li>
+                <li>Kỳ ảo</li>
               </ul>
               <p className="title animate__animated animate__bounceInRight ">
-                AVATAR 2
+                FANTASTIC 4
               </p>
               <div class="slide_right animate__animated animate__bounceInRight">
                 <NavLink
@@ -237,7 +237,7 @@ export default function HomeCarousel() {
                   XEM TRAILER
                 </NavLink>
                 <NavLink
-                  to="/detail/9390"
+                  to="/detail/1427"
                   class="btn-ticket text-white text-xl"
                 >
                   <ShoppingCartOutlined className="yellow-color mr-3 text-2xl align-middle pb-4" />
@@ -261,8 +261,8 @@ export default function HomeCarousel() {
               <div class="chart-cirle">
                 <div class="chart-circle-l animate__animated animate__bounceInUp mr-16">
                   <div class="circle-chart">
-                    <div class="c100 carousel p93">
-                      <span className="text-center">9.3</span>
+                    <div class="c100 carousel p42">
+                      <span className="text-center">4.2</span>
                       <div className="slice">
                         <div className="bar"></div>
                         <div className="fill"></div>
@@ -273,8 +273,8 @@ export default function HomeCarousel() {
                 </div>
                 <div class="chart-circle-r  animate__animated animate__bounceInUp">
                   <div class="circle-chart">
-                    <div class="c100 carousel p97">
-                      <span className="text-center">9.7</span>
+                    <div class="c100 carousel p27">
+                      <span className="text-center">2.7</span>
                       <div className="slice">
                         <div className="bar"></div>
                         <div className="fill"></div>
@@ -294,7 +294,7 @@ export default function HomeCarousel() {
               >
                 <iframe
                   style={{ width: "100%", height: "500px" }}
-                  src="https://www.youtube.com/embed/AxLH0lXEGAY"
+                  src="https://www.youtube.com/embed/AAgnQdiZFsQ"
                   title="YouTube video player"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

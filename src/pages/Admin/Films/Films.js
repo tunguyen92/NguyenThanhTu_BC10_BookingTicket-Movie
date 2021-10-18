@@ -1,18 +1,17 @@
-import { Button, Input, Table } from "antd";
 import {
-  EditOutlined,
-  DeleteOutlined,
   CalendarOutlined,
+  DeleteOutlined,
+  EditOutlined,
 } from "@ant-design/icons";
+import { Input, Table } from "antd";
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import swal from "sweetalert";
 import {
   layDanhSachPhimAction,
   xoaPhimAction,
 } from "../../../redux/actions/QuanLyPhimActions";
-import { NavLink } from "react-router-dom";
-import { history } from "../../../App";
-import swal from "sweetalert";
 import "./Film.css";
 
 const { Search } = Input;

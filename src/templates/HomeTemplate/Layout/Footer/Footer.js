@@ -27,7 +27,7 @@ export default function Footer(props) {
         <div className="grid grid-cols-12 pt-20 pb-10">
           <div className="col-span-full sm:col-span-6 md:col-span-3 pb-6 md:pb-0 ">
             <Link
-              to="/"
+              to=""
               className="flex justify-center space-x-3 sm:justify-start "
             >
               <img
@@ -84,20 +84,20 @@ export default function Footer(props) {
             <h4 className="text-lg text-white font-semibold mb-7">Thông tin</h4>
             <ul>
               <li className="mb-2">
-                <Link to="/">Về chúng tôi</Link>
+                <Link to="">Về chúng tôi</Link>
               </li>
               <li className="mb-2">
-                <Link to="/">Liên hệ</Link>
+                <Link to="">Liên hệ</Link>
               </li>
 
               <li className="mb-2">
-                <Link to="/">Diễn đàn</Link>
+                <Link to="">Diễn đàn</Link>
               </li>
               <li className="mb-2">
-                <Link to="/">Blog</Link>
+                <Link to="">Blog</Link>
               </li>
               <li className="mb-2">
-                <Link to="/">Trung tâm hỗ trợ</Link>
+                <Link to="">Trung tâm hỗ trợ</Link>
               </li>
             </ul>
           </div>
@@ -106,14 +106,14 @@ export default function Footer(props) {
             <h4 className="text-lg text-white font-semibold mb-7">Pháp lý</h4>
             <ul>
               <li className="mb-2">
-                <Link to="/">Điều khoản sử dụng</Link>
+                <Link to="">Điều khoản sử dụng</Link>
               </li>
               <li className="mb-2">
-                <Link to="/">Chính sách bảo mật</Link>
+                <Link to="">Chính sách bảo mật</Link>
               </li>
 
               <li className="mb-2">
-                <Link to="/">Bảo vệ</Link>
+                <Link to="">Bảo vệ</Link>
               </li>
             </ul>
           </div>
@@ -192,7 +192,7 @@ export default function Footer(props) {
           </div>
           <div className="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
             <Link
-              to="/"
+              to=""
               className="flex items-center justify-center w-10 h-10 rounded-full bg-violet-600 text-coolGray-50"
             >
               <svg
@@ -206,7 +206,7 @@ export default function Footer(props) {
               </svg>
             </Link>
             <Link
-              to="/"
+              to=""
               className="flex items-center justify-center w-10 h-10 rounded-full bg-violet-600 text-coolGray-50"
             >
               <svg
@@ -219,7 +219,7 @@ export default function Footer(props) {
               </svg>
             </Link>
             <Link
-              to="/"
+              to=""
               className="flex items-center justify-center w-10 h-10 rounded-full bg-violet-600 text-coolGray-50"
             >
               <svg
