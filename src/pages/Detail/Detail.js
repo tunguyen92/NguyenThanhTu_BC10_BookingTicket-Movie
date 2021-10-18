@@ -27,8 +27,8 @@ export default function Detail(props) {
         backgroundPosition: "center",
       }}
     >
-      <div className="grid grid-cols-12" style={{ paddingTop: "150px" }}>
-        <div className="col-span-6 col-start-3">
+      <div className="detail_upper grid grid-cols-12" style={{ paddingTop: "150px" }}>
+        <div className="col-span-8 col-start-2">
           <div className="grid grid-cols-3">
             <img
               className="col-span-1"
@@ -36,8 +36,8 @@ export default function Detail(props) {
               src={filmDetail?.hinhAnh}
               alt=""
             />
-            <div className="col-span-2 ml-5 pt-5 ">
-              <p className="text-3xl leading-3 text-white mb-5">
+            <div className="detail_upper_content col-span-2 ml-5 pt-5 ">
+              <p className="text-2xl leading-3 text-white mb-5">
                 {filmDetail.tenPhim}
               </p>
               <p className="text-sm text-white mb-5">
@@ -59,8 +59,8 @@ export default function Detail(props) {
             </div>
           </div>
         </div>
-        <div className="col-span-3 mt-20">
-          <div className="flex flex-col" style={{ alignItems: "center" }}>
+        <div className="detail_upper_review col-span-3  mt-20">
+          <div className=" flex flex-col" style={{ alignItems: "center" }}>
             <div className={`c100 p${filmDetail.danhGia * 10} big`}>
               <span className=" text-center">{filmDetail.danhGia}</span>
               <div className="slice">
