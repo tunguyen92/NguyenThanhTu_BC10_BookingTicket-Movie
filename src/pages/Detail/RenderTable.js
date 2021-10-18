@@ -33,10 +33,17 @@ function RenderTable(props) {
       return (
         <TabPane
           style={{ paddingLeft: 0 }}
-          tab={`Ngày chiếu:  ${ngayChieu}`}
+          tab={
+            <div className="md:flex items-center mr-2 w-10 sm:w-25 md:w-35 lg:w-40">
+              <div className="text-xs lg:text-sm text-left whitespace-pre-wrap ">
+                Ngày {ngayChieu}
+              </div>
+            </div>
+          }
           key={ngayChieu}
+          className="ngay-chieu "
         >
-          <div className="text-center grid lg:grid-cols-3 md:grid-rows-2 sm:grid-cols-1 mr-5">
+          <div className="text-center grid lg:grid-cols-3 sm:grid-cols-1 mr-5">
             {props
               .filter((lichChieu) => {
                 return (
@@ -48,7 +55,7 @@ function RenderTable(props) {
                 return (
                   <NavLink
                     to={`/checkout/${lichChieu.maLichChieu}`}
-                    className="text-gray-300 text-xs lg:text-sm border-2 rounded-full py-2 ml-2 px-2 mb-2"
+                    className="text-gray-300 text-xs 2xl:text-sm border-2 rounded-full py-2 ml-2 px-2 mb-2"
                     key={lichChieu.maLichChieu}
                   >
                     {moment(lichChieu.ngayChieuGioChieu).format("hh:mm A")}
@@ -62,13 +69,13 @@ function RenderTable(props) {
   };
 
   return (
-    <div className=" bg-gray-blue-color container rounded pt-2 mx-auto w-2/3 pb-10 relative">
+    <div className=" bg-gray-blue-color sm:container rounded pt-2 mx-auto sm:w-2/3 pb-10 relative">
       <Tabs tabPosition="top" centered>
         <TabPane
           tab=""
           key="-1"
-          style={{ maxHeight: "500px" }}
-          className="scroll-cum-rap overflow-y-auto"
+          style={{ maxHeight: "400px" }}
+          className="cum-rap overflow-y-auto"
         >
           <Tabs tabPosition="left">
             {props.heThongRapChieu?.map((heThongRap, index) => {
@@ -78,7 +85,7 @@ function RenderTable(props) {
                     <img
                       src={heThongRap.logo}
                       alt=""
-                      className="rounded-full w-6 sm:w-8 lg:w-12 "
+                      className="logo rounded-full w-6 sm:w-8 lg:w-12 "
                     />
                   }
                   key={index}
@@ -88,7 +95,7 @@ function RenderTable(props) {
                       return (
                         <TabPane
                           tab={
-                            <div className="md:flex items-center w-20 sm:w-32 md:w-60 lg:w-80">
+                            <div className="rap-chieu md:flex items-center w-10 sm:w-25 md:w-40 lg:w-40">
                               <img
                                 src={heThongRap.logo}
                                 alt=""
