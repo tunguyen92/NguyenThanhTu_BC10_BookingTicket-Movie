@@ -63,6 +63,7 @@ export default function BookingHistory(props) {
 
       render: (danhSachGhe, dataCurrent) => {
         console.log(danhSachGhe);
+        console.log(dataCurrent);
         const soGhe = [
           {
             title: "Tên hệ thống rạp",
@@ -86,20 +87,6 @@ export default function BookingHistory(props) {
             <button className="p-1 bg-pink-600 rounded" onClick={showModal}>
               Chi tiết
             </button>
-            <Modal
-              title="Thông tin ghế đã đặt"
-              visible={isModalVisible}
-              onOk={handleOk}
-              onCancel={handleCancel}
-            >
-              <Table
-                columns={soGhe}
-                dataSource={danhSachGhe}
-                rowKey={(ghe) => ghe.maGhe}
-                onChange={onChange}
-                pagination={{ pageSize: 3 }}
-              />
-            </Modal>
           </>
         );
       },
@@ -126,6 +113,20 @@ export default function BookingHistory(props) {
         // scroll={{ y: "50vh" }}
         pagination={{ pageSize: 3 }}
       />
+      <Modal
+        title="Thông tin ghế đã đặt"
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <Table
+          // columns={soGhe}
+          // dataSource={danhSachGhe}
+          // rowKey={(ghe) => ghe.maGhe}
+          onChange={onChange}
+          pagination={{ pageSize: 3 }}
+        />
+      </Modal>
     </div>
   );
 }
