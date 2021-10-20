@@ -1,6 +1,6 @@
-import { Modal, Table, Button } from "antd";
+import { Modal, Table } from "antd";
 import moment from "moment";
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import "./BookingHistory.css";
 
 export default function BookingHistory(props) {
@@ -11,11 +11,11 @@ export default function BookingHistory(props) {
   // console.log(data);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
-  // const [ticketCode, setTicketCode] = useState(0);
+  const [dataIndex, setDataIndex] = useState(0);
 
   const showModal = (maVe) => {
     setIsModalVisible(true);
-    // setTicketCode(maVe);
+    setDataIndex(maVe);
   };
 
   const handleCancel = () => {
@@ -25,24 +25,24 @@ export default function BookingHistory(props) {
     setIsModalVisible(false);
   };
 
-  // const soGhe = [
-  //         {
-  //           title: "Hệ thống rạp",
-  //           dataIndex: "tenHeThongRap",
-  //           //   width: 100,
-  //           align: "center",
-  //         },
-  //         {
-  //           title: "Số rạp",
-  //           dataIndex: "tenCumRap",
-  //           align: "center",
-  //         },
-  //         {
-  //           title: "Số ghế",
-  //           dataIndex: "tenGhe",
-  //           align: "center",
-  //         },
-  //       ];
+  const soGhe = [
+    {
+      title: "Hệ thống rạp",
+      dataIndex: "tenHeThongRap",
+      //   width: 100,
+      align: "center",
+    },
+    {
+      title: "Số rạp",
+      dataIndex: "tenCumRap",
+      align: "center",
+    },
+    {
+      title: "Số ghế",
+      dataIndex: "tenGhe",
+      align: "center",
+    },
+  ];
 
   const columns = [
     {
@@ -85,29 +85,16 @@ export default function BookingHistory(props) {
       dataIndex: "danhSachGhe",
 
       render: (danhSachGhe, dataCurrent) => {
-        console.log(danhSachGhe);
-        console.log(dataCurrent);
-        const soGhe = [
-          {
-            title: "Hệ thống rạp",
-            dataIndex: "tenHeThongRap",
-            //   width: 100,
-            align: "center",
-          },
-          {
-            title: "Số rạp",
-            dataIndex: "tenCumRap",
-            align: "center",
-          },
-          {
-            title: "Số ghế",
-            dataIndex: "tenGhe",
-            align: "center",
-          },
-        ];
+        const index = dataCurrent.stt - 1;
+
         return (
           <Fragment>
-            <button className="p-1 bg-pink-600 rounded" onClick={showModal}>
+            <button
+              className="p-1 bg-pink-600 rounded"
+              onClick={() => {
+                showModal(index);
+              }}
+            >
               Chi tiết
             </button>
           </Fragment>
@@ -137,7 +124,6 @@ export default function BookingHistory(props) {
         dataSource={data}
         rowKey={(ve) => ve.maVe}
         onChange={onChange}
-        // scroll={{ y: "50vh" }}
         pagination={{ pageSize: 3 }}
       />
       <Modal
@@ -147,9 +133,9 @@ export default function BookingHistory(props) {
         onCancel={handleCancel}
       >
         <Table
-          // columns={soGhe}
-          // dataSource={danhSachGhe}
-          // rowKey={(ghe) => ghe.maGhe}
+          columns={soGhe}
+          dataSource={data[dataIndex].danhSachGhe}
+          rowKey={(ghe) => ghe.maGhe}
           onChange={onChange}
           pagination={{ pageSize: 3 }}
         />

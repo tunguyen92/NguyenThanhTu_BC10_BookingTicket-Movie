@@ -17,7 +17,7 @@ export default function News() {
                   Nổi bật
                 </span>
               </h3>
-              <Link to="" className="hover:underline">
+              <Link to="/news" className="hover:underline">
                 George Clooney cấm vợ con xem phim siêu anh hùng mình đóng.
               </Link>
               <p className="text-xs ">47 phút trước</p>
@@ -29,7 +29,7 @@ export default function News() {
                   Nổi bật
                 </span>
               </h3>
-              <Link to="" className="hover:underline">
+              <Link to="/news" className="hover:underline">
                 Hãng sản xuất phim ‘Bombshell’ bị kiện 14,3 triệu USD.
               </Link>
               <p className="text-xs ">2 giờ trước</p>
@@ -41,7 +41,7 @@ export default function News() {
                   Nổi bật
                 </span>
               </h3>
-              <Link to="" className="hover:underline">
+              <Link to="/news" className="hover:underline">
                 ‘No One Gets Out Alive’ và cơn ác mộng của người nhập cư.
               </Link>
               <p className="text-xs ">4 giờ trước</p>
@@ -51,7 +51,10 @@ export default function News() {
             <div className="flex w-full h-1 bg-opacity-10 ">
               <div className="w-1/2 h-full "></div>
             </div>
-            <Link to="" className="flex items-center justify-between w-full">
+            <Link
+              to="/news"
+              className="flex items-center justify-between w-full"
+            >
               <span className="text-xs font-bold tracking-wider uppercase yellow-color-hover">
                 Xem thêm tin nổi bật
               </span>
@@ -80,7 +83,7 @@ export default function News() {
             paris, france
           </span>
           <Link
-            to=""
+            to="/news"
             className="flex flex-col items-center justify-end  text-center  group via-transparent flex-grow-1 bg-gradient-to-b from-coolGray-900 to-coolGray-900"
           >
             <span className="flex items-center mb-4 space-x-2 text-violet-600">
@@ -110,13 +113,13 @@ export default function News() {
                       src="https://source.unsplash.com/random/244x324"
                     />
                     <div className="flex flex-col flex-grow">
-                      <Link to="" className="hover:underline">
+                      <Link to="/news" className="hover:underline">
                         Cặp nhân vật gây khó chịu ở “Hương vị tình thân”.
                       </Link>
                       <p className="mt-auto text-xs ">
                         5 phút trước
                         <Link
-                          to=""
+                          to="/news"
                           className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
                         >
                           Phim truyền hình
@@ -131,13 +134,13 @@ export default function News() {
                       src="https://source.unsplash.com/random/245x325"
                     />
                     <div className="flex flex-col flex-grow">
-                      <Link to="" className="hover:underline">
+                      <Link to="/news" className="hover:underline">
                         ‘Tổng đài truy vết’ - khi tội lỗi định hình con người.
                       </Link>
                       <p className="mt-auto text-xs ">
                         14 phút trước
                         <Link
-                          to=""
+                          to="/news"
                           className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
                         >
                           Phim chiếu rạp
@@ -152,14 +155,14 @@ export default function News() {
                       src="https://source.unsplash.com/random/246x326"
                     />
                     <div className="flex flex-col flex-grow">
-                      <Link to="" className="hover:underline">
+                      <Link to="/news" className="hover:underline">
                         Loay hoay trong việc quản lý hàng nghìn phim điện ảnh
                         trên mạng.
                       </Link>
                       <p className="mt-auto text-xs ">
                         22 phút trước
                         <Link
-                          to=""
+                          to="/news"
                           className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
                         >
                           Trong nước
@@ -174,14 +177,14 @@ export default function News() {
                       src="https://source.unsplash.com/random/247x327"
                     />
                     <div className="flex flex-col flex-grow">
-                      <Link to="" className="hover:underline">
+                      <Link to="/news" className="hover:underline">
                         Cuộc sống của một phụ nữ bị đảo lộn vì phim “Squid
                         Game”.
                       </Link>
                       <p className="mt-auto text-xs ">
                         37 phút trước
                         <Link
-                          to=""
+                          to="/news"
                           className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
                         >
                           Thế giới
@@ -205,13 +208,13 @@ export default function News() {
                       src="https://picsum.photos/246/326?random=1"
                     />
                     <div className="flex flex-col flex-grow">
-                      <Link to="" className="hover:underline">
+                      <Link to="/news" className="hover:underline">
                         Phim truyền hình Việt ngày càng hút khán giả.
                       </Link>
                       <p className="mt-auto text-xs ">
                         9 giờ trước
                         <Link
-                          to=""
+                          to="/news"
                           className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
                         >
                           Phim truyền hình
@@ -226,13 +229,13 @@ export default function News() {
                       src="https://picsum.photos/246/326?random=2"
                     />
                     <div className="flex flex-col flex-grow">
-                      <Link to="" className="hover:underline">
+                      <Link to="/news" className="hover:underline">
                         Diễn biến vụ kiện của Scarlett Johansson với Disney.
                       </Link>
                       <p className="mt-auto text-xs ">
                         1 ngày trước
                         <Link
-                          to=""
+                          to="/news"
                           className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
                         >
                           Phim chiếu rạp
@@ -247,13 +250,13 @@ export default function News() {
                       src="https://picsum.photos/246/326?random=3"
                     />
                     <div className="flex flex-col flex-grow">
-                      <Link to="" className="hover:underline">
+                      <Link to="/news" className="hover:underline">
                         Các nhà làm phim nói gì về 'kiểm duyệt' và 'lạm quyền'?
                       </Link>
                       <p className="mt-auto text-xs ">
                         2 ngày trước
                         <Link
-                          to=""
+                          to="/news"
                           className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
                         >
                           Trong nước
@@ -268,14 +271,14 @@ export default function News() {
                       src="https://picsum.photos/246/326?random=4"
                     />
                     <div className="flex flex-col flex-grow">
-                      <Link to="" className="hover:underline">
+                      <Link to="/news" className="hover:underline">
                         Cái chết của Lý Tiểu Long và sự sụp đổ dòng phim võ
                         thuật.
                       </Link>
                       <p className="mt-auto text-xs ">
                         3 ngày trước
                         <Link
-                          to=""
+                          to="/news"
                           className="block text-blue-400 lg:ml-2 lg:inline hover:underline"
                         >
                           Thế giới
