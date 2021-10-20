@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/Nhom12_BC10_BookingTicket-Movie/static/css/main.0798dd67.chunk.css",
-    "main.js": "/Nhom12_BC10_BookingTicket-Movie/static/js/main.44a4d1a1.chunk.js",
-    "main.js.map": "/Nhom12_BC10_BookingTicket-Movie/static/js/main.44a4d1a1.chunk.js.map",
+    "main.css": "/Nhom12_BC10_BookingTicket-Movie/static/css/main.567dadf8.chunk.css",
+    "main.js": "/Nhom12_BC10_BookingTicket-Movie/static/js/main.94b2d524.chunk.js",
+    "main.js.map": "/Nhom12_BC10_BookingTicket-Movie/static/js/main.94b2d524.chunk.js.map",
     "runtime-main.js": "/Nhom12_BC10_BookingTicket-Movie/static/js/runtime-main.30bbd8f9.js",
     "runtime-main.js.map": "/Nhom12_BC10_BookingTicket-Movie/static/js/runtime-main.30bbd8f9.js.map",
     "static/css/2.eb12b297.chunk.css": "/Nhom12_BC10_BookingTicket-Movie/static/css/2.eb12b297.chunk.css",
-    "static/js/2.b2af17f7.chunk.js": "/Nhom12_BC10_BookingTicket-Movie/static/js/2.b2af17f7.chunk.js",
-    "static/js/2.b2af17f7.chunk.js.map": "/Nhom12_BC10_BookingTicket-Movie/static/js/2.b2af17f7.chunk.js.map",
+    "static/js/2.349a20c2.chunk.js": "/Nhom12_BC10_BookingTicket-Movie/static/js/2.349a20c2.chunk.js",
+    "static/js/2.349a20c2.chunk.js.map": "/Nhom12_BC10_BookingTicket-Movie/static/js/2.349a20c2.chunk.js.map",
     "static/js/3.c92616e7.chunk.js": "/Nhom12_BC10_BookingTicket-Movie/static/js/3.c92616e7.chunk.js",
     "static/js/3.c92616e7.chunk.js.map": "/Nhom12_BC10_BookingTicket-Movie/static/js/3.c92616e7.chunk.js.map",
     "static/js/4.d60df95a.chunk.js": "/Nhom12_BC10_BookingTicket-Movie/static/js/4.d60df95a.chunk.js",
     "static/js/4.d60df95a.chunk.js.map": "/Nhom12_BC10_BookingTicket-Movie/static/js/4.d60df95a.chunk.js.map",
     "index.html": "/Nhom12_BC10_BookingTicket-Movie/index.html",
     "static/css/2.eb12b297.chunk.css.map": "/Nhom12_BC10_BookingTicket-Movie/static/css/2.eb12b297.chunk.css.map",
-    "static/css/main.0798dd67.chunk.css.map": "/Nhom12_BC10_BookingTicket-Movie/static/css/main.0798dd67.chunk.css.map",
-    "static/js/2.b2af17f7.chunk.js.LICENSE.txt": "/Nhom12_BC10_BookingTicket-Movie/static/js/2.b2af17f7.chunk.js.LICENSE.txt",
+    "static/css/main.567dadf8.chunk.css.map": "/Nhom12_BC10_BookingTicket-Movie/static/css/main.567dadf8.chunk.css.map",
+    "static/js/2.349a20c2.chunk.js.LICENSE.txt": "/Nhom12_BC10_BookingTicket-Movie/static/js/2.349a20c2.chunk.js.LICENSE.txt",
     "static/media/ads.ef7c8278.png": "/Nhom12_BC10_BookingTicket-Movie/static/media/ads.ef7c8278.png",
     "static/media/Profile.css": "/Nhom12_BC10_BookingTicket-Movie/static/media/bg.6b529071.jpg",
     "static/media/footer_bg.547823c3.png": "/Nhom12_BC10_BookingTicket-Movie/static/media/footer_bg.547823c3.png",
@@ -39,8 +39,8 @@
   "entrypoints": [
     "static/js/runtime-main.30bbd8f9.js",
     "static/css/2.eb12b297.chunk.css",
-    "static/js/2.b2af17f7.chunk.js",
-    "static/css/main.0798dd67.chunk.css",
-    "static/js/main.44a4d1a1.chunk.js"
+    "static/js/2.349a20c2.chunk.js",
+    "static/css/main.567dadf8.chunk.css",
+    "static/js/main.94b2d524.chunk.js"
   ]
 }
