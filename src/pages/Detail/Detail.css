@@ -11,6 +11,7 @@
 }
 
 @media screen and (max-width: 1200px) {
+  
 }
 
 @media screen and (max-width: 992px) {
@@ -24,11 +25,9 @@
   .rap-chieu {
     display: flex;
     flex-direction: column;
-    padding: 2px 20px !important;
+    padding: 3px 0px !important;
   }
-}
 
-@media screen and (max-width: 640px) {
   .detail_upper {
     display: grid;
     grid-template-columns: 1fr;
@@ -40,4 +39,5 @@
   }
 }
 
-
+@media screen and (max-width: 414px) {
+}

@@ -55,7 +55,7 @@ export default function Checkout(props) {
             disabled={ghe.daDat}
             className={`ghe ${classGheDangDat} ${classGheVip} ${classGheDaDat} `}
           >
-            <img src={seat} alt="" class="img-ghe" width="40" height="40" />
+            <img src={seat} alt="" class="img-ghe" width="30" height="30" />
             <span className="sttGhe">{ghe.stt}</span>
           </button>
           {(index + 1) % 16 === 0 ? <br /> : ""}
