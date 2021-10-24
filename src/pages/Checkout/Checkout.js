@@ -70,14 +70,14 @@ export default function Checkout(props) {
       style={{ backgroundColor: "#0f2133" }}
     >
       <div className="grid grid-cols-12 ">
-        <div className="col-span-9 max-h-full">
-          <div className="flex justify-around">
-            <h3 className="text-white">
+        <div className="content-left col-span-9 max-h-full">
+          <div className="flex justify-around flex-wrap">
+            <h3 className="text-white mr-10">
               Rạp chiếu: {thongTinPhim.tenCumRap} - {thongTinPhim.tenRap}
             </h3>
 
             <div>
-              <h3 className="text-white">
+              <h3 className="text-white mr-10">
                 Ngày chiếu: {thongTinPhim.ngayChieu}
               </h3>
             </div>
@@ -126,11 +126,8 @@ export default function Checkout(props) {
             </div>
           </div>
         </div>
-        <div
-          className="col-span-3 "
-          // style={{ width: "25%", right: "5px" }}
-        >
-          <h3 className="text-green-400 text-center text-4xl mb-2">
+        <div className="content-right-upper-730px col-span-3 ">
+          <h3 className="total-price text-green-400 text-center text-4xl mb-2">
             {danhSachDangDat
               .reduce((total, ghe) => {
                 return (total += ghe.giaVe);
@@ -168,9 +165,39 @@ export default function Checkout(props) {
                   alert("Vui lòng chọn chỗ ngồi");
                 } else dispatch(datVeAction(thongTinDatVe));
               }}
-              className="border-2  text-white text-center  mt-5 font-bold text-2xl cursor-pointer w-50 rounded-full py-3 px-6"
+              className="checkout border-2  text-white text-center  mt-5 font-bold text-2xl cursor-pointer w-50 rounded-full py-3 px-6"
             >
               THANH TOÁN
+            </div>
+          </div>
+        </div>
+        <div className="content-right-lower-730px ">
+          <h3 className="text-2xl mt-3 text-white text-center">
+            {thongTinPhim.tenPhim}
+          </h3>
+          <DatVe danhSachDangDat={_.sortBy(danhSachDangDat, ["maGhe"])} />
+          <div className="my-5 text-white">
+            <p>Email: </p>
+            {userLogin.email}
+            <br className="mb-5" />
+            <span>Phone: </span>
+            {userLogin.soDT}
+
+            <div className="max-h-screen flex flex-col justify-end items-center mt-10">
+              <div
+                onClick={() => {
+                  const thongTinDatVe = new ThongTinDatVe();
+                  thongTinDatVe.maLichChieu = props.match.params.id;
+                  thongTinDatVe.danhSachVe = danhSachDangDat;
+                  thongTinDatVe.taiKhoanNguoiDung = userLogin.taiKhoan;
+                  if (danhSachDangDat.length === 0) {
+                    alert("Vui lòng chọn chỗ ngồi");
+                  } else dispatch(datVeAction(thongTinDatVe));
+                }}
+                className="checkout border-2  text-white text-center  mt-5 font-bold text-2xl cursor-pointer w-50 rounded-full py-3 px-6"
+              >
+                THANH TOÁN
+              </div>
             </div>
           </div>
         </div>
