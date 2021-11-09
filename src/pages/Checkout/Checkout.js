@@ -176,7 +176,7 @@ export default function Checkout(props) {
             {thongTinPhim.tenPhim}
           </h3>
           <DatVe danhSachDangDat={_.sortBy(danhSachDangDat, ["maGhe"])} />
-          <div className="my-5 text-white">
+          <div className="ml-5 my-5 text-white">
             <p>Email: </p>
             {userLogin.email}
             <br className="mb-5" />
