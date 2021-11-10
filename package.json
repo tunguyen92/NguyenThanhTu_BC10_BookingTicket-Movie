@@ -13,7 +13,6 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "@tsamantanis/react-glassmorphism": "^1.1.2",
     "animate.css": "^4.1.1",
     "antd": "^4.16.12",
     "axios": "^0.21.1",
@@ -21,9 +20,8 @@
     "formik": "^2.2.9",
     "history": "^4.10.0",
     "node-sass": "^6.0.1",
-    "postcss-loader": "^6.2.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-redux": "^7.2.5",
     "react-router": "^5.2.1",
     "react-router-dom": "^5.3.0",
@@ -32,11 +30,10 @@
     "react-virtualized": "^9.22.3",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
-    "sass-loader": "^12.2.0",
     "slick-carousel": "^1.8.1",
     "sweetalert": "^2.1.2",
     "web-vitals": "^1.1.2",
-    "webpack": "^5.58.2",
+    "webpack": "^4.44.1",
     "yup": "^0.32.9"
   },
   "scripts": {
@@ -69,8 +66,9 @@
     "@tailwindcss/postcss7-compat": "^2.2.7",
     "autoprefixer": "^9.8.8",
     "gh-pages": "^3.2.3",
+    "html-webpack-plugin": "^4.3.0",
     "postcss": "^7.0.39",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
-    "webpack-cli": "^4.8.0"
+    "webpack-cli": "^4.9.1"
   }
 }
