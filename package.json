@@ -2,7 +2,6 @@
   "name": "movie",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://tunguyen92.github.io/Nhom12_BC10_BookingTicket-Movie/",
   "dependencies": {
     "@agney/react-loading": "^0.1.2",
     "@ant-design/icons": "^4.7.0",
