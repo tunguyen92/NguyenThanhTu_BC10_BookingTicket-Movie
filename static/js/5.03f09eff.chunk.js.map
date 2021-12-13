@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/Contact/Contact.js"],"names":["Contact","props"],"mappings":"gGAAA,+DAEe,SAASA,EAAQC,GAC9B,OACE,8BACE","file":"static/js/5.03f09eff.chunk.js","sourcesContent":["import React from \"react\";\r\n\r\nexport default function Contact(props) {\r\n  return (\r\n    <div>\r\n      <h3>Contact</h3>\r\n    </div>\r\n  );\r\n}\r\n"],"sourceRoot":""}
