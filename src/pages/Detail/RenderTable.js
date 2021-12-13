@@ -7,7 +7,6 @@ import { NavLink } from "react-router-dom";
 const { TabPane } = Tabs;
 
 function RenderTable(props) {
-  // console.log(props);
   const getListNgayChieu = (listLichChieu) => {
     var listNgayChieu = [];
     listLichChieu.forEach((lichChieu) => {
@@ -25,16 +24,14 @@ function RenderTable(props) {
   };
 
   const menuNgayChieu = (props) => {
-    console.log(props);
     const listNgayChieu = getListNgayChieu(props);
-    console.log(listNgayChieu);
 
     return listNgayChieu?.map((ngayChieu) => {
       return (
         <TabPane
-          style={{ paddingLeft: 0 }}
+          style={{ paddingLeft: 0}}
           tab={
-            <div className="md:flex items-center mr-2 w-10 sm:w-25 md:w-35 lg:w-40">
+            <div className="mr-5 pr-5 w-10 sm:w-15 md:w-20 lg:w-30">
               <div className="text-xs lg:text-sm text-left whitespace-pre-wrap ">
                 Ngày {ngayChieu}
               </div>
@@ -95,7 +92,7 @@ function RenderTable(props) {
                       return (
                         <TabPane
                           tab={
-                            <div className="rap-chieu md:flex items-center w-10 sm:w-25 md:w-40 lg:w-40">
+                            <div className="rap-chieu md:flex items-center w-20 sm:w-30 md:w-40 lg:w-60">
                               <img
                                 src={heThongRap.logo}
                                 alt=""

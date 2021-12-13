@@ -4,7 +4,7 @@ import Footer from "./Layout/Footer/Footer";
 import Header from "./Layout/Header/Header";
 import { BackTop } from "antd";
 
-export const HomeTemplate = (props) => {
+const HomeTemplate = (props) => {
   //props là path, exact, Component
   const { Component, ...restProps } = props;
   useEffect(() => {
@@ -34,3 +34,5 @@ export const HomeTemplate = (props) => {
     />
   );
 };
+
+export default HomeTemplate;
