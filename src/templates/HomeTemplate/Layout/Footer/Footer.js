@@ -170,7 +170,7 @@ export default function Footer(props) {
         </div>
 
         <div className="grid justify-center p-6 lg:justify-between">
-          <div className=" self-center  text-center md:block lg:col-start-1 md:space-x-6">
+          {/* <div className=" self-center  text-center md:block lg:col-start-1 md:space-x-6">
             <p className="text-gray-400 text-base">
               Thực hiện bởi{" "}
               <a
@@ -189,7 +189,7 @@ export default function Footer(props) {
                 Sơn
               </a>
             </p>
-          </div>
+          </div> */}
           <div className="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
             <Link
               to=""

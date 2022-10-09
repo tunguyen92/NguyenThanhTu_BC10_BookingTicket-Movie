@@ -1,26 +1,23 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { Table, Input, Modal, Button, Form, Select } from "antd";
-import { useSelector, useDispatch } from "react-redux";
-import { QuanLyNguoiDungReducer } from "./../../../redux/reducers/QuanLyNguoiDungReducer";
 import {
-  capNhatThongTinNguoiDungAction,
-  layDanhSachNguoiDungAction,
-  layThongTinNguoiDungAction,
-  timKiemNguoiDungAction,
-  xoaNguoiDungAction,
-  themNguoiDungAction,
-} from "./../../../redux/actions/QuanLyNguoiDungAction";
-import { NavLink } from "react-router-dom";
-import {
-  EditOutlined,
-  DeleteOutlined,
   ContactsOutlined,
-  UserOutlined,
+  DeleteOutlined,
+  EditOutlined,
   EyeInvisibleOutlined,
   EyeTwoTone,
 } from "@ant-design/icons";
-import "./User.scss";
+import { Button, Form, Input, Modal, Select, Table } from "antd";
+import React, { Fragment, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+import {
+  capNhatThongTinNguoiDungAction,
+  layDanhSachNguoiDungAction,
+  themNguoiDungAction,
+  timKiemNguoiDungAction,
+  xoaNguoiDungAction,
+} from "./../../../redux/actions/QuanLyNguoiDungAction";
 import { GROUPID } from "./../../../util/settings/config";
+import "./User.scss";
 
 const { Option } = Select;
 
@@ -29,6 +26,7 @@ export default function User() {
     (state) => state.QuanLyNguoiDungReducer
   );
   const dispatch = useDispatch();
+  const [form] = Form.useForm();
 
   //Tạo modal update hiển thị thông tin User
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -52,7 +50,7 @@ export default function User() {
 
   useEffect(() => {
     dispatch(layDanhSachNguoiDungAction());
-  }, []);
+  }, [dispatch]);
 
   //  tạo user được chọn khi edit
   let [selectUser, setSelectUser] = useState({});
@@ -63,9 +61,8 @@ export default function User() {
 
   // cập nhật user được chọn để render ra modal
   useEffect(() => {
-    console.log(selectUser);
     form.setFieldsValue(selectUser);
-  }, [selectUser]);
+  }, [form, selectUser]);
 
   const columns = [
     {
@@ -111,8 +108,6 @@ export default function User() {
   ];
 
   const data = [];
-
-  const [form] = Form.useForm();
 
   if (keyword === "") {
     for (let i = 0; i < listUser.length; i++) {
@@ -218,9 +213,7 @@ export default function User() {
   const onSearch = (value) => {
     dispatch(timKiemNguoiDungAction(value));
   };
-  function handleChange(value) {
-    console.log(value); // { value: "lucy", key: "lucy", label: "Lucy (101)" }
-  }
+
   return (
     <Fragment>
       <Button

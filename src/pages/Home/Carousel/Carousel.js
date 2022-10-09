@@ -41,7 +41,7 @@ export default function HomeCarousel() {
           <img src={slider1} className="lg:h-screen w-full " alt="slider1" />
           {state.activeSlide2 === 0 && (
             <div className="hidden md:block">
-              <ul class="subtitle  animate__animated animate__bounceInRight">
+              <ul className="subtitle  animate__animated animate__bounceInRight">
                 <li>Hành động</li>
                 <li>Khoa học viễn tưởng</li>
                 <li>Siêu anh hùng</li>
@@ -49,23 +49,23 @@ export default function HomeCarousel() {
               <p className="title animate__animated animate__bounceInRight ">
                 MAN OF STEEL
               </p>
-              <div class="slide_right animate__animated animate__bounceInRight">
+              <div className="slide_right animate__animated animate__bounceInRight">
                 <NavLink
                   to=""
                   onClick={() => setIsModalVisible(true)}
-                  class="btn-trailer text-white text-xl mr-10"
+                  className="btn-trailer text-white text-xl mr-10"
                 >
                   <CaretRightOutlined className="yellow-color mr-3 text-2xl align-middle pb-4" />
                   XEM TRAILER
                 </NavLink>
                 <NavLink
                   to="/detail/9387"
-                  class="btn-ticket text-white text-xl"
+                  className="btn-ticket text-white text-xl"
                 >
                   <ShoppingCartOutlined className="yellow-color mr-3 text-2xl align-middle pb-4" />
                   ĐẶT VÉ
                 </NavLink>
-                <ul class="award-logo flex pt-14 opacity-60">
+                <ul className="award-logo flex pt-14 opacity-60">
                   <li>
                     <img src={icon1} alt="icon" />
                   </li>
@@ -80,10 +80,10 @@ export default function HomeCarousel() {
                   </li>
                 </ul>
               </div>
-              <div class="chart-cirle">
-                <div class="chart-circle-l animate__animated animate__bounceInUp mr-16">
-                  <div class="circle-chart">
-                    <div class="c100 carousel p72">
+              <div className="chart-cirle">
+                <div className="chart-circle-l animate__animated animate__bounceInUp mr-16">
+                  <div className="circle-chart">
+                    <div className="c100 carousel p72">
                       <span className="text-center">7.2</span>
                       <div className="slice">
                         <div className="bar"></div>
@@ -93,9 +93,9 @@ export default function HomeCarousel() {
                   </div>
                   <span className="pl-2">Đánh giá IMDb</span>
                 </div>
-                <div class="chart-circle-r  animate__animated animate__bounceInUp">
-                  <div class="circle-chart">
-                    <div class="c100 carousel p74">
+                <div className="chart-circle-r  animate__animated animate__bounceInUp">
+                  <div className="circle-chart">
+                    <div className="c100 carousel p74">
                       <span className="text-center">7.4</span>
                       <div className="slice">
                         <div className="bar"></div>
@@ -130,7 +130,7 @@ export default function HomeCarousel() {
           <img src={slider2} className="lg:h-screen w-full " alt="slider2" />
           {state.activeSlide2 === 1 && (
             <div className="hidden md:block">
-              <ul class="subtitle  animate__animated animate__bounceInRight">
+              <ul className="subtitle  animate__animated animate__bounceInRight">
                 <li>Hành động</li>
                 <li>Giật gân</li>
                 <li>Tội phạm</li>
@@ -138,23 +138,23 @@ export default function HomeCarousel() {
               <p className="title animate__animated animate__bounceInRight ">
                 TAKEN 2
               </p>
-              <div class="slide_right animate__animated animate__bounceInRight">
+              <div className="slide_right animate__animated animate__bounceInRight">
                 <NavLink
                   to=""
                   onClick={() => setIsModalVisible(true)}
-                  class="btn-trailer text-white text-xl mr-10"
+                  className="btn-trailer text-white text-xl mr-10"
                 >
                   <CaretRightOutlined className="yellow-color mr-3 text-2xl align-middle pb-4" />
                   XEM TRAILER
                 </NavLink>
                 <NavLink
                   to="/detail/8906"
-                  class="btn-ticket text-white text-xl"
+                  className="btn-ticket text-white text-xl"
                 >
                   <ShoppingCartOutlined className="yellow-color mr-3 text-2xl align-middle pb-4" />
                   ĐẶT VÉ
                 </NavLink>
-                <ul class="award-logo flex pt-14 opacity-60">
+                <ul className="award-logo flex pt-14 opacity-60">
                   <li>
                     <img src={icon1} alt="icon" />
                   </li>
@@ -169,10 +169,10 @@ export default function HomeCarousel() {
                   </li>
                 </ul>
               </div>
-              <div class="chart-cirle">
-                <div class="chart-circle-l animate__animated animate__bounceInUp mr-16">
-                  <div class="circle-chart">
-                    <div class="c100 carousel p68">
+              <div className="chart-cirle">
+                <div className="chart-circle-l animate__animated animate__bounceInUp mr-16">
+                  <div className="circle-chart">
+                    <div className="c100 carousel p68">
                       <span className="text-center">6.8</span>
                       <div className="slice">
                         <div className="bar"></div>
@@ -182,9 +182,9 @@ export default function HomeCarousel() {
                   </div>
                   <span className="pl-2">Đánh giá IMDb</span>
                 </div>
-                <div class="chart-circle-r  animate__animated animate__bounceInUp">
-                  <div class="circle-chart">
-                    <div class="c100 carousel p63">
+                <div className="chart-circle-r  animate__animated animate__bounceInUp">
+                  <div className="circle-chart">
+                    <div className="c100 carousel p63">
                       <span className="text-center">6.3</span>
                       <div className="slice">
                         <div className="bar"></div>
@@ -219,7 +219,7 @@ export default function HomeCarousel() {
           <img src={slider3} className="lg:h-screen w-full " alt="slider3" />
           {state.activeSlide2 === 2 && (
             <div className="hidden md:block">
-              <ul class="subtitle  animate__animated animate__bounceInRight">
+              <ul className="subtitle  animate__animated animate__bounceInRight">
                 <li>Siêu anh hùng</li>
                 <li>Hành động</li>
                 <li>Kỳ ảo</li>
@@ -227,23 +227,23 @@ export default function HomeCarousel() {
               <p className="title animate__animated animate__bounceInRight ">
                 FANTASTIC 4
               </p>
-              <div class="slide_right animate__animated animate__bounceInRight">
+              <div className="slide_right animate__animated animate__bounceInRight">
                 <NavLink
                   to=""
                   onClick={() => setIsModalVisible(true)}
-                  class="btn-trailer text-white text-xl mr-10"
+                  className="btn-trailer text-white text-xl mr-10"
                 >
                   <CaretRightOutlined className="yellow-color mr-3 text-2xl align-middle pb-4" />
                   XEM TRAILER
                 </NavLink>
                 <NavLink
                   to="/detail/1427"
-                  class="btn-ticket text-white text-xl"
+                  className="btn-ticket text-white text-xl"
                 >
                   <ShoppingCartOutlined className="yellow-color mr-3 text-2xl align-middle pb-4" />
                   ĐẶT VÉ
                 </NavLink>
-                <ul class="award-logo flex pt-14 opacity-60">
+                <ul className="award-logo flex pt-14 opacity-60">
                   <li>
                     <img src={icon1} alt="icon" />
                   </li>
@@ -258,10 +258,10 @@ export default function HomeCarousel() {
                   </li>
                 </ul>
               </div>
-              <div class="chart-cirle">
-                <div class="chart-circle-l animate__animated animate__bounceInUp mr-16">
-                  <div class="circle-chart">
-                    <div class="c100 carousel p42">
+              <div className="chart-cirle">
+                <div className="chart-circle-l animate__animated animate__bounceInUp mr-16">
+                  <div className="circle-chart">
+                    <div className="c100 carousel p42">
                       <span className="text-center">4.2</span>
                       <div className="slice">
                         <div className="bar"></div>
@@ -271,9 +271,9 @@ export default function HomeCarousel() {
                   </div>
                   <span className="pl-2">Đánh giá IMDb</span>
                 </div>
-                <div class="chart-circle-r  animate__animated animate__bounceInUp">
-                  <div class="circle-chart">
-                    <div class="c100 carousel p27">
+                <div className="chart-circle-r  animate__animated animate__bounceInUp">
+                  <div className="circle-chart">
+                    <div className="c100 carousel p27">
                       <span className="text-center">2.7</span>
                       <div className="slice">
                         <div className="bar"></div>

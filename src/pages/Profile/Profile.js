@@ -22,12 +22,12 @@ export default function Profile(props) {
     (state) => state.QuanLyNguoiDungReducer
   );
   // console.log(thongTinNguoiDung);
-  const user = { taiKhoan: userLogin.taiKhoan };
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const user = { taiKhoan: userLogin.taiKhoan };
     dispatch(layThongTinNguoiDungAction(user));
-  }, []);
+  }, [dispatch, userLogin.taiKhoan]);
 
   const operations = (
     <button

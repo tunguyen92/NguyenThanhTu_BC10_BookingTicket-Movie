@@ -22,11 +22,11 @@ export const layChiTietPhongVeAction = (maLichChieu) => {
 export const datVeAction = (thongTinDatVe) => {
   return async (dispatch) => {
     try {
-      const result = await quanLyDatVeService.datVe(thongTinDatVe);
+      await quanLyDatVeService.datVe(thongTinDatVe);
       swal({
         title: "Đặt vé thành công!",
         icon: "success",
-      })
+      });
       // alert(result.data);
     } catch (error) {
       console.log("error", error);

@@ -39,7 +39,7 @@ export default function Header(props) {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [userLogin.maLoaiNguoiDung]);
   const handleScroll = () => {
     setShow(window.pageYOffset > 140);
   };

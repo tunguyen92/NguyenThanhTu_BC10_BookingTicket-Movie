@@ -1,16 +1,15 @@
+import _ from "lodash";
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import seat from "../../assets/images/seat.svg";
 import {
   datVeAction,
   layChiTietPhongVeAction,
 } from "../../redux/actions/QuanLyDatVeAction";
-import "./Checkout.css";
 import { DAT_VE } from "../../redux/actions/types/QuanLyDatVeType";
-import DatVe from "./DatVe.module";
-import _ from "lodash";
 import { ThongTinDatVe } from "./../../_core/models/ThongTinDatVe";
-import seat from "../../assets/images/seat.svg";
-import { swal } from "sweetalert";
+import "./Checkout.css";
+import DatVe from "./DatVe.module";
 
 export default function Checkout(props) {
   const { userLogin } = useSelector((state) => state.QuanLyNguoiDungReducer);
@@ -27,7 +26,7 @@ export default function Checkout(props) {
 
     //đẩy hàm đi
     dispatch(action);
-  }, []);
+  }, [dispatch, props.match.params.id]);
 
   const { danhSachGhe, thongTinPhim } = chiTietPhongVe;
 
@@ -55,7 +54,7 @@ export default function Checkout(props) {
             disabled={ghe.daDat}
             className={`ghe ${classGheDangDat} ${classGheVip} ${classGheDaDat} `}
           >
-            <img src={seat} alt="" class="img-ghe" width="30" height="30" />
+            <img src={seat} alt="" className="img-ghe" width="30" height="30" />
             <span className="sttGhe">{ghe.stt}</span>
           </button>
           {(index + 1) % 16 === 0 ? <br /> : ""}
@@ -102,25 +101,49 @@ export default function Checkout(props) {
 
             <div className="flex" style={{ alignItems: "center" }}>
               <div className="ghe">
-                <img src={seat} alt="" class="img-ghe" width="30" height="30" />
+                <img
+                  src={seat}
+                  alt=""
+                  className="img-ghe"
+                  width="30"
+                  height="30"
+                />
               </div>
               <div className="text-white">Ghế thường</div>
             </div>
             <div className="flex" style={{ alignItems: "center" }}>
               <div className="ghe gheVip">
-                <img src={seat} alt="" class="img-ghe" width="30" height="30" />
+                <img
+                  src={seat}
+                  alt=""
+                  className="img-ghe"
+                  width="30"
+                  height="30"
+                />
               </div>
               <div className="text-white">Ghế vip</div>
             </div>
             <div className="flex" style={{ alignItems: "center" }}>
               <div className="ghe gheDaDat">
-                <img src={seat} alt="" class="img-ghe" width="30" height="30" />
+                <img
+                  src={seat}
+                  alt=""
+                  className="img-ghe"
+                  width="30"
+                  height="30"
+                />
               </div>
               <div className="text-white">Ghế đã đặt</div>
             </div>
             <div className="flex" style={{ alignItems: "center" }}>
               <div className="ghe gheDangDat">
-                <img src={seat} alt="" class="img-ghe" width="30" height="30" />
+                <img
+                  src={seat}
+                  alt=""
+                  className="img-ghe"
+                  width="30"
+                  height="30"
+                />
               </div>
               <div className="text-white">Ghế đang đặt</div>
             </div>

@@ -26,7 +26,7 @@ export default function Home(props) {
     dispatch(action);
 
     dispatch(layDanhSachHeThongCumRapAction());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>

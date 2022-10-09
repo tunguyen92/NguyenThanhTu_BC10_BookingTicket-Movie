@@ -19,7 +19,7 @@ export default function ListFilm(props) {
   useEffect(() => {
     const action = layDanhSachPhimAction();
     dispatch(action);
-  }, []);
+  }, [dispatch]);
 
   const renderFilms = (phim) => {
     if (phim) {

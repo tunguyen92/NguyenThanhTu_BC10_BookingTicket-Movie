@@ -8,6 +8,10 @@ import {
 import Film from "../../Film/HomeFilm/Film";
 import { NavLink } from "react-router-dom";
 import "./HomeListFilm.css";
+import actress1 from "../../../assets/images/Actress/mikami_yua.jpg";
+import actress2 from "../../../assets/images/Actress/nagase_yui2.jpg";
+import actress3 from "../../../assets/images/Actress/momonogi_kana.jpg";
+import actress4 from "../../../assets/images/Actress/arimura_nozomi.jpg";
 
 const MultipleRowsSlick = (props) => {
   // console.log(props.arrFilm);
@@ -20,22 +24,22 @@ const MultipleRowsSlick = (props) => {
   const author = [
     {
       tenDienVien: "Yua Mikami",
-      hinhAnh: "https://pics.r18.com/mono/actjpgs/mikami_yua.jpg",
+      hinhAnh: actress1,
       ngheNghiep: "DIỄN VIÊN",
     },
     {
       tenDienVien: "Yui Nagase",
-      hinhAnh: "https://pics.r18.com/mono/actjpgs/nagase_yui2.jpg",
+      hinhAnh: actress2,
       ngheNghiep: "DIỄN VIÊN",
     },
     {
       tenDienVien: "Kana Momonogi",
-      hinhAnh: "https://pics.r18.com/mono/actjpgs/momonogi_kana.jpg",
+      hinhAnh: actress3,
       ngheNghiep: "DIỄN VIÊN",
     },
     {
       tenDienVien: "Nozomi Arimura",
-      hinhAnh: "https://pics.r18.com/mono/actjpgs/arimura_nozomi.jpg",
+      hinhAnh: actress4,
       ngheNghiep: "DIỄN VIÊN",
     },
   ];

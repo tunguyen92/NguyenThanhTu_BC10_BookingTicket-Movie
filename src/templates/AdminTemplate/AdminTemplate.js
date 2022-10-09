@@ -13,7 +13,7 @@ import { history } from "../../App";
 import { TOKEN, USER_LOGIN } from "../../util/settings/config";
 import swal from "sweetalert";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
 
 const AdminTemplate = (props) => {

@@ -20,7 +20,7 @@ const Edit = (props) => {
     let { id } = props.match.params;
 
     dispatch(layThongTinPhimAction(id));
-  }, []);
+  }, [dispatch, props.match.params]);
 
   const validate = (values) => {
     const errors = {};
@@ -182,6 +182,7 @@ const Edit = (props) => {
           <img
             style={{ width: 100, height: 100, objectFit: "contain" }}
             src={imgSrc === "" ? thongTinPhim.hinhAnh : imgSrc}
+            alt="hinhAnh"
           />
         </Form.Item>
         <Form.Item

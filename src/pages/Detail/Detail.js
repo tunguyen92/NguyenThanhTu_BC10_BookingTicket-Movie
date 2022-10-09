@@ -15,7 +15,7 @@ export default function Detail(props) {
   useEffect(() => {
     let { id } = props.match.params;
     dispatch(layThongTinChiTietPhim(id));
-  }, []);
+  }, [dispatch, props.match.params]);
   // console.log({ filmDetail });
 
   return (
@@ -27,7 +27,10 @@ export default function Detail(props) {
         backgroundPosition: "center",
       }}
     >
-      <div className="detail_upper grid grid-cols-12" style={{ paddingTop: "150px" }}>
+      <div
+        className="detail_upper grid grid-cols-12"
+        style={{ paddingTop: "150px" }}
+      >
         <div className="col-span-8 col-start-2">
           <div className="grid grid-cols-3">
             <img

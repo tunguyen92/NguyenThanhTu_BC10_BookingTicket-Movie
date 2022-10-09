@@ -6,7 +6,7 @@ import "./BookingHistory.css";
 export default function BookingHistory(props) {
   let data = props.thongTinDatVe;
   data.map((item, index) => {
-    data[index] = { ...data[index], stt: index + 1 };
+    return (data[index] = { ...data[index], stt: index + 1 });
   });
   // console.log(data);
 

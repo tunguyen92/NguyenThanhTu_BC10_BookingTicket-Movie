@@ -25,7 +25,7 @@ export default function Films() {
 
   useEffect(() => {
     dispatch(layDanhSachPhimAction());
-  }, []);
+  }, [dispatch]);
 
   const columns = [
     {
