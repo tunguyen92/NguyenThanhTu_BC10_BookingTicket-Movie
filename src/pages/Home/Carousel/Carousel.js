@@ -118,9 +118,9 @@ export default function HomeCarousel() {
                   style={{ width: "100%", height: "500px" }}
                   src="https://www.youtube.com/embed/T6DJcgm3wNY"
                   title="YouTube video player"
-                  frameborder="0"
+                  frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
+                  allowFullScreen
                 ></iframe>
               </Modal>
             </div>
@@ -207,9 +207,9 @@ export default function HomeCarousel() {
                   style={{ width: "100%", height: "500px" }}
                   src="https://www.youtube.com/embed/XK9zL0ze9O4"
                   title="YouTube video player"
-                  frameborder="0"
+                  frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
+                  allowFullScreen
                 ></iframe>
               </Modal>
             </div>
@@ -296,9 +296,9 @@ export default function HomeCarousel() {
                   style={{ width: "100%", height: "500px" }}
                   src="https://www.youtube.com/embed/AAgnQdiZFsQ"
                   title="YouTube video player"
-                  frameborder="0"
+                  frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
+                  allowFullScreen
                 ></iframe>
               </Modal>
             </div>

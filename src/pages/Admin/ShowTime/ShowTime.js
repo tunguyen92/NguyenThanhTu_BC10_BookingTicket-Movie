@@ -76,7 +76,7 @@ export default function ShowTime(props) {
   };
 
   const handleChangeCumRap = (value) => {
-    state.cumRapChieu.map((rapChieu) => {
+    state.cumRapChieu?.map((rapChieu) => {
       return setState({
         ...state,
         danhSachRap: rapChieu.danhSachRap,

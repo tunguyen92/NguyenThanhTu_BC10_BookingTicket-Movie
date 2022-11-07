@@ -33,6 +33,10 @@
   align-items: center;
 }
 
+.trailers .trailer-right .slick-list .slick-track {
+  max-height: 400px;
+}
+
 .trailers .trailer-left iframe {
   width: 100%;
   height: 435px;

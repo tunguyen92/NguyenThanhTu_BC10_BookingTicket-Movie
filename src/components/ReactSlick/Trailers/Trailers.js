@@ -116,18 +116,25 @@ export default function Trailers(props) {
                 ref={(slider1) => setNav1(slider1)}
                 className="trailer-left col-span-2"
               >
-                {props.arrFilm.slice(0, 6).map((item, index) => {
-                  return (
-                    <div key={index}>
-                      <iframe
-                        src={item.trailer}
-                        title="YouTube video player"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      ></iframe>
-                    </div>
-                  );
+                {props.arrFilm.map((item, index) => {
+                  const urlHasEmbed = item.trailer.includes("embed");
+                  if (urlHasEmbed) {
+                    return (
+                      <div key={index}>
+                        <iframe
+                          src={item.trailer}
+                          width="560"
+                          height="315"
+                          title="YouTube video player"
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        ></iframe>
+                      </div>
+                    );
+                  } else {
+                    return null;
+                  }
                 })}
               </Slider>
 
@@ -138,35 +145,42 @@ export default function Trailers(props) {
                 className="trailer-right bg-gray-blue-color py-5"
               >
                 {/* {renderFilms(dangChieu)} */}
-                {props.arrFilm.slice(0, 6).map((phim, index) => {
-                  return (
-                    <div
-                      key={index}
-                      onClick={() => setActiveIndex(index)} // pass the index
-                      className={`
-                        ${
-                          activeIndex === index
-                            ? "bg-light-blue-color"
-                            : "text-transparent"
-                        }
-                         trailer-film bg-light-blue-color-hover p-4 cursor-pointer 
-                      `}
-                    >
-                      <img
-                        src={phim.hinhAnh}
-                        alt={phim.tenPhim}
-                        className="md:w-30  md:h-16 h-12 md:mr-5 md:object-contain object-cover"
-                      />
-                      <div>
-                        <h3 className="text-white text-base">{phim.tenPhim}</h3>
-                        <p className="md:block hidden ">
-                          {phim.moTa.length > 35
-                            ? phim.moTa.slice(0, 35) + "..."
-                            : phim.moTa}
-                        </p>
+                {props.arrFilm.map((phim, index) => {
+                  const urlHasEmbed = phim.trailer.includes("embed");
+                  if (urlHasEmbed) {
+                    return (
+                      <div
+                        key={index}
+                        onClick={() => setActiveIndex(index)} // pass the index
+                        className={`
+                          ${
+                            activeIndex === index
+                              ? "bg-light-blue-color"
+                              : "text-transparent"
+                          }
+                           trailer-film bg-light-blue-color-hover p-4 cursor-pointer 
+                        `}
+                      >
+                        <img
+                          src={phim.hinhAnh}
+                          alt={phim.tenPhim}
+                          className="md:w-30  md:h-16 h-12 md:mr-5 md:object-contain object-cover"
+                        />
+                        <div>
+                          <h3 className="text-white text-base">
+                            {phim.tenPhim}
+                          </h3>
+                          <p className="md:block hidden ">
+                            {phim.moTa.length > 35
+                              ? phim.moTa.slice(0, 35) + "..."
+                              : phim.moTa}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  );
+                    );
+                  } else {
+                    return null;
+                  }
                 })}
               </Slider>
             </div>

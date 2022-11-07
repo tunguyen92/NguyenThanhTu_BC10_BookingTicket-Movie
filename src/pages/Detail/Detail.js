@@ -35,7 +35,11 @@ export default function Detail(props) {
           <div className="grid grid-cols-3">
             <img
               className="col-span-1"
-              style={{ height: "400px", borderRadius: "30px" }}
+              style={{
+                height: "400px",
+                borderRadius: "30px",
+                objectFit: "cover",
+              }}
               src={filmDetail?.hinhAnh}
               alt=""
             />
@@ -50,8 +54,8 @@ export default function Detail(props) {
               <p className="text-sm text-white mb-5">
                 Thời lượng:{" "}
                 {filmDetail.heThongRapChieu
-                  ? filmDetail.heThongRapChieu[0].cumRapChieu[0]
-                      .lichChieuPhim[0].thoiLuong
+                  ? filmDetail.heThongRapChieu[0]?.cumRapChieu[0]
+                      ?.lichChieuPhim[0]?.thoiLuong
                   : ""}{" "}
                 phút
               </p>
